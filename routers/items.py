@@ -1,7 +1,8 @@
-from fastapi import APIRouter, HTTPException
-from typing import Union
+from fastapi import APIRouter, HTTPException, Depends
+from sqlmodel import Session, select
 
-from pydantic import BaseModel
+from db import get_session
+from models.item import Item, ItemCreate, ItemRead
 
 router = APIRouter(
     prefix="/items",
@@ -9,72 +10,48 @@ router = APIRouter(
 )
 
 
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Union[bool, None] = None
+@router.post("", response_model=ItemRead)
+def create_item(item: ItemCreate, session: Session = Depends(get_session)):
+    db_item = Item(**item.model_dump())
+    session.add(db_item)
+    session.commit()
+    session.refresh(db_item)
+    return db_item
 
 
-class ItemResponse(BaseModel):
-    id: int
-    name: str
-    price: float
-    is_offer: Union[bool, None] = None
+@router.get("", response_model=list[ItemRead])
+def list_items(session: Session = Depends(get_session)):
+    statement = select(Item)
+    results = session.exec(statement).all()
+    return results
 
 
-class ItemListResponse(BaseModel):
-    items: list[ItemResponse]
+@router.get("/{item_id}", response_model=ItemRead)
+def get_item(item_id: int, session: Session = Depends(get_session)):
+    item = session.get(Item, item_id)
+    if not item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return item
 
 
-class MessageResponse(BaseModel):
-    message: str
+@router.put("/{item_id}", response_model=ItemRead)
+def update_item(item_id: int, item: ItemCreate, session: Session = Depends(get_session)):
+    db_item = session.get(Item, item_id)
+    if not db_item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    for key, value in item.model_dump().items():
+        setattr(db_item, key, value)
+    session.add(db_item)
+    session.commit()
+    session.refresh(db_item)
+    return db_item
 
 
-# In-memory storage for items
-items_db: dict[int, Item] = {}
-next_item_id = 1
-
-
-# CRUD APIs for Items
-@router.post("", response_model=ItemResponse)
-def create_item(item: Item):
-    """Create a new item"""
-    global next_item_id
-    item_id = next_item_id
-    next_item_id += 1
-    items_db[item_id] = item
-    return {"id": item_id, **item.model_dump()}
-
-
-@router.get("", response_model=ItemListResponse)
-def list_items():
-    """Get all items"""
-    return {
-        "items": [{"id": item_id, **item.model_dump()} for item_id, item in items_db.items()]
-    }
-
-
-@router.get("/{item_id}", response_model=ItemResponse)
-def get_item(item_id: int):
-    """Get a specific item by ID"""
-    if item_id in items_db:
-        return {"id": item_id, **items_db[item_id].model_dump()}
-    raise HTTPException(status_code=404, detail="Item not found")
-
-
-@router.put("/{item_id}", response_model=ItemResponse)
-def update_item(item_id: int, item: Item):
-    """Update an item"""
-    if item_id in items_db:
-        items_db[item_id] = item
-        return {"id": item_id, **item.model_dump()}
-    raise HTTPException(status_code=404, detail="Item not found")
-
-
-@router.delete("/{item_id}", response_model=MessageResponse)
-def delete_item(item_id: int):
-    """Delete an item"""
-    if item_id in items_db:
-        items_db.pop(item_id)
-        return {"message": "Item deleted"}
-    raise HTTPException(status_code=404, detail="Item not found")
+@router.delete("/{item_id}")
+def delete_item(item_id: int, session: Session = Depends(get_session)):
+    db_item = session.get(Item, item_id)
+    if not db_item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    session.delete(db_item)
+    session.commit()
+    return {"message": "Item deleted"}

@@ -1,7 +1,7 @@
 from sqlmodel import create_engine, Session
-from lib.env import DATABASE_URL
+from lib.env import env
 
-engine = create_engine(DATABASE_URL, echo=False)
+engine = create_engine(env.DATABASE_URL, echo=False)
 
 
 def get_session():

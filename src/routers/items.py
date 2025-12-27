@@ -34,19 +34,6 @@ def get_item(item_id: int, session: Session = Depends(get_session)):
     return item
 
 
-@router.put("/{item_id}", response_model=ItemRead)
-def update_item(item_id: int, item: ItemCreate, session: Session = Depends(get_session)):
-    db_item = session.get(Item, item_id)
-    if not db_item:
-        raise HTTPException(status_code=404, detail="Item not found")
-    for key, value in item.model_dump().items():
-        setattr(db_item, key, value)
-    session.add(db_item)
-    session.commit()
-    session.refresh(db_item)
-    return db_item
-
-
 @router.patch("/{item_id}", response_model=ItemRead)
 def partial_update_item(
     item_id: int,

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import items
+from routers import items, students
 from sqlmodel import SQLModel
 from db import engine
 from contextlib import asynccontextmanager
@@ -22,3 +22,4 @@ def read_root():
 
 
 app.include_router(items.router)
+app.include_router(students.router)

@@ -1,11 +1,14 @@
-from sqlmodel import SQLModel, create_engine, Session
+from sqlmodel import create_engine, Session
+import os
 
-# SQLite file DB in project root
-DATABASE_URL = "sqlite:///./database.db"
+# Use DATABASE_URL from env if set, otherwise use provided Postgres URL
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:5498/postgres",
+)
 
-# echo=True can be helpful during development
-engine = create_engine(DATABASE_URL, echo=False, connect_args={
-                       "check_same_thread": False})
+
+engine = create_engine(DATABASE_URL, echo=False)
 
 
 def get_session():

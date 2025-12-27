@@ -3,6 +3,7 @@ from routers import items
 from sqlmodel import SQLModel
 from db import engine
 
+
 app = FastAPI()
 
 

@@ -20,6 +20,12 @@ class ItemCreate(ItemBase):
     pass
 
 
+class ItemUpdate(SQLModel):
+    name: Optional[str] = None
+    price: Optional[float] = None
+    is_offer: Optional[bool] = None
+
+
 class ItemId(SQLModel):
     id: int
 

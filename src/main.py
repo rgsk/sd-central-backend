@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import items, students
+from routers import aws, items, students
 from sqlmodel import SQLModel
 from db import engine
 from contextlib import asynccontextmanager
@@ -32,3 +32,4 @@ def read_root():
 
 app.include_router(items.router)
 app.include_router(students.router)
+app.include_router(aws.router)

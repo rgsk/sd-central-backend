@@ -1,6 +1,7 @@
 
 
 from fastapi import APIRouter, HTTPException, Depends
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
 
 from db import get_session
@@ -24,7 +25,14 @@ def create_student(
 ):
     db_student = Student(**student.model_dump())
     session.add(db_student)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Student registration number already exists",
+        )
     session.refresh(db_student)
     return db_student
 
@@ -63,7 +71,14 @@ def partial_update_student(
         setattr(db_student, key, value)
 
     session.add(db_student)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Student registration number already exists",
+        )
     session.refresh(db_student)
     return db_student
 

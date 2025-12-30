@@ -1,10 +1,11 @@
-import boto3
 import re
 from enum import Enum
 
+import boto3
 from botocore.config import Config
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
+
 from lib.env import env
 
 s3 = boto3.client(

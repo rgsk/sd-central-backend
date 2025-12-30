@@ -1,4 +1,5 @@
-from sqlmodel import create_engine, Session
+from sqlmodel import Session, create_engine
+
 from lib.env import env
 
 engine = create_engine(env.DATABASE_URL, echo=False)

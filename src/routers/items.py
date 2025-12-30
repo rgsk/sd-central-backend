@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
 from db import get_session

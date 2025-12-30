@@ -1,16 +1,9 @@
-
-
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
 
 from db import get_session
-from models.student import (
-    Student,
-    StudentCreate,
-    StudentRead,
-    StudentUpdate,
-)
+from models.student import Student, StudentCreate, StudentRead, StudentUpdate
 
 router = APIRouter(
     prefix="/students",

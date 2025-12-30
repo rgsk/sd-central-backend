@@ -1,9 +1,11 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import aws, items, students
 from sqlmodel import SQLModel
+
 from db import engine
-from contextlib import asynccontextmanager
+from routers import aws, items, students
 
 
 @asynccontextmanager

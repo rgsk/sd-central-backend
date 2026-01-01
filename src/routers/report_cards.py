@@ -4,12 +4,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel import Session, select
 
 from db import get_session
-from models.report_card import (
-    ReportCard,
-    ReportCardCreate,
-    ReportCardRead,
-    ReportCardUpdate,
-)
+from models.report_card import (ReportCard, ReportCardCreate, ReportCardRead,
+                                ReportCardReadDetail, ReportCardUpdate)
 
 router = APIRouter(
     prefix="/report-cards",
@@ -29,7 +25,7 @@ def create_report_card(
     return db_report_card
 
 
-@router.get("", response_model=list[ReportCardRead])
+@router.get("", response_model=list[ReportCardReadDetail])
 def list_report_cards(
     student_id: UUID | None = Query(default=None),
     academic_term_id: UUID | None = Query(default=None),

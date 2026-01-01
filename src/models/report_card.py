@@ -5,6 +5,9 @@ from sqlalchemy import UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
+from models.academic_term import AcademicTermRead
+from models.student import StudentRead
+
 if TYPE_CHECKING:
     from models.academic_term import AcademicTerm
     from models.report_card_subject import ReportCardSubject
@@ -64,3 +67,8 @@ class ReportCardId(SQLModel):
 
 class ReportCardRead(ReportCardBase, ReportCardId):
     pass
+
+
+class ReportCardReadDetail(ReportCardRead):
+    student: Optional[StudentRead] = None
+    academic_term: Optional[AcademicTermRead] = None

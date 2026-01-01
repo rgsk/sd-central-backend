@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel import Session, select
 
 from db import get_session
@@ -30,8 +30,13 @@ def create_academic_class(
 
 
 @router.get("", response_model=list[AcademicClassRead])
-def list_academic_classes(session: Session = Depends(get_session)):
+def list_academic_classes(
+    academic_session: str | None = Query(default=None, alias="session"),
+    session: Session = Depends(get_session),
+):
     statement = select(AcademicClass)
+    if academic_session:
+        statement = statement.where(AcademicClass.session == academic_session)
     results = session.exec(statement).all()
     return results
 

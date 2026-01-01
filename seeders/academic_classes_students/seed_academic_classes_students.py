@@ -1,20 +1,26 @@
 from __future__ import annotations
 
+import json
 import os
 import sys
 from datetime import date
 from uuid import UUID
 
-from seed_data import ACADEMIC_CLASSES, STUDENTS
 from sqlmodel import Session, select
 
 SCRIPT_DIR = os.path.dirname(__file__)
-SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "src"))
+SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "src"))
 sys.path.append(SRC_DIR)
+DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 
 from db import engine  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
 from models.student import Student  # noqa: E402
+
+
+def load_json(path: str) -> list[dict]:
+    with open(path, "r", encoding="utf-8") as handle:
+        return json.load(handle)
 
 
 def get_or_create_academic_class(
@@ -58,7 +64,11 @@ def seed_students(
     student_skipped = 0
     class_map: dict[UUID, AcademicClass] = {}
 
-    for raw in ACADEMIC_CLASSES:
+    academic_classes = load_json(
+        os.path.join(DATA_DIR, "academic_classes.json"))
+    students = load_json(os.path.join(DATA_DIR, "students.json"))
+
+    for raw in academic_classes:
         class_id = UUID(raw["id"])
         academic_class, created = get_or_create_academic_class(
             session,
@@ -73,7 +83,7 @@ def seed_students(
             class_skipped += 1
         class_map[class_id] = academic_class
 
-    for raw in STUDENTS:
+    for raw in students:
         class_id = UUID(raw["academic_class_id"])
         academic_class = class_map[class_id]
 

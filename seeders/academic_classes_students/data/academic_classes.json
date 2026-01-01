@@ -1,0 +1,20 @@
+[
+  {
+    "id": "7f5c2b4e-7a2d-4c1b-9a1d-2e6d0d8a8b01",
+    "session": "2024-2025",
+    "class_value": "NURSERY",
+    "section": "A"
+  },
+  {
+    "id": "b6d5a2f1-3b4f-4c89-8a7f-0d3b2f6b4c7e",
+    "session": "2024-2025",
+    "class_value": "LKG",
+    "section": "A"
+  },
+  {
+    "id": "2a9f1c6d-6e4a-4e2f-9f61-6d5c3b2a1f0e",
+    "session": "2025-2026",
+    "class_value": "UKG",
+    "section": "A"
+  }
+]

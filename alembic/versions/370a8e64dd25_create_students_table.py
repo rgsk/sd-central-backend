@@ -8,6 +8,7 @@ Create Date: 2026-01-01 11:50:43.702614
 from typing import Sequence, Union
 
 import sqlalchemy as sa
+from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 
 from alembic import op
 
@@ -22,7 +23,7 @@ def upgrade() -> None:
     """Upgrade schema."""
     op.create_table(
         "students",
-        sa.Column("id", sa.Integer(), primary_key=True, nullable=False),
+        sa.Column("id", PG_UUID(as_uuid=True), primary_key=True, nullable=False),
         sa.Column("registration_no", sa.String(), nullable=False),
         sa.Column("name", sa.String(), nullable=False),
         sa.Column("class_value", sa.String(), nullable=False),

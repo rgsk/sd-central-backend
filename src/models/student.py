@@ -1,11 +1,17 @@
 from datetime import date
 from typing import ClassVar, Optional
+from uuid import UUID, uuid4
 
+from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, SQLModel
 
 
 class StudentDB(SQLModel):
-    id: Optional[int] = Field(default=None, primary_key=True)
+    id: Optional[UUID] = Field(
+        default_factory=uuid4,
+        primary_key=True,
+        sa_type=PG_UUID(as_uuid=True),
+    )
 
 
 class StudentBase(SQLModel):
@@ -39,7 +45,7 @@ class StudentUpdate(SQLModel):
 
 
 class StudentId(SQLModel):
-    id: int
+    id: UUID
 
 
 class StudentRead(StudentBase, StudentId):

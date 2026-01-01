@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
@@ -39,7 +41,7 @@ def list_students(session: Session = Depends(get_session)):
 
 @router.get("/{student_id}", response_model=StudentRead)
 def get_student(
-    student_id: int,
+    student_id: UUID,
     session: Session = Depends(get_session),
 ):
     student = session.get(Student, student_id)
@@ -50,7 +52,7 @@ def get_student(
 
 @router.patch("/{student_id}", response_model=StudentRead)
 def partial_update_student(
-    student_id: int,
+    student_id: UUID,
     student: StudentUpdate,
     session: Session = Depends(get_session),
 ):
@@ -78,7 +80,7 @@ def partial_update_student(
 
 @router.delete("/{student_id}")
 def delete_student(
-    student_id: int,
+    student_id: UUID,
     session: Session = Depends(get_session),
 ):
     db_student = session.get(Student, student_id)

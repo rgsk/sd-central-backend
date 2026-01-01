@@ -2,17 +2,11 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import selectinload
 from sqlmodel import Session, select
 
 from db import get_session
-from models.student import (
-    Student,
-    StudentCreate,
-    StudentRead,
-    StudentReadRaw,
-    StudentUpdate,
-)
+from models.student import (Student, StudentCreate, StudentRead,
+                            StudentReadRaw, StudentUpdate)
 
 router = APIRouter(
     prefix="/students",
@@ -41,9 +35,7 @@ def create_student(
 
 @router.get("", response_model=list[StudentRead])
 def list_students(session: Session = Depends(get_session)):
-    statement = select(Student).options(
-        selectinload(Student.academic_class)  # type: ignore[arg-type]
-    )
+    statement = select(Student)
     results = session.exec(statement).all()
     return results
 
@@ -63,9 +55,7 @@ def get_student(
     statement = (
         select(Student)
         .where(Student.id == student_id)
-        .options(
-            selectinload(Student.academic_class)  # type: ignore[arg-type]
-        )
+
     )
     student = session.exec(statement).first()
     if student is None:

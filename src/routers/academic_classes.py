@@ -4,8 +4,13 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel import Session, select
 
 from db import get_session
-from models.academic_class import (AcademicClass, AcademicClassCreate,
-                                   AcademicClassRead, AcademicClassUpdate)
+from models.academic_class import (
+    AcademicClass,
+    AcademicClassCreate,
+    AcademicClassRead,
+    AcademicClassReadWithSubjects,
+    AcademicClassUpdate,
+)
 
 router = APIRouter(
     prefix="/academic-classes",
@@ -39,7 +44,10 @@ def list_academic_classes(
     return results
 
 
-@router.get("/{academic_class_id}", response_model=AcademicClassRead)
+@router.get(
+    "/{academic_class_id}",
+    response_model=AcademicClassReadWithSubjects,
+)
 def get_academic_class(
     academic_class_id: UUID,
     session: Session = Depends(get_session),

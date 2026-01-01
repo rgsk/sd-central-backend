@@ -42,7 +42,7 @@ def list_report_cards(
     return results
 
 
-@router.get("/{report_card_id}", response_model=ReportCardRead)
+@router.get("/{report_card_id}", response_model=ReportCardReadDetail)
 def get_report_card(
     report_card_id: UUID,
     session: Session = Depends(get_session),

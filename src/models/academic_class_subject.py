@@ -5,6 +5,8 @@ from sqlalchemy import UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
+from models.subject import SubjectRead
+
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
     from models.academic_term import AcademicTerm
@@ -82,3 +84,7 @@ class AcademicClassSubjectRead(
     AcademicClassSubjectBase, AcademicClassSubjectId
 ):
     pass
+
+
+class AcademicClassSubjectReadWithSubject(AcademicClassSubjectRead):
+    subject: Optional["SubjectRead"] = None

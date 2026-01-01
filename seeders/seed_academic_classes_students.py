@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-import argparse
 import os
 import sys
 from datetime import date
 from uuid import UUID
 
-from seed_data import STUDENTS
+from seed_data import ACADEMIC_CLASSES, STUDENTS
 from sqlmodel import Session, select
 
 SCRIPT_DIR = os.path.dirname(__file__)
@@ -17,17 +16,18 @@ from db import engine  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
 from models.student import Student  # noqa: E402
 
-DEFAULT_DOB = date(2019, 1, 1)
-DEFAULT_SESSION = "2024-2025"
-DEFAULT_MOTHER_NAME = "UNKNOWN"
-
 
 def get_or_create_academic_class(
     session: Session,
     academic_session: str,
+    class_id: UUID,
     class_value: str,
     section: str,
-) -> AcademicClass:
+) -> tuple[AcademicClass, bool]:
+    existing = session.get(AcademicClass, class_id)
+    if existing:
+        return existing, False
+
     statement = select(AcademicClass).where(
         AcademicClass.session == academic_session,
         AcademicClass.class_value == class_value,
@@ -35,9 +35,10 @@ def get_or_create_academic_class(
     )
     existing = session.exec(statement).first()
     if existing:
-        return existing
+        return existing, False
 
     academic_class = AcademicClass(
+        id=class_id,
         session=academic_session,
         class_value=class_value,
         section=section,
@@ -45,80 +46,76 @@ def get_or_create_academic_class(
     session.add(academic_class)
     session.commit()
     session.refresh(academic_class)
-    return academic_class
-
-
-def parse_dob(raw_value: str | None, default_dob: date) -> date:
-    if not raw_value:
-        return default_dob
-    return date.fromisoformat(raw_value)
+    return academic_class, True
 
 
 def seed_students(
     session: Session,
-    academic_session: str,
-    default_dob: date,
-) -> tuple[int, int]:
-    inserted = 0
-    skipped = 0
+) -> tuple[tuple[int, int], tuple[int, int]]:
+    class_inserted = 0
+    class_skipped = 0
+    student_inserted = 0
+    student_skipped = 0
+    class_map: dict[UUID, AcademicClass] = {}
+
+    for raw in ACADEMIC_CLASSES:
+        class_id = UUID(raw["id"])
+        academic_class, created = get_or_create_academic_class(
+            session,
+            raw['session'],
+            class_id,
+            raw["class_value"],
+            raw["section"],
+        )
+        if created:
+            class_inserted += 1
+        else:
+            class_skipped += 1
+        class_map[class_id] = academic_class
 
     for raw in STUDENTS:
-        academic_class = get_or_create_academic_class(
-            session,
-            academic_session,
-            raw["Class"].strip(),
-            raw["Section"].strip(),
-        )
+        class_id = UUID(raw["academic_class_id"])
+        academic_class = class_map[class_id]
 
         student_id = UUID(raw["id"])
         existing = session.get(Student, student_id)
         if existing:
-            skipped += 1
+            student_skipped += 1
             continue
 
         student = Student(
             id=student_id,
-            registration_no=raw["Regn. No."].strip(),
-            name=raw["Student Name"].strip(),
+            registration_no=raw["registration_no"],
+            name=raw["name"],
             academic_class_id=academic_class.id,
-            dob=parse_dob(raw.get("Date of Birth"), default_dob),
-            father_name=raw.get("Father's Name", "").strip(),
-            mother_name=raw.get("Mother's Name", DEFAULT_MOTHER_NAME).strip()
-            or DEFAULT_MOTHER_NAME,
-            image=raw.get("studentImage"),
+            dob=date.fromisoformat(raw['dob']),
+            father_name=raw["father_name"],
+            mother_name=raw["mother_name"],
+            image=raw.get("image"),
         )
         session.add(student)
-        inserted += 1
+        student_inserted += 1
 
     session.commit()
-    return inserted, skipped
+    return (class_inserted, class_skipped), (student_inserted, student_skipped)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Seed academic classes and students."
-    )
-    parser.add_argument(
-        "--session",
-        default=DEFAULT_SESSION,
-        help="Academic session value (default: 2024-2025)",
-    )
-    parser.add_argument(
-        "--default-dob",
-        default=str(DEFAULT_DOB),
-        help="Default DOB for records without one (YYYY-MM-DD)",
-    )
-    args = parser.parse_args()
 
     with Session(engine) as session:
-        inserted, skipped = seed_students(
-            session,
-            args.session,
-            date.fromisoformat(args.default_dob),
+        (class_inserted, class_skipped), (student_inserted, student_skipped) = (
+            seed_students(
+                session,
+            )
         )
 
     print(
+        "Seeded academic classes.",
+        f"Inserted: {class_inserted}.",
+        f"Skipped (already existed): {class_skipped}.",
+    )
+    print(
         "Seeded students.",
-        f"Inserted: {inserted}.",
-        f"Skipped (already existed): {skipped}.",
+        f"Inserted: {student_inserted}.",
+        f"Skipped (already existed): {student_skipped}.",
     )

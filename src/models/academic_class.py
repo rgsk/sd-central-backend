@@ -5,6 +5,7 @@ from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
+    from models.academic_session import AcademicSession
     from models.student import Student
 
 
@@ -17,13 +18,19 @@ class AcademicClassDB(SQLModel):
 
 
 class AcademicClassBase(SQLModel):
-    session: str
+    academic_session_id: UUID = Field(
+        foreign_key="academic_sessions.id",
+        sa_type=PG_UUID(as_uuid=True),
+    )
     grade: str
     section: str
 
 
 class AcademicClass(AcademicClassBase, AcademicClassDB, table=True):
     __tablename__ = "academic_classes"  # type: ignore
+    academic_session: Optional["AcademicSession"] = Relationship(
+        back_populates="academic_classes"
+    )
     students: list["Student"] = Relationship(back_populates="academic_class")
     pass
 
@@ -33,7 +40,7 @@ class AcademicClassCreate(AcademicClassBase):
 
 
 class AcademicClassUpdate(SQLModel):
-    session: Optional[str] = None
+    academic_session_id: Optional[UUID] = None
     grade: Optional[str] = None
     section: Optional[str] = None
 

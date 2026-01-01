@@ -15,6 +15,7 @@ DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 
 from db import engine  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
+from models.academic_session import AcademicSession  # noqa: E402
 from models.student import Student  # noqa: E402
 
 
@@ -25,17 +26,17 @@ def load_json(path: str) -> list[dict]:
 
 def get_or_create_academic_class(
     session: Session,
-    academic_session: str,
-    class_id: UUID,
+    academic_session_id: UUID,
+    academic_class_id: UUID,
     grade: str,
     section: str,
 ) -> tuple[AcademicClass, bool]:
-    existing = session.get(AcademicClass, class_id)
+    existing = session.get(AcademicClass, academic_class_id)
     if existing:
         return existing, False
 
     statement = select(AcademicClass).where(
-        AcademicClass.session == academic_session,
+        AcademicClass.academic_session_id == academic_session_id,
         AcademicClass.grade == grade,
         AcademicClass.section == section,
     )
@@ -44,8 +45,8 @@ def get_or_create_academic_class(
         return existing, False
 
     academic_class = AcademicClass(
-        id=class_id,
-        session=academic_session,
+        id=academic_class_id,
+        academic_session_id=academic_session_id,
         grade=grade,
         section=section,
     )
@@ -55,70 +56,155 @@ def get_or_create_academic_class(
     return academic_class, True
 
 
+def get_or_create_academic_session(
+    session: Session,
+    year: str,
+    academic_session_id: UUID,
+) -> tuple[AcademicSession, bool]:
+    existing = session.get(AcademicSession, academic_session_id)
+    if existing:
+        return existing, False
+
+    statement = select(AcademicSession).where(AcademicSession.year == year)
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+
+    academic_session = AcademicSession(id=academic_session_id, year=year)
+    session.add(academic_session)
+    session.commit()
+    session.refresh(academic_session)
+    return academic_session, True
+
+
+def get_or_create_student(
+    session: Session,
+    student_id: UUID,
+    registration_no: str,
+    name: str,
+    academic_class_id: UUID,
+    dob: date,
+    father_name: str,
+    mother_name: str,
+    image: str | None,
+) -> tuple[Student, bool]:
+    existing = session.get(Student, student_id)
+    if existing:
+        return existing, False
+
+    statement = select(Student).where(
+        Student.registration_no == registration_no)
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+
+    student = Student(
+        id=student_id,
+        registration_no=registration_no,
+        name=name,
+        academic_class_id=academic_class_id,
+        dob=dob,
+        father_name=father_name,
+        mother_name=mother_name,
+        image=image,
+    )
+    session.add(student)
+    return student, True
+
+
 def seed_students(
     session: Session,
-) -> tuple[tuple[int, int], tuple[int, int]]:
+) -> tuple[tuple[int, int], tuple[int, int], tuple[int, int]]:
     class_inserted = 0
     class_skipped = 0
+    session_inserted = 0
+    session_skipped = 0
     student_inserted = 0
     student_skipped = 0
     class_map: dict[UUID, AcademicClass] = {}
 
+    academic_sessions = load_json(
+        os.path.join(DATA_DIR, "academic_sessions.json")
+    )
     academic_classes = load_json(
-        os.path.join(DATA_DIR, "academic_classes.json"))
+        os.path.join(DATA_DIR, "academic_classes.json")
+    )
     students = load_json(os.path.join(DATA_DIR, "students.json"))
 
+    session_map: dict[UUID, AcademicSession] = {}
+    for raw in academic_sessions:
+        academic_session_id = UUID(raw["id"])
+        academic_session, created = get_or_create_academic_session(
+            session=session,
+            year=raw["year"],
+            academic_session_id=academic_session_id,
+        )
+        if created:
+            session_inserted += 1
+        else:
+            session_skipped += 1
+        session_map[academic_session_id] = academic_session
+
     for raw in academic_classes:
-        class_id = UUID(raw["id"])
+        academic_session_id = UUID(raw["academic_session_id"])
+        academic_session = session_map[academic_session_id]
+        academic_class_id = UUID(raw["id"])
         academic_class, created = get_or_create_academic_class(
-            session,
-            raw["session"],
-            class_id,
-            raw["grade"],
-            raw["section"],
+            session=session,
+            academic_session_id=academic_session_id,
+            academic_class_id=academic_class_id,
+            grade=raw["grade"],
+            section=raw["section"],
         )
         if created:
             class_inserted += 1
         else:
             class_skipped += 1
-        class_map[class_id] = academic_class
+        class_map[academic_class_id] = academic_class
 
     for raw in students:
-        class_id = UUID(raw["academic_class_id"])
-        academic_class = class_map[class_id]
+        academic_class_id = UUID(raw["academic_class_id"])
+        academic_class = class_map[academic_class_id]
 
         student_id = UUID(raw["id"])
-        existing = session.get(Student, student_id)
-        if existing:
-            student_skipped += 1
-            continue
-
-        student = Student(
-            id=student_id,
+        student, created = get_or_create_student(
+            session=session,
+            student_id=student_id,
             registration_no=raw["registration_no"],
             name=raw["name"],
-            academic_class_id=academic_class.id,
-            dob=date.fromisoformat(raw['dob']),
+            academic_class_id=academic_class_id,
+            dob=date.fromisoformat(raw["dob"]),
             father_name=raw["father_name"],
             mother_name=raw["mother_name"],
             image=raw.get("image"),
         )
-        session.add(student)
-        student_inserted += 1
+        if created:
+            student_inserted += 1
+        else:
+            student_skipped += 1
 
     session.commit()
-    return (class_inserted, class_skipped), (student_inserted, student_skipped)
+    return (
+        (session_inserted, session_skipped),
+        (class_inserted, class_skipped),
+        (student_inserted, student_skipped),
+    )
 
 
 if __name__ == "__main__":
 
     with Session(engine) as session:
-        (class_inserted, class_skipped), (student_inserted, student_skipped) = (
-            seed_students(
-                session,
-            )
-        )
+        (
+            (session_inserted, session_skipped),
+            (class_inserted, class_skipped),
+            (student_inserted, student_skipped),
+        ) = seed_students(session)
 
+    print(
+        "Seeded academic sessions.",
+        f"Inserted: {session_inserted}.",
+        f"Skipped (already existed): {session_skipped}.",
+    )
     print(
         "Seeded academic classes.",
         f"Inserted: {class_inserted}.",

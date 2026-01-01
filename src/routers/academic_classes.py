@@ -31,12 +31,14 @@ def create_academic_class(
 
 @router.get("", response_model=list[AcademicClassRead])
 def list_academic_classes(
-    academic_session: str | None = Query(default=None, alias="session"),
+    academic_session_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
 ):
     statement = select(AcademicClass)
-    if academic_session:
-        statement = statement.where(AcademicClass.session == academic_session)
+    if academic_session_id:
+        statement = statement.where(
+            AcademicClass.academic_session_id == academic_session_id
+        )
     results = session.exec(statement).all()
     return results
 

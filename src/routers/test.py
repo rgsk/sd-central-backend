@@ -3,17 +3,12 @@ from sqlmodel import Session, select
 
 from db import get_session
 from models.academic_class import AcademicClass, AcademicClassReadRaw
-from models.academic_class_subject import (
-    AcademicClassSubject,
-    AcademicClassSubjectRead,
-)
+from models.academic_class_subject import (AcademicClassSubject,
+                                           AcademicClassSubjectRead)
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
 from models.report_card import ReportCard, ReportCardRead
-from models.report_card_subject import (
-    ReportCardSubject,
-    ReportCardSubjectRead,
-)
+from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
 from models.student import Student, StudentReadRaw
 from models.subject import Subject, SubjectRead
 

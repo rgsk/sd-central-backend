@@ -18,7 +18,7 @@ class AcademicClassDB(SQLModel):
 
 class AcademicClassBase(SQLModel):
     session: str
-    class_value: str
+    grade: str
     section: str
 
 
@@ -34,7 +34,7 @@ class AcademicClassCreate(AcademicClassBase):
 
 class AcademicClassUpdate(SQLModel):
     session: Optional[str] = None
-    class_value: Optional[str] = None
+    grade: Optional[str] = None
     section: Optional[str] = None
 
 

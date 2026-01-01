@@ -27,7 +27,7 @@ def get_or_create_academic_class(
     session: Session,
     academic_session: str,
     class_id: UUID,
-    class_value: str,
+    grade: str,
     section: str,
 ) -> tuple[AcademicClass, bool]:
     existing = session.get(AcademicClass, class_id)
@@ -36,7 +36,7 @@ def get_or_create_academic_class(
 
     statement = select(AcademicClass).where(
         AcademicClass.session == academic_session,
-        AcademicClass.class_value == class_value,
+        AcademicClass.grade == grade,
         AcademicClass.section == section,
     )
     existing = session.exec(statement).first()
@@ -46,7 +46,7 @@ def get_or_create_academic_class(
     academic_class = AcademicClass(
         id=class_id,
         session=academic_session,
-        class_value=class_value,
+        grade=grade,
         section=section,
     )
     session.add(academic_class)
@@ -72,9 +72,9 @@ def seed_students(
         class_id = UUID(raw["id"])
         academic_class, created = get_or_create_academic_class(
             session,
-            raw['session'],
+            raw["session"],
             class_id,
-            raw["class_value"],
+            raw["grade"],
             raw["section"],
         )
         if created:

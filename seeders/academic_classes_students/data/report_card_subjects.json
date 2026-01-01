@@ -1,0 +1,79 @@
+[
+  {
+    "id": "d3333333-4444-5555-6666-777777777001",
+    "report_card_id": "c2222222-3333-4444-5555-666666666001",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556666",
+    "mid_term": 18,
+    "notebook": 17,
+    "assignment": 18,
+    "class_test": 16,
+    "final_term": 35,
+    "final_marks": null
+  },
+  {
+    "id": "d3333333-4444-5555-6666-777777777002",
+    "report_card_id": "c2222222-3333-4444-5555-666666666001",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556667",
+    "mid_term": 17,
+    "notebook": 16,
+    "assignment": 17,
+    "class_test": 15,
+    "final_term": 34,
+    "final_marks": null
+  },
+  {
+    "id": "d3333333-4444-5555-6666-777777777003",
+    "report_card_id": "c2222222-3333-4444-5555-666666666001",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556668",
+    "mid_term": 19,
+    "notebook": 18,
+    "assignment": 17,
+    "class_test": 17,
+    "final_term": 36,
+    "final_marks": null
+  },
+  {
+    "id": "d3333333-4444-5555-6666-777777777004",
+    "report_card_id": "c2222222-3333-4444-5555-666666666001",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556669",
+    "mid_term": null,
+    "notebook": null,
+    "assignment": null,
+    "class_test": null,
+    "final_term": null,
+    "final_marks": 42
+  },
+  {
+    "id": "d3333333-4444-5555-6666-777777777005",
+    "report_card_id": "c2222222-3333-4444-5555-666666666002",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556666",
+    "mid_term": 16,
+    "notebook": 15,
+    "assignment": 16,
+    "class_test": 15,
+    "final_term": 33,
+    "final_marks": null
+  },
+  {
+    "id": "d3333333-4444-5555-6666-777777777006",
+    "report_card_id": "c2222222-3333-4444-5555-666666666002",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556667",
+    "mid_term": 15,
+    "notebook": 14,
+    "assignment": 15,
+    "class_test": 14,
+    "final_term": 32,
+    "final_marks": null
+  },
+  {
+    "id": "d3333333-4444-5555-6666-777777777007",
+    "report_card_id": "c2222222-3333-4444-5555-666666666002",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556668",
+    "mid_term": 17,
+    "notebook": 16,
+    "assignment": 16,
+    "class_test": 15,
+    "final_term": 34,
+    "final_marks": null
+  }
+]

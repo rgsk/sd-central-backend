@@ -1,0 +1,65 @@
+[
+  {
+    "id": "a1111111-2222-3333-4444-555555555001",
+    "academic_class_id": "7f5c2b4e-7a2d-4c1b-9a1d-2e6d0d8a8b01",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556666",
+    "academic_term_id": "d1b6a5c2-7c4b-4d8a-9e3a-2f5b6a9c1e10",
+    "highest_marks": 100,
+    "average_marks": 78,
+    "is_additional": false
+  },
+  {
+    "id": "a1111111-2222-3333-4444-555555555002",
+    "academic_class_id": "7f5c2b4e-7a2d-4c1b-9a1d-2e6d0d8a8b01",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556667",
+    "academic_term_id": "d1b6a5c2-7c4b-4d8a-9e3a-2f5b6a9c1e10",
+    "highest_marks": 95,
+    "average_marks": 72,
+    "is_additional": false
+  },
+  {
+    "id": "a1111111-2222-3333-4444-555555555003",
+    "academic_class_id": "7f5c2b4e-7a2d-4c1b-9a1d-2e6d0d8a8b01",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556668",
+    "academic_term_id": "d1b6a5c2-7c4b-4d8a-9e3a-2f5b6a9c1e10",
+    "highest_marks": 98,
+    "average_marks": 75,
+    "is_additional": false
+  },
+  {
+    "id": "a1111111-2222-3333-4444-555555555004",
+    "academic_class_id": "7f5c2b4e-7a2d-4c1b-9a1d-2e6d0d8a8b01",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556669",
+    "academic_term_id": "d1b6a5c2-7c4b-4d8a-9e3a-2f5b6a9c1e10",
+    "highest_marks": null,
+    "average_marks": null,
+    "is_additional": true
+  },
+  {
+    "id": "a1111111-2222-3333-4444-555555555005",
+    "academic_class_id": "b6d5a2f1-3b4f-4c89-8a7f-0d3b2f6b4c7e",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556666",
+    "academic_term_id": "d1b6a5c2-7c4b-4d8a-9e3a-2f5b6a9c1e10",
+    "highest_marks": 100,
+    "average_marks": 82,
+    "is_additional": false
+  },
+  {
+    "id": "a1111111-2222-3333-4444-555555555006",
+    "academic_class_id": "b6d5a2f1-3b4f-4c89-8a7f-0d3b2f6b4c7e",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556667",
+    "academic_term_id": "d1b6a5c2-7c4b-4d8a-9e3a-2f5b6a9c1e10",
+    "highest_marks": 94,
+    "average_marks": 70,
+    "is_additional": false
+  },
+  {
+    "id": "a1111111-2222-3333-4444-555555555007",
+    "academic_class_id": "b6d5a2f1-3b4f-4c89-8a7f-0d3b2f6b4c7e",
+    "subject_id": "f1a2b3c4-1111-2222-3333-444455556668",
+    "academic_term_id": "d1b6a5c2-7c4b-4d8a-9e3a-2f5b6a9c1e10",
+    "highest_marks": 97,
+    "average_marks": 76,
+    "is_additional": false
+  }
+]

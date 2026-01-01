@@ -3,9 +3,19 @@ from sqlmodel import Session, select
 
 from db import get_session
 from models.academic_class import AcademicClass, AcademicClassReadRaw
+from models.academic_class_subject import (
+    AcademicClassSubject,
+    AcademicClassSubjectRead,
+)
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
+from models.report_card import ReportCard, ReportCardRead
+from models.report_card_subject import (
+    ReportCardSubject,
+    ReportCardSubjectRead,
+)
 from models.student import Student, StudentReadRaw
+from models.subject import Subject, SubjectRead
 
 router = APIRouter(prefix="/test", tags=["test"])
 
@@ -34,5 +44,43 @@ def list_raw_academic_classes(session: Session = Depends(get_session)):
 @router.get("/academic_terms", response_model=list[AcademicTermRead])
 def list_raw_academic_terms(session: Session = Depends(get_session)):
     statement = select(AcademicTerm)
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get("/subjects", response_model=list[SubjectRead])
+def list_raw_subjects(session: Session = Depends(get_session)):
+    statement = select(Subject)
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get(
+    "/academic_class_subjects",
+    response_model=list[AcademicClassSubjectRead],
+)
+def list_raw_academic_class_subjects(
+    session: Session = Depends(get_session),
+):
+    statement = select(AcademicClassSubject)
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get("/report_cards", response_model=list[ReportCardRead])
+def list_raw_report_cards(session: Session = Depends(get_session)):
+    statement = select(ReportCard)
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get(
+    "/report_card_subjects",
+    response_model=list[ReportCardSubjectRead],
+)
+def list_raw_report_card_subjects(
+    session: Session = Depends(get_session),
+):
+    statement = select(ReportCardSubject)
     results = session.exec(statement).all()
     return results

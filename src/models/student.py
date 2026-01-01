@@ -9,6 +9,7 @@ from models.academic_class import AcademicClassRead
 
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
+    from models.report_card import ReportCard
 
 
 class StudentDB(SQLModel):
@@ -37,6 +38,9 @@ class Student(StudentBase, StudentDB, table=True):
     __tablename__: ClassVar[str] = "students"  # type: ignore
     academic_class: Optional["AcademicClass"] = Relationship(
         back_populates="students")
+    report_cards: list["ReportCard"] = Relationship(
+        back_populates="student"
+    )
 
 
 class StudentCreate(StudentBase):

@@ -7,6 +7,8 @@ from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
     from models.academic_session import AcademicSession
+    from models.academic_class_subject import AcademicClassSubject
+    from models.report_card import ReportCard
 
 
 class AcademicTermType(str, Enum):
@@ -35,6 +37,12 @@ class AcademicTerm(AcademicTermBase, AcademicTermDB, table=True):
     __tablename__ = "academic_terms"  # type: ignore
     academic_session: Optional["AcademicSession"] = Relationship(
         back_populates="academic_terms"
+    )
+    class_subjects: list["AcademicClassSubject"] = Relationship(
+        back_populates="academic_term"
+    )
+    report_cards: list["ReportCard"] = Relationship(
+        back_populates="academic_term"
     )
     pass
 

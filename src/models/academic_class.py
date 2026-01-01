@@ -8,6 +8,7 @@ from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
     from models.academic_session import AcademicSession
+    from models.academic_class_subject import AcademicClassSubject
     from models.student import Student
 
 
@@ -32,6 +33,9 @@ class AcademicClass(AcademicClassBase, AcademicClassDB, table=True):
     __tablename__ = "academic_classes"  # type: ignore
     academic_session: Optional["AcademicSession"] = Relationship(
         back_populates="academic_classes"
+    )
+    class_subjects: list["AcademicClassSubject"] = Relationship(
+        back_populates="academic_class"
     )
     students: list["Student"] = Relationship(back_populates="academic_class")
     pass

@@ -1,0 +1,124 @@
+from uuid import UUID
+
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlmodel import Session, select
+
+from db import get_session
+from models.academic_class_subject import (
+    AcademicClassSubject,
+    AcademicClassSubjectCreate,
+    AcademicClassSubjectRead,
+    AcademicClassSubjectUpdate,
+)
+
+router = APIRouter(
+    prefix="/academic-class-subjects",
+    tags=["academic-class-subjects"],
+)
+
+
+@router.post("", response_model=AcademicClassSubjectRead)
+def create_academic_class_subject(
+    academic_class_subject: AcademicClassSubjectCreate,
+    session: Session = Depends(get_session),
+):
+    db_class_subject = AcademicClassSubject(
+        **academic_class_subject.model_dump()
+    )
+    session.add(db_class_subject)
+    session.commit()
+    session.refresh(db_class_subject)
+    return db_class_subject
+
+
+@router.get("", response_model=list[AcademicClassSubjectRead])
+def list_academic_class_subjects(
+    academic_class_id: UUID | None = Query(default=None),
+    subject_id: UUID | None = Query(default=None),
+    academic_term_id: UUID | None = Query(default=None),
+    is_additional: bool | None = Query(default=None),
+    session: Session = Depends(get_session),
+):
+    statement = select(AcademicClassSubject)
+    if academic_class_id:
+        statement = statement.where(
+            AcademicClassSubject.academic_class_id == academic_class_id
+        )
+    if subject_id:
+        statement = statement.where(
+            AcademicClassSubject.subject_id == subject_id
+        )
+    if academic_term_id:
+        statement = statement.where(
+            AcademicClassSubject.academic_term_id == academic_term_id
+        )
+    if is_additional is not None:
+        statement = statement.where(
+            AcademicClassSubject.is_additional == is_additional
+        )
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get(
+    "/{academic_class_subject_id}",
+    response_model=AcademicClassSubjectRead,
+)
+def get_academic_class_subject(
+    academic_class_subject_id: UUID,
+    session: Session = Depends(get_session),
+):
+    class_subject = session.get(AcademicClassSubject, academic_class_subject_id)
+    if not class_subject:
+        raise HTTPException(
+            status_code=404,
+            detail="Academic class subject not found",
+        )
+    return class_subject
+
+
+@router.patch(
+    "/{academic_class_subject_id}",
+    response_model=AcademicClassSubjectRead,
+)
+def partial_update_academic_class_subject(
+    academic_class_subject_id: UUID,
+    academic_class_subject: AcademicClassSubjectUpdate,
+    session: Session = Depends(get_session),
+):
+    db_class_subject = session.get(
+        AcademicClassSubject, academic_class_subject_id
+    )
+    if not db_class_subject:
+        raise HTTPException(
+            status_code=404,
+            detail="Academic class subject not found",
+        )
+
+    update_data = academic_class_subject.model_dump(exclude_unset=True)
+
+    for key, value in update_data.items():
+        setattr(db_class_subject, key, value)
+
+    session.add(db_class_subject)
+    session.commit()
+    session.refresh(db_class_subject)
+    return db_class_subject
+
+
+@router.delete("/{academic_class_subject_id}")
+def delete_academic_class_subject(
+    academic_class_subject_id: UUID,
+    session: Session = Depends(get_session),
+):
+    db_class_subject = session.get(
+        AcademicClassSubject, academic_class_subject_id
+    )
+    if not db_class_subject:
+        raise HTTPException(
+            status_code=404,
+            detail="Academic class subject not found",
+        )
+    session.delete(db_class_subject)
+    session.commit()
+    return {"message": "Academic class subject deleted"}

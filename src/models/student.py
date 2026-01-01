@@ -1,5 +1,5 @@
 from datetime import date
-from typing import Optional
+from typing import ClassVar, Optional
 
 from sqlmodel import Field, SQLModel
 
@@ -20,7 +20,7 @@ class StudentBase(SQLModel):
 
 
 class Student(StudentBase, StudentDB, table=True):
-    pass
+    __tablename__: ClassVar[str] = "students"  # type: ignore[reportIncompatibleVariableOverride]
 
 
 class StudentCreate(StudentBase):

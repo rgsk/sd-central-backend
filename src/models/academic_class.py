@@ -53,3 +53,7 @@ class AcademicClassId(SQLModel):
 
 class AcademicClassRead(AcademicClassBase, AcademicClassId):
     academic_session: Optional["AcademicSessionRead"] = None
+
+
+class AcademicClassReadRaw(AcademicClassBase, AcademicClassId):
+    pass

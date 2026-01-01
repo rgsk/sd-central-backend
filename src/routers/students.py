@@ -7,7 +7,7 @@ from sqlmodel import Session, select
 
 from db import get_session
 from models.student import (Student, StudentCreate, StudentListResponse,
-                            StudentRead, StudentReadRaw, StudentUpdate)
+                            StudentRead, StudentUpdate)
 
 router = APIRouter(
     prefix="/students",
@@ -44,13 +44,6 @@ def list_students(
     statement = select(Student).offset(offset).limit(limit)
     items = session.exec(statement).all()
     return StudentListResponse(total=total, items=items)  # type:ignore
-
-
-@router.get("/raw", response_model=list[StudentReadRaw])
-def list_raw_students(session: Session = Depends(get_session)):
-    statement = select(Student)
-    results = session.exec(statement).all()
-    return results
 
 
 @router.get("/{student_id}", response_model=StudentRead)

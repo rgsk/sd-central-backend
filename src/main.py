@@ -6,7 +6,8 @@ from sqlmodel import SQLModel
 
 from db import engine
 from models import academic_class, academic_session, item, student
-from routers import academic_classes, academic_sessions, aws, items, students
+from routers import (academic_classes, academic_sessions, aws, items, students,
+                     test)
 
 
 @asynccontextmanager
@@ -35,6 +36,7 @@ def read_root():
     return {"Hello": "World"}
 
 
+app.include_router(test.router)
 app.include_router(items.router)
 app.include_router(students.router)
 app.include_router(academic_classes.router)

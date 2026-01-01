@@ -9,7 +9,7 @@ class StudentDB(SQLModel):
 
 
 class StudentBase(SQLModel):
-    registration_no: str = Field(index=True, unique=True)
+    registration_no: str
     name: str
     class_value: str
     section: str

@@ -2,16 +2,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlmodel import SQLModel
 
-from db import engine
 from routers import aws, items, students
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup logic
-    SQLModel.metadata.create_all(engine)
     yield
     # Shutdown logic (optional)
 

@@ -28,7 +28,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "LALIT NARAYAN SINGH",
         "mother_name": "POOJA SINGH",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/853d449b-c06c-4b07-b1ce-cfa348d4a893/1000408634.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/853d449b-c06c-4b07-b1ce-cfa348d4a893/1000408634.jpg"
     },
     {
         "id": "6acc3593-2304-4fb6-b284-6be0d2d0708b",
@@ -38,7 +38,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "MUNNA KAUMAR",
         "mother_name": "CHANDANI DEVI",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d5cc3086-5a9a-43b5-85fe-67c742aef688/1000361020.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d5cc3086-5a9a-43b5-85fe-67c742aef688/1000361020.jpg"
     },
     {
         "id": "4ef7351e-2a31-4c0d-875d-c1bcce26eb55",
@@ -48,7 +48,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "RAM BHROSHE",
         "mother_name": "SITA BHROSHE",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4a5a422d-fa64-48c0-9eae-7ae20cad5a39/1000361022.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4a5a422d-fa64-48c0-9eae-7ae20cad5a39/1000361022.jpg"
     },
     {
         "id": "ba277b86-d758-4c10-ac84-986c39aceaa6",
@@ -58,7 +58,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "DURGESH GUPTA",
         "mother_name": "BABLI DEVI",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d7246b2e-e35d-4696-b83d-69bd68739f1e/1000361021.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d7246b2e-e35d-4696-b83d-69bd68739f1e/1000361021.jpg"
     },
     {
         "id": "5f375aa4-aac1-4c89-a021-75c4173e652a",
@@ -68,7 +68,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "UTTAM MISHRA",
         "mother_name": "NIDHI MISHRA",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/160a96f2-9014-40d7-80df-17310aa0a23a/1000361023.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/160a96f2-9014-40d7-80df-17310aa0a23a/1000361023.jpg"
     },
     {
         "id": "b7102042-05d6-4bd3-8e62-d8b4b4658a16",
@@ -78,7 +78,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "RAMASHANKAR MISHRA",
         "mother_name": "RISHU MISHRA",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/752315d3-07e5-4340-b9a2-5d2d1bacc986/1000360649.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/752315d3-07e5-4340-b9a2-5d2d1bacc986/1000360649.jpg"
     },
     {
         "id": "ed5c36b9-cf40-4e92-94f7-a3fb86fe52b8",
@@ -88,7 +88,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "RAMASHANKAR MISHRA",
         "mother_name": "RISHU MISHRA",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c9a127dc-4405-48d6-bb7f-d52231b88458/1000360650.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c9a127dc-4405-48d6-bb7f-d52231b88458/1000360650.jpg"
     },
     {
         "id": "23bc12fa-77c1-4884-a6fa-c12908ba4eff",
@@ -98,7 +98,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "KHAJANTIKA",
         "mother_name": "GITANJALI",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/45271362-021e-423d-90e6-32b4f422bad5/1000360652.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/45271362-021e-423d-90e6-32b4f422bad5/1000360652.jpg"
     },
     {
         "id": "9fdc9838-aca5-4a0f-9f3b-3b8fd2717c28",
@@ -108,7 +108,7 @@ STUDENTS = [
         "dob": "2019-01-01",
         "father_name": "NEBULAL",
         "mother_name": "NOOTAN SAROJ",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e776840c-48eb-45eb-8b28-02291e2345e9/1000354833.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e776840c-48eb-45eb-8b28-02291e2345e9/1000354833.jpg"
     },
     {
         "id": "5424ada4-8a96-4bc0-9793-870e3218e12d",
@@ -118,6 +118,6 @@ STUDENTS = [
         "dob": "2019-10-11",
         "father_name": "KAPIL DEV",
         "mother_name": "KIRAN DEVI",
-        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2d911623-c344-417e-b3d4-78ec40d0998e/1000357250.jpg",
+        "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2d911623-c344-417e-b3d4-78ec40d0998e/1000357250.jpg"
     }
 ]

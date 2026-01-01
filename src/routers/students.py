@@ -6,7 +6,13 @@ from sqlalchemy.orm import selectinload
 from sqlmodel import Session, select
 
 from db import get_session
-from models.student import Student, StudentCreate, StudentRead, StudentUpdate
+from models.student import (
+    Student,
+    StudentCreate,
+    StudentRead,
+    StudentReadRaw,
+    StudentUpdate,
+)
 
 router = APIRouter(
     prefix="/students",
@@ -38,6 +44,13 @@ def list_students(session: Session = Depends(get_session)):
     statement = select(Student).options(
         selectinload(Student.academic_class)  # type: ignore[arg-type]
     )
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get("/raw", response_model=list[StudentReadRaw])
+def list_raw_students(session: Session = Depends(get_session)):
+    statement = select(Student)
     results = session.exec(statement).all()
     return results
 

@@ -1,12 +1,13 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
 
 from db import get_session
-from models.student import (Student, StudentCreate, StudentRead,
-                            StudentReadRaw, StudentUpdate)
+from models.student import (Student, StudentCreate, StudentListResponse,
+                            StudentRead, StudentReadRaw, StudentUpdate)
 
 router = APIRouter(
     prefix="/students",
@@ -33,11 +34,16 @@ def create_student(
     return db_student
 
 
-@router.get("", response_model=list[StudentRead])
-def list_students(session: Session = Depends(get_session)):
-    statement = select(Student)
-    results = session.exec(statement).all()
-    return results
+@router.get("", response_model=StudentListResponse)
+def list_students(
+    session: Session = Depends(get_session),
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+):
+    total = session.exec(select(func.count()).select_from(Student)).one()
+    statement = select(Student).offset(offset).limit(limit)
+    items = session.exec(statement).all()
+    return StudentListResponse(total=total, items=items)  # type:ignore
 
 
 @router.get("/raw", response_model=list[StudentReadRaw])

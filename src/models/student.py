@@ -61,3 +61,8 @@ class StudentRead(StudentBase, StudentId):
 
 class StudentReadRaw(StudentBase, StudentId):
     pass
+
+
+class StudentListResponse(SQLModel):
+    total: int
+    items: list[StudentRead]

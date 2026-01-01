@@ -16,6 +16,7 @@ DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 from db import engine  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
 from models.academic_session import AcademicSession  # noqa: E402
+from models.academic_term import AcademicTerm, AcademicTermType  # noqa: E402
 from models.student import Student  # noqa: E402
 
 
@@ -112,19 +113,53 @@ def get_or_create_student(
     return student, True
 
 
+def get_or_create_academic_term(
+    session: Session,
+    academic_term_id: UUID,
+    academic_session_id: UUID,
+    term_type: AcademicTermType,
+) -> tuple[AcademicTerm, bool]:
+    existing = session.get(AcademicTerm, academic_term_id)
+    if existing:
+        return existing, False
+
+    statement = select(AcademicTerm).where(
+        AcademicTerm.academic_session_id == academic_session_id,
+        AcademicTerm.term_type == term_type,
+    )
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+
+    academic_term = AcademicTerm(
+        id=academic_term_id,
+        academic_session_id=academic_session_id,
+        term_type=term_type,
+    )
+    session.add(academic_term)
+    session.commit()
+    session.refresh(academic_term)
+    return academic_term, True
+
+
 def seed_students(
     session: Session,
-) -> tuple[tuple[int, int], tuple[int, int], tuple[int, int]]:
+) -> tuple[tuple[int, int], tuple[int, int], tuple[int, int], tuple[int, int]]:
     class_inserted = 0
     class_skipped = 0
     session_inserted = 0
     session_skipped = 0
+    term_inserted = 0
+    term_skipped = 0
     student_inserted = 0
     student_skipped = 0
     class_map: dict[UUID, AcademicClass] = {}
 
     academic_sessions = load_json(
         os.path.join(DATA_DIR, "academic_sessions.json")
+    )
+    academic_terms = load_json(
+        os.path.join(DATA_DIR, "academic_terms.json")
     )
     academic_classes = load_json(
         os.path.join(DATA_DIR, "academic_classes.json")
@@ -144,6 +179,19 @@ def seed_students(
         else:
             session_skipped += 1
         session_map[academic_session_id] = academic_session
+
+    for raw in academic_terms:
+        academic_term_id = UUID(raw["id"])
+        academic_term, created = get_or_create_academic_term(
+            session=session,
+            academic_term_id=academic_term_id,
+            academic_session_id=UUID(raw["academic_session_id"]),
+            term_type=AcademicTermType(raw["term_type"]),
+        )
+        if created:
+            term_inserted += 1
+        else:
+            term_skipped += 1
 
     for raw in academic_classes:
         academic_session_id = UUID(raw["academic_session_id"])
@@ -186,6 +234,7 @@ def seed_students(
     session.commit()
     return (
         (session_inserted, session_skipped),
+        (term_inserted, term_skipped),
         (class_inserted, class_skipped),
         (student_inserted, student_skipped),
     )
@@ -196,6 +245,7 @@ if __name__ == "__main__":
     with Session(engine) as session:
         (
             (session_inserted, session_skipped),
+            (term_inserted, term_skipped),
             (class_inserted, class_skipped),
             (student_inserted, student_skipped),
         ) = seed_students(session)
@@ -204,6 +254,11 @@ if __name__ == "__main__":
         "Seeded academic sessions.",
         f"Inserted: {session_inserted}.",
         f"Skipped (already existed): {session_skipped}.",
+    )
+    print(
+        "Seeded academic terms.",
+        f"Inserted: {term_inserted}.",
+        f"Skipped (already existed): {term_skipped}.",
     )
     print(
         "Seeded academic classes.",

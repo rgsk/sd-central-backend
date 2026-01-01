@@ -5,16 +5,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel
 
 from db import engine
-from models import academic_class, academic_session, item, student
-from routers import (academic_classes, academic_sessions, aws, items, students,
-                     test)
+from models import academic_class, academic_session, academic_term, item, student
+from routers import (academic_classes, academic_sessions, academic_terms, aws,
+                     items, students, test)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup logic
     # listing them here is important for create_all to run for all
-    all_models = [academic_class, academic_session, item, student]
+    all_models = [academic_class, academic_session, academic_term, item, student]
     SQLModel.metadata.create_all(engine)
     yield
     # Shutdown logic (optional)
@@ -41,4 +41,5 @@ app.include_router(items.router)
 app.include_router(students.router)
 app.include_router(academic_classes.router)
 app.include_router(academic_sessions.router)
+app.include_router(academic_terms.router)
 app.include_router(aws.router)

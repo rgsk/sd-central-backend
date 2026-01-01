@@ -4,6 +4,7 @@ from sqlmodel import Session, select
 from db import get_session
 from models.academic_class import AcademicClass, AcademicClassReadRaw
 from models.academic_session import AcademicSession, AcademicSessionRead
+from models.academic_term import AcademicTerm, AcademicTermRead
 from models.student import Student, StudentReadRaw
 
 router = APIRouter(prefix="/test", tags=["test"])
@@ -26,5 +27,12 @@ def list_raw_academic_sessions(session: Session = Depends(get_session)):
 @router.get("/academic_classes", response_model=list[AcademicClassReadRaw])
 def list_raw_academic_classes(session: Session = Depends(get_session)):
     statement = select(AcademicClass)
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get("/academic_terms", response_model=list[AcademicTermRead])
+def list_raw_academic_terms(session: Session = Depends(get_session)):
+    statement = select(AcademicTerm)
     results = session.exec(statement).all()
     return results

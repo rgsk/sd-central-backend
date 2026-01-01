@@ -6,6 +6,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
+    from models.academic_term import AcademicTerm
 
 
 class AcademicSessionDB(SQLModel):
@@ -23,6 +24,9 @@ class AcademicSessionBase(SQLModel):
 class AcademicSession(AcademicSessionBase, AcademicSessionDB, table=True):
     __tablename__ = "academic_sessions"  # type: ignore
     academic_classes: list["AcademicClass"] = Relationship(
+        back_populates="academic_session"
+    )
+    academic_terms: list["AcademicTerm"] = Relationship(
         back_populates="academic_session"
     )
     pass

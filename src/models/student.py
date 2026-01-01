@@ -1,9 +1,13 @@
 from datetime import date
-from typing import ClassVar, Optional
+from typing import TYPE_CHECKING, ClassVar, Optional
 from uuid import UUID, uuid4
 
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from models.academic_class import AcademicClass
+from models.academic_class import AcademicClassRead
 
 
 class StudentDB(SQLModel):
@@ -15,10 +19,13 @@ class StudentDB(SQLModel):
 
 
 class StudentBase(SQLModel):
-    registration_no: str
+    registration_no: str = Field(index=True, unique=True)
     name: str
-    class_value: str
-    section: str
+    academic_class_id: Optional[UUID] = Field(
+        default=None,
+        foreign_key="academic_classes.id",
+        sa_type=PG_UUID(as_uuid=True),
+    )
     dob: date
     father_name: str
     mother_name: str
@@ -27,6 +34,7 @@ class StudentBase(SQLModel):
 
 class Student(StudentBase, StudentDB, table=True):
     __tablename__: ClassVar[str] = "students"  # type: ignore[reportIncompatibleVariableOverride]
+    academic_class: Optional["AcademicClass"] = Relationship(back_populates="students")
 
 
 class StudentCreate(StudentBase):
@@ -36,8 +44,7 @@ class StudentCreate(StudentBase):
 class StudentUpdate(SQLModel):
     registration_no: Optional[str] = None
     name: Optional[str] = None
-    class_value: Optional[str] = None
-    section: Optional[str] = None
+    academic_class_id: Optional[UUID] = None
     dob: Optional[date] = None
     father_name: Optional[str] = None
     mother_name: Optional[str] = None
@@ -49,4 +56,4 @@ class StudentId(SQLModel):
 
 
 class StudentRead(StudentBase, StudentId):
-    pass
+    academic_class: Optional[AcademicClassRead] = None

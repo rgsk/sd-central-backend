@@ -4,12 +4,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel import Session, select
 
 from db import get_session
-from models.academic_class import (
-    AcademicClass,
-    AcademicClassCreate,
-    AcademicClassRead,
-    AcademicClassUpdate,
-)
+from models.academic_class import (AcademicClass, AcademicClassCreate,
+                                   AcademicClassRead, AcademicClassUpdate)
 
 router = APIRouter(
     prefix="/academic-classes",

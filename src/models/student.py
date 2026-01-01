@@ -5,9 +5,10 @@ from uuid import UUID, uuid4
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
+from models.academic_class import AcademicClassRead
+
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
-from models.academic_class import AcademicClassRead
 
 
 class StudentDB(SQLModel):
@@ -33,8 +34,9 @@ class StudentBase(SQLModel):
 
 
 class Student(StudentBase, StudentDB, table=True):
-    __tablename__: ClassVar[str] = "students"  # type: ignore[reportIncompatibleVariableOverride]
-    academic_class: Optional["AcademicClass"] = Relationship(back_populates="students")
+    __tablename__: ClassVar[str] = "students"  # type: ignore
+    academic_class: Optional["AcademicClass"] = Relationship(
+        back_populates="students")
 
 
 class StudentCreate(StudentBase):
@@ -56,7 +58,7 @@ class StudentId(SQLModel):
 
 
 class StudentRead(StudentBase, StudentId):
-    academic_class: Optional[AcademicClassRead] = None
+    academic_class: Optional["AcademicClassRead"] = None
 
 
 class StudentReadRaw(StudentBase, StudentId):

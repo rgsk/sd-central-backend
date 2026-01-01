@@ -61,7 +61,6 @@ def get_student(
     statement = (
         select(Student)
         .where(Student.id == student_id)
-
     )
     student = session.exec(statement).first()
     if student is None:

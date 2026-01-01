@@ -4,6 +4,8 @@ from uuid import UUID, uuid4
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
+from models.academic_session import AcademicSessionRead
+
 if TYPE_CHECKING:
     from models.academic_session import AcademicSession
     from models.student import Student
@@ -50,4 +52,4 @@ class AcademicClassId(SQLModel):
 
 
 class AcademicClassRead(AcademicClassBase, AcademicClassId):
-    pass
+    academic_session: Optional["AcademicSessionRead"] = None

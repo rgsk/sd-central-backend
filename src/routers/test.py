@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from sqlmodel import Session, select
+from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class import AcademicClass, AcademicClassReadRaw
@@ -17,7 +17,7 @@ router = APIRouter(prefix="/test", tags=["test"])
 
 @router.get("/students", response_model=list[StudentReadRaw])
 def list_raw_students(session: Session = Depends(get_session)):
-    statement = select(Student)
+    statement = select(Student).order_by(col(Student.created_at))
     results = session.exec(statement).all()
     return results
 

@@ -3,7 +3,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
-from sqlmodel import Session, select
+from sqlmodel import Session, col, select
 
 from db import get_session
 from models.student import (Student, StudentCreate, StudentListResponse,
@@ -41,7 +41,12 @@ def list_students(
     limit: int = Query(50, ge=1, le=200),
 ):
     total = session.exec(select(func.count()).select_from(Student)).one()
-    statement = select(Student).offset(offset).limit(limit)
+    statement = (
+        select(Student)
+        .order_by(col(Student.created_at))
+        .offset(offset)
+        .limit(limit)
+    )
     items = session.exec(statement).all()
     return StudentListResponse(total=total, items=items)  # type:ignore
 

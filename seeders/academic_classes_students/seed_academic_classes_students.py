@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import date
+from datetime import date, datetime
 from uuid import UUID
 
 from sqlmodel import Session, select
@@ -92,6 +92,7 @@ def get_or_create_student(
     father_name: str,
     mother_name: str,
     image: str | None,
+    created_at: datetime,
 ) -> tuple[Student, bool]:
     existing = session.get(Student, student_id)
     if existing:
@@ -112,6 +113,7 @@ def get_or_create_student(
         father_name=father_name,
         mother_name=mother_name,
         image=image,
+        created_at=created_at,
     )
     session.add(student)
     return student, True
@@ -412,6 +414,9 @@ def seed_students(
             father_name=raw["father_name"],
             mother_name=raw["mother_name"],
             image=raw.get("image"),
+            created_at=datetime.fromisoformat(
+                raw["created_at"].replace("Z", "+00:00")
+            ),
         )
         if created:
             student_inserted += 1

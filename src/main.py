@@ -6,12 +6,12 @@ from sqlmodel import SQLModel
 
 from db import engine
 from models import (academic_class, academic_class_subject, academic_session,
-                    academic_term, item, report_card, report_card_subject,
-                    student, subject)
+                    academic_term, app_settings, item, report_card,
+                    report_card_subject, student, subject)
 from routers import (academic_class_subjects, academic_classes,
-                     academic_sessions, academic_terms, aws, items,
-                     report_card_subjects, report_cards, students, subjects,
-                     test)
+                     academic_sessions, academic_terms, app_settings as settings,
+                     aws, items, report_card_subjects, report_cards, students,
+                     subjects, test)
 
 
 @asynccontextmanager
@@ -23,6 +23,7 @@ async def lifespan(app: FastAPI):
         academic_class_subject,
         academic_session,
         academic_term,
+        app_settings,
         item,
         report_card,
         report_card_subject,
@@ -56,6 +57,7 @@ app.include_router(students.router)
 app.include_router(academic_classes.router)
 app.include_router(academic_sessions.router)
 app.include_router(academic_terms.router)
+app.include_router(settings.router)
 app.include_router(aws.router)
 app.include_router(subjects.router)
 app.include_router(academic_class_subjects.router)

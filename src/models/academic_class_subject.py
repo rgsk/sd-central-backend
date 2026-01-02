@@ -97,4 +97,4 @@ class AcademicClassSubjectReadWithSubject(AcademicClassSubjectRead):
 
 class AcademicClassSubjectListResponse(SQLModel):
     total: int
-    items: list[AcademicClassSubjectRead]
+    items: list[AcademicClassSubjectReadWithSubject]

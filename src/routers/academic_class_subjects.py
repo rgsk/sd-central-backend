@@ -6,13 +6,11 @@ from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.academic_class_subject import (
-    AcademicClassSubject,
-    AcademicClassSubjectCreate,
-    AcademicClassSubjectListResponse,
-    AcademicClassSubjectRead,
-    AcademicClassSubjectUpdate,
-)
+from models.academic_class_subject import (AcademicClassSubject,
+                                           AcademicClassSubjectCreate,
+                                           AcademicClassSubjectListResponse,
+                                           AcademicClassSubjectReadWithSubject,
+                                           AcademicClassSubjectUpdate)
 
 router = APIRouter(
     prefix="/academic-class-subjects",
@@ -20,7 +18,7 @@ router = APIRouter(
 )
 
 
-@router.post("", response_model=AcademicClassSubjectRead)
+@router.post("", response_model=AcademicClassSubjectReadWithSubject)
 def create_academic_class_subject(
     academic_class_subject: AcademicClassSubjectCreate,
     session: Session = Depends(get_session),
@@ -68,19 +66,23 @@ def list_academic_class_subjects(
         .offset(offset)
         .limit(limit)
     ).all()
-    items = cast(list[AcademicClassSubjectRead], results)
+    items = cast(list[AcademicClassSubjectReadWithSubject], results)
     return AcademicClassSubjectListResponse(total=total, items=items)
 
 
 @router.get(
     "/{academic_class_subject_id}",
-    response_model=AcademicClassSubjectRead,
+    response_model=AcademicClassSubjectReadWithSubject,
 )
 def get_academic_class_subject(
     academic_class_subject_id: UUID,
     session: Session = Depends(get_session),
 ):
-    class_subject = session.get(AcademicClassSubject, academic_class_subject_id)
+    statement = (
+        select(AcademicClassSubject)
+        .where(AcademicClassSubject.id == academic_class_subject_id)
+    )
+    class_subject = session.exec(statement).one_or_none()
     if not class_subject:
         raise HTTPException(
             status_code=404,
@@ -91,7 +93,7 @@ def get_academic_class_subject(
 
 @router.patch(
     "/{academic_class_subject_id}",
-    response_model=AcademicClassSubjectRead,
+    response_model=AcademicClassSubjectReadWithSubject,
 )
 def partial_update_academic_class_subject(
     academic_class_subject_id: UUID,

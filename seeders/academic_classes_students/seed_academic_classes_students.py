@@ -28,6 +28,9 @@ def load_json(path: str) -> list[dict]:
     with open(path, "r", encoding="utf-8") as handle:
         return json.load(handle)
 
+def parse_created_at(value: str) -> datetime:
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
 
 def get_or_create_academic_class(
     session: Session,
@@ -35,6 +38,7 @@ def get_or_create_academic_class(
     academic_class_id: UUID,
     grade: str,
     section: str,
+    created_at: datetime,
 ) -> tuple[AcademicClass, bool]:
     existing = session.get(AcademicClass, academic_class_id)
     if existing:
@@ -54,6 +58,7 @@ def get_or_create_academic_class(
         academic_session_id=academic_session_id,
         grade=grade,
         section=section,
+        created_at=created_at,
     )
     session.add(academic_class)
     session.commit()
@@ -65,6 +70,7 @@ def get_or_create_academic_session(
     session: Session,
     year: str,
     academic_session_id: UUID,
+    created_at: datetime,
 ) -> tuple[AcademicSession, bool]:
     existing = session.get(AcademicSession, academic_session_id)
     if existing:
@@ -75,7 +81,11 @@ def get_or_create_academic_session(
     if existing:
         return existing, False
 
-    academic_session = AcademicSession(id=academic_session_id, year=year)
+    academic_session = AcademicSession(
+        id=academic_session_id,
+        year=year,
+        created_at=created_at,
+    )
     session.add(academic_session)
     session.commit()
     session.refresh(academic_session)
@@ -124,6 +134,7 @@ def get_or_create_academic_term(
     academic_term_id: UUID,
     academic_session_id: UUID,
     term_type: AcademicTermType,
+    created_at: datetime,
 ) -> tuple[AcademicTerm, bool]:
     existing = session.get(AcademicTerm, academic_term_id)
     if existing:
@@ -141,6 +152,7 @@ def get_or_create_academic_term(
         id=academic_term_id,
         academic_session_id=academic_session_id,
         term_type=term_type,
+        created_at=created_at,
     )
     session.add(academic_term)
     session.commit()
@@ -152,6 +164,7 @@ def get_or_create_subject(
     session: Session,
     subject_id: UUID,
     name: str,
+    created_at: datetime,
 ) -> tuple[Subject, bool]:
     existing = session.get(Subject, subject_id)
     if existing:
@@ -162,7 +175,7 @@ def get_or_create_subject(
     if existing:
         return existing, False
 
-    subject = Subject(id=subject_id, name=name)
+    subject = Subject(id=subject_id, name=name, created_at=created_at)
     session.add(subject)
     session.commit()
     session.refresh(subject)
@@ -178,6 +191,7 @@ def get_or_create_academic_class_subject(
     highest_marks: int | None,
     average_marks: int | None,
     is_additional: bool,
+    created_at: datetime,
 ) -> tuple[AcademicClassSubject, bool]:
     existing = session.get(AcademicClassSubject, academic_class_subject_id)
     if existing:
@@ -200,6 +214,7 @@ def get_or_create_academic_class_subject(
         highest_marks=highest_marks,
         average_marks=average_marks,
         is_additional=is_additional,
+        created_at=created_at,
     )
     session.add(class_subject)
     session.commit()
@@ -212,6 +227,7 @@ def get_or_create_report_card(
     report_card_id: UUID,
     student_id: UUID,
     academic_term_id: UUID,
+    created_at: datetime,
 ) -> tuple[ReportCard, bool]:
     existing = session.get(ReportCard, report_card_id)
     if existing:
@@ -229,6 +245,7 @@ def get_or_create_report_card(
         id=report_card_id,
         student_id=student_id,
         academic_term_id=academic_term_id,
+        created_at=created_at,
     )
     session.add(report_card)
     session.commit()
@@ -247,6 +264,7 @@ def get_or_create_report_card_subject(
     class_test: int | None,
     final_term: int | None,
     final_marks: int | None,
+    created_at: datetime,
 ) -> tuple[ReportCardSubject, bool]:
     existing = session.get(ReportCardSubject, report_card_subject_id)
     if existing:
@@ -270,6 +288,7 @@ def get_or_create_report_card_subject(
         class_test=class_test,
         final_term=final_term,
         final_marks=final_marks,
+        created_at=created_at,
     )
     session.add(report_card_subject)
     session.commit()
@@ -333,6 +352,7 @@ def seed_students(
             session=session,
             year=raw["year"],
             academic_session_id=academic_session_id,
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             session_inserted += 1
@@ -347,6 +367,7 @@ def seed_students(
             academic_term_id=academic_term_id,
             academic_session_id=UUID(raw["academic_session_id"]),
             term_type=AcademicTermType(raw["term_type"]),
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             term_inserted += 1
@@ -363,6 +384,7 @@ def seed_students(
             academic_class_id=academic_class_id,
             grade=raw["grade"],
             section=raw["section"],
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             class_inserted += 1
@@ -376,6 +398,7 @@ def seed_students(
             session=session,
             subject_id=subject_id,
             name=raw["name"],
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             subject_inserted += 1
@@ -393,6 +416,7 @@ def seed_students(
             highest_marks=raw.get("highest_marks"),
             average_marks=raw.get("average_marks"),
             is_additional=raw.get("is_additional", False),
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             class_subject_inserted += 1
@@ -414,9 +438,7 @@ def seed_students(
             father_name=raw["father_name"],
             mother_name=raw["mother_name"],
             image=raw.get("image"),
-            created_at=datetime.fromisoformat(
-                raw["created_at"].replace("Z", "+00:00")
-            ),
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             student_inserted += 1
@@ -430,6 +452,7 @@ def seed_students(
             report_card_id=report_card_id,
             student_id=UUID(raw["student_id"]),
             academic_term_id=UUID(raw["academic_term_id"]),
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             report_card_inserted += 1
@@ -449,6 +472,7 @@ def seed_students(
             class_test=raw.get("class_test"),
             final_term=raw.get("final_term"),
             final_marks=raw.get("final_marks"),
+            created_at=parse_created_at(raw["created_at"]),
         )
         if created:
             report_card_subject_inserted += 1

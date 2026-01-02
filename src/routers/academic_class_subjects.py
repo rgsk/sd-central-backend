@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlmodel import Session, select
+from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class_subject import (
@@ -38,6 +38,8 @@ def list_academic_class_subjects(
     academic_term_id: UUID | None = Query(default=None),
     is_additional: bool | None = Query(default=None),
     session: Session = Depends(get_session),
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
 ):
     statement = select(AcademicClassSubject)
     if academic_class_id:
@@ -56,7 +58,11 @@ def list_academic_class_subjects(
         statement = statement.where(
             AcademicClassSubject.is_additional == is_additional
         )
-    results = session.exec(statement).all()
+    results = session.exec(
+        statement.order_by(col(AcademicClassSubject.created_at))
+        .offset(offset)
+        .limit(limit)
+    ).all()
     return results
 
 

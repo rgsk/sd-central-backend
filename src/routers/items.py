@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session, select
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlmodel import Session, col, select
 
 from db import get_session
 from models.item import Item, ItemCreate, ItemRead, ItemUpdate
@@ -20,8 +20,17 @@ def create_item(item: ItemCreate, session: Session = Depends(get_session)):
 
 
 @router.get("", response_model=list[ItemRead])
-def list_items(session: Session = Depends(get_session)):
-    statement = select(Item)
+def list_items(
+    session: Session = Depends(get_session),
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+):
+    statement = (
+        select(Item)
+        .order_by(col(Item.created_at))
+        .offset(offset)
+        .limit(limit)
+    )
     results = session.exec(statement).all()
     return results
 

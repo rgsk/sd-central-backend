@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlmodel import Session, select
+from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_term import (AcademicTerm, AcademicTermCreate,
@@ -29,13 +29,19 @@ def create_academic_term(
 def list_academic_terms(
     academic_session_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
 ):
     statement = select(AcademicTerm)
     if academic_session_id:
         statement = statement.where(
             AcademicTerm.academic_session_id == academic_session_id
         )
-    results = session.exec(statement).all()
+    results = session.exec(
+        statement.order_by(col(AcademicTerm.created_at))
+        .offset(offset)
+        .limit(limit)
+    ).all()
     return results
 
 

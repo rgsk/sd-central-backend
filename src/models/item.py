@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import Optional
 
 from sqlmodel import Field, SQLModel
@@ -5,6 +6,10 @@ from sqlmodel import Field, SQLModel
 
 class ItemDB(SQLModel):
     id: Optional[int] = Field(default=None, primary_key=True)
+    created_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        nullable=False,
+    )
 
 
 class ItemBase(SQLModel):
@@ -32,4 +37,4 @@ class ItemId(SQLModel):
 
 
 class ItemRead(ItemBase, ItemId):
-    pass
+    created_at: datetime

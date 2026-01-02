@@ -24,28 +24,28 @@ def list_raw_students(session: Session = Depends(get_session)):
 
 @router.get("/academic_sessions", response_model=list[AcademicSessionRead])
 def list_raw_academic_sessions(session: Session = Depends(get_session)):
-    statement = select(AcademicSession)
+    statement = select(AcademicSession).order_by(col(AcademicSession.created_at))
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/academic_classes", response_model=list[AcademicClassReadRaw])
 def list_raw_academic_classes(session: Session = Depends(get_session)):
-    statement = select(AcademicClass)
+    statement = select(AcademicClass).order_by(col(AcademicClass.created_at))
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/academic_terms", response_model=list[AcademicTermRead])
 def list_raw_academic_terms(session: Session = Depends(get_session)):
-    statement = select(AcademicTerm)
+    statement = select(AcademicTerm).order_by(col(AcademicTerm.created_at))
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/subjects", response_model=list[SubjectRead])
 def list_raw_subjects(session: Session = Depends(get_session)):
-    statement = select(Subject)
+    statement = select(Subject).order_by(col(Subject.created_at))
     results = session.exec(statement).all()
     return results
 
@@ -57,14 +57,16 @@ def list_raw_subjects(session: Session = Depends(get_session)):
 def list_raw_academic_class_subjects(
     session: Session = Depends(get_session),
 ):
-    statement = select(AcademicClassSubject)
+    statement = select(AcademicClassSubject).order_by(
+        col(AcademicClassSubject.created_at)
+    )
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/report_cards", response_model=list[ReportCardRead])
 def list_raw_report_cards(session: Session = Depends(get_session)):
-    statement = select(ReportCard)
+    statement = select(ReportCard).order_by(col(ReportCard.created_at))
     results = session.exec(statement).all()
     return results
 
@@ -76,6 +78,8 @@ def list_raw_report_cards(session: Session = Depends(get_session)):
 def list_raw_report_card_subjects(
     session: Session = Depends(get_session),
 ):
-    statement = select(ReportCardSubject)
+    statement = select(ReportCardSubject).order_by(
+        col(ReportCardSubject.created_at)
+    )
     results = session.exec(statement).all()
     return results

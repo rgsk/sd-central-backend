@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
@@ -15,6 +16,10 @@ class ReportCardSubjectDB(SQLModel):
         default_factory=uuid4,
         primary_key=True,
         sa_type=PG_UUID(as_uuid=True),
+    )
+    created_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        nullable=False,
     )
 
 
@@ -77,4 +82,4 @@ class ReportCardSubjectId(SQLModel):
 class ReportCardSubjectRead(
     ReportCardSubjectBase, ReportCardSubjectId
 ):
-    pass
+    created_at: datetime

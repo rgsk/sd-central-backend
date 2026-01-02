@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
@@ -18,6 +19,10 @@ class AcademicClassDB(SQLModel):
         default_factory=uuid4,
         primary_key=True,
         sa_type=PG_UUID(as_uuid=True),
+    )
+    created_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        nullable=False,
     )
 
 
@@ -57,6 +62,7 @@ class AcademicClassId(SQLModel):
 
 
 class AcademicClassRead(AcademicClassBase, AcademicClassId):
+    created_at: datetime
     academic_session: Optional["AcademicSessionRead"] = None
 
 
@@ -65,4 +71,4 @@ class AcademicClassReadWithSubjects(AcademicClassRead):
 
 
 class AcademicClassReadRaw(AcademicClassBase, AcademicClassId):
-    pass
+    created_at: datetime

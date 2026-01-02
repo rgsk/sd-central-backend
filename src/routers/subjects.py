@@ -1,7 +1,7 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session, select
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlmodel import Session, col, select
 
 from db import get_session
 from models.subject import Subject, SubjectCreate, SubjectRead, SubjectUpdate
@@ -25,8 +25,17 @@ def create_subject(
 
 
 @router.get("", response_model=list[SubjectRead])
-def list_subjects(session: Session = Depends(get_session)):
-    statement = select(Subject)
+def list_subjects(
+    session: Session = Depends(get_session),
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+):
+    statement = (
+        select(Subject)
+        .order_by(col(Subject.created_at))
+        .offset(offset)
+        .limit(limit)
+    )
     results = session.exec(statement).all()
     return results
 

@@ -1,11 +1,14 @@
+from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
 from models.report_card import (ReportCard, ReportCardCreate, ReportCardRead,
-                                ReportCardReadDetail, ReportCardUpdate)
+                                ReportCardListResponse, ReportCardReadDetail,
+                                ReportCardUpdate)
 
 router = APIRouter(
     prefix="/report-cards",
@@ -25,7 +28,7 @@ def create_report_card(
     return db_report_card
 
 
-@router.get("", response_model=list[ReportCardReadDetail])
+@router.get("", response_model=ReportCardListResponse)
 def list_report_cards(
     student_id: UUID | None = Query(default=None),
     academic_term_id: UUID | None = Query(default=None),
@@ -34,18 +37,23 @@ def list_report_cards(
     limit: int = Query(50, ge=1, le=200),
 ):
     statement = select(ReportCard)
+    count_statement = select(func.count()).select_from(ReportCard)
     if student_id:
-        statement = statement.where(ReportCard.student_id == student_id)
+        condition = ReportCard.student_id == student_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
     if academic_term_id:
-        statement = statement.where(
-            ReportCard.academic_term_id == academic_term_id
-        )
+        condition = ReportCard.academic_term_id == academic_term_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    total = session.exec(count_statement).one()
     results = session.exec(
         statement.order_by(col(ReportCard.created_at))
         .offset(offset)
         .limit(limit)
     ).all()
-    return results
+    items = cast(list[ReportCardReadDetail], results)
+    return ReportCardListResponse(total=total, items=items)
 
 
 @router.get("/{report_card_id}", response_model=ReportCardReadDetail)

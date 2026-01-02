@@ -1,12 +1,15 @@
+from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class_subject import (
     AcademicClassSubject,
     AcademicClassSubjectCreate,
+    AcademicClassSubjectListResponse,
     AcademicClassSubjectRead,
     AcademicClassSubjectUpdate,
 )
@@ -31,7 +34,7 @@ def create_academic_class_subject(
     return db_class_subject
 
 
-@router.get("", response_model=list[AcademicClassSubjectRead])
+@router.get("", response_model=AcademicClassSubjectListResponse)
 def list_academic_class_subjects(
     academic_class_id: UUID | None = Query(default=None),
     subject_id: UUID | None = Query(default=None),
@@ -42,28 +45,31 @@ def list_academic_class_subjects(
     limit: int = Query(50, ge=1, le=200),
 ):
     statement = select(AcademicClassSubject)
+    count_statement = select(func.count()).select_from(AcademicClassSubject)
     if academic_class_id:
-        statement = statement.where(
-            AcademicClassSubject.academic_class_id == academic_class_id
-        )
+        condition = AcademicClassSubject.academic_class_id == academic_class_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
     if subject_id:
-        statement = statement.where(
-            AcademicClassSubject.subject_id == subject_id
-        )
+        condition = AcademicClassSubject.subject_id == subject_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
     if academic_term_id:
-        statement = statement.where(
-            AcademicClassSubject.academic_term_id == academic_term_id
-        )
+        condition = AcademicClassSubject.academic_term_id == academic_term_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
     if is_additional is not None:
-        statement = statement.where(
-            AcademicClassSubject.is_additional == is_additional
-        )
+        condition = AcademicClassSubject.is_additional == is_additional
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    total = session.exec(count_statement).one()
     results = session.exec(
         statement.order_by(col(AcademicClassSubject.created_at))
         .offset(offset)
         .limit(limit)
     ).all()
-    return results
+    items = cast(list[AcademicClassSubjectRead], results)
+    return AcademicClassSubjectListResponse(total=total, items=items)
 
 
 @router.get(

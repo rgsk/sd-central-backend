@@ -77,3 +77,8 @@ class ReportCardRead(ReportCardBase, ReportCardId):
 class ReportCardReadDetail(ReportCardRead):
     student: Optional[StudentRead] = None
     academic_term: Optional[AcademicTermRead] = None
+
+
+class ReportCardListResponse(SQLModel):
+    total: int
+    items: list[ReportCardReadDetail]

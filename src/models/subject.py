@@ -51,3 +51,8 @@ class SubjectId(SQLModel):
 
 class SubjectRead(SubjectBase, SubjectId):
     created_at: datetime
+
+
+class SubjectListResponse(SQLModel):
+    total: int
+    items: list[SubjectRead]

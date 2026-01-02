@@ -38,3 +38,8 @@ class ItemId(SQLModel):
 
 class ItemRead(ItemBase, ItemId):
     created_at: datetime
+
+
+class ItemListResponse(SQLModel):
+    total: int
+    items: list[ItemRead]

@@ -51,3 +51,8 @@ class AcademicSessionId(SQLModel):
 
 class AcademicSessionRead(AcademicSessionBase, AcademicSessionId):
     created_at: datetime
+
+
+class AcademicSessionListResponse(SQLModel):
+    total: int
+    items: list[AcademicSessionRead]

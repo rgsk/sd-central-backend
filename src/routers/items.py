@@ -1,8 +1,11 @@
+from typing import cast
+
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.item import Item, ItemCreate, ItemRead, ItemUpdate
+from models.item import Item, ItemCreate, ItemListResponse, ItemRead, ItemUpdate
 
 router = APIRouter(
     prefix="/items",
@@ -19,20 +22,21 @@ def create_item(item: ItemCreate, session: Session = Depends(get_session)):
     return db_item
 
 
-@router.get("", response_model=list[ItemRead])
+@router.get("", response_model=ItemListResponse)
 def list_items(
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
+    total = session.exec(select(func.count()).select_from(Item)).one()
     statement = (
         select(Item)
         .order_by(col(Item.created_at))
         .offset(offset)
         .limit(limit)
     )
-    results = session.exec(statement).all()
-    return results
+    items = cast(list[ItemRead], session.exec(statement).all())
+    return ItemListResponse(total=total, items=items)
 
 
 @router.get("/{item_id}", response_model=ItemRead)

@@ -93,3 +93,8 @@ class AcademicClassSubjectRead(
 
 class AcademicClassSubjectReadWithSubject(AcademicClassSubjectRead):
     subject: Optional["SubjectRead"] = None
+
+
+class AcademicClassSubjectListResponse(SQLModel):
+    total: int
+    items: list[AcademicClassSubjectRead]

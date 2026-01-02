@@ -1,3 +1,4 @@
+from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -47,8 +48,8 @@ def list_students(
         .offset(offset)
         .limit(limit)
     )
-    items = session.exec(statement).all()
-    return StudentListResponse(total=total, items=items)  # type:ignore
+    items = cast(list[StudentRead], session.exec(statement).all())
+    return StudentListResponse(total=total, items=items)
 
 
 @router.get("/{student_id}", response_model=StudentRead)

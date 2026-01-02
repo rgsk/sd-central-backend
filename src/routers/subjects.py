@@ -1,10 +1,13 @@
+from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.subject import Subject, SubjectCreate, SubjectRead, SubjectUpdate
+from models.subject import (Subject, SubjectCreate, SubjectListResponse,
+                            SubjectRead, SubjectUpdate)
 
 router = APIRouter(
     prefix="/subjects",
@@ -24,20 +27,21 @@ def create_subject(
     return db_subject
 
 
-@router.get("", response_model=list[SubjectRead])
+@router.get("", response_model=SubjectListResponse)
 def list_subjects(
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
+    total = session.exec(select(func.count()).select_from(Subject)).one()
     statement = (
         select(Subject)
         .order_by(col(Subject.created_at))
         .offset(offset)
         .limit(limit)
     )
-    results = session.exec(statement).all()
-    return results
+    items = cast(list[SubjectRead], session.exec(statement).all())
+    return SubjectListResponse(total=total, items=items)
 
 
 @router.get("/{subject_id}", response_model=SubjectRead)

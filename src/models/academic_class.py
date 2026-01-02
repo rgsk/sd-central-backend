@@ -72,3 +72,8 @@ class AcademicClassReadWithSubjects(AcademicClassRead):
 
 class AcademicClassReadRaw(AcademicClassBase, AcademicClassId):
     created_at: datetime
+
+
+class AcademicClassListResponse(SQLModel):
+    total: int
+    items: list[AcademicClassRead]

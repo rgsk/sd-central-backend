@@ -83,3 +83,8 @@ class ReportCardSubjectRead(
     ReportCardSubjectBase, ReportCardSubjectId
 ):
     created_at: datetime
+
+
+class ReportCardSubjectListResponse(SQLModel):
+    total: int
+    items: list[ReportCardSubjectRead]

@@ -1,12 +1,15 @@
+from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_session import (
     AcademicSession,
     AcademicSessionCreate,
+    AcademicSessionListResponse,
     AcademicSessionRead,
     AcademicSessionUpdate,
 )
@@ -29,7 +32,7 @@ def create_academic_session(
     return db_academic_session
 
 
-@router.get("", response_model=list[AcademicSessionRead])
+@router.get("", response_model=AcademicSessionListResponse)
 def list_academic_sessions(
     year: str | None = Query(default=None),
     session: Session = Depends(get_session),
@@ -37,14 +40,19 @@ def list_academic_sessions(
     limit: int = Query(50, ge=1, le=200),
 ):
     statement = select(AcademicSession)
+    count_statement = select(func.count()).select_from(AcademicSession)
     if year:
-        statement = statement.where(AcademicSession.year == year)
+        condition = AcademicSession.year == year
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    total = session.exec(count_statement).one()
     results = session.exec(
         statement.order_by(col(AcademicSession.created_at))
         .offset(offset)
         .limit(limit)
     ).all()
-    return results
+    items = cast(list[AcademicSessionRead], results)
+    return AcademicSessionListResponse(total=total, items=items)
 
 
 @router.get("/{academic_session_id}", response_model=AcademicSessionRead)

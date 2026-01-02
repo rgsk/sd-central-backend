@@ -67,3 +67,8 @@ class AcademicTermId(SQLModel):
 
 class AcademicTermRead(AcademicTermBase, AcademicTermId):
     created_at: datetime
+
+
+class AcademicTermListResponse(SQLModel):
+    total: int
+    items: list[AcademicTermRead]

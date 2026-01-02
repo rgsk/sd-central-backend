@@ -1,12 +1,15 @@
+from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
 from models.report_card_subject import (
     ReportCardSubject,
     ReportCardSubjectCreate,
+    ReportCardSubjectListResponse,
     ReportCardSubjectRead,
     ReportCardSubjectUpdate,
 )
@@ -31,7 +34,7 @@ def create_report_card_subject(
     return db_report_card_subject
 
 
-@router.get("", response_model=list[ReportCardSubjectRead])
+@router.get("", response_model=ReportCardSubjectListResponse)
 def list_report_card_subjects(
     report_card_id: UUID | None = Query(default=None),
     subject_id: UUID | None = Query(default=None),
@@ -40,20 +43,23 @@ def list_report_card_subjects(
     limit: int = Query(50, ge=1, le=200),
 ):
     statement = select(ReportCardSubject)
+    count_statement = select(func.count()).select_from(ReportCardSubject)
     if report_card_id:
-        statement = statement.where(
-            ReportCardSubject.report_card_id == report_card_id
-        )
+        condition = ReportCardSubject.report_card_id == report_card_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
     if subject_id:
-        statement = statement.where(
-            ReportCardSubject.subject_id == subject_id
-        )
+        condition = ReportCardSubject.subject_id == subject_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    total = session.exec(count_statement).one()
     results = session.exec(
         statement.order_by(col(ReportCardSubject.created_at))
         .offset(offset)
         .limit(limit)
     ).all()
-    return results
+    items = cast(list[ReportCardSubjectRead], results)
+    return ReportCardSubjectListResponse(total=total, items=items)
 
 
 @router.get("/{report_card_subject_id}", response_model=ReportCardSubjectRead)

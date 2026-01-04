@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
+from sqlalchemy import UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -28,6 +29,12 @@ class AcademicSessionBase(SQLModel):
 
 class AcademicSession(AcademicSessionBase, AcademicSessionDB, table=True):
     __tablename__ = "academic_sessions"  # type: ignore
+    __table_args__ = (
+        UniqueConstraint(
+            "year",
+            name="academic_sessions_year_key",
+        ),
+    )
     academic_classes: list["AcademicClass"] = Relationship(
         back_populates="academic_session"
     )

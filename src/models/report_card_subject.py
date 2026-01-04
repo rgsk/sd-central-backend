@@ -8,7 +8,8 @@ from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
     from models.report_card import ReportCard
-    from models.subject import Subject
+
+from models.subject import Subject, SubjectRead
 
 
 class ReportCardSubjectDB(SQLModel):
@@ -83,6 +84,7 @@ class ReportCardSubjectRead(
     ReportCardSubjectBase, ReportCardSubjectId
 ):
     created_at: datetime
+    subject: Optional[SubjectRead] = None
 
 
 class ReportCardSubjectListResponse(SQLModel):

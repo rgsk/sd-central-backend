@@ -3,11 +3,9 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
-from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.academic_class_subject import AcademicClassSubject
 from models.report_card_subject import (
     ReportCardSubject,
     ReportCardSubjectCreate,
@@ -15,8 +13,6 @@ from models.report_card_subject import (
     ReportCardSubjectRead,
     ReportCardSubjectUpdate,
 )
-from models.report_card import ReportCard
-from models.student import Student
 
 router = APIRouter(
     prefix="/report-card-subjects",
@@ -49,54 +45,6 @@ def list_report_card_subjects(
     statement = select(ReportCardSubject)
     count_statement = select(func.count()).select_from(ReportCardSubject)
     if report_card_id:
-        report_card = session.get(ReportCard, report_card_id)
-        if report_card:
-            student = session.get(Student, report_card.student_id)
-            if student and student.academic_class_id:
-                class_subject_ids = session.exec(
-                    select(AcademicClassSubject.subject_id).where(
-                        AcademicClassSubject.academic_class_id
-                        == student.academic_class_id,
-                        AcademicClassSubject.academic_term_id
-                        == report_card.academic_term_id,
-                    )
-                ).all()
-                existing_subject_ids = session.exec(
-                    select(ReportCardSubject.subject_id).where(
-                        ReportCardSubject.report_card_id == report_card_id
-                    )
-                ).all()
-                existing_subject_ids_set = set(existing_subject_ids)
-                class_subject_ids_set = set(class_subject_ids)
-                new_subjects = [
-                    ReportCardSubject(
-                        report_card_id=report_card_id, subject_id=subject_id
-                    )
-                    for subject_id in class_subject_ids
-                    if subject_id not in existing_subject_ids_set
-                ]
-                subject_ids_to_remove = (
-                    existing_subject_ids_set - class_subject_ids_set
-                )
-                if subject_ids_to_remove:
-                    subjects_to_remove = session.exec(
-                        select(ReportCardSubject).where(
-                            ReportCardSubject.report_card_id == report_card_id,
-                            col(ReportCardSubject.subject_id).in_(
-                                subject_ids_to_remove
-                            ),
-                        )
-                    ).all()
-                    for subject in subjects_to_remove:
-                        session.delete(subject)
-
-                if new_subjects or subject_ids_to_remove:
-                    if new_subjects:
-                        session.add_all(new_subjects)
-                    try:
-                        session.commit()
-                    except IntegrityError:
-                        session.rollback()
         condition = ReportCardSubject.report_card_id == report_card_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)

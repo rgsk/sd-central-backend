@@ -12,6 +12,9 @@ from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectListResponse,
                                            AcademicClassSubjectReadWithSubject,
                                            AcademicClassSubjectUpdate)
+from models.report_card import ReportCard
+from models.report_card_subject import ReportCardSubject
+from models.student import Student
 
 router = APIRouter(
     prefix="/academic-class-subjects",
@@ -37,6 +40,50 @@ def create_academic_class_subject(
             detail="Subject already exists for this class",
         )
     session.refresh(db_class_subject)
+    report_card_ids_raw = session.exec(
+        select(ReportCard.id)
+        .join(Student, col(Student.id) == col(ReportCard.student_id))
+        .where(
+            Student.academic_class_id
+            == academic_class_subject.academic_class_id,
+            ReportCard.academic_term_id
+            == academic_class_subject.academic_term_id,
+        )
+    ).all()
+    report_card_ids = [
+        report_card_id
+        for report_card_id in report_card_ids_raw
+        if report_card_id is not None
+    ]
+    if report_card_ids:
+        existing_report_card_ids_raw = session.exec(
+            select(ReportCardSubject.report_card_id).where(
+                ReportCardSubject.subject_id
+                == academic_class_subject.subject_id,
+                col(ReportCardSubject.report_card_id).in_(report_card_ids),
+            )
+        ).all()
+        existing_report_card_ids = [
+            report_card_id
+            for report_card_id in existing_report_card_ids_raw
+            if report_card_id is not None
+        ]
+        missing_report_card_ids = set(report_card_ids) - set(
+            existing_report_card_ids
+        )
+        if missing_report_card_ids:
+            new_subjects = [
+                ReportCardSubject(
+                    report_card_id=report_card_id,
+                    subject_id=academic_class_subject.subject_id,
+                )
+                for report_card_id in missing_report_card_ids
+            ]
+            session.add_all(new_subjects)
+            try:
+                session.commit()
+            except IntegrityError:
+                session.rollback()
     return db_class_subject
 
 
@@ -141,6 +188,29 @@ def delete_academic_class_subject(
             status_code=404,
             detail="Academic class subject not found",
         )
+    report_card_ids_raw = session.exec(
+        select(ReportCard.id)
+        .join(Student, col(Student.id) == col(ReportCard.student_id))
+        .where(
+            Student.academic_class_id
+            == db_class_subject.academic_class_id,
+            ReportCard.academic_term_id == db_class_subject.academic_term_id,
+        )
+    ).all()
+    report_card_ids = [
+        report_card_id
+        for report_card_id in report_card_ids_raw
+        if report_card_id is not None
+    ]
+    if report_card_ids:
+        subjects_to_remove = session.exec(
+            select(ReportCardSubject).where(
+                ReportCardSubject.subject_id == db_class_subject.subject_id,
+                col(ReportCardSubject.report_card_id).in_(report_card_ids),
+            )
+        ).all()
+        for subject in subjects_to_remove:
+            session.delete(subject)
     session.delete(db_class_subject)
     session.commit()
     return {"message": "Academic class subject deleted"}

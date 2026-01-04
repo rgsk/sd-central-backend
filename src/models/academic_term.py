@@ -3,6 +3,7 @@ from enum import Enum
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
+from sqlalchemy import UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -42,6 +43,13 @@ class AcademicTermBase(SQLModel):
 
 class AcademicTerm(AcademicTermBase, AcademicTermDB, table=True):
     __tablename__ = "academic_terms"  # type: ignore
+    __table_args__ = (
+        UniqueConstraint(
+            "academic_session_id",
+            "term_type",
+            name="uq_academic_terms_session_term_type",
+        ),
+    )
     academic_session: Optional["AcademicSession"] = Relationship(
         back_populates="academic_terms"
     )

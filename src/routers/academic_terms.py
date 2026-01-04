@@ -3,6 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
@@ -23,7 +24,14 @@ def create_academic_term(
 ):
     db_academic_term = AcademicTerm(**academic_term.model_dump())
     session.add(db_academic_term)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Academic term already exists for this session",
+        )
     session.refresh(db_academic_term)
     return db_academic_term
 

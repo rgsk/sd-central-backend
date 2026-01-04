@@ -10,8 +10,8 @@ from sqlmodel import Field, Relationship, SQLModel
 from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
-    from models.academic_session import AcademicSession
     from models.academic_class_subject import AcademicClassSubject
+    from models.academic_session import AcademicSession
     from models.report_card import ReportCard
 
 
@@ -47,7 +47,7 @@ class AcademicTerm(AcademicTermBase, AcademicTermDB, table=True):
         UniqueConstraint(
             "academic_session_id",
             "term_type",
-            name="uq_academic_terms_session_term_type",
+            name="academic_terms_academic_session_id_term_type_key",
         ),
     )
     academic_session: Optional["AcademicSession"] = Relationship(

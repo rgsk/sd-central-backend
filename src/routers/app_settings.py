@@ -1,10 +1,11 @@
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends
-from sqlmodel import Session, col, select
+from sqlmodel import Session, select
 
 from db import get_session
-from models.app_settings import AppSettings, AppSettingsRead, AppSettingsUpdate
+from models.app_settings import (SINGLETON_APP_SETTINGS_ID, AppSettings,
+                                 AppSettingsRead, AppSettingsUpdate)
 
 router = APIRouter(
     prefix="/app-settings",
@@ -13,11 +14,13 @@ router = APIRouter(
 
 
 def _get_or_create_settings(session: Session) -> AppSettings:
-    statement = select(AppSettings).order_by(col(AppSettings.created_at).desc())
-    settings = session.exec(statement).first()
+    statement = select(AppSettings).where(
+        AppSettings.id == SINGLETON_APP_SETTINGS_ID
+    )
+    settings = session.exec(statement).one_or_none()
     if settings:
         return settings
-    settings = AppSettings()
+    settings = AppSettings(id=SINGLETON_APP_SETTINGS_ID)
     session.add(settings)
     session.commit()
     session.refresh(settings)

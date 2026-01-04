@@ -1,14 +1,17 @@
 from datetime import datetime, timezone
 from typing import Optional
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, SQLModel
 
 
+SINGLETON_APP_SETTINGS_ID = UUID("00000000-0000-0000-0000-000000000001")
+
+
 class AppSettingsDB(SQLModel):
     id: Optional[UUID] = Field(
-        default_factory=uuid4,
+        default_factory=lambda: SINGLETON_APP_SETTINGS_ID,
         primary_key=True,
         sa_type=PG_UUID(as_uuid=True),
     )

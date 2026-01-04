@@ -47,7 +47,7 @@ def list_academic_sessions(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(AcademicSession.created_at))
+        statement.order_by(col(AcademicSession.created_at).desc())
         .offset(offset)
         .limit(limit)
     ).all()

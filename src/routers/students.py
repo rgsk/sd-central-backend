@@ -44,7 +44,7 @@ def list_students(
     total = session.exec(select(func.count()).select_from(Student)).one()
     statement = (
         select(Student)
-        .order_by(col(Student.created_at))
+        .order_by(col(Student.created_at).desc())
         .offset(offset)
         .limit(limit)
     )

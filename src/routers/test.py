@@ -17,35 +17,38 @@ router = APIRouter(prefix="/test", tags=["test"])
 
 @router.get("/students", response_model=list[StudentReadRaw])
 def list_raw_students(session: Session = Depends(get_session)):
-    statement = select(Student).order_by(col(Student.created_at))
+    statement = select(Student).order_by(col(Student.created_at).desc())
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/academic_sessions", response_model=list[AcademicSessionRead])
 def list_raw_academic_sessions(session: Session = Depends(get_session)):
-    statement = select(AcademicSession).order_by(col(AcademicSession.created_at))
+    statement = select(AcademicSession).order_by(
+        col(AcademicSession.created_at).desc())
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/academic_classes", response_model=list[AcademicClassReadRaw])
 def list_raw_academic_classes(session: Session = Depends(get_session)):
-    statement = select(AcademicClass).order_by(col(AcademicClass.created_at))
+    statement = select(AcademicClass).order_by(
+        col(AcademicClass.created_at).desc())
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/academic_terms", response_model=list[AcademicTermRead])
 def list_raw_academic_terms(session: Session = Depends(get_session)):
-    statement = select(AcademicTerm).order_by(col(AcademicTerm.created_at))
+    statement = select(AcademicTerm).order_by(
+        col(AcademicTerm.created_at).desc())
     results = session.exec(statement).all()
     return results
 
 
 @router.get("/subjects", response_model=list[SubjectRead])
 def list_raw_subjects(session: Session = Depends(get_session)):
-    statement = select(Subject).order_by(col(Subject.created_at))
+    statement = select(Subject).order_by(col(Subject.created_at).desc())
     results = session.exec(statement).all()
     return results
 
@@ -58,7 +61,7 @@ def list_raw_academic_class_subjects(
     session: Session = Depends(get_session),
 ):
     statement = select(AcademicClassSubject).order_by(
-        col(AcademicClassSubject.created_at)
+        col(AcademicClassSubject.created_at).desc()
     )
     results = session.exec(statement).all()
     return results
@@ -66,7 +69,7 @@ def list_raw_academic_class_subjects(
 
 @router.get("/report_cards", response_model=list[ReportCardRead])
 def list_raw_report_cards(session: Session = Depends(get_session)):
-    statement = select(ReportCard).order_by(col(ReportCard.created_at))
+    statement = select(ReportCard).order_by(col(ReportCard.created_at).desc())
     results = session.exec(statement).all()
     return results
 
@@ -79,7 +82,7 @@ def list_raw_report_card_subjects(
     session: Session = Depends(get_session),
 ):
     statement = select(ReportCardSubject).order_by(
-        col(ReportCardSubject.created_at)
+        col(ReportCardSubject.created_at).desc()
     )
     results = session.exec(statement).all()
     return results

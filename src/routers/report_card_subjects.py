@@ -54,7 +54,7 @@ def list_report_card_subjects(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(ReportCardSubject.created_at))
+        statement.order_by(col(ReportCardSubject.created_at).desc())
         .offset(offset)
         .limit(limit)
     ).all()

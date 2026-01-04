@@ -31,7 +31,7 @@ def list_items(
     total = session.exec(select(func.count()).select_from(Item)).one()
     statement = (
         select(Item)
-        .order_by(col(Item.created_at))
+        .order_by(col(Item.created_at).desc())
         .offset(offset)
         .limit(limit)
     )

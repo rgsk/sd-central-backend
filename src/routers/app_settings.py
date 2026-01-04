@@ -13,7 +13,7 @@ router = APIRouter(
 
 
 def _get_or_create_settings(session: Session) -> AppSettings:
-    statement = select(AppSettings).order_by(col(AppSettings.created_at))
+    statement = select(AppSettings).order_by(col(AppSettings.created_at).desc())
     settings = session.exec(statement).first()
     if settings:
         return settings

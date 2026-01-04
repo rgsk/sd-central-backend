@@ -30,7 +30,7 @@ def create_academic_term(
         session.rollback()
         raise HTTPException(
             status_code=409,
-            detail="Academic term already exists for this session",
+            detail="Term already exists for this session",
         )
     session.refresh(db_academic_term)
     return db_academic_term

@@ -3,6 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
@@ -27,7 +28,14 @@ def create_academic_class_subject(
         **academic_class_subject.model_dump()
     )
     session.add(db_class_subject)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Subject already exists for this class",
+        )
     session.refresh(db_class_subject)
     return db_class_subject
 

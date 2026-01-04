@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from enum import Enum
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
@@ -27,6 +28,21 @@ class ReportCardDB(SQLModel):
     )
 
 
+class ReportCardGrade(str, Enum):
+    A = "A"
+    B = "B"
+    C = "C"
+    D = "D"
+    E = "E"
+
+
+class ReportCardResult(str, Enum):
+    PROMOTED = "promoted"
+    PASSED = "passed"
+    NEED_IMPROVEMENT = "need_improvement"
+    RESULT_WITHHELD = "result_withheld"
+
+
 class ReportCardBase(SQLModel):
     student_id: UUID = Field(
         foreign_key="students.id",
@@ -36,6 +52,12 @@ class ReportCardBase(SQLModel):
         foreign_key="academic_terms.id",
         sa_type=PG_UUID(as_uuid=True),
     )
+    work_education_grade: Optional[ReportCardGrade] = None
+    art_education_grade: Optional[ReportCardGrade] = None
+    physical_education_grade: Optional[ReportCardGrade] = None
+    behaviour_grade: Optional[ReportCardGrade] = None
+    attendance_present: Optional[int] = None
+    result: Optional[ReportCardResult] = None
 
 
 class ReportCard(ReportCardBase, ReportCardDB, table=True):
@@ -64,6 +86,12 @@ class ReportCardCreate(ReportCardBase):
 class ReportCardUpdate(SQLModel):
     student_id: Optional[UUID] = None
     academic_term_id: Optional[UUID] = None
+    work_education_grade: Optional[ReportCardGrade] = None
+    art_education_grade: Optional[ReportCardGrade] = None
+    physical_education_grade: Optional[ReportCardGrade] = None
+    behaviour_grade: Optional[ReportCardGrade] = None
+    attendance_present: Optional[int] = None
+    result: Optional[ReportCardResult] = None
 
 
 class ReportCardId(SQLModel):

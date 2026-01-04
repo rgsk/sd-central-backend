@@ -67,6 +67,7 @@ def list_report_card_subjects(
                     )
                 ).all()
                 existing_subject_ids_set = set(existing_subject_ids)
+                class_subject_ids_set = set(class_subject_ids)
                 new_subjects = [
                     ReportCardSubject(
                         report_card_id=report_card_id, subject_id=subject_id
@@ -74,8 +75,24 @@ def list_report_card_subjects(
                     for subject_id in class_subject_ids
                     if subject_id not in existing_subject_ids_set
                 ]
-                if new_subjects:
-                    session.add_all(new_subjects)
+                subject_ids_to_remove = (
+                    existing_subject_ids_set - class_subject_ids_set
+                )
+                if subject_ids_to_remove:
+                    subjects_to_remove = session.exec(
+                        select(ReportCardSubject).where(
+                            ReportCardSubject.report_card_id == report_card_id,
+                            col(ReportCardSubject.subject_id).in_(
+                                subject_ids_to_remove
+                            ),
+                        )
+                    ).all()
+                    for subject in subjects_to_remove:
+                        session.delete(subject)
+
+                if new_subjects or subject_ids_to_remove:
+                    if new_subjects:
+                        session.add_all(new_subjects)
                     try:
                         session.commit()
                     except IntegrityError:

@@ -6,9 +6,11 @@ from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
+from models.academic_term import AcademicTerm
 from models.report_card import (ReportCard, ReportCardCreate, ReportCardRead,
                                 ReportCardListResponse, ReportCardReadDetail,
                                 ReportCardUpdate)
+from models.student import Student
 
 router = APIRouter(
     prefix="/report-cards",
@@ -32,6 +34,8 @@ def create_report_card(
 def list_report_cards(
     student_id: UUID | None = Query(default=None),
     academic_term_id: UUID | None = Query(default=None),
+    academic_session_id: UUID | None = Query(default=None),
+    academic_class_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
@@ -44,6 +48,18 @@ def list_report_cards(
         count_statement = count_statement.where(condition)
     if academic_term_id:
         condition = ReportCard.academic_term_id == academic_term_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    if academic_session_id:
+        statement = statement.join(AcademicTerm)
+        count_statement = count_statement.join(AcademicTerm)
+        condition = AcademicTerm.academic_session_id == academic_session_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    if academic_class_id:
+        statement = statement.join(Student)
+        count_statement = count_statement.join(Student)
+        condition = Student.academic_class_id == academic_class_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()

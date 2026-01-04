@@ -3,13 +3,16 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
+from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm
 from models.report_card import (ReportCard, ReportCardCreate, ReportCardRead,
                                 ReportCardListResponse, ReportCardReadDetail,
                                 ReportCardUpdate)
+from models.report_card_subject import ReportCardSubject
 from models.student import Student
 
 router = APIRouter(
@@ -23,9 +26,54 @@ def create_report_card(
     report_card: ReportCardCreate,
     session: Session = Depends(get_session),
 ):
+    student = session.get(Student, report_card.student_id)
+    if not student:
+        raise HTTPException(status_code=404, detail="Student not found")
+    if not student.academic_class_id:
+        raise HTTPException(
+            status_code=400,
+            detail="Student must be assigned to a class",
+        )
+    academic_term = session.get(AcademicTerm, report_card.academic_term_id)
+    if not academic_term:
+        raise HTTPException(status_code=404, detail="Academic term not found")
+
     db_report_card = ReportCard(**report_card.model_dump())
     session.add(db_report_card)
-    session.commit()
+    try:
+        session.flush()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409, detail="Report card already exists"
+        )
+
+    class_subjects = session.exec(
+        select(AcademicClassSubject.subject_id).where(
+            AcademicClassSubject.academic_class_id
+            == student.academic_class_id,
+            AcademicClassSubject.academic_term_id
+            == report_card.academic_term_id,
+        )
+    ).all()
+    if db_report_card.id is None:
+        raise HTTPException(
+            status_code=500, detail="Report card ID was not generated"
+        )
+    for subject_id in class_subjects:
+        session.add(
+            ReportCardSubject(
+                report_card_id=db_report_card.id,
+                subject_id=subject_id,
+            )
+        )
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409, detail="Report card subjects already exist"
+        )
     session.refresh(db_report_card)
     return db_report_card
 

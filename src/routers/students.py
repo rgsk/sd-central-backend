@@ -7,6 +7,8 @@ from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
+from models.academic_class import AcademicClass
+from models.class_student import ClassStudent, ClassStudentRead
 from models.student import (Student, StudentCreate, StudentListResponse,
                             StudentRead, StudentUpdate)
 
@@ -38,6 +40,7 @@ def create_student(
 @router.get("", response_model=StudentListResponse)
 def list_students(
     session: Session = Depends(get_session),
+    academic_session_id: UUID | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
@@ -48,7 +51,31 @@ def list_students(
         .offset(offset)
         .limit(limit)
     )
-    items = cast(list[StudentRead], session.exec(statement).all())
+    students = session.exec(statement).all()
+    items = [StudentRead.model_validate(student) for student in students]
+    if academic_session_id and items:
+        student_ids = [student.id for student in items if student.id is not None]
+        class_students = session.exec(
+            select(ClassStudent)
+            .join(AcademicClass)
+            .where(
+                col(ClassStudent.student_id).in_(student_ids),
+                AcademicClass.academic_session_id == academic_session_id,
+            )
+            .order_by(col(ClassStudent.created_at).desc())
+        ).all()
+        class_student_by_student_id: dict[UUID, ClassStudentRead] = {}
+        for class_student in class_students:
+            if class_student.student_id not in class_student_by_student_id:
+                class_student_by_student_id[
+                    class_student.student_id
+                ] = ClassStudentRead.model_validate(class_student)
+        for student in items:
+            if student.id is None:
+                continue
+            student.class_student = class_student_by_student_id.get(
+                student.id
+            )
     return StudentListResponse(total=total, items=items)
 
 
@@ -56,6 +83,7 @@ def list_students(
 def get_student(
     student_id: UUID,
     session: Session = Depends(get_session),
+    academic_session_id: UUID | None = Query(default=None),
 ):
     statement = (
         select(Student)
@@ -64,7 +92,23 @@ def get_student(
     student = session.exec(statement).first()
     if student is None:
         raise HTTPException(status_code=404, detail="Student not found")
-    return student
+    read_student = StudentRead.model_validate(student)
+    if academic_session_id:
+        class_student = session.exec(
+            select(ClassStudent)
+            .join(AcademicClass)
+            .where(
+                ClassStudent.student_id == student_id,
+                AcademicClass.academic_session_id == academic_session_id,
+            )
+            .order_by(col(ClassStudent.created_at).desc())
+        ).first()
+        read_student.class_student = (
+            ClassStudentRead.model_validate(class_student)
+            if class_student is not None
+            else None
+        )
+    return read_student
 
 
 @router.patch("/{student_id}", response_model=StudentRead)

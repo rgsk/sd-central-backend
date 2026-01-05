@@ -5,6 +5,8 @@ from uuid import UUID, uuid4
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
+from models.class_student import ClassStudentRead
+
 if TYPE_CHECKING:
     from models.class_student import ClassStudent
 
@@ -54,6 +56,7 @@ class StudentId(SQLModel):
 
 class StudentRead(StudentBase, StudentId):
     created_at: datetime
+    class_student: Optional["ClassStudentRead"] = None
 
 
 class StudentReadRaw(StudentBase, StudentId):

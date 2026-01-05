@@ -7,12 +7,11 @@ from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
 from models.academic_class import AcademicClassRead
-from models.student import StudentRead
 
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
     from models.report_card import ReportCard
-    from models.student import Student
+    from models.student import Student, StudentRead
 
 
 class ClassStudentDB(SQLModel):
@@ -75,7 +74,7 @@ class ClassStudentId(SQLModel):
 
 class ClassStudentRead(ClassStudentBase, ClassStudentId):
     created_at: datetime
-    student: Optional[StudentRead] = None
+    student: Optional["StudentRead"] = None
     academic_class: Optional[AcademicClassRead] = None
 
 
@@ -86,3 +85,13 @@ class ClassStudentReadRaw(ClassStudentBase, ClassStudentId):
 class ClassStudentListResponse(SQLModel):
     total: int
     items: list[ClassStudentRead]
+
+
+try:
+    from models.student import StudentRead
+
+    ClassStudentRead.model_rebuild(
+        _types_namespace={"StudentRead": StudentRead}
+    )
+except ImportError:
+    pass

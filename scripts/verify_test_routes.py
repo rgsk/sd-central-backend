@@ -9,7 +9,6 @@ import urllib.request
 DATA_DIR = os.path.join(
     os.path.dirname(os.path.dirname(__file__)),
     "seeders",
-    "academic_classes_students",
     "data",
 )
 

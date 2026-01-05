@@ -257,7 +257,7 @@ def get_or_create_report_card_subject(
     session: Session,
     report_card_subject_id: UUID,
     report_card_id: UUID,
-    subject_id: UUID,
+    academic_class_subject_id: UUID,
     mid_term: int | None,
     notebook: int | None,
     assignment: int | None,
@@ -272,7 +272,8 @@ def get_or_create_report_card_subject(
 
     statement = select(ReportCardSubject).where(
         ReportCardSubject.report_card_id == report_card_id,
-        ReportCardSubject.subject_id == subject_id,
+        ReportCardSubject.academic_class_subject_id
+        == academic_class_subject_id,
     )
     existing = session.exec(statement).first()
     if existing:
@@ -281,7 +282,7 @@ def get_or_create_report_card_subject(
     report_card_subject = ReportCardSubject(
         id=report_card_subject_id,
         report_card_id=report_card_id,
-        subject_id=subject_id,
+        academic_class_subject_id=academic_class_subject_id,
         mid_term=mid_term,
         notebook=notebook,
         assignment=assignment,
@@ -465,7 +466,9 @@ def seed_students(
             session=session,
             report_card_subject_id=report_card_subject_id,
             report_card_id=UUID(raw["report_card_id"]),
-            subject_id=UUID(raw["subject_id"]),
+            academic_class_subject_id=UUID(
+                raw["academic_class_subject_id"]
+            ),
             mid_term=raw.get("mid_term"),
             notebook=raw.get("notebook"),
             assignment=raw.get("assignment"),

@@ -40,25 +40,56 @@ def create_student(
 def list_students(
     session: Session = Depends(get_session),
     academic_session_id: UUID | None = Query(default=None),
+    academic_class_id: UUID | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
-    total = session.exec(select(func.count()).select_from(Student)).one()
-    statement = (
-        select(Student)
-        .order_by(col(Student.created_at).desc())
-        .offset(offset)
-        .limit(limit)
-    )
+    class_student_conditions = []
+    if academic_session_id:
+        class_student_conditions.append(
+            col(ClassStudent.academic_session_id) == academic_session_id
+        )
+    if academic_class_id:
+        class_student_conditions.append(
+            col(ClassStudent.academic_class_id) == academic_class_id
+        )
+
+    if class_student_conditions:
+        total = session.exec(
+            select(func.count(func.distinct(Student.id)))
+            .select_from(Student)
+            .join(
+                ClassStudent, col(ClassStudent.student_id) == col(Student.id)
+            )
+            .where(*class_student_conditions)
+        ).one()
+        statement = (
+            select(Student)
+            .join(ClassStudent, col(ClassStudent.student_id) == col(Student.id))
+            .where(*class_student_conditions)
+            .order_by(col(Student.created_at).desc())
+            .offset(offset)
+            .limit(limit)
+        )
+    else:
+        total = session.exec(
+            select(func.count()).select_from(Student)
+        ).one()
+        statement = (
+            select(Student)
+            .order_by(col(Student.created_at).desc())
+            .offset(offset)
+            .limit(limit)
+        )
     students = session.exec(statement).all()
     items = [StudentRead.model_validate(student) for student in students]
-    if academic_session_id and items:
+    if class_student_conditions and items:
         student_ids = [student.id for student in items if student.id is not None]
         class_students = session.exec(
             select(ClassStudent)
             .where(
                 col(ClassStudent.student_id).in_(student_ids),
-                ClassStudent.academic_session_id == academic_session_id,
+                *class_student_conditions,
             )
             .order_by(col(ClassStudent.created_at).desc())
         ).all()

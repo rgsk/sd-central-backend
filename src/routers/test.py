@@ -7,6 +7,7 @@ from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectRead)
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
+from models.class_student import ClassStudent, ClassStudentReadRaw
 from models.report_card import ReportCard, ReportCardRead
 from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
 from models.student import Student, StudentReadRaw
@@ -18,6 +19,15 @@ router = APIRouter(prefix="/test", tags=["test"])
 @router.get("/students", response_model=list[StudentReadRaw])
 def list_raw_students(session: Session = Depends(get_session)):
     statement = select(Student).order_by(col(Student.created_at).desc())
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get("/class_students", response_model=list[ClassStudentReadRaw])
+def list_raw_class_students(session: Session = Depends(get_session)):
+    statement = select(ClassStudent).order_by(
+        col(ClassStudent.created_at).desc()
+    )
     results = session.exec(statement).all()
     return results
 

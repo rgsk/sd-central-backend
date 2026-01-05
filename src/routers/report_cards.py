@@ -13,7 +13,7 @@ from models.report_card import (ReportCard, ReportCardCreate, ReportCardRead,
                                 ReportCardListResponse, ReportCardReadDetail,
                                 ReportCardUpdate)
 from models.report_card_subject import ReportCardSubject
-from models.student import Student
+from models.class_student import ClassStudent
 
 router = APIRouter(
     prefix="/report-cards",
@@ -26,13 +26,10 @@ def create_report_card(
     report_card: ReportCardCreate,
     session: Session = Depends(get_session),
 ):
-    student = session.get(Student, report_card.student_id)
-    if not student:
-        raise HTTPException(status_code=404, detail="Student not found")
-    if not student.academic_class_id:
+    class_student = session.get(ClassStudent, report_card.class_student_id)
+    if not class_student:
         raise HTTPException(
-            status_code=400,
-            detail="Student must be assigned to a class",
+            status_code=404, detail="Class student not found"
         )
     academic_term = session.get(AcademicTerm, report_card.academic_term_id)
     if not academic_term:
@@ -51,7 +48,7 @@ def create_report_card(
     class_subjects_raw = session.exec(
         select(AcademicClassSubject.id).where(
             AcademicClassSubject.academic_class_id
-            == student.academic_class_id,
+            == class_student.academic_class_id,
             AcademicClassSubject.academic_term_id
             == report_card.academic_term_id,
         )
@@ -95,8 +92,12 @@ def list_report_cards(
 ):
     statement = select(ReportCard)
     count_statement = select(func.count()).select_from(ReportCard)
+    joined_class_student = False
     if student_id:
-        condition = ReportCard.student_id == student_id
+        statement = statement.join(ClassStudent)
+        count_statement = count_statement.join(ClassStudent)
+        joined_class_student = True
+        condition = ClassStudent.student_id == student_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     if academic_term_id:
@@ -110,9 +111,10 @@ def list_report_cards(
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     if academic_class_id:
-        statement = statement.join(Student)
-        count_statement = count_statement.join(Student)
-        condition = Student.academic_class_id == academic_class_id
+        if not joined_class_student:
+            statement = statement.join(ClassStudent)
+            count_statement = count_statement.join(ClassStudent)
+        condition = ClassStudent.academic_class_id == academic_class_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()

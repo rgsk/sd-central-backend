@@ -23,7 +23,7 @@ if PROJECT_SRC not in sys.path:
 
 from lib.env import env  # noqa: E402
 from sqlmodel import SQLModel  # noqa: E402
-from models import academic_class, student  # noqa: F401, E402
+from models import academic_class, class_student, report_card, student  # noqa: F401, E402
 
 # Use SQLModel metadata for autogenerate support.
 target_metadata = SQLModel.metadata

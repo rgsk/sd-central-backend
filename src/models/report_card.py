@@ -8,12 +8,12 @@ from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
 from models.academic_term import AcademicTermRead
-from models.student import StudentRead
+from models.class_student import ClassStudentRead
 
 if TYPE_CHECKING:
     from models.academic_term import AcademicTerm
     from models.report_card_subject import ReportCardSubject
-    from models.student import Student
+    from models.class_student import ClassStudent
 
 
 class ReportCardDB(SQLModel):
@@ -44,8 +44,8 @@ class ReportCardResult(str, Enum):
 
 
 class ReportCardBase(SQLModel):
-    student_id: UUID = Field(
-        foreign_key="students.id",
+    class_student_id: UUID = Field(
+        foreign_key="class_students.id",
         sa_type=PG_UUID(as_uuid=True),
     )
     academic_term_id: UUID = Field(
@@ -64,12 +64,14 @@ class ReportCard(ReportCardBase, ReportCardDB, table=True):
     __tablename__ = "report_cards"  # type: ignore
     __table_args__ = (
         UniqueConstraint(
-            "student_id",
+            "class_student_id",
             "academic_term_id",
-            name="uq_report_card_student_term",
+            name="uq_report_card_class_student_term",
         ),
     )
-    student: Optional["Student"] = Relationship(back_populates="report_cards")
+    class_student: Optional["ClassStudent"] = Relationship(
+        back_populates="report_cards"
+    )
     academic_term: Optional["AcademicTerm"] = Relationship(
         back_populates="report_cards"
     )
@@ -84,7 +86,7 @@ class ReportCardCreate(ReportCardBase):
 
 
 class ReportCardUpdate(SQLModel):
-    student_id: Optional[UUID] = None
+    class_student_id: Optional[UUID] = None
     academic_term_id: Optional[UUID] = None
     work_education_grade: Optional[ReportCardGrade] = None
     art_education_grade: Optional[ReportCardGrade] = None
@@ -103,7 +105,7 @@ class ReportCardRead(ReportCardBase, ReportCardId):
 
 
 class ReportCardReadDetail(ReportCardRead):
-    student: Optional[StudentRead] = None
+    class_student: Optional[ClassStudentRead] = None
     academic_term: Optional[AcademicTermRead] = None
 
 

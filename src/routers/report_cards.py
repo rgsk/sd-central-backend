@@ -1,5 +1,4 @@
 import math
-from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -10,11 +9,12 @@ from sqlmodel import Session, col, select
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm
-from models.report_card import (ReportCard, ReportCardCreate, ReportCardRead,
-                                ReportCardListResponse, ReportCardReadDetail,
-                                ReportCardUpdate)
-from models.report_card_subject import ReportCardSubject
 from models.class_student import ClassStudent
+from models.report_card import (ReportCard, ReportCardCreate,
+                                ReportCardListResponse, ReportCardRead,
+                                ReportCardReadDetail, ReportCardUpdate)
+from models.report_card_subject import ReportCardSubject
+from models.student import Student
 
 router = APIRouter(
     prefix="/report-cards",
@@ -122,8 +122,18 @@ def list_report_cards(
         count_statement = count_statement.where(condition)
         id_statement = id_statement.where(condition)
     total = session.exec(count_statement).one()
+    order_by_clauses = [col(ReportCard.created_at).desc()]
+    if academic_class_id:
+        statement = statement.join(
+            Student,
+            col(Student.id) == col(ClassStudent.student_id),
+        )
+        order_by_clauses = [
+            col(Student.name),
+            col(ReportCard.created_at).desc(),
+        ]
     results = session.exec(
-        statement.order_by(col(ReportCard.created_at).desc())
+        statement.order_by(*order_by_clauses)
         .offset(offset)
         .limit(limit)
     ).all()

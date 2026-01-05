@@ -81,3 +81,8 @@ class ClassStudentRead(ClassStudentBase, ClassStudentId):
 
 class ClassStudentReadRaw(ClassStudentBase, ClassStudentId):
     created_at: datetime
+
+
+class ClassStudentListResponse(SQLModel):
+    total: int
+    items: list[ClassStudentRead]

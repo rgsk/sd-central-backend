@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from enum import Enum
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
@@ -39,6 +39,8 @@ class AcademicTermBase(SQLModel):
         sa_type=PG_UUID(as_uuid=True),
     )
     term_type: AcademicTermType
+    working_days: Optional[int] = None
+    exam_result_date: Optional[date] = None
 
 
 class AcademicTerm(AcademicTermBase, AcademicTermDB, table=True):
@@ -69,6 +71,8 @@ class AcademicTermCreate(AcademicTermBase):
 class AcademicTermUpdate(SQLModel):
     academic_session_id: Optional[UUID] = None
     term_type: Optional[AcademicTermType] = None
+    working_days: Optional[int] = None
+    exam_result_date: Optional[date] = None
 
 
 class AcademicTermId(SQLModel):

@@ -33,6 +33,11 @@ def parse_created_at(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
+def parse_optional_date(value: str | None) -> date | None:
+    if not value:
+        return None
+    return date.fromisoformat(value)
+
 def get_or_create_academic_class(
     session: Session,
     academic_session_id: UUID,
@@ -166,6 +171,8 @@ def get_or_create_academic_term(
     academic_term_id: UUID,
     academic_session_id: UUID,
     term_type: AcademicTermType,
+    working_days: int | None,
+    exam_result_date: date | None,
     created_at: datetime,
 ) -> tuple[AcademicTerm, bool]:
     existing = session.get(AcademicTerm, academic_term_id)
@@ -184,6 +191,8 @@ def get_or_create_academic_term(
         id=academic_term_id,
         academic_session_id=academic_session_id,
         term_type=term_type,
+        working_days=working_days,
+        exam_result_date=exam_result_date,
         created_at=created_at,
     )
     session.add(academic_term)
@@ -405,6 +414,10 @@ def seed_students(
             academic_term_id=academic_term_id,
             academic_session_id=UUID(raw["academic_session_id"]),
             term_type=AcademicTermType(raw["term_type"]),
+            working_days=raw.get("working_days"),
+            exam_result_date=parse_optional_date(
+                raw.get("exam_result_date")
+            ),
             created_at=parse_created_at(raw["created_at"]),
         )
         if created:

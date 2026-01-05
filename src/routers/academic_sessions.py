@@ -7,13 +7,10 @@ from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.academic_session import (
-    AcademicSession,
-    AcademicSessionCreate,
-    AcademicSessionListResponse,
-    AcademicSessionRead,
-    AcademicSessionUpdate,
-)
+from models.academic_session import (AcademicSession, AcademicSessionCreate,
+                                     AcademicSessionListResponse,
+                                     AcademicSessionRead,
+                                     AcademicSessionUpdate)
 
 router = APIRouter(
     prefix="/academic-sessions",
@@ -55,7 +52,10 @@ def list_academic_sessions(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(AcademicSession.created_at).desc())
+        statement.order_by(
+            col(AcademicSession.year),
+            col(AcademicSession.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     ).all()
@@ -70,7 +70,8 @@ def get_academic_session(
 ):
     academic_session = session.get(AcademicSession, academic_session_id)
     if not academic_session:
-        raise HTTPException(status_code=404, detail="Academic session not found")
+        raise HTTPException(
+            status_code=404, detail="Academic session not found")
     return academic_session
 
 
@@ -82,7 +83,8 @@ def partial_update_academic_session(
 ):
     db_academic_session = session.get(AcademicSession, academic_session_id)
     if not db_academic_session:
-        raise HTTPException(status_code=404, detail="Academic session not found")
+        raise HTTPException(
+            status_code=404, detail="Academic session not found")
 
     update_data = academic_session.model_dump(exclude_unset=True)
 
@@ -102,7 +104,8 @@ def delete_academic_session(
 ):
     db_academic_session = session.get(AcademicSession, academic_session_id)
     if not db_academic_session:
-        raise HTTPException(status_code=404, detail="Academic session not found")
+        raise HTTPException(
+            status_code=404, detail="Academic session not found")
 
     session.delete(db_academic_session)
     session.commit()

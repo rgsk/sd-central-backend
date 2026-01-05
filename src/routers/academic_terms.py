@@ -2,14 +2,20 @@ from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func
+from sqlalchemy import case, func
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.academic_term import (AcademicTerm, AcademicTermCreate,
-                                  AcademicTermListResponse, AcademicTermRead,
-                                  AcademicTermUpdate)
+from models.academic_term import (
+    AcademicTerm,
+    AcademicTermCreate,
+    AcademicTermListResponse,
+    AcademicTermRead,
+    AcademicTermType,
+    AcademicTermUpdate,
+)
+from models.academic_session import AcademicSession
 
 router = APIRouter(
     prefix="/academic-terms",
@@ -36,6 +42,23 @@ def create_academic_term(
     return db_academic_term
 
 
+term_rank = case(
+    (
+        col(AcademicTerm.term_type) == AcademicTermType.QUARTERLY,
+        0,
+    ),
+    (
+        col(AcademicTerm.term_type) == AcademicTermType.HALF_YEARLY,
+        1,
+    ),
+    (
+        col(AcademicTerm.term_type) == AcademicTermType.ANNUAL,
+        2,
+    ),
+    else_=3,
+)
+
+
 @router.get("", response_model=AcademicTermListResponse)
 def list_academic_terms(
     academic_session_id: UUID | None = Query(default=None),
@@ -43,7 +66,10 @@ def list_academic_terms(
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
-    statement = select(AcademicTerm)
+    statement = select(AcademicTerm).join(
+        AcademicSession,
+        col(AcademicSession.id) == col(AcademicTerm.academic_session_id),
+    )
     count_statement = select(func.count()).select_from(AcademicTerm)
     if academic_session_id:
         condition = AcademicTerm.academic_session_id == academic_session_id
@@ -51,7 +77,11 @@ def list_academic_terms(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(AcademicTerm.created_at).desc())
+        statement.order_by(
+            col(AcademicSession.year),
+            term_rank,
+            col(AcademicTerm.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     ).all()

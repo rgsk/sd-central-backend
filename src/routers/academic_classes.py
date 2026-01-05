@@ -49,6 +49,11 @@ grade_order = [
     "XI",
     "XII",
 ]
+grade_rank = case(
+    {grade: index for index, grade in enumerate(grade_order)},
+    value=col(AcademicClass.grade),
+    else_=len(grade_order),
+)
 
 
 @router.get("", response_model=AcademicClassListResponse)
@@ -58,12 +63,6 @@ def list_academic_classes(
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
-
-    grade_rank = case(
-        {grade: index for index, grade in enumerate(grade_order)},
-        value=col(AcademicClass.grade),
-        else_=len(grade_order),
-    )
     statement = select(AcademicClass).join(
         AcademicSession,
         col(AcademicSession.id) == col(AcademicClass.academic_session_id),

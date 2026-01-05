@@ -44,7 +44,10 @@ def list_subjects(
     total = session.exec(select(func.count()).select_from(Subject)).one()
     statement = (
         select(Subject)
-        .order_by(col(Subject.created_at).desc())
+        .order_by(
+            col(Subject.name),
+            col(Subject.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     )

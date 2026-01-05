@@ -35,6 +35,11 @@ def create_class_student(
         raise HTTPException(
             status_code=404, detail="Academic class not found"
         )
+    if academic_class.academic_session_id != class_student.academic_session_id:
+        raise HTTPException(
+            status_code=400,
+            detail="Academic session does not match the class session",
+        )
 
     db_class_student = ClassStudent(**class_student.model_dump())
     session.add(db_class_student)
@@ -108,6 +113,7 @@ def partial_update_class_student(
         student = session.get(Student, update_data["student_id"])
         if not student:
             raise HTTPException(status_code=404, detail="Student not found")
+    academic_class = None
     if "academic_class_id" in update_data:
         academic_class = session.get(
             AcademicClass, update_data["academic_class_id"]
@@ -115,6 +121,18 @@ def partial_update_class_student(
         if not academic_class:
             raise HTTPException(
                 status_code=404, detail="Academic class not found"
+            )
+    if "academic_session_id" in update_data or academic_class is not None:
+        next_session_id = update_data.get(
+            "academic_session_id", db_class_student.academic_session_id
+        )
+        next_class = academic_class or session.get(
+            AcademicClass, db_class_student.academic_class_id
+        )
+        if next_class and next_class.academic_session_id != next_session_id:
+            raise HTTPException(
+                status_code=400,
+                detail="Academic session does not match the class session",
             )
 
     for key, value in update_data.items():

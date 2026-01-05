@@ -130,6 +130,7 @@ def get_or_create_class_student(
     session: Session,
     class_student_id: UUID,
     student_id: UUID,
+    academic_session_id: UUID,
     academic_class_id: UUID,
     image: str | None,
     created_at: datetime,
@@ -149,6 +150,7 @@ def get_or_create_class_student(
     class_student = ClassStudent(
         id=class_student_id,
         student_id=student_id,
+        academic_session_id=academic_session_id,
         academic_class_id=academic_class_id,
         image=image,
         created_at=created_at,
@@ -480,6 +482,7 @@ def seed_students(
             session=session,
             class_student_id=class_student_id,
             student_id=UUID(raw["student_id"]),
+            academic_session_id=UUID(raw["academic_session_id"]),
             academic_class_id=UUID(raw["academic_class_id"]),
             image=raw.get("image"),
             created_at=parse_created_at(raw["created_at"]),

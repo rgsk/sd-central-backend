@@ -7,7 +7,6 @@ from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.academic_class import AcademicClass
 from models.class_student import ClassStudent, ClassStudentRead
 from models.student import (Student, StudentCreate, StudentListResponse,
                             StudentRead, StudentUpdate)
@@ -57,10 +56,9 @@ def list_students(
         student_ids = [student.id for student in items if student.id is not None]
         class_students = session.exec(
             select(ClassStudent)
-            .join(AcademicClass)
             .where(
                 col(ClassStudent.student_id).in_(student_ids),
-                AcademicClass.academic_session_id == academic_session_id,
+                ClassStudent.academic_session_id == academic_session_id,
             )
             .order_by(col(ClassStudent.created_at).desc())
         ).all()
@@ -96,10 +94,9 @@ def get_student(
     if academic_session_id:
         class_student = session.exec(
             select(ClassStudent)
-            .join(AcademicClass)
             .where(
                 ClassStudent.student_id == student_id,
-                AcademicClass.academic_session_id == academic_session_id,
+                ClassStudent.academic_session_id == academic_session_id,
             )
             .order_by(col(ClassStudent.created_at).desc())
         ).first()

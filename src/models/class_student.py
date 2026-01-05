@@ -31,6 +31,10 @@ class ClassStudentBase(SQLModel):
         foreign_key="students.id",
         sa_type=PG_UUID(as_uuid=True),
     )
+    academic_session_id: UUID = Field(
+        foreign_key="academic_sessions.id",
+        sa_type=PG_UUID(as_uuid=True),
+    )
     academic_class_id: UUID = Field(
         foreign_key="academic_classes.id",
         sa_type=PG_UUID(as_uuid=True),
@@ -43,8 +47,8 @@ class ClassStudent(ClassStudentBase, ClassStudentDB, table=True):
     __table_args__ = (
         UniqueConstraint(
             "student_id",
-            "academic_class_id",
-            name="uq_class_student_class",
+            "academic_session_id",
+            name="uq_class_student_session",
         ),
     )
     student: Optional["Student"] = Relationship(

@@ -48,8 +48,8 @@ def create_report_card(
             status_code=409, detail="Report card already exists"
         )
 
-    class_subjects = session.exec(
-        select(AcademicClassSubject.subject_id).where(
+    class_subjects_raw = session.exec(
+        select(AcademicClassSubject.id).where(
             AcademicClassSubject.academic_class_id
             == student.academic_class_id,
             AcademicClassSubject.academic_term_id
@@ -60,11 +60,16 @@ def create_report_card(
         raise HTTPException(
             status_code=500, detail="Report card ID was not generated"
         )
-    for subject_id in class_subjects:
+    class_subject_ids = [
+        class_subject_id
+        for class_subject_id in class_subjects_raw
+        if class_subject_id is not None
+    ]
+    for class_subject_id in class_subject_ids:
         session.add(
             ReportCardSubject(
                 report_card_id=db_report_card.id,
-                subject_id=subject_id,
+                academic_class_subject_id=class_subject_id,
             )
         )
     try:

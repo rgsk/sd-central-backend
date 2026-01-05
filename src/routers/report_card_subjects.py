@@ -39,7 +39,7 @@ def create_report_card_subject(
 @router.get("", response_model=ReportCardSubjectListResponse)
 def list_report_card_subjects(
     report_card_id: UUID | None = Query(default=None),
-    subject_id: UUID | None = Query(default=None),
+    academic_class_subject_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
@@ -50,8 +50,11 @@ def list_report_card_subjects(
         condition = ReportCardSubject.report_card_id == report_card_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
-    if subject_id:
-        condition = ReportCardSubject.subject_id == subject_id
+    if academic_class_subject_id:
+        condition = (
+            ReportCardSubject.academic_class_subject_id
+            == academic_class_subject_id
+        )
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
@@ -105,72 +108,65 @@ def partial_update_report_card_subject(
     # update highest and average marks for class subject
 
     report_card = session.get(
-        ReportCard, db_report_card_subject.report_card_id)
+        ReportCard, db_report_card_subject.report_card_id
+    )
 
     if report_card:
-        student = session.get(Student, report_card.student_id)
-        academic_class_id = student.academic_class_id if student else None
-        if academic_class_id:
-            class_subject = session.exec(
-                select(AcademicClassSubject).where(
-                    AcademicClassSubject.academic_class_id
-                    == academic_class_id,
-                    AcademicClassSubject.academic_term_id
-                    == report_card.academic_term_id,
-                    AcademicClassSubject.subject_id
-                    == db_report_card_subject.subject_id,
+        class_subject = session.get(
+            AcademicClassSubject,
+            db_report_card_subject.academic_class_subject_id,
+        )
+        if class_subject:
+            academic_term = session.get(
+                AcademicTerm, report_card.academic_term_id
+            )
+            use_final_only = (
+                academic_term is not None
+                and academic_term.term_type == AcademicTermType.QUARTERLY
+            ) or class_subject.is_additional
+            if use_final_only:
+                total_expr = func.coalesce(
+                    ReportCardSubject.final_marks, 0
                 )
-            ).one_or_none()
-            if class_subject:
-                academic_term = session.get(
-                    AcademicTerm, report_card.academic_term_id
+            else:
+                total_expr = (
+                    func.coalesce(ReportCardSubject.mid_term, 0)
+                    + func.coalesce(ReportCardSubject.notebook, 0)
+                    + func.coalesce(ReportCardSubject.assignment, 0)
+                    + func.coalesce(ReportCardSubject.class_test, 0)
+                    + func.coalesce(ReportCardSubject.final_term, 0)
                 )
-                use_final_only = (
-                    academic_term is not None
-                    and academic_term.term_type == AcademicTermType.QUARTERLY
-                ) or class_subject.is_additional
-                if use_final_only:
-                    total_expr = func.coalesce(
-                        ReportCardSubject.final_marks, 0
-                    )
-                else:
-                    total_expr = (
-                        func.coalesce(ReportCardSubject.mid_term, 0)
-                        + func.coalesce(ReportCardSubject.notebook, 0)
-                        + func.coalesce(ReportCardSubject.assignment, 0)
-                        + func.coalesce(ReportCardSubject.class_test, 0)
-                        + func.coalesce(ReportCardSubject.final_term, 0)
-                    )
 
-                max_total, avg_total = session.exec(
-                    select(func.max(total_expr), func.avg(total_expr))
-                    .select_from(ReportCardSubject)
-                    .join(
-                        ReportCard,
-                        col(ReportCard.id)
-                        == col(ReportCardSubject.report_card_id),
-                    )
-                    .join(
-                        Student,
-                        col(Student.id) == col(ReportCard.student_id),
-                    )
-                    .where(
-                        ReportCardSubject.subject_id
-                        == db_report_card_subject.subject_id,
-                        ReportCard.academic_term_id
-                        == report_card.academic_term_id,
-                        Student.academic_class_id == academic_class_id,
-                    )
-                ).one()
+            max_total, avg_total = session.exec(
+                select(func.max(total_expr), func.avg(total_expr))
+                .select_from(ReportCardSubject)
+                .join(
+                    ReportCard,
+                    col(ReportCard.id)
+                    == col(ReportCardSubject.report_card_id),
+                )
+                .join(
+                    Student,
+                    col(Student.id) == col(ReportCard.student_id),
+                )
+                .where(
+                    ReportCardSubject.academic_class_subject_id
+                    == db_report_card_subject.academic_class_subject_id,
+                    ReportCard.academic_term_id
+                    == class_subject.academic_term_id,
+                    Student.academic_class_id
+                    == class_subject.academic_class_id,
+                )
+            ).one()
 
-                class_subject.highest_marks = (
-                    int(max_total) if max_total is not None else None
-                )
-                class_subject.average_marks = (
-                    int(round(avg_total)) if avg_total is not None else None
-                )
-                session.add(class_subject)
-                session.commit()
+            class_subject.highest_marks = (
+                int(max_total) if max_total is not None else None
+            )
+            class_subject.average_marks = (
+                int(round(avg_total)) if avg_total is not None else None
+            )
+            session.add(class_subject)
+            session.commit()
 
     return db_report_card_subject
 

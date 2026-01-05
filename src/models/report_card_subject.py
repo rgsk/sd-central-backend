@@ -2,14 +2,15 @@ from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
-from sqlalchemy import UniqueConstraint
+from sqlalchemy import Column, ForeignKey, UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
+    from models.academic_class_subject import AcademicClassSubject
     from models.report_card import ReportCard
 
-from models.subject import Subject, SubjectRead
+from models.academic_class_subject import AcademicClassSubjectReadWithSubject
 
 
 class ReportCardSubjectDB(SQLModel):
@@ -29,9 +30,15 @@ class ReportCardSubjectBase(SQLModel):
         foreign_key="report_cards.id",
         sa_type=PG_UUID(as_uuid=True),
     )
-    subject_id: UUID = Field(
-        foreign_key="subjects.id",
-        sa_type=PG_UUID(as_uuid=True),
+    academic_class_subject_id: UUID = Field(
+        sa_column=Column(
+            PG_UUID(as_uuid=True),
+            ForeignKey(
+                "academic_class_subjects.id",
+                ondelete="CASCADE",
+            ),
+            nullable=False,
+        )
     )
     mid_term: Optional[int] = None
     notebook: Optional[int] = None
@@ -48,14 +55,14 @@ class ReportCardSubject(
     __table_args__ = (
         UniqueConstraint(
             "report_card_id",
-            "subject_id",
+            "academic_class_subject_id",
             name="uq_report_card_subject",
         ),
     )
     report_card: Optional["ReportCard"] = Relationship(
         back_populates="report_card_subjects"
     )
-    subject: Optional["Subject"] = Relationship(
+    academic_class_subject: Optional["AcademicClassSubject"] = Relationship(
         back_populates="report_card_subjects"
     )
     pass
@@ -67,7 +74,7 @@ class ReportCardSubjectCreate(ReportCardSubjectBase):
 
 class ReportCardSubjectUpdate(SQLModel):
     report_card_id: Optional[UUID] = None
-    subject_id: Optional[UUID] = None
+    academic_class_subject_id: Optional[UUID] = None
     mid_term: Optional[int] = None
     notebook: Optional[int] = None
     assignment: Optional[int] = None
@@ -84,7 +91,9 @@ class ReportCardSubjectRead(
     ReportCardSubjectBase, ReportCardSubjectId
 ):
     created_at: datetime
-    subject: Optional[SubjectRead] = None
+    academic_class_subject: Optional[
+        AcademicClassSubjectReadWithSubject
+    ] = None
 
 
 class ReportCardSubjectListResponse(SQLModel):

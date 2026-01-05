@@ -40,6 +40,11 @@ def create_academic_class_subject(
             detail="Subject already exists for this class",
         )
     session.refresh(db_class_subject)
+    if db_class_subject.id is None:
+        raise HTTPException(
+            status_code=500,
+            detail="Academic class subject ID was not generated",
+        )
     report_card_ids_raw = session.exec(
         select(ReportCard.id)
         .join(Student, col(Student.id) == col(ReportCard.student_id))
@@ -58,8 +63,8 @@ def create_academic_class_subject(
     if report_card_ids:
         existing_report_card_ids_raw = session.exec(
             select(ReportCardSubject.report_card_id).where(
-                ReportCardSubject.subject_id
-                == academic_class_subject.subject_id,
+                ReportCardSubject.academic_class_subject_id
+                == db_class_subject.id,
                 col(ReportCardSubject.report_card_id).in_(report_card_ids),
             )
         ).all()
@@ -75,7 +80,7 @@ def create_academic_class_subject(
             new_subjects = [
                 ReportCardSubject(
                     report_card_id=report_card_id,
-                    subject_id=academic_class_subject.subject_id,
+                    academic_class_subject_id=db_class_subject.id,
                 )
                 for report_card_id in missing_report_card_ids
             ]
@@ -188,29 +193,6 @@ def delete_academic_class_subject(
             status_code=404,
             detail="Academic class subject not found",
         )
-    report_card_ids_raw = session.exec(
-        select(ReportCard.id)
-        .join(Student, col(Student.id) == col(ReportCard.student_id))
-        .where(
-            Student.academic_class_id
-            == db_class_subject.academic_class_id,
-            ReportCard.academic_term_id == db_class_subject.academic_term_id,
-        )
-    ).all()
-    report_card_ids = [
-        report_card_id
-        for report_card_id in report_card_ids_raw
-        if report_card_id is not None
-    ]
-    if report_card_ids:
-        subjects_to_remove = session.exec(
-            select(ReportCardSubject).where(
-                ReportCardSubject.subject_id == db_class_subject.subject_id,
-                col(ReportCardSubject.report_card_id).in_(report_card_ids),
-            )
-        ).all()
-        for subject in subjects_to_remove:
-            session.delete(subject)
     session.delete(db_class_subject)
     session.commit()
     return {"message": "Academic class subject deleted"}

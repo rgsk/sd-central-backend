@@ -3,8 +3,11 @@
 help: ## Show available commands
 	@awk -F':.*## ' '/^[a-zA-Z0-9_%-]+:.*## /{printf "%-20s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-dev: ## Run FastAPI dev server
+dev: ## Run FastAPI app in development mode
 	fastapi dev src/main.py
+
+run: ## Run FastAPI app in production mode
+	fastapi run src/main.py
 
 reset_db: ## Clear and restart Postgres
 	sh ./scripts/clear_postgres.sh

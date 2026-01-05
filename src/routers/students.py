@@ -1,4 +1,3 @@
-from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -63,11 +62,17 @@ def list_students(
             )
             .where(*class_student_conditions)
         ).one()
+        order_by_clauses = [col(Student.created_at).desc()]
+        if academic_class_id:
+            order_by_clauses = [
+                col(Student.name),
+                col(Student.created_at).desc(),
+            ]
         statement = (
             select(Student)
             .join(ClassStudent, col(ClassStudent.student_id) == col(Student.id))
             .where(*class_student_conditions)
-            .order_by(col(Student.created_at).desc())
+            .order_by(*order_by_clauses)
             .offset(offset)
             .limit(limit)
         )
@@ -84,7 +89,9 @@ def list_students(
     students = session.exec(statement).all()
     items = [StudentRead.model_validate(student) for student in students]
     if class_student_conditions and items:
-        student_ids = [student.id for student in items if student.id is not None]
+        student_ids = [
+            student.id for student in items if student.id is not None
+        ]
         class_students = session.exec(
             select(ClassStudent)
             .where(

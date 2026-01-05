@@ -2,18 +2,16 @@ from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func
+from sqlalchemy import case, func
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.academic_class import (
-    AcademicClass,
-    AcademicClassCreate,
-    AcademicClassListResponse,
-    AcademicClassRead,
-    AcademicClassReadWithSubjects,
-    AcademicClassUpdate,
-)
+from models.academic_class import (AcademicClass, AcademicClassCreate,
+                                   AcademicClassListResponse,
+                                   AcademicClassRead,
+                                   AcademicClassReadWithSubjects,
+                                   AcademicClassUpdate)
+from models.academic_session import AcademicSession
 
 router = APIRouter(
     prefix="/academic-classes",
@@ -33,6 +31,26 @@ def create_academic_class(
     return db_academic_class
 
 
+grade_order = [
+    "PRE-NURSERY",
+    "NURSERY",
+    "LKG",
+    "UKG",
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI",
+    "VII",
+    "VIII",
+    "IX",
+    "X",
+    "XI",
+    "XII",
+]
+
+
 @router.get("", response_model=AcademicClassListResponse)
 def list_academic_classes(
     academic_session_id: UUID | None = Query(default=None),
@@ -40,7 +58,16 @@ def list_academic_classes(
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
-    statement = select(AcademicClass)
+
+    grade_rank = case(
+        {grade: index for index, grade in enumerate(grade_order)},
+        value=col(AcademicClass.grade),
+        else_=len(grade_order),
+    )
+    statement = select(AcademicClass).join(
+        AcademicSession,
+        col(AcademicSession.id) == col(AcademicClass.academic_session_id),
+    )
     count_statement = select(func.count()).select_from(AcademicClass)
     if academic_session_id:
         condition = AcademicClass.academic_session_id == academic_session_id
@@ -48,7 +75,12 @@ def list_academic_classes(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(AcademicClass.created_at).desc())
+        statement.order_by(
+            col(AcademicSession.year),
+            grade_rank,
+            col(AcademicClass.section),
+            col(AcademicClass.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     ).all()

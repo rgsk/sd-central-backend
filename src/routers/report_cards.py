@@ -83,7 +83,6 @@ def create_report_card(
 
 @router.get("", response_model=ReportCardListResponse)
 def list_report_cards(
-    student_id: UUID | None = Query(default=None),
     academic_term_id: UUID | None = Query(default=None),
     academic_session_id: UUID | None = Query(default=None),
     academic_class_id: UUID | None = Query(default=None),
@@ -95,7 +94,7 @@ def list_report_cards(
     count_statement = select(func.count()).select_from(ReportCard)
     id_statement = select(ReportCard.id).distinct()
 
-    join_class_student = student_id is not None or academic_class_id is not None
+    join_class_student = academic_class_id is not None
     join_academic_term = academic_session_id is not None
 
     if join_class_student:
@@ -107,11 +106,6 @@ def list_report_cards(
         count_statement = count_statement.join(AcademicTerm)
         id_statement = id_statement.join(AcademicTerm)
 
-    if student_id:
-        condition = ClassStudent.student_id == student_id
-        statement = statement.where(condition)
-        count_statement = count_statement.where(condition)
-        id_statement = id_statement.where(condition)
     if academic_term_id:
         condition = ReportCard.academic_term_id == academic_term_id
         statement = statement.where(condition)

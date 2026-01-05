@@ -11,7 +11,7 @@ reset_db: ## Clear and restart Postgres
 	sh ./scripts/restart_postgres.sh
 
 seed_db: ## Seed db with seed json files
-	python seeders/academic_classes_students/seed_academic_classes_students.py
+	python seeders/seed.py
 
 populate_seed: ## Populate seed json files with reponse from test routes
 	python scripts/populate_test_routes.py

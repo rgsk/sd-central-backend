@@ -9,15 +9,15 @@ from uuid import UUID
 from sqlmodel import Session, select
 
 SCRIPT_DIR = os.path.dirname(__file__)
-SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "src"))
+SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "src"))
 sys.path.append(SRC_DIR)
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 
 from db import engine  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
+from models.academic_class_subject import AcademicClassSubject  # noqa: E402
 from models.academic_session import AcademicSession  # noqa: E402
 from models.academic_term import AcademicTerm, AcademicTermType  # noqa: E402
-from models.academic_class_subject import AcademicClassSubject  # noqa: E402
 from models.class_student import ClassStudent  # noqa: E402
 from models.report_card import ReportCard  # noqa: E402
 from models.report_card_subject import ReportCardSubject  # noqa: E402
@@ -29,6 +29,7 @@ def load_json(path: str) -> list[dict]:
     with open(path, "r", encoding="utf-8") as handle:
         return json.load(handle)
 
+
 def parse_created_at(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
@@ -37,6 +38,7 @@ def parse_optional_date(value: str | None) -> date | None:
     if not value:
         return None
     return date.fromisoformat(value)
+
 
 def get_or_create_academic_class(
     session: Session,

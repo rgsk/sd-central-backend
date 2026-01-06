@@ -38,12 +38,20 @@ def create_subject(
 @router.get("", response_model=SubjectListResponse)
 def list_subjects(
     session: Session = Depends(get_session),
+    search: str | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
-    total = session.exec(select(func.count()).select_from(Subject)).one()
+    search_value = search.strip() if search else ""
+    statement = select(Subject)
+    count_statement = select(func.count()).select_from(Subject)
+    if search_value:
+        condition = col(Subject.name).ilike(f"%{search_value}%")
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    total = session.exec(count_statement).one()
     statement = (
-        select(Subject)
+        statement
         .order_by(
             col(Subject.name),
             col(Subject.created_at).desc(),

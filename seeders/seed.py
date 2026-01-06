@@ -469,7 +469,7 @@ def seed_students(
             highest_marks=raw.get("highest_marks"),
             average_marks=raw.get("average_marks"),
             is_additional=raw.get("is_additional", False),
-            position=raw.get("position", 1),
+            position=raw["position"],
             created_at=parse_created_at(raw["created_at"]),
         )
         if created:

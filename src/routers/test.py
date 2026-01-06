@@ -6,10 +6,11 @@ from models.academic_class import AcademicClass, AcademicClassReadRaw
 from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectRead)
 from models.academic_session import AcademicSession, AcademicSessionRead
-from models.academic_term import AcademicTerm, AcademicTermRead
+from models.academic_term import AcademicTerm, AcademicTermReadRaw
 from models.enrollment import Enrollment, EnrollmentReadRaw
 from models.report_card import ReportCard, ReportCardRead
-from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
+from models.report_card_subject import (ReportCardSubject,
+                                        ReportCardSubjectReadRaw)
 from models.student import Student, StudentReadRaw
 from models.subject import Subject, SubjectRead
 
@@ -48,7 +49,7 @@ def list_raw_academic_classes(session: Session = Depends(get_session)):
     return results
 
 
-@router.get("/academic_terms", response_model=list[AcademicTermRead])
+@router.get("/academic_terms", response_model=list[AcademicTermReadRaw])
 def list_raw_academic_terms(session: Session = Depends(get_session)):
     statement = select(AcademicTerm).order_by(
         col(AcademicTerm.created_at).desc())
@@ -86,7 +87,7 @@ def list_raw_report_cards(session: Session = Depends(get_session)):
 
 @router.get(
     "/report_card_subjects",
-    response_model=list[ReportCardSubjectRead],
+    response_model=list[ReportCardSubjectReadRaw],
 )
 def list_raw_report_card_subjects(
     session: Session = Depends(get_session),

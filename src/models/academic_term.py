@@ -84,6 +84,10 @@ class AcademicTermRead(AcademicTermBase, AcademicTermId):
     academic_session: Optional["AcademicSessionRead"] = None
 
 
+class AcademicTermReadRaw(AcademicTermBase, AcademicTermId):
+    created_at: datetime
+
+
 class AcademicTermListResponse(SQLModel):
     total: int
     items: list[AcademicTermRead]

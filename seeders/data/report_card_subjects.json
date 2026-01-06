@@ -9,22 +9,7 @@
     "class_test": 15,
     "final_term": 34,
     "final_marks": null,
-    "created_at": "2026-01-02T07:37:30.966803",
-    "academic_class_subject": {
-      "id": "69aac4ac-c539-4cfc-a3e1-27bfbe2d7bf2",
-      "academic_class_id": "18af74b7-eae7-46e3-a709-224dbedb6fb1",
-      "subject_id": "b5d48674-8c8e-4eb2-b755-44769b85ac6a",
-      "academic_term_id": "3bf7c839-3a72-44da-82fd-9b85e4179ea7",
-      "highest_marks": 97,
-      "average_marks": 76,
-      "is_additional": false,
-      "created_at": "2026-01-02T07:37:30.926781",
-      "subject": {
-        "id": "b5d48674-8c8e-4eb2-b755-44769b85ac6a",
-        "name": "English",
-        "created_at": "2026-01-02T07:37:30.905057"
-      }
-    }
+    "created_at": "2026-01-02T07:37:30.966803"
   },
   {
     "id": "ff354c3b-1e41-48b6-9fa5-33a6b0e1b5b3",
@@ -36,22 +21,7 @@
     "class_test": 14,
     "final_term": 32,
     "final_marks": null,
-    "created_at": "2026-01-02T07:37:30.964395",
-    "academic_class_subject": {
-      "id": "9b3f7c06-e0d9-4f64-a86c-7e383e4ec6a2",
-      "academic_class_id": "18af74b7-eae7-46e3-a709-224dbedb6fb1",
-      "subject_id": "3b5e445d-e536-4dbc-9304-840e1e687f62",
-      "academic_term_id": "3bf7c839-3a72-44da-82fd-9b85e4179ea7",
-      "highest_marks": 94,
-      "average_marks": 70,
-      "is_additional": false,
-      "created_at": "2026-01-02T07:37:30.924042",
-      "subject": {
-        "id": "3b5e445d-e536-4dbc-9304-840e1e687f62",
-        "name": "Hindi",
-        "created_at": "2026-01-02T07:37:30.902545"
-      }
-    }
+    "created_at": "2026-01-02T07:37:30.964395"
   },
   {
     "id": "6207d335-4e2d-4412-bc8f-52ca19236e9d",
@@ -63,22 +33,7 @@
     "class_test": 15,
     "final_term": 33,
     "final_marks": null,
-    "created_at": "2026-01-02T07:37:30.962220",
-    "academic_class_subject": {
-      "id": "fef58726-5702-4012-a23c-1e8d520e9ed6",
-      "academic_class_id": "18af74b7-eae7-46e3-a709-224dbedb6fb1",
-      "subject_id": "ad0b793b-0232-4848-a950-c40b7615c8e5",
-      "academic_term_id": "3bf7c839-3a72-44da-82fd-9b85e4179ea7",
-      "highest_marks": 100,
-      "average_marks": 82,
-      "is_additional": false,
-      "created_at": "2026-01-02T07:37:30.921661",
-      "subject": {
-        "id": "ad0b793b-0232-4848-a950-c40b7615c8e5",
-        "name": "Math",
-        "created_at": "2026-01-02T07:37:30.899761"
-      }
-    }
+    "created_at": "2026-01-02T07:37:30.962220"
   },
   {
     "id": "83379fab-3d45-4f3e-9ec8-ce927ec0b9ed",
@@ -90,22 +45,7 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 42,
-    "created_at": "2026-01-02T07:37:30.959960",
-    "academic_class_subject": {
-      "id": "c2504c64-7c96-42a9-be08-e18e557ee97d",
-      "academic_class_id": "c9fdf83d-6170-411e-b507-cda4dd9f31cd",
-      "subject_id": "3bcb4de6-6b3b-41b2-9eeb-ba679886a2cf",
-      "academic_term_id": "3bf7c839-3a72-44da-82fd-9b85e4179ea7",
-      "highest_marks": null,
-      "average_marks": null,
-      "is_additional": true,
-      "created_at": "2026-01-02T07:37:30.919500",
-      "subject": {
-        "id": "3bcb4de6-6b3b-41b2-9eeb-ba679886a2cf",
-        "name": "Art",
-        "created_at": "2026-01-02T07:37:30.907601"
-      }
-    }
+    "created_at": "2026-01-02T07:37:30.959960"
   },
   {
     "id": "f5f1e280-6b9b-4dab-9baf-fd54da989eb4",
@@ -117,22 +57,7 @@
     "class_test": 17,
     "final_term": 36,
     "final_marks": null,
-    "created_at": "2026-01-02T07:37:30.957797",
-    "academic_class_subject": {
-      "id": "ee5039d1-5b93-4c03-8996-3e5ca618bade",
-      "academic_class_id": "c9fdf83d-6170-411e-b507-cda4dd9f31cd",
-      "subject_id": "b5d48674-8c8e-4eb2-b755-44769b85ac6a",
-      "academic_term_id": "3bf7c839-3a72-44da-82fd-9b85e4179ea7",
-      "highest_marks": 98,
-      "average_marks": 75,
-      "is_additional": false,
-      "created_at": "2026-01-02T07:37:30.917307",
-      "subject": {
-        "id": "b5d48674-8c8e-4eb2-b755-44769b85ac6a",
-        "name": "English",
-        "created_at": "2026-01-02T07:37:30.905057"
-      }
-    }
+    "created_at": "2026-01-02T07:37:30.957797"
   },
   {
     "id": "dc178db8-4c79-4ecb-acdf-7f2dbc7f32cd",
@@ -144,22 +69,7 @@
     "class_test": 15,
     "final_term": 34,
     "final_marks": null,
-    "created_at": "2026-01-02T07:37:30.955629",
-    "academic_class_subject": {
-      "id": "73d17f54-6084-4839-905c-f27917a53aea",
-      "academic_class_id": "c9fdf83d-6170-411e-b507-cda4dd9f31cd",
-      "subject_id": "3b5e445d-e536-4dbc-9304-840e1e687f62",
-      "academic_term_id": "3bf7c839-3a72-44da-82fd-9b85e4179ea7",
-      "highest_marks": 95,
-      "average_marks": 72,
-      "is_additional": false,
-      "created_at": "2026-01-02T07:37:30.915065",
-      "subject": {
-        "id": "3b5e445d-e536-4dbc-9304-840e1e687f62",
-        "name": "Hindi",
-        "created_at": "2026-01-02T07:37:30.902545"
-      }
-    }
+    "created_at": "2026-01-02T07:37:30.955629"
   },
   {
     "id": "89e2da66-4b9b-4f91-84c5-2a26efca5bb9",
@@ -171,21 +81,6 @@
     "class_test": 16,
     "final_term": 35,
     "final_marks": null,
-    "created_at": "2026-01-02T07:37:30.952679",
-    "academic_class_subject": {
-      "id": "3a42a14e-48e3-48b1-91bf-86d1982c1f5c",
-      "academic_class_id": "c9fdf83d-6170-411e-b507-cda4dd9f31cd",
-      "subject_id": "ad0b793b-0232-4848-a950-c40b7615c8e5",
-      "academic_term_id": "3bf7c839-3a72-44da-82fd-9b85e4179ea7",
-      "highest_marks": 100,
-      "average_marks": 78,
-      "is_additional": false,
-      "created_at": "2026-01-02T07:37:30.911767",
-      "subject": {
-        "id": "ad0b793b-0232-4848-a950-c40b7615c8e5",
-        "name": "Math",
-        "created_at": "2026-01-02T07:37:30.899761"
-      }
-    }
+    "created_at": "2026-01-02T07:37:30.952679"
   }
 ]

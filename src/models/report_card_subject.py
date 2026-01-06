@@ -96,6 +96,12 @@ class ReportCardSubjectRead(
     ] = None
 
 
+class ReportCardSubjectReadRaw(
+    ReportCardSubjectBase, ReportCardSubjectId
+):
+    created_at: datetime
+
+
 class ReportCardSubjectListResponse(SQLModel):
     total: int
     items: list[ReportCardSubjectRead]

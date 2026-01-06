@@ -43,7 +43,7 @@ class AcademicClassSubjectBase(SQLModel):
     highest_marks: Optional[int] = None
     average_marks: Optional[int] = None
     is_additional: bool = False
-    position: int = Field(default=1, ge=1)
+    position: int = Field(ge=1)
 
 
 class AcademicClassSubject(
@@ -56,6 +56,13 @@ class AcademicClassSubject(
             "subject_id",
             "academic_term_id",
             name="uq_class_subject_term",
+        ),
+        UniqueConstraint(
+            "academic_class_id",
+            "academic_term_id",
+            "is_additional",
+            "position",
+            name="uq_class_subject_group_position",
         ),
     )
     academic_class: Optional["AcademicClass"] = Relationship(

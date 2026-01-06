@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func
+from sqlalchemy import func, or_
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
@@ -40,10 +40,12 @@ def list_students(
     session: Session = Depends(get_session),
     academic_session_id: UUID | None = Query(default=None),
     academic_class_id: UUID | None = Query(default=None),
+    search: str | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
     enrollment_conditions = []
+    student_conditions = []
     if academic_session_id:
         enrollment_conditions.append(
             col(Enrollment.academic_session_id) == academic_session_id
@@ -51,6 +53,14 @@ def list_students(
     if academic_class_id:
         enrollment_conditions.append(
             col(Enrollment.academic_class_id) == academic_class_id
+        )
+    if search and search.strip():
+        pattern = f"%{search.strip()}%"
+        student_conditions.append(
+            or_(
+                col(Student.registration_no).ilike(pattern),
+                col(Student.name).ilike(pattern),
+            )
         )
 
     if enrollment_conditions:
@@ -60,7 +70,7 @@ def list_students(
             .join(
                 Enrollment, col(Enrollment.student_id) == col(Student.id)
             )
-            .where(*enrollment_conditions)
+            .where(*enrollment_conditions, *student_conditions)
         ).one()
         order_by_clauses = [col(Student.created_at).desc()]
         if academic_class_id:
@@ -71,17 +81,20 @@ def list_students(
         statement = (
             select(Student)
             .join(Enrollment, col(Enrollment.student_id) == col(Student.id))
-            .where(*enrollment_conditions)
+            .where(*enrollment_conditions, *student_conditions)
             .order_by(*order_by_clauses)
             .offset(offset)
             .limit(limit)
         )
     else:
         total = session.exec(
-            select(func.count()).select_from(Student)
+            select(func.count())
+            .select_from(Student)
+            .where(*student_conditions)
         ).one()
         statement = (
             select(Student)
+            .where(*student_conditions)
             .order_by(col(Student.created_at).desc())
             .offset(offset)
             .limit(limit)

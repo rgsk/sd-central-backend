@@ -2,7 +2,7 @@ import math
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import case, func
+from sqlalchemy import case, func, or_
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
@@ -86,6 +86,7 @@ def list_report_cards(
     academic_term_id: UUID | None = Query(default=None),
     academic_session_id: UUID | None = Query(default=None),
     academic_class_id: UUID | None = Query(default=None),
+    search: str | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
@@ -96,8 +97,10 @@ def list_report_cards(
     count_statement = select(func.count()).select_from(ReportCard)
     id_statement = select(ReportCard.id).distinct()
 
-    join_enrollment = academic_class_id is not None
+    search_value = search.strip() if search else ""
+    join_enrollment = academic_class_id is not None or bool(search_value)
     join_academic_term = academic_session_id is not None
+    join_student = academic_class_id is not None or bool(search_value)
 
     if join_enrollment:
         statement = statement.join(Enrollment)
@@ -107,6 +110,19 @@ def list_report_cards(
         statement = statement.join(AcademicTerm)
         count_statement = count_statement.join(AcademicTerm)
         id_statement = id_statement.join(AcademicTerm)
+    if join_student:
+        statement = statement.join(
+            Student,
+            col(Student.id) == col(Enrollment.student_id),
+        )
+        count_statement = count_statement.join(
+            Student,
+            col(Student.id) == col(Enrollment.student_id),
+        )
+        id_statement = id_statement.join(
+            Student,
+            col(Student.id) == col(Enrollment.student_id),
+        )
 
     if academic_term_id:
         condition = ReportCard.academic_term_id == academic_term_id
@@ -123,13 +139,17 @@ def list_report_cards(
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
         id_statement = id_statement.where(condition)
+    if search_value:
+        condition = or_(
+            col(Student.registration_no).ilike(f"%{search_value}%"),
+            col(Student.name).ilike(f"%{search_value}%"),
+        )
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+        id_statement = id_statement.where(condition)
     total = session.exec(count_statement).one()
     order_by_clauses = [col(ReportCard.created_at).desc()]
     if academic_class_id:
-        statement = statement.join(
-            Student,
-            col(Student.id) == col(Enrollment.student_id),
-        )
         order_by_clauses = [
             col(Student.name),
             col(ReportCard.created_at).desc(),

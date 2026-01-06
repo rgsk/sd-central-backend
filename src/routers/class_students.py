@@ -8,6 +8,7 @@ from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class import AcademicClass
+from models.academic_session import AcademicSession
 from models.class_student import (ClassStudent, ClassStudentCreate,
                                   ClassStudentListResponse, ClassStudentRead,
                                   ClassStudentUpdate)
@@ -63,7 +64,14 @@ def list_class_students(
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
-    statement = select(ClassStudent)
+    statement = (
+        select(ClassStudent)
+        .join(
+            AcademicSession,
+            col(AcademicSession.id)
+            == col(ClassStudent.academic_session_id),
+        )
+    )
     count_statement = select(func.count()).select_from(ClassStudent)
     if student_id:
         condition = ClassStudent.student_id == student_id
@@ -75,7 +83,10 @@ def list_class_students(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(ClassStudent.created_at).desc())
+        statement.order_by(
+            col(AcademicSession.year),
+            col(ClassStudent.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     ).all()

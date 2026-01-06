@@ -149,6 +149,11 @@ def reorder_academic_class_subjects(
 
     ids = [item.id for item in payload.items]
     items_by_id = {item.id: item.position for item in payload.items}
+    if len(set(items_by_id.values())) != len(items_by_id):
+        raise HTTPException(
+            status_code=400,
+            detail="Positions must be unique within the reorder list",
+        )
     statement = select(AcademicClassSubject).where(
         col(AcademicClassSubject.id).in_(ids)
     )
@@ -162,11 +167,38 @@ def reorder_academic_class_subjects(
             detail=f"Academic class subjects not found: {', '.join(missing_ids)}",
         )
 
+    group_keys = {
+        (
+            item.academic_class_id,
+            item.academic_term_id,
+            item.is_additional,
+        )
+        for item in db_items
+    }
+    if len(group_keys) != 1:
+        raise HTTPException(
+            status_code=400,
+            detail="Reorder list must belong to the same class, term, and group",
+        )
+    academic_class_id, academic_term_id, is_additional = next(iter(group_keys))
+    max_position = session.exec(
+        select(func.max(AcademicClassSubject.position)).where(
+            AcademicClassSubject.academic_class_id == academic_class_id,
+            AcademicClassSubject.academic_term_id == academic_term_id,
+            AcademicClassSubject.is_additional == is_additional,
+        )
+    ).one()
+    base_position = (max_position or 0) + 1000
+    for idx, db_item in enumerate(db_items):
+        if db_item.id is not None:
+            db_item.position = base_position + idx + 1
+            session.add(db_item)
+    session.commit()
+
     for db_item in db_items:
         if db_item.id is not None:
             db_item.position = items_by_id[db_item.id]
             session.add(db_item)
-
     session.commit()
     results = session.exec(
         select(AcademicClassSubject).where(

@@ -59,7 +59,16 @@ def list_report_card_subjects(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(ReportCardSubject.created_at).desc())
+        statement.join(
+            AcademicClassSubject,
+            col(AcademicClassSubject.id)
+            == col(ReportCardSubject.academic_class_subject_id),
+        )
+        .order_by(
+            col(AcademicClassSubject.is_additional).asc(),
+            col(AcademicClassSubject.position).asc(),
+            col(ReportCardSubject.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     ).all()

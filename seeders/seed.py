@@ -234,6 +234,7 @@ def get_or_create_academic_class_subject(
     highest_marks: int | None,
     average_marks: int | None,
     is_additional: bool,
+    position: int,
     created_at: datetime,
 ) -> tuple[AcademicClassSubject, bool]:
     existing = session.get(AcademicClassSubject, academic_class_subject_id)
@@ -257,6 +258,7 @@ def get_or_create_academic_class_subject(
         highest_marks=highest_marks,
         average_marks=average_marks,
         is_additional=is_additional,
+        position=position,
         created_at=created_at,
     )
     session.add(class_subject)
@@ -467,6 +469,7 @@ def seed_students(
             highest_marks=raw.get("highest_marks"),
             average_marks=raw.get("average_marks"),
             is_additional=raw.get("is_additional", False),
+            position=raw.get("position", 1),
             created_at=parse_created_at(raw["created_at"]),
         )
         if created:

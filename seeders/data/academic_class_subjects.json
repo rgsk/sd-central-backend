@@ -7,6 +7,7 @@
     "highest_marks": 97,
     "average_marks": 76,
     "is_additional": false,
+    "position": 1,
     "created_at": "2026-01-02T07:37:30.926781"
   },
   {
@@ -17,6 +18,7 @@
     "highest_marks": 94,
     "average_marks": 70,
     "is_additional": false,
+    "position": 2,
     "created_at": "2026-01-02T07:37:30.924042"
   },
   {
@@ -27,6 +29,7 @@
     "highest_marks": 100,
     "average_marks": 82,
     "is_additional": false,
+    "position": 3,
     "created_at": "2026-01-02T07:37:30.921661"
   },
   {
@@ -37,6 +40,7 @@
     "highest_marks": null,
     "average_marks": null,
     "is_additional": true,
+    "position": 1,
     "created_at": "2026-01-02T07:37:30.919500"
   },
   {
@@ -47,6 +51,7 @@
     "highest_marks": 98,
     "average_marks": 75,
     "is_additional": false,
+    "position": 2,
     "created_at": "2026-01-02T07:37:30.917307"
   },
   {
@@ -57,6 +62,7 @@
     "highest_marks": 95,
     "average_marks": 72,
     "is_additional": false,
+    "position": 3,
     "created_at": "2026-01-02T07:37:30.915065"
   },
   {
@@ -67,6 +73,7 @@
     "highest_marks": 100,
     "average_marks": 78,
     "is_additional": false,
+    "position": 4,
     "created_at": "2026-01-02T07:37:30.911767"
   }
 ]

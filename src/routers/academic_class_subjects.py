@@ -12,9 +12,9 @@ from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectListResponse,
                                            AcademicClassSubjectReadWithSubject,
                                            AcademicClassSubjectUpdate)
+from models.enrollment import Enrollment
 from models.report_card import ReportCard
 from models.report_card_subject import ReportCardSubject
-from models.enrollment import Enrollment
 
 router = APIRouter(
     prefix="/academic-class-subjects",
@@ -125,7 +125,10 @@ def list_academic_class_subjects(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(col(AcademicClassSubject.created_at).desc())
+        statement.order_by(
+            col(AcademicClassSubject.position).asc(),
+            col(AcademicClassSubject.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     ).all()

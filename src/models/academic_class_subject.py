@@ -43,6 +43,7 @@ class AcademicClassSubjectBase(SQLModel):
     highest_marks: Optional[int] = None
     average_marks: Optional[int] = None
     is_additional: bool = False
+    position: int = Field(default=1, ge=1)
 
 
 class AcademicClassSubject(
@@ -84,6 +85,7 @@ class AcademicClassSubjectUpdate(SQLModel):
     highest_marks: Optional[int] = None
     average_marks: Optional[int] = None
     is_additional: Optional[bool] = None
+    position: Optional[int] = None
 
 
 class AcademicClassSubjectId(SQLModel):

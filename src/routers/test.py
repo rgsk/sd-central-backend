@@ -1,4 +1,7 @@
-from fastapi import APIRouter, Depends
+import json
+from pathlib import Path
+
+from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, col, select
 
 from db import get_session
@@ -15,6 +18,33 @@ from models.student import Student, StudentReadRaw
 from models.subject import Subject, SubjectRead
 
 router = APIRouter(prefix="/test", tags=["test"])
+
+SEED_DATA_DIR = Path(__file__).resolve().parents[2] / "seeders" / "data"
+
+
+def _load_seed_data() -> dict[str, object]:
+    if not SEED_DATA_DIR.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Seed data directory not found.",
+        )
+
+    seed_data: dict[str, object] = {}
+    for json_file in sorted(SEED_DATA_DIR.glob("*.json")):
+        try:
+            seed_data[json_file.stem] = json.loads(json_file.read_text())
+        except json.JSONDecodeError as exc:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Invalid JSON in {json_file.name}.",
+            ) from exc
+
+    return seed_data
+
+
+@router.get("/seed_data")
+def list_seed_data():
+    return _load_seed_data()
 
 
 @router.get("/students", response_model=list[StudentReadRaw])

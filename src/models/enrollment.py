@@ -7,9 +7,11 @@ from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
 from models.academic_class import AcademicClassRead
+from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
+    from models.academic_session import AcademicSession
     from models.report_card import ReportCard
     from models.student import Student, StudentRead
 
@@ -57,6 +59,9 @@ class Enrollment(EnrollmentBase, EnrollmentDB, table=True):
     academic_class: Optional["AcademicClass"] = Relationship(
         back_populates="enrollments"
     )
+    academic_session: Optional["AcademicSession"] = Relationship(
+        back_populates="enrollments"
+    )
     report_cards: list["ReportCard"] = Relationship(
         back_populates="enrollment"
     )
@@ -80,6 +85,7 @@ class EnrollmentRead(EnrollmentBase, EnrollmentId):
     created_at: datetime
     student: Optional["StudentRead"] = None
     academic_class: Optional[AcademicClassRead] = None
+    academic_session: Optional[AcademicSessionRead] = None
 
 
 class EnrollmentReadRaw(EnrollmentBase, EnrollmentId):
@@ -95,7 +101,10 @@ try:
     from models.student import StudentRead
 
     EnrollmentRead.model_rebuild(
-        _types_namespace={"StudentRead": StudentRead}
+        _types_namespace={
+            "StudentRead": StudentRead,
+            "AcademicSessionRead": AcademicSessionRead,
+        }
     )
 except ImportError:
     pass

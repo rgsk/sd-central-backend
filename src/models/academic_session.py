@@ -9,6 +9,7 @@ from sqlmodel import Field, Relationship, SQLModel
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
     from models.academic_term import AcademicTerm
+    from models.enrollment import Enrollment
 
 
 class AcademicSessionDB(SQLModel):
@@ -39,6 +40,9 @@ class AcademicSession(AcademicSessionBase, AcademicSessionDB, table=True):
         back_populates="academic_session"
     )
     academic_terms: list["AcademicTerm"] = Relationship(
+        back_populates="academic_session"
+    )
+    enrollments: list["Enrollment"] = Relationship(
         back_populates="academic_session"
     )
     pass

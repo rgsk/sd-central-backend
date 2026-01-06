@@ -10,6 +10,7 @@ from db import get_session
 from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectCreate,
                                            AcademicClassSubjectListResponse,
+                                           AcademicClassSubjectReorderRequest,
                                            AcademicClassSubjectReadWithSubject,
                                            AcademicClassSubjectUpdate)
 from models.enrollment import Enrollment
@@ -134,6 +135,49 @@ def list_academic_class_subjects(
     ).all()
     items = cast(list[AcademicClassSubjectReadWithSubject], results)
     return AcademicClassSubjectListResponse(total=total, items=items)
+
+
+@router.patch("/reorder", response_model=AcademicClassSubjectListResponse)
+def reorder_academic_class_subjects(
+    payload: AcademicClassSubjectReorderRequest,
+    session: Session = Depends(get_session),
+):
+    if not payload.items:
+        raise HTTPException(
+            status_code=400, detail="Reorder list cannot be empty"
+        )
+
+    ids = [item.id for item in payload.items]
+    items_by_id = {item.id: item.position for item in payload.items}
+    statement = select(AcademicClassSubject).where(
+        col(AcademicClassSubject.id).in_(ids)
+    )
+    db_items = session.exec(statement).all()
+
+    if len(db_items) != len(ids):
+        found_ids = {item.id for item in db_items if item.id is not None}
+        missing_ids = [str(item_id) for item_id in ids if item_id not in found_ids]
+        raise HTTPException(
+            status_code=404,
+            detail=f"Academic class subjects not found: {', '.join(missing_ids)}",
+        )
+
+    for db_item in db_items:
+        if db_item.id is not None:
+            db_item.position = items_by_id[db_item.id]
+            session.add(db_item)
+
+    session.commit()
+    results = session.exec(
+        select(AcademicClassSubject).where(
+            col(AcademicClassSubject.id).in_(ids)
+        ).order_by(
+            col(AcademicClassSubject.position).asc(),
+            col(AcademicClassSubject.created_at).desc(),
+        )
+    ).all()
+    items = cast(list[AcademicClassSubjectReadWithSubject], results)
+    return AcademicClassSubjectListResponse(total=len(items), items=items)
 
 
 @router.get(

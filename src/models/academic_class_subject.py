@@ -102,6 +102,15 @@ class AcademicClassSubjectReadWithSubject(AcademicClassSubjectRead):
     subject: Optional["SubjectRead"] = None
 
 
+class AcademicClassSubjectReorderItem(SQLModel):
+    id: UUID
+    position: int = Field(ge=1)
+
+
+class AcademicClassSubjectReorderRequest(SQLModel):
+    items: list[AcademicClassSubjectReorderItem]
+
+
 class AcademicClassSubjectListResponse(SQLModel):
     total: int
     items: list[AcademicClassSubjectReadWithSubject]

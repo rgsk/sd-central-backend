@@ -47,6 +47,49 @@ def list_seed_data():
     return _load_seed_data()
 
 
+@router.get("/db_data")
+def list_db_data(session: Session = Depends(get_session)):
+    return {
+        "students": session.exec(
+            select(Student).order_by(col(Student.created_at).desc())
+        ).all(),
+        "enrollments": session.exec(
+            select(Enrollment).order_by(col(Enrollment.created_at).desc())
+        ).all(),
+        "academic_sessions": session.exec(
+            select(AcademicSession).order_by(
+                col(AcademicSession.created_at).desc()
+            )
+        ).all(),
+        "academic_classes": session.exec(
+            select(AcademicClass).order_by(
+                col(AcademicClass.created_at).desc()
+            )
+        ).all(),
+        "academic_terms": session.exec(
+            select(AcademicTerm).order_by(
+                col(AcademicTerm.created_at).desc()
+            )
+        ).all(),
+        "subjects": session.exec(
+            select(Subject).order_by(col(Subject.created_at).desc())
+        ).all(),
+        "academic_class_subjects": session.exec(
+            select(AcademicClassSubject).order_by(
+                col(AcademicClassSubject.created_at).desc()
+            )
+        ).all(),
+        "report_cards": session.exec(
+            select(ReportCard).order_by(col(ReportCard.created_at).desc())
+        ).all(),
+        "report_card_subjects": session.exec(
+            select(ReportCardSubject).order_by(
+                col(ReportCardSubject.created_at).desc()
+            )
+        ).all(),
+    }
+
+
 @router.get("/students", response_model=list[StudentReadRaw])
 def list_raw_students(session: Session = Depends(get_session)):
     statement = select(Student).order_by(col(Student.created_at).desc())

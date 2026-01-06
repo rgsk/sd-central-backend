@@ -2,7 +2,7 @@ import math
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func
+from sqlalchemy import case, func
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
@@ -89,6 +89,8 @@ def list_report_cards(
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
+    sort_by: str | None = Query(default=None),
+    sort_dir: str | None = Query(default="desc"),
 ):
     statement = select(ReportCard)
     count_statement = select(func.count()).select_from(ReportCard)
@@ -132,23 +134,37 @@ def list_report_cards(
             col(Student.name),
             col(ReportCard.created_at).desc(),
         ]
-    results = session.exec(
-        statement.order_by(*order_by_clauses)
-        .offset(offset)
-        .limit(limit)
-    ).all()
-    items: list[ReportCardReadDetail] = [
-        ReportCardReadDetail.model_validate(report_card)
-        for report_card in results
-    ]
+    normalized_sort_by = sort_by.lower() if sort_by else None
+    normalized_sort_dir = (sort_dir or "desc").lower()
+    should_sort_by_rank = (
+        normalized_sort_by == "rank" and academic_class_id
+    )
+    should_sort_by_percentage = (
+        normalized_sort_by == "percentage" and academic_class_id
+    )
+    sort_desc = normalized_sort_dir != "asc"
 
-    if academic_class_id and items:
-        report_card_ids_raw = session.exec(id_statement).all()
-        report_card_ids = [
-            report_card_id
-            for report_card_id in report_card_ids_raw
-            if report_card_id is not None
+    items: list[ReportCardReadDetail] = []
+    if not should_sort_by_rank and not should_sort_by_percentage:
+        results = session.exec(
+            statement.order_by(*order_by_clauses)
+            .offset(offset)
+            .limit(limit)
+        ).all()
+        items = [
+            ReportCardReadDetail.model_validate(report_card)
+            for report_card in results
         ]
+
+    report_card_ids_raw = session.exec(id_statement).all()
+    report_card_ids = [
+        report_card_id
+        for report_card_id in report_card_ids_raw
+        if report_card_id is not None
+    ]
+    percentages_by_id: dict[UUID, int] = {}
+    ranks_by_id: dict[UUID, int] = {}
+    if academic_class_id and report_card_ids:
         percentages_by_id, ranks_by_id = _compute_percentages_and_ranks(
             session,
             report_card_ids,
@@ -159,6 +175,47 @@ def list_report_cards(
                     report_card.id
                 ]
                 report_card.rank = ranks_by_id.get(report_card.id)
+
+    if should_sort_by_rank or should_sort_by_percentage:
+        def sort_value(value: int | None) -> float:
+            if value is None:
+                return float("-inf") if sort_desc else float("inf")
+            return float(value)
+
+        def sort_key(report_card_id: UUID) -> tuple[float, float, UUID]:
+            rank_value = sort_value(ranks_by_id.get(report_card_id))
+            percentage_value = sort_value(
+                percentages_by_id.get(report_card_id)
+            )
+            if should_sort_by_rank:
+                return (rank_value, percentage_value, report_card_id)
+            return (percentage_value, rank_value, report_card_id)
+
+        ordered_ids = sorted(
+            report_card_ids, key=sort_key, reverse=sort_desc
+        )
+        page_ids = ordered_ids[offset : offset + limit]
+        if not page_ids:
+            return ReportCardListResponse(total=total, items=[])
+
+        order_case = case(
+            {report_card_id: index for index, report_card_id in enumerate(page_ids)},
+            value=col(ReportCard.id),
+        )
+        results = session.exec(
+            statement.where(col(ReportCard.id).in_(page_ids)).order_by(order_case)
+        ).all()
+        items = [
+            ReportCardReadDetail.model_validate(report_card)
+            for report_card in results
+        ]
+        for report_card in items:
+            if report_card.id in percentages_by_id:
+                report_card.overall_percentage = percentages_by_id[
+                    report_card.id
+                ]
+                report_card.rank = ranks_by_id.get(report_card.id)
+
     return ReportCardListResponse(total=total, items=items)
 
 

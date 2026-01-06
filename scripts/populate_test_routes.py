@@ -15,7 +15,7 @@ DATA_DIR = os.path.join(
 
 ROUTES = {
     "students": "students.json",
-    "class_students": "class_students.json",
+    "enrollments": "enrollments.json",
     "academic_sessions": "academic_sessions.json",
     "academic_classes": "academic_classes.json",
     "academic_terms": "academic_terms.json",

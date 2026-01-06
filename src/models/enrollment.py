@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from models.student import Student, StudentRead
 
 
-class ClassStudentDB(SQLModel):
+class EnrollmentDB(SQLModel):
     id: Optional[UUID] = Field(
         default_factory=uuid4,
         primary_key=True,
@@ -26,7 +26,7 @@ class ClassStudentDB(SQLModel):
     )
 
 
-class ClassStudentBase(SQLModel):
+class EnrollmentBase(SQLModel):
     student_id: UUID = Field(
         foreign_key="students.id",
         sa_type=PG_UUID(as_uuid=True),
@@ -42,59 +42,59 @@ class ClassStudentBase(SQLModel):
     image: Optional[str] = None
 
 
-class ClassStudent(ClassStudentBase, ClassStudentDB, table=True):
-    __tablename__: ClassVar[str] = "class_students"  # type: ignore
+class Enrollment(EnrollmentBase, EnrollmentDB, table=True):
+    __tablename__: ClassVar[str] = "enrollments"  # type: ignore
     __table_args__ = (
         UniqueConstraint(
             "student_id",
             "academic_session_id",
-            name="uq_class_student_session",
+            name="uq_enrollment_session",
         ),
     )
     student: Optional["Student"] = Relationship(
-        back_populates="class_students"
+        back_populates="enrollments"
     )
     academic_class: Optional["AcademicClass"] = Relationship(
-        back_populates="class_students"
+        back_populates="enrollments"
     )
     report_cards: list["ReportCard"] = Relationship(
-        back_populates="class_student"
+        back_populates="enrollment"
     )
 
 
-class ClassStudentCreate(ClassStudentBase):
+class EnrollmentCreate(EnrollmentBase):
     pass
 
 
-class ClassStudentUpdate(SQLModel):
+class EnrollmentUpdate(SQLModel):
     student_id: Optional[UUID] = None
     academic_class_id: Optional[UUID] = None
     image: Optional[str] = None
 
 
-class ClassStudentId(SQLModel):
+class EnrollmentId(SQLModel):
     id: UUID
 
 
-class ClassStudentRead(ClassStudentBase, ClassStudentId):
+class EnrollmentRead(EnrollmentBase, EnrollmentId):
     created_at: datetime
     student: Optional["StudentRead"] = None
     academic_class: Optional[AcademicClassRead] = None
 
 
-class ClassStudentReadRaw(ClassStudentBase, ClassStudentId):
+class EnrollmentReadRaw(EnrollmentBase, EnrollmentId):
     created_at: datetime
 
 
-class ClassStudentListResponse(SQLModel):
+class EnrollmentListResponse(SQLModel):
     total: int
-    items: list[ClassStudentRead]
+    items: list[EnrollmentRead]
 
 
 try:
     from models.student import StudentRead
 
-    ClassStudentRead.model_rebuild(
+    EnrollmentRead.model_rebuild(
         _types_namespace={"StudentRead": StudentRead}
     )
 except ImportError:

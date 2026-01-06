@@ -5,10 +5,10 @@ from uuid import UUID, uuid4
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
-from models.class_student import ClassStudentRead
+from models.enrollment import EnrollmentRead
 
 if TYPE_CHECKING:
-    from models.class_student import ClassStudent
+    from models.enrollment import Enrollment
 
 
 class StudentDB(SQLModel):
@@ -33,7 +33,7 @@ class StudentBase(SQLModel):
 
 class Student(StudentBase, StudentDB, table=True):
     __tablename__: ClassVar[str] = "students"  # type: ignore
-    class_students: list["ClassStudent"] = Relationship(
+    enrollments: list["Enrollment"] = Relationship(
         back_populates="student"
     )
 
@@ -56,7 +56,7 @@ class StudentId(SQLModel):
 
 class StudentRead(StudentBase, StudentId):
     created_at: datetime
-    class_student: Optional["ClassStudentRead"] = None
+    enrollment: Optional["EnrollmentRead"] = None
 
 
 class StudentReadRaw(StudentBase, StudentId):

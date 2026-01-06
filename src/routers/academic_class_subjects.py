@@ -14,7 +14,7 @@ from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectUpdate)
 from models.report_card import ReportCard
 from models.report_card_subject import ReportCardSubject
-from models.class_student import ClassStudent
+from models.enrollment import Enrollment
 
 router = APIRouter(
     prefix="/academic-class-subjects",
@@ -48,11 +48,11 @@ def create_academic_class_subject(
     report_card_ids_raw = session.exec(
         select(ReportCard.id)
         .join(
-            ClassStudent,
-            col(ClassStudent.id) == col(ReportCard.class_student_id),
+            Enrollment,
+            col(Enrollment.id) == col(ReportCard.enrollment_id),
         )
         .where(
-            ClassStudent.academic_class_id
+            Enrollment.academic_class_id
             == academic_class_subject.academic_class_id,
             ReportCard.academic_term_id
             == academic_class_subject.academic_term_id,

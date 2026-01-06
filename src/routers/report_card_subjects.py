@@ -14,7 +14,7 @@ from models.report_card_subject import (ReportCardSubject,
                                         ReportCardSubjectListResponse,
                                         ReportCardSubjectRead,
                                         ReportCardSubjectUpdate)
-from models.class_student import ClassStudent
+from models.enrollment import Enrollment
 
 router = APIRouter(
     prefix="/report-card-subjects",
@@ -146,16 +146,16 @@ def partial_update_report_card_subject(
                     == col(ReportCardSubject.report_card_id),
                 )
                 .join(
-                    ClassStudent,
-                    col(ClassStudent.id)
-                    == col(ReportCard.class_student_id),
+                    Enrollment,
+                    col(Enrollment.id)
+                    == col(ReportCard.enrollment_id),
                 )
                 .where(
                     ReportCardSubject.academic_class_subject_id
                     == db_report_card_subject.academic_class_subject_id,
                     ReportCard.academic_term_id
                     == class_subject.academic_term_id,
-                    ClassStudent.academic_class_id
+                    Enrollment.academic_class_id
                     == class_subject.academic_class_id,
                 )
             ).one()

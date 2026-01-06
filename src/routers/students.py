@@ -6,7 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.class_student import ClassStudent, ClassStudentRead
+from models.enrollment import Enrollment, EnrollmentRead
 from models.student import (Student, StudentCreate, StudentListResponse,
                             StudentRead, StudentUpdate)
 
@@ -43,24 +43,24 @@ def list_students(
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
-    class_student_conditions = []
+    enrollment_conditions = []
     if academic_session_id:
-        class_student_conditions.append(
-            col(ClassStudent.academic_session_id) == academic_session_id
+        enrollment_conditions.append(
+            col(Enrollment.academic_session_id) == academic_session_id
         )
     if academic_class_id:
-        class_student_conditions.append(
-            col(ClassStudent.academic_class_id) == academic_class_id
+        enrollment_conditions.append(
+            col(Enrollment.academic_class_id) == academic_class_id
         )
 
-    if class_student_conditions:
+    if enrollment_conditions:
         total = session.exec(
             select(func.count(func.distinct(Student.id)))
             .select_from(Student)
             .join(
-                ClassStudent, col(ClassStudent.student_id) == col(Student.id)
+                Enrollment, col(Enrollment.student_id) == col(Student.id)
             )
-            .where(*class_student_conditions)
+            .where(*enrollment_conditions)
         ).one()
         order_by_clauses = [col(Student.created_at).desc()]
         if academic_class_id:
@@ -70,8 +70,8 @@ def list_students(
             ]
         statement = (
             select(Student)
-            .join(ClassStudent, col(ClassStudent.student_id) == col(Student.id))
-            .where(*class_student_conditions)
+            .join(Enrollment, col(Enrollment.student_id) == col(Student.id))
+            .where(*enrollment_conditions)
             .order_by(*order_by_clauses)
             .offset(offset)
             .limit(limit)
@@ -88,28 +88,28 @@ def list_students(
         )
     students = session.exec(statement).all()
     items = [StudentRead.model_validate(student) for student in students]
-    if class_student_conditions and items:
+    if enrollment_conditions and items:
         student_ids = [
             student.id for student in items if student.id is not None
         ]
-        class_students = session.exec(
-            select(ClassStudent)
+        enrollments = session.exec(
+            select(Enrollment)
             .where(
-                col(ClassStudent.student_id).in_(student_ids),
-                *class_student_conditions,
+                col(Enrollment.student_id).in_(student_ids),
+                *enrollment_conditions,
             )
-            .order_by(col(ClassStudent.created_at).desc())
+            .order_by(col(Enrollment.created_at).desc())
         ).all()
-        class_student_by_student_id: dict[UUID, ClassStudentRead] = {}
-        for class_student in class_students:
-            if class_student.student_id not in class_student_by_student_id:
-                class_student_by_student_id[
-                    class_student.student_id
-                ] = ClassStudentRead.model_validate(class_student)
+        enrollment_by_student_id: dict[UUID, EnrollmentRead] = {}
+        for enrollment in enrollments:
+            if enrollment.student_id not in enrollment_by_student_id:
+                enrollment_by_student_id[
+                    enrollment.student_id
+                ] = EnrollmentRead.model_validate(enrollment)
         for student in items:
             if student.id is None:
                 continue
-            student.class_student = class_student_by_student_id.get(
+            student.enrollment = enrollment_by_student_id.get(
                 student.id
             )
     return StudentListResponse(total=total, items=items)
@@ -130,17 +130,17 @@ def get_student(
         raise HTTPException(status_code=404, detail="Student not found")
     read_student = StudentRead.model_validate(student)
     if academic_session_id:
-        class_student = session.exec(
-            select(ClassStudent)
+        enrollment = session.exec(
+            select(Enrollment)
             .where(
-                ClassStudent.student_id == student_id,
-                ClassStudent.academic_session_id == academic_session_id,
+                Enrollment.student_id == student_id,
+                Enrollment.academic_session_id == academic_session_id,
             )
-            .order_by(col(ClassStudent.created_at).desc())
+            .order_by(col(Enrollment.created_at).desc())
         ).first()
-        read_student.class_student = (
-            ClassStudentRead.model_validate(class_student)
-            if class_student is not None
+        read_student.enrollment = (
+            EnrollmentRead.model_validate(enrollment)
+            if enrollment is not None
             else None
         )
     return read_student

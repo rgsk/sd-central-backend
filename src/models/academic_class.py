@@ -11,7 +11,7 @@ from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
     from models.academic_session import AcademicSession
-    from models.class_student import ClassStudent
+    from models.enrollment import Enrollment
 
 
 class AcademicClassDB(SQLModel):
@@ -43,7 +43,7 @@ class AcademicClass(AcademicClassBase, AcademicClassDB, table=True):
     class_subjects: list["AcademicClassSubject"] = Relationship(
         back_populates="academic_class"
     )
-    class_students: list["ClassStudent"] = Relationship(
+    enrollments: list["Enrollment"] = Relationship(
         back_populates="academic_class"
     )
     pass

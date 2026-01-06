@@ -18,7 +18,7 @@ from models.academic_class import AcademicClass  # noqa: E402
 from models.academic_class_subject import AcademicClassSubject  # noqa: E402
 from models.academic_session import AcademicSession  # noqa: E402
 from models.academic_term import AcademicTerm, AcademicTermType  # noqa: E402
-from models.class_student import ClassStudent  # noqa: E402
+from models.enrollment import Enrollment  # noqa: E402
 from models.report_card import ReportCard  # noqa: E402
 from models.report_card_subject import ReportCardSubject  # noqa: E402
 from models.student import Student  # noqa: E402
@@ -133,39 +133,39 @@ def get_or_create_student(
     return student, True
 
 
-def get_or_create_class_student(
+def get_or_create_enrollment(
     session: Session,
-    class_student_id: UUID,
+    enrollment_id: UUID,
     student_id: UUID,
     academic_session_id: UUID,
     academic_class_id: UUID,
     image: str | None,
     created_at: datetime,
-) -> tuple[ClassStudent, bool]:
-    existing = session.get(ClassStudent, class_student_id)
+) -> tuple[Enrollment, bool]:
+    existing = session.get(Enrollment, enrollment_id)
     if existing:
         return existing, False
 
-    statement = select(ClassStudent).where(
-        ClassStudent.student_id == student_id,
-        ClassStudent.academic_class_id == academic_class_id,
+    statement = select(Enrollment).where(
+        Enrollment.student_id == student_id,
+        Enrollment.academic_class_id == academic_class_id,
     )
     existing = session.exec(statement).first()
     if existing:
         return existing, False
 
-    class_student = ClassStudent(
-        id=class_student_id,
+    enrollment = Enrollment(
+        id=enrollment_id,
         student_id=student_id,
         academic_session_id=academic_session_id,
         academic_class_id=academic_class_id,
         image=image,
         created_at=created_at,
     )
-    session.add(class_student)
+    session.add(enrollment)
     session.commit()
-    session.refresh(class_student)
-    return class_student, True
+    session.refresh(enrollment)
+    return enrollment, True
 
 
 def get_or_create_academic_term(
@@ -268,7 +268,7 @@ def get_or_create_academic_class_subject(
 def get_or_create_report_card(
     session: Session,
     report_card_id: UUID,
-    class_student_id: UUID,
+    enrollment_id: UUID,
     academic_term_id: UUID,
     created_at: datetime,
 ) -> tuple[ReportCard, bool]:
@@ -277,7 +277,7 @@ def get_or_create_report_card(
         return existing, False
 
     statement = select(ReportCard).where(
-        ReportCard.class_student_id == class_student_id,
+        ReportCard.enrollment_id == enrollment_id,
         ReportCard.academic_term_id == academic_term_id,
     )
     existing = session.exec(statement).first()
@@ -286,7 +286,7 @@ def get_or_create_report_card(
 
     report_card = ReportCard(
         id=report_card_id,
-        class_student_id=class_student_id,
+        enrollment_id=enrollment_id,
         academic_term_id=academic_term_id,
         created_at=created_at,
     )
@@ -361,8 +361,8 @@ def seed_students(
     term_skipped = 0
     student_inserted = 0
     student_skipped = 0
-    class_student_inserted = 0
-    class_student_skipped = 0
+    enrollment_inserted = 0
+    enrollment_skipped = 0
     subject_inserted = 0
     subject_skipped = 0
     class_subject_inserted = 0
@@ -382,8 +382,8 @@ def seed_students(
         os.path.join(DATA_DIR, "academic_classes.json")
     )
     students = load_json(os.path.join(DATA_DIR, "students.json"))
-    class_students = load_json(
-        os.path.join(DATA_DIR, "class_students.json")
+    enrollments = load_json(
+        os.path.join(DATA_DIR, "enrollments.json")
     )
     subjects = load_json(os.path.join(DATA_DIR, "subjects.json"))
     academic_class_subjects = load_json(
@@ -491,11 +491,11 @@ def seed_students(
         else:
             student_skipped += 1
 
-    for raw in class_students:
-        class_student_id = UUID(raw["id"])
-        class_student, created = get_or_create_class_student(
+    for raw in enrollments:
+        enrollment_id = UUID(raw["id"])
+        enrollment, created = get_or_create_enrollment(
             session=session,
-            class_student_id=class_student_id,
+            enrollment_id=enrollment_id,
             student_id=UUID(raw["student_id"]),
             academic_session_id=UUID(raw["academic_session_id"]),
             academic_class_id=UUID(raw["academic_class_id"]),
@@ -503,16 +503,16 @@ def seed_students(
             created_at=parse_created_at(raw["created_at"]),
         )
         if created:
-            class_student_inserted += 1
+            enrollment_inserted += 1
         else:
-            class_student_skipped += 1
+            enrollment_skipped += 1
 
     for raw in report_cards:
         report_card_id = UUID(raw["id"])
         _, created = get_or_create_report_card(
             session=session,
             report_card_id=report_card_id,
-            class_student_id=UUID(raw["class_student_id"]),
+            enrollment_id=UUID(raw["enrollment_id"]),
             academic_term_id=UUID(raw["academic_term_id"]),
             created_at=parse_created_at(raw["created_at"]),
         )
@@ -549,7 +549,7 @@ def seed_students(
         (term_inserted, term_skipped),
         (class_inserted, class_skipped),
         (student_inserted, student_skipped),
-        (class_student_inserted, class_student_skipped),
+        (enrollment_inserted, enrollment_skipped),
         (subject_inserted, subject_skipped),
         (class_subject_inserted, class_subject_skipped),
         (report_card_inserted, report_card_skipped),
@@ -565,7 +565,7 @@ if __name__ == "__main__":
             (term_inserted, term_skipped),
             (class_inserted, class_skipped),
             (student_inserted, student_skipped),
-            (class_student_inserted, class_student_skipped),
+            (enrollment_inserted, enrollment_skipped),
             (subject_inserted, subject_skipped),
             (class_subject_inserted, class_subject_skipped),
             (report_card_inserted, report_card_skipped),
@@ -593,9 +593,9 @@ if __name__ == "__main__":
         f"Skipped (already existed): {student_skipped}.",
     )
     print(
-        "Seeded class students.",
-        f"Inserted: {class_student_inserted}.",
-        f"Skipped (already existed): {class_student_skipped}.",
+        "Seeded enrollments.",
+        f"Inserted: {enrollment_inserted}.",
+        f"Skipped (already existed): {enrollment_skipped}.",
     )
     print(
         "Seeded subjects.",

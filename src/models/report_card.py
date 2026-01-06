@@ -8,12 +8,12 @@ from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
 from models.academic_term import AcademicTermRead
-from models.class_student import ClassStudentRead
+from models.enrollment import EnrollmentRead
 
 if TYPE_CHECKING:
     from models.academic_term import AcademicTerm
     from models.report_card_subject import ReportCardSubject
-    from models.class_student import ClassStudent
+    from models.enrollment import Enrollment
 
 
 class ReportCardDB(SQLModel):
@@ -44,8 +44,8 @@ class ReportCardResult(str, Enum):
 
 
 class ReportCardBase(SQLModel):
-    class_student_id: UUID = Field(
-        foreign_key="class_students.id",
+    enrollment_id: UUID = Field(
+        foreign_key="enrollments.id",
         sa_type=PG_UUID(as_uuid=True),
     )
     academic_term_id: UUID = Field(
@@ -64,12 +64,12 @@ class ReportCard(ReportCardBase, ReportCardDB, table=True):
     __tablename__ = "report_cards"  # type: ignore
     __table_args__ = (
         UniqueConstraint(
-            "class_student_id",
+            "enrollment_id",
             "academic_term_id",
-            name="uq_report_card_class_student_term",
+            name="uq_report_card_enrollment_term",
         ),
     )
-    class_student: Optional["ClassStudent"] = Relationship(
+    enrollment: Optional["Enrollment"] = Relationship(
         back_populates="report_cards"
     )
     academic_term: Optional["AcademicTerm"] = Relationship(
@@ -86,7 +86,7 @@ class ReportCardCreate(ReportCardBase):
 
 
 class ReportCardUpdate(SQLModel):
-    class_student_id: Optional[UUID] = None
+    enrollment_id: Optional[UUID] = None
     academic_term_id: Optional[UUID] = None
     work_education_grade: Optional[ReportCardGrade] = None
     art_education_grade: Optional[ReportCardGrade] = None
@@ -105,7 +105,7 @@ class ReportCardRead(ReportCardBase, ReportCardId):
 
 
 class ReportCardReadDetail(ReportCardRead):
-    class_student: Optional[ClassStudentRead] = None
+    enrollment: Optional[EnrollmentRead] = None
     academic_term: Optional[AcademicTermRead] = None
     overall_percentage: Optional[int] = None
     rank: Optional[int] = None

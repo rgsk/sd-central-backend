@@ -9,7 +9,7 @@ from sqlmodel import Session, col, select
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm
-from models.class_student import ClassStudent
+from models.enrollment import Enrollment
 from models.report_card import (ReportCard, ReportCardCreate,
                                 ReportCardListResponse, ReportCardRead,
                                 ReportCardReadDetail, ReportCardUpdate)
@@ -27,10 +27,10 @@ def create_report_card(
     report_card: ReportCardCreate,
     session: Session = Depends(get_session),
 ):
-    class_student = session.get(ClassStudent, report_card.class_student_id)
-    if not class_student:
+    enrollment = session.get(Enrollment, report_card.enrollment_id)
+    if not enrollment:
         raise HTTPException(
-            status_code=404, detail="Class student not found"
+            status_code=404, detail="Enrollment not found"
         )
     academic_term = session.get(AcademicTerm, report_card.academic_term_id)
     if not academic_term:
@@ -49,7 +49,7 @@ def create_report_card(
     class_subjects_raw = session.exec(
         select(AcademicClassSubject.id).where(
             AcademicClassSubject.academic_class_id
-            == class_student.academic_class_id,
+            == enrollment.academic_class_id,
             AcademicClassSubject.academic_term_id
             == report_card.academic_term_id,
         )
@@ -94,13 +94,13 @@ def list_report_cards(
     count_statement = select(func.count()).select_from(ReportCard)
     id_statement = select(ReportCard.id).distinct()
 
-    join_class_student = academic_class_id is not None
+    join_enrollment = academic_class_id is not None
     join_academic_term = academic_session_id is not None
 
-    if join_class_student:
-        statement = statement.join(ClassStudent)
-        count_statement = count_statement.join(ClassStudent)
-        id_statement = id_statement.join(ClassStudent)
+    if join_enrollment:
+        statement = statement.join(Enrollment)
+        count_statement = count_statement.join(Enrollment)
+        id_statement = id_statement.join(Enrollment)
     if join_academic_term:
         statement = statement.join(AcademicTerm)
         count_statement = count_statement.join(AcademicTerm)
@@ -117,7 +117,7 @@ def list_report_cards(
         count_statement = count_statement.where(condition)
         id_statement = id_statement.where(condition)
     if academic_class_id:
-        condition = ClassStudent.academic_class_id == academic_class_id
+        condition = Enrollment.academic_class_id == academic_class_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
         id_statement = id_statement.where(condition)
@@ -126,7 +126,7 @@ def list_report_cards(
     if academic_class_id:
         statement = statement.join(
             Student,
-            col(Student.id) == col(ClassStudent.student_id),
+            col(Student.id) == col(Enrollment.student_id),
         )
         order_by_clauses = [
             col(Student.name),
@@ -171,14 +171,14 @@ def get_report_card(
     if not report_card:
         raise HTTPException(status_code=404, detail="Report card not found")
     read_report_card = ReportCardReadDetail.model_validate(report_card)
-    class_student = session.get(ClassStudent, report_card.class_student_id)
-    if class_student:
+    enrollment = session.get(Enrollment, report_card.enrollment_id)
+    if enrollment:
         report_card_ids_raw = session.exec(
             select(ReportCard.id)
-            .join(ClassStudent)
+            .join(Enrollment)
             .where(
-                ClassStudent.academic_class_id
-                == class_student.academic_class_id,
+                Enrollment.academic_class_id
+                == enrollment.academic_class_id,
                 ReportCard.academic_term_id == report_card.academic_term_id,
             )
         ).all()

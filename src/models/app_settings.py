@@ -26,6 +26,11 @@ class AppSettingsDB(SQLModel):
 
 
 class AppSettingsBase(SQLModel):
+    default_academic_session_id: Optional[UUID] = Field(
+        default=None,
+        foreign_key="academic_sessions.id",
+        sa_type=PG_UUID(as_uuid=True),
+    )
     default_academic_term_id: Optional[UUID] = Field(
         default=None,
         foreign_key="academic_terms.id",
@@ -44,6 +49,7 @@ class AppSettings(AppSettingsBase, AppSettingsDB, table=True):
 
 
 class AppSettingsUpdate(SQLModel):
+    default_academic_session_id: Optional[UUID] = None
     default_academic_term_id: Optional[UUID] = None
     default_academic_class_id: Optional[UUID] = None
 

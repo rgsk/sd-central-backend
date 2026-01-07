@@ -63,6 +63,7 @@ s3transfer==0.16.0
 sentry-sdk==2.48.0
 shellingham==1.5.4
 six==1.17.0
+sqladmin==0.22.0
 SQLAlchemy==2.0.45
 sqlmodel==0.0.30
 stack-data==0.6.3
@@ -78,3 +79,4 @@ uvloop==0.22.1
 watchfiles==1.1.1
 wcwidth==0.2.14
 websockets==15.0.1
+WTForms==3.1.2

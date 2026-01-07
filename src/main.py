@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel
 
+from admin import setup_admin
 from db import engine
 from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject, academic_session,
@@ -47,6 +48,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if env.APP_ENV is AppEnv.DEVELOPMENT:
+    setup_admin(app)
 
 
 @app.get("/")

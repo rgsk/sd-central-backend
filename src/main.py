@@ -5,12 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel
 
 from db import engine
+from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject, academic_session,
-                    academic_term, app_settings, enrollment, item,
-                    report_card, report_card_subject, student, subject)
+                    academic_term, app_settings, enrollment, item, report_card,
+                    report_card_subject, student, subject)
 from routers import (academic_class_subjects, academic_classes,
-                     academic_sessions, academic_terms, app_settings as settings,
-                     aws, enrollments, items, report_card_subjects,
+                     academic_sessions, academic_terms)
+from routers import app_settings as settings
+from routers import (aws, enrollments, items, report_card_subjects,
                      report_cards, students, subjects, test)
 
 
@@ -52,7 +54,9 @@ def read_root():
     return {"Hello": "World"}
 
 
-app.include_router(test.router)
+if env.APP_ENV == AppEnv.DEVELOPMENT:
+    app.include_router(test.router)
+
 app.include_router(items.router)
 app.include_router(students.router)
 app.include_router(enrollments.router)

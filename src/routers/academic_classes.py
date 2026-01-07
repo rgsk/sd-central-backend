@@ -3,6 +3,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import case, func
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
@@ -26,7 +27,14 @@ def create_academic_class(
 ):
     db_academic_class = AcademicClass(**academic_class.model_dump())
     session.add(db_academic_class)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Class and section already exist for this session",
+        )
     session.refresh(db_academic_class)
     return db_academic_class
 
@@ -117,7 +125,14 @@ def partial_update_academic_class(
         setattr(db_academic_class, key, value)
 
     session.add(db_academic_class)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Class and section already exist for this session",
+        )
     session.refresh(db_academic_class)
     return db_academic_class
 

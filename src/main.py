@@ -54,7 +54,7 @@ def read_root():
     return {"Hello": "World"}
 
 
-if env.APP_ENV == AppEnv.DEVELOPMENT:
+if env.APP_ENV is AppEnv.DEVELOPMENT:
     app.include_router(test.router)
 
 app.include_router(items.router)

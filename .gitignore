@@ -3,3 +3,4 @@ __pycache__
 .env
 practice.ipynb
 envs
+**/credentials-*

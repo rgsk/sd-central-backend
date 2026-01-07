@@ -3,14 +3,12 @@ from contextlib import asynccontextmanager
 from fastapi import APIRouter, Depends, FastAPI, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
-from firebase_admin import auth
 from sqlmodel import SQLModel
 
 from admin import setup_admin
 from db import engine
-from lib.auth import get_bearer_token, require_user
+from lib.auth import get_bearer_token, get_decoded_token, require_user
 from lib.env import AppEnv, env
-from lib.firebase_admin import get_firebase_app
 from models import (academic_class, academic_class_subject, academic_session,
                     academic_term, app_settings, enrollment, item, report_card,
                     report_card_subject, student, subject, user)
@@ -91,8 +89,7 @@ def read_root():
 @app.get("/decode-token")
 def decode_token(authorization: str | None = Header(default=None)):
     token = get_bearer_token(authorization)
-    get_firebase_app()
-    decoded_token = auth.verify_id_token(token)
+    decoded_token = get_decoded_token(token)
     return decoded_token
 
 

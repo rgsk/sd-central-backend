@@ -1,13 +1,10 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Query
-from firebase_admin import auth
-from firebase_admin._auth_utils import InvalidIdTokenError
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
-from lib.firebase_admin import get_firebase_app
 from models.academic_class import AcademicClass
 from models.academic_term import AcademicTerm
 from models.user import (User, UserCreate, UserListResponse, UserRead,
@@ -81,19 +78,6 @@ def _validate_defaults_match_session(
             )
 
 
-def get_bearer_token(authorization: str | None) -> str:
-    if not authorization:
-        raise HTTPException(
-            status_code=401, detail="Missing Authorization header")
-    if not authorization.startswith("Bearer "):
-        raise HTTPException(
-            status_code=401, detail="Invalid Authorization header")
-    token = authorization.removeprefix("Bearer ").strip()
-    if not token or token == "undefined":
-        raise HTTPException(status_code=401, detail="Missing token")
-    return token
-
-
 @router.post("", response_model=UserRead)
 def create_user(
     user: UserCreate,
@@ -129,28 +113,6 @@ def list_users(
     ).all()
     items = [UserRead.model_validate(user) for user in users]
     return UserListResponse(total=total, items=items)
-
-
-@router.get("/current", response_model=UserRead)
-def get_current_user(
-    authorization: str | None = Header(default=None),
-    session: Session = Depends(get_session),
-):
-    token = get_bearer_token(authorization)
-    get_firebase_app()
-    try:
-        decoded = auth.verify_id_token(token)
-    except InvalidIdTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
-    email = decoded.get("email")
-    if not email:
-        raise HTTPException(status_code=401, detail="Email not found in token")
-    db_user = session.exec(
-        select(User).where(col(User.email) == email)
-    ).one_or_none()
-    if not db_user:
-        raise HTTPException(status_code=404, detail="User not found")
-    return db_user
 
 
 @router.get("/{user_id}", response_model=UserRead)

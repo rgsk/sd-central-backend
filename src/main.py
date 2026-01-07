@@ -1,24 +1,25 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Header
-from fastapi.openapi.utils import get_openapi
+from fastapi import APIRouter, Depends, FastAPI, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.openapi.utils import get_openapi
 from firebase_admin import auth
 from sqlmodel import SQLModel
 
 from admin import setup_admin
 from db import engine
+from lib.auth import get_bearer_token, require_user
 from lib.env import AppEnv, env
 from lib.firebase_admin import get_firebase_app
 from models import (academic_class, academic_class_subject, academic_session,
                     academic_term, app_settings, enrollment, item, report_card,
                     report_card_subject, student, subject, user)
+from models.user import UserRead
 from routers import (academic_class_subjects, academic_classes,
                      academic_sessions, academic_terms)
 from routers import app_settings as settings
 from routers import (aws, enrollments, items, report_card_subjects,
                      report_cards, students, subjects, test, users)
-from routers.users import get_bearer_token
 
 
 @asynccontextmanager
@@ -45,6 +46,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+protected_router = APIRouter(dependencies=[Depends(require_user)])
 
 
 def custom_openapi():
@@ -90,23 +92,32 @@ def read_root():
 def decode_token(authorization: str | None = Header(default=None)):
     token = get_bearer_token(authorization)
     get_firebase_app()
-    decoded = auth.verify_id_token(token)
-    return decoded
+    decoded_token = auth.verify_id_token(token)
+    return decoded_token
+
+
+@protected_router.get("/current-user", response_model=UserRead)
+def get_current_user(
+    request: Request,
+):
+    return request.state.current_user
 
 
 if env.APP_ENV is AppEnv.DEVELOPMENT:
-    app.include_router(test.router)
+    protected_router.include_router(test.router)
 
-app.include_router(items.router)
-app.include_router(students.router)
-app.include_router(enrollments.router)
-app.include_router(academic_classes.router)
-app.include_router(academic_sessions.router)
-app.include_router(academic_terms.router)
-app.include_router(settings.router)
-app.include_router(aws.router)
-app.include_router(subjects.router)
-app.include_router(academic_class_subjects.router)
-app.include_router(report_cards.router)
-app.include_router(report_card_subjects.router)
-app.include_router(users.router)
+protected_router.include_router(items.router)
+protected_router.include_router(students.router)
+protected_router.include_router(enrollments.router)
+protected_router.include_router(academic_classes.router)
+protected_router.include_router(academic_sessions.router)
+protected_router.include_router(academic_terms.router)
+protected_router.include_router(settings.router)
+protected_router.include_router(aws.router)
+protected_router.include_router(subjects.router)
+protected_router.include_router(academic_class_subjects.router)
+protected_router.include_router(report_cards.router)
+protected_router.include_router(report_card_subjects.router)
+protected_router.include_router(users.router)
+
+app.include_router(protected_router)

@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header
 from fastapi.middleware.cors import CORSMiddleware
 from firebase_admin import auth
 from sqlmodel import SQLModel
@@ -17,6 +17,7 @@ from routers import (academic_class_subjects, academic_classes,
 from routers import app_settings as settings
 from routers import (aws, enrollments, items, report_card_subjects,
                      report_cards, students, subjects, test, users)
+from routers.users import get_bearer_token
 
 
 @asynccontextmanager
@@ -63,15 +64,9 @@ def read_root():
 
 @app.get("/decode-token")
 def decode_token(authorization: str | None = Header(default=None)):
-    if not authorization:
-        raise HTTPException(status_code=401, detail="Missing Authorization header")
-    if not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Invalid Authorization header")
-    id_token = authorization.removeprefix("Bearer ").strip()
-    if not id_token:
-        raise HTTPException(status_code=401, detail="Missing token")
+    token = get_bearer_token(authorization)
     get_firebase_app()
-    decoded = auth.verify_id_token(id_token)
+    decoded = auth.verify_id_token(token)
     return decoded
 
 

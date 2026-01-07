@@ -12,6 +12,7 @@ from models.report_card import ReportCard
 from models.report_card_subject import ReportCardSubject
 from models.student import Student
 from models.subject import Subject
+from models.user import User
 
 
 class BaseModelView(ModelView):
@@ -63,6 +64,10 @@ class SubjectAdmin(BaseModelView, model=Subject):
     pass
 
 
+class UserAdmin(BaseModelView, model=User):
+    pass
+
+
 def setup_admin(app) -> Admin:
     admin = Admin(app, engine)
     admin.add_view(StudentAdmin)
@@ -76,4 +81,5 @@ def setup_admin(app) -> Admin:
     admin.add_view(ReportCardSubjectAdmin)
     admin.add_view(ItemAdmin)
     admin.add_view(AppSettingsAdmin)
+    admin.add_view(UserAdmin)
     return admin

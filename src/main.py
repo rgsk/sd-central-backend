@@ -11,12 +11,12 @@ from lib.env import AppEnv, env
 from lib.firebase_admin import get_firebase_app
 from models import (academic_class, academic_class_subject, academic_session,
                     academic_term, app_settings, enrollment, item, report_card,
-                    report_card_subject, student, subject)
+                    report_card_subject, student, subject, user)
 from routers import (academic_class_subjects, academic_classes,
                      academic_sessions, academic_terms)
 from routers import app_settings as settings
 from routers import (aws, enrollments, items, report_card_subjects,
-                     report_cards, students, subjects, test)
+                     report_cards, students, subjects, test, users)
 
 
 @asynccontextmanager
@@ -35,6 +35,7 @@ async def lifespan(app: FastAPI):
         report_card_subject,
         student,
         subject,
+        user,
     ]
     SQLModel.metadata.create_all(engine)
     yield
@@ -89,3 +90,4 @@ app.include_router(subjects.router)
 app.include_router(academic_class_subjects.router)
 app.include_router(report_cards.router)
 app.include_router(report_card_subjects.router)
+app.include_router(users.router)

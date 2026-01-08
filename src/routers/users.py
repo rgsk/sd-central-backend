@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func
+from sqlalchemy import case, func
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
@@ -115,7 +115,13 @@ def list_users(
     users = session.exec(
         select(User)
         .where(*conditions)
-        .order_by(col(User.created_at).desc())
+        .order_by(
+            case(
+                (col(User.role) == "admin", 0),
+                else_=1,
+            ),
+            col(User.created_at).desc(),
+        )
         .offset(offset)
         .limit(limit)
     ).all()

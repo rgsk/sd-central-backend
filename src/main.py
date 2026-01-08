@@ -15,10 +15,11 @@ from models import (academic_class, academic_class_subject, academic_session,
                     student, subject, user)
 from models.user import UserRead
 from routers import (academic_class_subjects, academic_classes,
-                     academic_sessions, academic_terms)
+                     academic_sessions, academic_terms, datesheet_subjects)
 from routers import app_settings as settings
-from routers import (aws, datesheets, enrollments, items, report_card_subjects,
-                     report_cards, students, subjects, test, users)
+from routers import (aws, datesheets, enrollments, items,
+                     report_card_subjects, report_cards, students, subjects,
+                     test, users)
 
 
 @asynccontextmanager
@@ -113,6 +114,7 @@ protected_router.include_router(academic_classes.router)
 protected_router.include_router(academic_sessions.router)
 protected_router.include_router(academic_terms.router)
 protected_router.include_router(datesheets.router)
+protected_router.include_router(datesheet_subjects.router)
 protected_router.include_router(settings.router)
 protected_router.include_router(aws.router)
 protected_router.include_router(subjects.router)

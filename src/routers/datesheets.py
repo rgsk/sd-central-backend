@@ -1,12 +1,18 @@
-from fastapi import APIRouter, Depends, HTTPException
+from typing import cast
+from uuid import UUID
+
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
-from sqlmodel import Session, select
+from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class import AcademicClass
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm
-from models.datesheet import DateSheet, DateSheetCreate, DateSheetRead
+from models.datesheet import (DateSheet, DateSheetCreate,
+                              DateSheetListResponse, DateSheetRead,
+                              DateSheetUpdate)
 from models.datesheet_subject import DateSheetSubject
 
 router = APIRouter(
@@ -78,3 +84,84 @@ def create_date_sheet(
         )
     session.refresh(db_date_sheet)
     return db_date_sheet
+
+
+@router.get("", response_model=DateSheetListResponse)
+def list_date_sheets(
+    academic_class_id: UUID | None = Query(default=None),
+    academic_term_id: UUID | None = Query(default=None),
+    session: Session = Depends(get_session),
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+):
+    statement = select(DateSheet).join(
+        AcademicClass,
+        col(AcademicClass.id) == col(DateSheet.academic_class_id),
+    )
+    count_statement = select(func.count()).select_from(DateSheet)
+    if academic_class_id:
+        condition = DateSheet.academic_class_id == academic_class_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    if academic_term_id:
+        condition = DateSheet.academic_term_id == academic_term_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    total = session.exec(count_statement).one()
+    results = session.exec(
+        statement.order_by(
+            col(AcademicClass.grade).asc(),
+            col(AcademicClass.section).asc(),
+            col(DateSheet.created_at).desc(),
+        )
+        .offset(offset)
+        .limit(limit)
+    ).all()
+    items = cast(list[DateSheetRead], results)
+    return DateSheetListResponse(total=total, items=items)
+
+
+@router.get("/{date_sheet_id}", response_model=DateSheetRead)
+def get_date_sheet(
+    date_sheet_id: UUID,
+    session: Session = Depends(get_session),
+):
+    date_sheet = session.get(DateSheet, date_sheet_id)
+    if not date_sheet:
+        raise HTTPException(status_code=404, detail="Date sheet not found")
+    return date_sheet
+
+
+@router.patch("/{date_sheet_id}", response_model=DateSheetRead)
+def partial_update_date_sheet(
+    date_sheet_id: UUID,
+    date_sheet: DateSheetUpdate,
+    session: Session = Depends(get_session),
+):
+    db_date_sheet = session.get(DateSheet, date_sheet_id)
+    if not db_date_sheet:
+        raise HTTPException(status_code=404, detail="Date sheet not found")
+
+    update_data = date_sheet.model_dump(exclude_unset=True)
+
+    for key, value in update_data.items():
+        setattr(db_date_sheet, key, value)
+
+    session.add(db_date_sheet)
+    session.commit()
+    session.refresh(db_date_sheet)
+    return db_date_sheet
+
+
+@router.delete("/{date_sheet_id}")
+def delete_date_sheet(
+    date_sheet_id: UUID,
+    session: Session = Depends(get_session),
+):
+    db_date_sheet = session.get(DateSheet, date_sheet_id)
+    if not db_date_sheet:
+        raise HTTPException(status_code=404, detail="Date sheet not found")
+
+    session.delete(db_date_sheet)
+    session.commit()
+    return {"message": "Date sheet deleted"}

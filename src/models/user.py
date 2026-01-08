@@ -1,10 +1,19 @@
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+from models.academic_class import AcademicClassReadRaw
+from models.academic_session import AcademicSessionRead
+from models.academic_term import AcademicTermReadRaw
+
+if TYPE_CHECKING:
+    from models.academic_class import AcademicClass
+    from models.academic_session import AcademicSession
+    from models.academic_term import AcademicTerm
 
 
 class UserRole(str, Enum):
@@ -46,7 +55,9 @@ class UserBase(SQLModel):
 
 class User(UserBase, UserDB, table=True):
     __tablename__ = "users"  # type: ignore
-    pass
+    default_academic_session: Optional["AcademicSession"] = Relationship()
+    default_academic_term: Optional["AcademicTerm"] = Relationship()
+    default_academic_class: Optional["AcademicClass"] = Relationship()
 
 
 class UserCreate(UserBase):
@@ -67,6 +78,9 @@ class UserId(SQLModel):
 
 class UserRead(UserBase, UserId):
     created_at: datetime
+    default_academic_session: Optional[AcademicSessionRead] = None
+    default_academic_term: Optional[AcademicTermReadRaw] = None
+    default_academic_class: Optional[AcademicClassReadRaw] = None
 
 
 class UserListResponse(SQLModel):

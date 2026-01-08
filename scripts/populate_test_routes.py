@@ -23,6 +23,9 @@ ROUTES = {
     "academic_class_subjects": "academic_class_subjects.json",
     "report_cards": "report_cards.json",
     "report_card_subjects": "report_card_subjects.json",
+    "date_sheets": "date_sheets.json",
+    "date_sheet_subjects": "date_sheet_subjects.json",
+    "users": "users.json",
 }
 
 

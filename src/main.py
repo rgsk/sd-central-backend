@@ -10,13 +10,14 @@ from db import engine
 from lib.auth import get_bearer_token, get_decoded_token, require_user
 from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject, academic_session,
-                    academic_term, app_settings, enrollment, item, report_card,
-                    report_card_subject, student, subject, user)
+                    academic_term, app_settings, datesheet, datesheet_subject,
+                    enrollment, item, report_card, report_card_subject,
+                    student, subject, user)
 from models.user import UserRead
 from routers import (academic_class_subjects, academic_classes,
                      academic_sessions, academic_terms)
 from routers import app_settings as settings
-from routers import (aws, enrollments, items, report_card_subjects,
+from routers import (aws, datesheets, enrollments, items, report_card_subjects,
                      report_cards, students, subjects, test, users)
 
 
@@ -30,6 +31,8 @@ async def lifespan(app: FastAPI):
         academic_session,
         academic_term,
         app_settings,
+        datesheet,
+        datesheet_subject,
         enrollment,
         item,
         report_card,
@@ -101,7 +104,7 @@ def get_current_user(
 
 
 if env.APP_ENV is AppEnv.DEVELOPMENT:
-    protected_router.include_router(test.router)
+    app.include_router(test.router)
 
 protected_router.include_router(items.router)
 protected_router.include_router(students.router)
@@ -109,6 +112,7 @@ protected_router.include_router(enrollments.router)
 protected_router.include_router(academic_classes.router)
 protected_router.include_router(academic_sessions.router)
 protected_router.include_router(academic_terms.router)
+protected_router.include_router(datesheets.router)
 protected_router.include_router(settings.router)
 protected_router.include_router(aws.router)
 protected_router.include_router(subjects.router)

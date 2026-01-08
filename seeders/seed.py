@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, time
 from uuid import UUID
 
 from sqlmodel import Session, select
@@ -18,11 +18,14 @@ from models.academic_class import AcademicClass  # noqa: E402
 from models.academic_class_subject import AcademicClassSubject  # noqa: E402
 from models.academic_session import AcademicSession  # noqa: E402
 from models.academic_term import AcademicTerm, AcademicTermType  # noqa: E402
+from models.datesheet import DateSheet  # noqa: E402
+from models.datesheet_subject import DateSheetSubject  # noqa: E402
 from models.enrollment import Enrollment  # noqa: E402
 from models.report_card import ReportCard  # noqa: E402
 from models.report_card_subject import ReportCardSubject  # noqa: E402
 from models.student import Student  # noqa: E402
 from models.subject import Subject  # noqa: E402
+from models.user import User, UserRole  # noqa: E402
 
 
 def load_json(path: str) -> list[dict]:
@@ -38,6 +41,12 @@ def parse_optional_date(value: str | None) -> date | None:
     if not value:
         return None
     return date.fromisoformat(value)
+
+
+def parse_optional_time(value: str | None) -> time | None:
+    if not value:
+        return None
+    return time.fromisoformat(value)
 
 
 def get_or_create_academic_class(
@@ -342,9 +351,117 @@ def get_or_create_report_card_subject(
     return report_card_subject, True
 
 
+def get_or_create_date_sheet(
+    session: Session,
+    date_sheet_id: UUID,
+    academic_class_id: UUID,
+    academic_term_id: UUID,
+    created_at: datetime,
+) -> tuple[DateSheet, bool]:
+    existing = session.get(DateSheet, date_sheet_id)
+    if existing:
+        return existing, False
+
+    statement = select(DateSheet).where(
+        DateSheet.academic_class_id == academic_class_id,
+        DateSheet.academic_term_id == academic_term_id,
+    )
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+
+    date_sheet = DateSheet(
+        id=date_sheet_id,
+        academic_class_id=academic_class_id,
+        academic_term_id=academic_term_id,
+        created_at=created_at,
+    )
+    session.add(date_sheet)
+    session.commit()
+    session.refresh(date_sheet)
+    return date_sheet, True
+
+
+def get_or_create_date_sheet_subject(
+    session: Session,
+    date_sheet_subject_id: UUID,
+    date_sheet_id: UUID,
+    academic_class_subject_id: UUID,
+    paper_code: str | None,
+    exam_date: date | None,
+    start_time: time | None,
+    end_time: time | None,
+    created_at: datetime,
+) -> tuple[DateSheetSubject, bool]:
+    existing = session.get(DateSheetSubject, date_sheet_subject_id)
+    if existing:
+        return existing, False
+
+    statement = select(DateSheetSubject).where(
+        DateSheetSubject.datesheet_id == date_sheet_id,
+        DateSheetSubject.academic_class_subject_id
+        == academic_class_subject_id,
+    )
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+
+    date_sheet_subject = DateSheetSubject(
+        id=date_sheet_subject_id,
+        datesheet_id=date_sheet_id,
+        academic_class_subject_id=academic_class_subject_id,
+        paper_code=paper_code,
+        exam_date=exam_date,
+        start_time=start_time,
+        end_time=end_time,
+        created_at=created_at,
+    )
+    session.add(date_sheet_subject)
+    session.commit()
+    session.refresh(date_sheet_subject)
+    return date_sheet_subject, True
+
+
+def get_or_create_user(
+    session: Session,
+    user_id: UUID,
+    email: str,
+    role: UserRole,
+    default_academic_session_id: UUID | None,
+    default_academic_term_id: UUID | None,
+    default_academic_class_id: UUID | None,
+    created_at: datetime,
+) -> tuple[User, bool]:
+    existing = session.get(User, user_id)
+    if existing:
+        return existing, False
+
+    statement = select(User).where(User.email == email)
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+
+    user = User(
+        id=user_id,
+        email=email,
+        role=role,
+        default_academic_session_id=default_academic_session_id,
+        default_academic_term_id=default_academic_term_id,
+        default_academic_class_id=default_academic_class_id,
+        created_at=created_at,
+    )
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    return user, True
+
+
 def seed_students(
     session: Session,
 ) -> tuple[
+    tuple[int, int],
+    tuple[int, int],
+    tuple[int, int],
     tuple[int, int],
     tuple[int, int],
     tuple[int, int],
@@ -373,6 +490,12 @@ def seed_students(
     report_card_skipped = 0
     report_card_subject_inserted = 0
     report_card_subject_skipped = 0
+    date_sheet_inserted = 0
+    date_sheet_skipped = 0
+    date_sheet_subject_inserted = 0
+    date_sheet_subject_skipped = 0
+    user_inserted = 0
+    user_skipped = 0
 
     academic_sessions = load_json(
         os.path.join(DATA_DIR, "academic_sessions.json")
@@ -395,6 +518,11 @@ def seed_students(
     report_card_subjects = load_json(
         os.path.join(DATA_DIR, "report_card_subjects.json")
     )
+    date_sheets = load_json(os.path.join(DATA_DIR, "date_sheets.json"))
+    date_sheet_subjects = load_json(
+        os.path.join(DATA_DIR, "date_sheet_subjects.json")
+    )
+    users = load_json(os.path.join(DATA_DIR, "users.json"))
 
     session_map: dict[UUID, AcademicSession] = {}
     for raw in academic_sessions:
@@ -546,6 +674,63 @@ def seed_students(
         else:
             report_card_subject_skipped += 1
 
+    for raw in date_sheets:
+        date_sheet_id = UUID(raw["id"])
+        _, created = get_or_create_date_sheet(
+            session=session,
+            date_sheet_id=date_sheet_id,
+            academic_class_id=UUID(raw["academic_class_id"]),
+            academic_term_id=UUID(raw["academic_term_id"]),
+            created_at=parse_created_at(raw["created_at"]),
+        )
+        if created:
+            date_sheet_inserted += 1
+        else:
+            date_sheet_skipped += 1
+
+    for raw in date_sheet_subjects:
+        date_sheet_subject_id = UUID(raw["id"])
+        _, created = get_or_create_date_sheet_subject(
+            session=session,
+            date_sheet_subject_id=date_sheet_subject_id,
+            date_sheet_id=UUID(raw["datesheet_id"]),
+            academic_class_subject_id=UUID(
+                raw["academic_class_subject_id"]
+            ),
+            paper_code=raw.get("paper_code"),
+            exam_date=parse_optional_date(raw.get("exam_date")),
+            start_time=parse_optional_time(raw.get("start_time")),
+            end_time=parse_optional_time(raw.get("end_time")),
+            created_at=parse_created_at(raw["created_at"]),
+        )
+        if created:
+            date_sheet_subject_inserted += 1
+        else:
+            date_sheet_subject_skipped += 1
+
+    for raw in users:
+        user_id = UUID(raw["id"])
+        _, created = get_or_create_user(
+            session=session,
+            user_id=user_id,
+            email=raw["email"],
+            role=UserRole(raw["role"]),
+            default_academic_session_id=UUID(raw["default_academic_session_id"])
+            if raw.get("default_academic_session_id")
+            else None,
+            default_academic_term_id=UUID(raw["default_academic_term_id"])
+            if raw.get("default_academic_term_id")
+            else None,
+            default_academic_class_id=UUID(raw["default_academic_class_id"])
+            if raw.get("default_academic_class_id")
+            else None,
+            created_at=parse_created_at(raw["created_at"]),
+        )
+        if created:
+            user_inserted += 1
+        else:
+            user_skipped += 1
+
     session.commit()
     return (
         (session_inserted, session_skipped),
@@ -557,6 +742,9 @@ def seed_students(
         (class_subject_inserted, class_subject_skipped),
         (report_card_inserted, report_card_skipped),
         (report_card_subject_inserted, report_card_subject_skipped),
+        (date_sheet_inserted, date_sheet_skipped),
+        (date_sheet_subject_inserted, date_sheet_subject_skipped),
+        (user_inserted, user_skipped),
     )
 
 
@@ -571,9 +759,12 @@ if __name__ == "__main__":
             (enrollment_inserted, enrollment_skipped),
             (subject_inserted, subject_skipped),
             (class_subject_inserted, class_subject_skipped),
-            (report_card_inserted, report_card_skipped),
-            (report_card_subject_inserted, report_card_subject_skipped),
-        ) = seed_students(session)
+        (report_card_inserted, report_card_skipped),
+        (report_card_subject_inserted, report_card_subject_skipped),
+        (date_sheet_inserted, date_sheet_skipped),
+        (date_sheet_subject_inserted, date_sheet_subject_skipped),
+        (user_inserted, user_skipped),
+    ) = seed_students(session)
 
     print(
         "Seeded academic sessions.",
@@ -619,4 +810,19 @@ if __name__ == "__main__":
         "Seeded report card subjects.",
         f"Inserted: {report_card_subject_inserted}.",
         f"Skipped (already existed): {report_card_subject_skipped}.",
+    )
+    print(
+        "Seeded date sheets.",
+        f"Inserted: {date_sheet_inserted}.",
+        f"Skipped (already existed): {date_sheet_skipped}.",
+    )
+    print(
+        "Seeded date sheet subjects.",
+        f"Inserted: {date_sheet_subject_inserted}.",
+        f"Skipped (already existed): {date_sheet_subject_skipped}.",
+    )
+    print(
+        "Seeded users.",
+        f"Inserted: {user_inserted}.",
+        f"Skipped (already existed): {user_skipped}.",
     )

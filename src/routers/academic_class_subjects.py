@@ -13,6 +13,8 @@ from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectReorderRequest,
                                            AcademicClassSubjectReadWithSubject,
                                            AcademicClassSubjectUpdate)
+from models.datesheet import DateSheet
+from models.datesheet_subject import DateSheetSubject
 from models.enrollment import Enrollment
 from models.report_card import ReportCard
 from models.report_card_subject import ReportCardSubject
@@ -89,6 +91,48 @@ def create_academic_class_subject(
                 for report_card_id in missing_report_card_ids
             ]
             session.add_all(new_subjects)
+            try:
+                session.commit()
+            except IntegrityError:
+                session.rollback()
+    date_sheet_ids_raw = session.exec(
+        select(DateSheet.id).where(
+            DateSheet.academic_class_id
+            == academic_class_subject.academic_class_id,
+            DateSheet.academic_term_id
+            == academic_class_subject.academic_term_id,
+        )
+    ).all()
+    date_sheet_ids = [
+        date_sheet_id
+        for date_sheet_id in date_sheet_ids_raw
+        if date_sheet_id is not None
+    ]
+    if date_sheet_ids:
+        existing_date_sheet_ids_raw = session.exec(
+            select(DateSheetSubject.datesheet_id).where(
+                DateSheetSubject.academic_class_subject_id
+                == db_class_subject.id,
+                col(DateSheetSubject.datesheet_id).in_(date_sheet_ids),
+            )
+        ).all()
+        existing_date_sheet_ids = [
+            date_sheet_id
+            for date_sheet_id in existing_date_sheet_ids_raw
+            if date_sheet_id is not None
+        ]
+        missing_date_sheet_ids = set(date_sheet_ids) - set(
+            existing_date_sheet_ids
+        )
+        if missing_date_sheet_ids:
+            new_date_sheet_subjects = [
+                DateSheetSubject(
+                    datesheet_id=date_sheet_id,
+                    academic_class_subject_id=db_class_subject.id,
+                )
+                for date_sheet_id in missing_date_sheet_ids
+            ]
+            session.add_all(new_date_sheet_subjects)
             try:
                 session.commit()
             except IntegrityError:

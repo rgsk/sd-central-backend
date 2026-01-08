@@ -12,6 +12,7 @@ from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
     from models.academic_session import AcademicSession
+    from models.datesheet import DateSheet
     from models.enrollment import Enrollment
 
 
@@ -50,6 +51,9 @@ class AcademicClass(AcademicClassBase, AcademicClassDB, table=True):
         back_populates="academic_classes"
     )
     class_subjects: list["AcademicClassSubject"] = Relationship(
+        back_populates="academic_class"
+    )
+    date_sheets: list["DateSheet"] = Relationship(
         back_populates="academic_class"
     )
     enrollments: list["Enrollment"] = Relationship(

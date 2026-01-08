@@ -34,7 +34,7 @@ class UserDB(SQLModel):
 
 
 class UserBase(SQLModel):
-    email: str = Field(index=True)
+    email: str = Field(index=True, unique=True)
     role: UserRole
     default_academic_session_id: Optional[UUID] = Field(
         default=None,

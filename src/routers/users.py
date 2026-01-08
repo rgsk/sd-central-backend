@@ -2,6 +2,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
@@ -85,7 +86,14 @@ def create_user(
 ):
     db_user = User(**user.model_dump())
     session.add(db_user)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="User with this email already exists",
+        )
     session.refresh(db_user)
     return db_user
 
@@ -142,7 +150,14 @@ def partial_update_user(
         setattr(db_user, key, value)
 
     session.add(db_user)
-    session.commit()
+    try:
+        session.commit()
+    except IntegrityError:
+        session.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="User with this email already exists",
+        )
     session.refresh(db_user)
     return db_user
 

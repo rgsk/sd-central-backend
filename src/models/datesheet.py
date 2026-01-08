@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
+from sqlalchemy import UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -39,6 +40,13 @@ class DateSheetBase(SQLModel):
 
 class DateSheet(DateSheetBase, DateSheetDB, table=True):
     __tablename__ = "date_sheets"  # type: ignore
+    __table_args__ = (
+        UniqueConstraint(
+            "academic_class_id",
+            "academic_term_id",
+            name="uq_date_sheets_class_term",
+        ),
+    )
     academic_class: Optional["AcademicClass"] = Relationship(
         back_populates="date_sheets"
     )

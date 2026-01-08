@@ -6,6 +6,7 @@ from sqlalchemy import func
 from sqlmodel import Session, col, select
 
 from db import get_session
+from models.academic_class_subject import AcademicClassSubject
 from models.datesheet_subject import (DateSheetSubject,
                                       DateSheetSubjectCreate,
                                       DateSheetSubjectListResponse,
@@ -55,10 +56,17 @@ def list_date_sheet_subjects(
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
-        statement.order_by(
+        statement.join(
+            AcademicClassSubject,
+            col(AcademicClassSubject.id)
+            == col(DateSheetSubject.academic_class_subject_id),
+        )
+        .order_by(
             col(DateSheetSubject.exam_date).asc().nulls_last(),
             col(DateSheetSubject.start_time).asc().nulls_last(),
             col(DateSheetSubject.end_time).asc().nulls_last(),
+            col(AcademicClassSubject.is_additional).asc(),
+            col(AcademicClassSubject.position).asc(),
             col(DateSheetSubject.created_at).desc(),
         )
         .offset(offset)

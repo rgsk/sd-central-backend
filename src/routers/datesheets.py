@@ -90,6 +90,7 @@ def create_date_sheet(
 def list_date_sheets(
     academic_class_id: UUID | None = Query(default=None),
     academic_term_id: UUID | None = Query(default=None),
+    academic_session_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
@@ -99,12 +100,25 @@ def list_date_sheets(
         col(AcademicClass.id) == col(DateSheet.academic_class_id),
     )
     count_statement = select(func.count()).select_from(DateSheet)
+    if academic_session_id:
+        statement = statement.join(
+            AcademicTerm,
+            col(AcademicTerm.id) == col(DateSheet.academic_term_id),
+        )
+        count_statement = count_statement.join(
+            AcademicTerm,
+            col(AcademicTerm.id) == col(DateSheet.academic_term_id),
+        )
     if academic_class_id:
         condition = DateSheet.academic_class_id == academic_class_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     if academic_term_id:
         condition = DateSheet.academic_term_id == academic_term_id
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+    if academic_session_id:
+        condition = AcademicTerm.academic_session_id == academic_session_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()

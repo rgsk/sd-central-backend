@@ -10,7 +10,6 @@ from db import get_session
 from models.academic_class import (AcademicClass, AcademicClassCreate,
                                    AcademicClassListResponse,
                                    AcademicClassRead,
-                                   AcademicClassReadWithSubjects,
                                    AcademicClassUpdate)
 from models.academic_session import AcademicSession
 
@@ -97,7 +96,7 @@ def list_academic_classes(
 
 @router.get(
     "/{academic_class_id}",
-    response_model=AcademicClassReadWithSubjects,
+    response_model=AcademicClassRead,
 )
 def get_academic_class(
     academic_class_id: UUID,

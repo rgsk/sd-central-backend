@@ -7,7 +7,7 @@ from db import get_session
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
-from models.datesheet import DateSheet
+from models.datesheet import DateSheet, DateSheetRead
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
 from models.student import Student
@@ -23,6 +23,11 @@ class AdmitCardResponse(SQLModel):
     enrollment: EnrollmentRead
     academic_term: AcademicTermRead
     datesheet_subjects: list[DateSheetSubjectRead]
+
+
+class DateSheetDataResponse(SQLModel):
+    date_sheet: DateSheetRead
+    date_sheet_subjects: list[DateSheetSubjectRead]
 
 
 @router.get("/admit-card-data", response_model=AdmitCardResponse)
@@ -133,6 +138,54 @@ def get_id_card_data(
         )
 
     return IdCardResponse(enrollment=EnrollmentRead.model_validate(enrollment))
+
+
+@router.get("/date-sheet-data", response_model=DateSheetDataResponse)
+def get_date_sheet_data(
+    academic_class_id: UUID = Query(...),
+    academic_term_id: UUID = Query(...),
+    session: Session = Depends(get_session),
+):
+    date_sheet = session.exec(
+        select(DateSheet).where(
+            DateSheet.academic_class_id == academic_class_id,
+            DateSheet.academic_term_id == academic_term_id,
+        )
+    ).first()
+    if not date_sheet:
+        raise HTTPException(
+            status_code=404,
+            detail="Date sheet not found for the provided class and term",
+        )
+
+    date_sheet_subjects: list[DateSheetSubjectRead] = []
+    if date_sheet.id:
+        results = session.exec(
+            select(DateSheetSubject)
+            .join(
+                AcademicClassSubject,
+                col(AcademicClassSubject.id)
+                == col(DateSheetSubject.academic_class_subject_id),
+            )
+            .where(DateSheetSubject.datesheet_id == date_sheet.id)
+            .order_by(
+                col(DateSheetSubject.exam_date).asc().nulls_last(),
+                col(DateSheetSubject.start_time).asc().nulls_last(),
+                col(DateSheetSubject.end_time).asc().nulls_last(),
+                col(AcademicClassSubject.is_additional).asc(),
+                col(AcademicClassSubject.position).asc(),
+                col(DateSheetSubject.created_at).desc(),
+            )
+        ).all()
+        date_sheet_subjects = [
+            DateSheetSubjectRead.model_validate(item)
+            for item in results
+        ]
+
+    return DateSheetDataResponse(
+        date_sheet=DateSheetRead.model_validate(date_sheet),
+        date_sheet_subjects=date_sheet_subjects,
+    )
 
 
 @router.get("/academic-sessions", response_model=list[AcademicSessionRead])

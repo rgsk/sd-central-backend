@@ -102,9 +102,9 @@ def get_report_card(
         )
     ).first()
     read_report_card = ReportCardReadDetail.model_validate(report_card)
-
+    populate_rank_and_percentage(read_report_card, session)
     return ReportCardDataResponse(
-        report_card=populate_rank_and_percentage(read_report_card, session)
+        report_card=read_report_card
     )
 
 

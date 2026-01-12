@@ -267,7 +267,6 @@ def populate_rank_and_percentage(report_card: ReportCardReadDetail, session: Ses
                 report_card.id
             ]
             report_card.rank = ranks_by_id.get(report_card.id)
-    return report_card
 
 
 @router.get("/{report_card_id}", response_model=ReportCardReadDetail)
@@ -279,7 +278,8 @@ def get_report_card(
     if not report_card:
         raise HTTPException(status_code=404, detail="Report card not found")
     read_report_card = ReportCardReadDetail.model_validate(report_card)
-    return populate_rank_and_percentage(read_report_card, session)
+    populate_rank_and_percentage(read_report_card, session)
+    return read_report_card
 
 
 def _compute_percentages_and_ranks(

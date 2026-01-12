@@ -17,7 +17,7 @@ router = APIRouter(
 )
 
 
-@router.get("/admit-card", response_model=AdmitCardResponse)
+@router.get("/admit-card-data", response_model=AdmitCardResponse)
 def get_admit_card(
     enrollment_id: UUID = Query(...),
     academic_term_id: UUID = Query(...),

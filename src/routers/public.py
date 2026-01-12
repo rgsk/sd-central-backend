@@ -220,6 +220,7 @@ def get_academic_classes(
     results = session.exec(
         statement.order_by(
             grade_rank,
+            col(AcademicClass.section),
             col(AcademicClass.created_at).desc(),
         )
     ).all()

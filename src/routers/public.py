@@ -11,6 +11,7 @@ from models.admit_card import AdmitCardResponse
 from models.datesheet import DateSheet
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
+from models.student import Student
 from routers.academic_terms import term_rank
 
 router = APIRouter(
@@ -21,26 +22,38 @@ router = APIRouter(
 
 @router.get("/admit-card-data", response_model=AdmitCardResponse)
 def get_admit_card(
-    enrollment_id: UUID = Query(...),
+    student_registration_no: str = Query(...),
     academic_term_id: UUID = Query(...),
     session: Session = Depends(get_session),
 ):
-    enrollment = session.get(Enrollment, enrollment_id)
-    if not enrollment:
-        raise HTTPException(
-            status_code=404, detail="Enrollment not found"
-        )
-
     academic_term = session.get(AcademicTerm, academic_term_id)
     if not academic_term:
         raise HTTPException(
             status_code=404, detail="Academic term not found"
         )
 
-    if enrollment.academic_session_id != academic_term.academic_session_id:
+    student = session.exec(
+        select(Student).where(
+            Student.registration_no == student_registration_no,
+        )
+    ).first()
+    if not student:
         raise HTTPException(
-            status_code=400,
-            detail="Academic term does not match enrollment session",
+            status_code=404,
+            detail="Student not found for the provided registration number",
+        )
+
+    enrollment = session.exec(
+        select(Enrollment).where(
+            Enrollment.student_id == student.id,
+            Enrollment.academic_session_id
+            == academic_term.academic_session_id,
+        )
+    ).first()
+    if not enrollment:
+        raise HTTPException(
+            status_code=404,
+            detail="Enrollment not found for the selected session",
         )
 
     date_sheet = session.exec(
@@ -100,10 +113,8 @@ def get_academic_terms(
     academic_session_id: UUID = Query(),
     session: Session = Depends(get_session),
 ):
-    statement = select(AcademicTerm)
-    if academic_session_id:
-        condition = AcademicTerm.academic_session_id == academic_session_id
-        statement = statement.where(condition)
+    statement = select(AcademicTerm).where(
+        AcademicTerm.academic_session_id == academic_session_id)
     results = session.exec(
         statement.order_by(
             term_rank,

@@ -1,13 +1,12 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlmodel import Session, col, select
+from sqlmodel import Session, SQLModel, col, select
 
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
-from models.admit_card import AdmitCardResponse
 from models.datesheet import DateSheet
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
@@ -18,6 +17,12 @@ router = APIRouter(
     prefix="/public",
     tags=["public"],
 )
+
+
+class AdmitCardResponse(SQLModel):
+    enrollment: EnrollmentRead
+    academic_term: AcademicTermRead
+    datesheet_subjects: list[DateSheetSubjectRead]
 
 
 @router.get("/admit-card-data", response_model=AdmitCardResponse)
@@ -92,6 +97,42 @@ def get_admit_card(
         academic_term=AcademicTermRead.model_validate(academic_term),
         datesheet_subjects=date_sheet_subjects,
     )
+
+
+class IdCardResponse(SQLModel):
+    enrollment: EnrollmentRead
+
+
+@router.get("/id-card-data", response_model=IdCardResponse)
+def get_id_card_data(
+    student_registration_no: str = Query(...),
+    academic_session_id: UUID = Query(...),
+    session: Session = Depends(get_session),
+):
+    student = session.exec(
+        select(Student).where(
+            Student.registration_no == student_registration_no,
+        )
+    ).first()
+    if not student:
+        raise HTTPException(
+            status_code=404,
+            detail="Student not found for the provided registration number",
+        )
+
+    enrollment = session.exec(
+        select(Enrollment).where(
+            Enrollment.student_id == student.id,
+            Enrollment.academic_session_id == academic_session_id,
+        )
+    ).first()
+    if not enrollment:
+        raise HTTPException(
+            status_code=404,
+            detail="Enrollment not found for the given session",
+        )
+
+    return IdCardResponse(enrollment=EnrollmentRead.model_validate(enrollment))
 
 
 @router.get("/academic-sessions", response_model=list[AcademicSessionRead])

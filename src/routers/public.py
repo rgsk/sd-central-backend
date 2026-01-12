@@ -11,9 +11,11 @@ from models.academic_term import AcademicTerm, AcademicTermRead
 from models.datesheet import DateSheet, DateSheetRead
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
+from models.report_card import ReportCard, ReportCardReadDetail
 from models.student import Student
 from routers.academic_classes import grade_rank
 from routers.academic_terms import term_rank
+from routers.report_cards import populate_rank_and_percentage
 
 router = APIRouter(
     prefix="/public",
@@ -51,6 +53,59 @@ def _query_date_sheet_subjects(
         DateSheetSubjectRead.model_validate(item)
         for item in results
     ]
+
+
+class ReportCardDataResponse(SQLModel):
+    report_card: ReportCardReadDetail
+
+
+@router.get("/report-card-data", response_model=ReportCardDataResponse)
+def get_report_card(
+    student_registration_no: str = Query(...),
+    academic_term_id: UUID = Query(...),
+    session: Session = Depends(get_session),
+):
+    academic_term = session.get(AcademicTerm, academic_term_id)
+    if not academic_term:
+        raise HTTPException(
+            status_code=404, detail="Academic term not found"
+        )
+
+    student = session.exec(
+        select(Student).where(
+            Student.registration_no == student_registration_no,
+        )
+    ).first()
+    if not student:
+        raise HTTPException(
+            status_code=404,
+            detail="Student not found for the provided registration number",
+        )
+
+    enrollment = session.exec(
+        select(Enrollment).where(
+            Enrollment.student_id == student.id,
+            Enrollment.academic_session_id
+            == academic_term.academic_session_id,
+        )
+    ).first()
+    if not enrollment:
+        raise HTTPException(
+            status_code=404,
+            detail="Enrollment not found for the selected session",
+        )
+
+    report_card = session.exec(
+        select(ReportCard).where(
+            ReportCard.academic_term_id == academic_term_id,
+            ReportCard.enrollment_id == enrollment.id
+        )
+    ).first()
+    read_report_card = ReportCardReadDetail.model_validate(report_card)
+
+    return ReportCardDataResponse(
+        report_card=populate_rank_and_percentage(read_report_card, session)
+    )
 
 
 @router.get("/admit-card-data", response_model=AdmitCardDataResponse)

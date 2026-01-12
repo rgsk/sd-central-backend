@@ -25,9 +25,30 @@ class AdmitCardResponse(SQLModel):
     datesheet_subjects: list[DateSheetSubjectRead]
 
 
-class DateSheetDataResponse(SQLModel):
-    date_sheet: DateSheetRead
-    date_sheet_subjects: list[DateSheetSubjectRead]
+def _query_date_sheet_subjects(
+    session: Session, date_sheet_id: UUID
+) -> list[DateSheetSubjectRead]:
+    results = session.exec(
+        select(DateSheetSubject)
+        .join(
+            AcademicClassSubject,
+            col(AcademicClassSubject.id)
+            == col(DateSheetSubject.academic_class_subject_id),
+        )
+        .where(DateSheetSubject.datesheet_id == date_sheet_id)
+        .order_by(
+            col(DateSheetSubject.exam_date).asc().nulls_last(),
+            col(DateSheetSubject.start_time).asc().nulls_last(),
+            col(DateSheetSubject.end_time).asc().nulls_last(),
+            col(AcademicClassSubject.is_additional).asc(),
+            col(AcademicClassSubject.position).asc(),
+            col(DateSheetSubject.created_at).desc(),
+        )
+    ).all()
+    return [
+        DateSheetSubjectRead.model_validate(item)
+        for item in results
+    ]
 
 
 @router.get("/admit-card-data", response_model=AdmitCardResponse)
@@ -75,27 +96,9 @@ def get_admit_card(
 
     date_sheet_subjects: list[DateSheetSubjectRead] = []
     if date_sheet and date_sheet.id:
-        results = session.exec(
-            select(DateSheetSubject)
-            .join(
-                AcademicClassSubject,
-                col(AcademicClassSubject.id)
-                == col(DateSheetSubject.academic_class_subject_id),
-            )
-            .where(DateSheetSubject.datesheet_id == date_sheet.id)
-            .order_by(
-                col(DateSheetSubject.exam_date).asc().nulls_last(),
-                col(DateSheetSubject.start_time).asc().nulls_last(),
-                col(DateSheetSubject.end_time).asc().nulls_last(),
-                col(AcademicClassSubject.is_additional).asc(),
-                col(AcademicClassSubject.position).asc(),
-                col(DateSheetSubject.created_at).desc(),
-            )
-        ).all()
-        date_sheet_subjects = [
-            DateSheetSubjectRead.model_validate(item)
-            for item in results
-        ]
+        date_sheet_subjects = _query_date_sheet_subjects(
+            session, date_sheet.id
+        )
 
     return AdmitCardResponse(
         enrollment=EnrollmentRead.model_validate(enrollment),
@@ -140,6 +143,11 @@ def get_id_card_data(
     return IdCardResponse(enrollment=EnrollmentRead.model_validate(enrollment))
 
 
+class DateSheetDataResponse(SQLModel):
+    date_sheet: DateSheetRead
+    date_sheet_subjects: list[DateSheetSubjectRead]
+
+
 @router.get("/date-sheet-data", response_model=DateSheetDataResponse)
 def get_date_sheet_data(
     academic_class_id: UUID = Query(...),
@@ -160,27 +168,9 @@ def get_date_sheet_data(
 
     date_sheet_subjects: list[DateSheetSubjectRead] = []
     if date_sheet.id:
-        results = session.exec(
-            select(DateSheetSubject)
-            .join(
-                AcademicClassSubject,
-                col(AcademicClassSubject.id)
-                == col(DateSheetSubject.academic_class_subject_id),
-            )
-            .where(DateSheetSubject.datesheet_id == date_sheet.id)
-            .order_by(
-                col(DateSheetSubject.exam_date).asc().nulls_last(),
-                col(DateSheetSubject.start_time).asc().nulls_last(),
-                col(DateSheetSubject.end_time).asc().nulls_last(),
-                col(AcademicClassSubject.is_additional).asc(),
-                col(AcademicClassSubject.position).asc(),
-                col(DateSheetSubject.created_at).desc(),
-            )
-        ).all()
-        date_sheet_subjects = [
-            DateSheetSubjectRead.model_validate(item)
-            for item in results
-        ]
+        date_sheet_subjects = _query_date_sheet_subjects(
+            session, date_sheet.id
+        )
 
     return DateSheetDataResponse(
         date_sheet=DateSheetRead.model_validate(date_sheet),

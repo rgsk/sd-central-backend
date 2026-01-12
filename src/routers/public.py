@@ -21,7 +21,7 @@ router = APIRouter(
 )
 
 
-class AdmitCardResponse(SQLModel):
+class AdmitCardDataResponse(SQLModel):
     enrollment: EnrollmentRead
     academic_term: AcademicTermRead
     datesheet_subjects: list[DateSheetSubjectRead]
@@ -53,7 +53,7 @@ def _query_date_sheet_subjects(
     ]
 
 
-@router.get("/admit-card-data", response_model=AdmitCardResponse)
+@router.get("/admit-card-data", response_model=AdmitCardDataResponse)
 def get_admit_card(
     student_registration_no: str = Query(...),
     academic_term_id: UUID = Query(...),
@@ -102,18 +102,18 @@ def get_admit_card(
             session, date_sheet.id
         )
 
-    return AdmitCardResponse(
+    return AdmitCardDataResponse(
         enrollment=EnrollmentRead.model_validate(enrollment),
         academic_term=AcademicTermRead.model_validate(academic_term),
         datesheet_subjects=date_sheet_subjects,
     )
 
 
-class IdCardResponse(SQLModel):
+class IdCardDataResponse(SQLModel):
     enrollment: EnrollmentRead
 
 
-@router.get("/id-card-data", response_model=IdCardResponse)
+@router.get("/id-card-data", response_model=IdCardDataResponse)
 def get_id_card_data(
     student_registration_no: str = Query(...),
     academic_session_id: UUID = Query(...),
@@ -142,7 +142,7 @@ def get_id_card_data(
             detail="Enrollment not found for the given session",
         )
 
-    return IdCardResponse(enrollment=EnrollmentRead.model_validate(enrollment))
+    return IdCardDataResponse(enrollment=EnrollmentRead.model_validate(enrollment))
 
 
 class DateSheetDataResponse(SQLModel):

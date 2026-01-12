@@ -214,16 +214,18 @@ def list_report_cards(
         ordered_ids = sorted(
             report_card_ids, key=sort_key, reverse=sort_desc
         )
-        page_ids = ordered_ids[offset : offset + limit]
+        page_ids = ordered_ids[offset: offset + limit]
         if not page_ids:
             return ReportCardListResponse(total=total, items=[])
 
         order_case = case(
-            {report_card_id: index for index, report_card_id in enumerate(page_ids)},
+            {report_card_id: index for index,
+                report_card_id in enumerate(page_ids)},
             value=col(ReportCard.id),
         )
         results = session.exec(
-            statement.where(col(ReportCard.id).in_(page_ids)).order_by(order_case)
+            statement.where(col(ReportCard.id).in_(
+                page_ids)).order_by(order_case)
         ).all()
         items = [
             ReportCardReadDetail.model_validate(report_card)
@@ -239,15 +241,7 @@ def list_report_cards(
     return ReportCardListResponse(total=total, items=items)
 
 
-@router.get("/{report_card_id}", response_model=ReportCardReadDetail)
-def get_report_card(
-    report_card_id: UUID,
-    session: Session = Depends(get_session),
-):
-    report_card = session.get(ReportCard, report_card_id)
-    if not report_card:
-        raise HTTPException(status_code=404, detail="Report card not found")
-    read_report_card = ReportCardReadDetail.model_validate(report_card)
+def populate_rank_and_percentage(report_card: ReportCardReadDetail, session: Session = Depends(get_session)):
     enrollment = session.get(Enrollment, report_card.enrollment_id)
     if enrollment:
         report_card_ids_raw = session.exec(
@@ -268,12 +262,24 @@ def get_report_card(
             session,
             report_card_ids,
         )
-        if report_card_id in percentages_by_id:
-            read_report_card.overall_percentage = percentages_by_id[
-                report_card_id
+        if report_card.id in percentages_by_id:
+            report_card.overall_percentage = percentages_by_id[
+                report_card.id
             ]
-            read_report_card.rank = ranks_by_id.get(report_card_id)
-    return read_report_card
+            report_card.rank = ranks_by_id.get(report_card.id)
+    return report_card
+
+
+@router.get("/{report_card_id}", response_model=ReportCardReadDetail)
+def get_report_card(
+    report_card_id: UUID,
+    session: Session = Depends(get_session),
+):
+    report_card = session.get(ReportCard, report_card_id)
+    if not report_card:
+        raise HTTPException(status_code=404, detail="Report card not found")
+    read_report_card = ReportCardReadDetail.model_validate(report_card)
+    return populate_rank_and_percentage(read_report_card, session)
 
 
 def _compute_percentages_and_ranks(

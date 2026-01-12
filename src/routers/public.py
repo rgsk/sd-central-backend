@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel import Session, SQLModel, col, select
 
 from db import get_session
+from models.academic_class import AcademicClass, AcademicClassRead
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
@@ -11,6 +12,7 @@ from models.datesheet import DateSheet, DateSheetRead
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
 from models.student import Student
+from routers.academic_classes import grade_rank
 from routers.academic_terms import term_rank
 
 router = APIRouter(
@@ -203,6 +205,22 @@ def get_academic_terms(
         statement.order_by(
             term_rank,
             col(AcademicTerm.created_at).desc(),
+        )
+    ).all()
+    return results
+
+
+@router.get("/academic-classes", response_model=list[AcademicClassRead])
+def get_academic_classes(
+    academic_session_id: UUID = Query(),
+    session: Session = Depends(get_session),
+):
+    statement = select(AcademicClass).where(
+        AcademicClass.academic_session_id == academic_session_id)
+    results = session.exec(
+        statement.order_by(
+            grade_rank,
+            col(AcademicClass.created_at).desc(),
         )
     ).all()
     return results

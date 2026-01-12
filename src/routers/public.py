@@ -5,11 +5,13 @@ from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
+from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
 from models.admit_card import AdmitCardResponse
 from models.datesheet import DateSheet
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
+from routers.academic_terms import term_rank
 
 router = APIRouter(
     prefix="/public",
@@ -77,3 +79,35 @@ def get_admit_card(
         academic_term=AcademicTermRead.model_validate(academic_term),
         datesheet_subjects=date_sheet_subjects,
     )
+
+
+@router.get("/academic-sessions", response_model=list[AcademicSessionRead])
+def get_academic_sessions(
+    session: Session = Depends(get_session),
+):
+    statement = select(AcademicSession)
+    results = session.exec(
+        statement.order_by(
+            col(AcademicSession.year),
+            col(AcademicSession.created_at).desc(),
+        )
+    ).all()
+    return results
+
+
+@router.get("/academic-terms", response_model=list[AcademicTermRead])
+def get_academic_terms(
+    academic_session_id: UUID = Query(),
+    session: Session = Depends(get_session),
+):
+    statement = select(AcademicTerm)
+    if academic_session_id:
+        condition = AcademicTerm.academic_session_id == academic_session_id
+        statement = statement.where(condition)
+    results = session.exec(
+        statement.order_by(
+            term_rank,
+            col(AcademicTerm.created_at).desc(),
+        )
+    ).all()
+    return results

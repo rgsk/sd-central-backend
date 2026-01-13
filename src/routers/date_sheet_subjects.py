@@ -35,7 +35,7 @@ def create_date_sheet_subject(
 
 @router.get("", response_model=DateSheetSubjectListResponse)
 def list_date_sheet_subjects(
-    datesheet_id: UUID | None = Query(default=None),
+    date_sheet_id: UUID | None = Query(default=None),
     academic_class_subject_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
@@ -43,8 +43,8 @@ def list_date_sheet_subjects(
 ):
     statement = select(DateSheetSubject)
     count_statement = select(func.count()).select_from(DateSheetSubject)
-    if datesheet_id:
-        condition = DateSheetSubject.date_sheet_id == datesheet_id
+    if date_sheet_id:
+        condition = DateSheetSubject.date_sheet_id == date_sheet_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     if academic_class_subject_id:

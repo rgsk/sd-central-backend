@@ -9,13 +9,14 @@ from models.academic_class_subject import AcademicClassSubject
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
 from models.date_sheet import DateSheet, DateSheetReadDetail
-from models.date_sheet_subject import DateSheetSubject, DateSheetSubjectRead
+from models.date_sheet_subject import DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
 from models.report_card import ReportCard, ReportCardReadDetail
 from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
 from models.student import Student
 from routers.academic_classes import grade_rank
 from routers.academic_terms import term_rank
+from routers.date_sheets import query_date_sheet_subjects
 from routers.report_card_subjects import REPORT_CARD_SUBJECT_ORDER_BY
 from routers.report_cards import populate_rank_and_percentage
 
@@ -29,32 +30,6 @@ class AdmitCardDataResponse(SQLModel):
     enrollment: EnrollmentRead
     academic_term: AcademicTermRead
     date_sheet: DateSheetReadDetail | None = None
-
-
-def _query_date_sheet_subjects(
-    session: Session, date_sheet_id: UUID
-) -> list[DateSheetSubjectRead]:
-    results = session.exec(
-        select(DateSheetSubject)
-        .join(
-            AcademicClassSubject,
-            col(AcademicClassSubject.id)
-            == col(DateSheetSubject.academic_class_subject_id),
-        )
-        .where(DateSheetSubject.date_sheet_id == date_sheet_id)
-        .order_by(
-            col(DateSheetSubject.exam_date).asc().nulls_last(),
-            col(DateSheetSubject.start_time).asc().nulls_last(),
-            col(DateSheetSubject.end_time).asc().nulls_last(),
-            col(AcademicClassSubject.is_additional).asc(),
-            col(AcademicClassSubject.position).asc(),
-            col(DateSheetSubject.created_at).desc(),
-        )
-    ).all()
-    return [
-        DateSheetSubjectRead.model_validate(item)
-        for item in results
-    ]
 
 
 class ReportCardDataResponse(SQLModel):
@@ -170,7 +145,7 @@ def get_admit_card(
 
     date_sheet_subjects: list[DateSheetSubjectRead] = []
     if date_sheet and date_sheet.id:
-        date_sheet_subjects = _query_date_sheet_subjects(
+        date_sheet_subjects = query_date_sheet_subjects(
             session, date_sheet.id
         )
 
@@ -246,7 +221,7 @@ def get_date_sheet_data(
 
     date_sheet_subjects: list[DateSheetSubjectRead] = []
     if date_sheet.id:
-        date_sheet_subjects = _query_date_sheet_subjects(
+        date_sheet_subjects = query_date_sheet_subjects(
             session, date_sheet.id
         )
 

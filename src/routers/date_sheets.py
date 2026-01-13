@@ -12,8 +12,8 @@ from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm
 from models.date_sheet import (DateSheet, DateSheetCreate,
                                DateSheetListResponse, DateSheetRead,
-                               DateSheetUpdate)
-from models.date_sheet_subject import DateSheetSubject
+                               DateSheetReadDetail, DateSheetUpdate)
+from models.date_sheet_subject import DateSheetSubject, DateSheetSubjectRead
 
 router = APIRouter(
     prefix="/date-sheets",
@@ -133,6 +133,54 @@ def list_date_sheets(
     ).all()
     items = cast(list[DateSheetRead], results)
     return DateSheetListResponse(total=total, items=items)
+
+
+def query_date_sheet_subjects(
+    session: Session, date_sheet_id: UUID
+) -> list[DateSheetSubjectRead]:
+    results = session.exec(
+        select(DateSheetSubject)
+        .join(
+            AcademicClassSubject,
+            col(AcademicClassSubject.id)
+            == col(DateSheetSubject.academic_class_subject_id),
+        )
+        .where(DateSheetSubject.date_sheet_id == date_sheet_id)
+        .order_by(
+            col(DateSheetSubject.exam_date).asc().nulls_last(),
+            col(DateSheetSubject.start_time).asc().nulls_last(),
+            col(DateSheetSubject.end_time).asc().nulls_last(),
+            col(AcademicClassSubject.is_additional).asc(),
+            col(AcademicClassSubject.position).asc(),
+            col(DateSheetSubject.created_at).desc(),
+        )
+    ).all()
+    return [
+        DateSheetSubjectRead.model_validate(item)
+        for item in results
+    ]
+
+
+@router.get("/find", response_model=DateSheetReadDetail)
+def find_date_sheet(
+    academic_class_id: UUID = Query(...),
+    academic_term_id: UUID = Query(...),
+    session: Session = Depends(get_session),
+):
+    date_sheet = session.exec(
+        select(DateSheet).where(
+            DateSheet.academic_class_id == academic_class_id,
+            DateSheet.academic_term_id == academic_term_id,
+        )
+    ).first()
+    if not date_sheet:
+        raise HTTPException(status_code=404, detail="Date sheet not found")
+    date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
+    date_sheet_subjects = query_date_sheet_subjects(
+        session, date_sheet_read.id
+    )
+    date_sheet_read.date_sheet_subjects = date_sheet_subjects
+    return date_sheet_read
 
 
 @router.get("/{date_sheet_id}", response_model=DateSheetRead)

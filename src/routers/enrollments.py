@@ -64,6 +64,7 @@ def create_enrollment(
 def list_enrollments(
     student_id: UUID | None = Query(default=None),
     academic_class_id: UUID | None = Query(default=None),
+    selected_ids: list[UUID] | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
@@ -75,6 +76,7 @@ def list_enrollments(
             col(AcademicSession.id)
             == col(Enrollment.academic_session_id),
         )
+        .join(Student, col(Student.id) == col(Enrollment.student_id))
     )
     count_statement = select(func.count()).select_from(Enrollment)
     if student_id:
@@ -85,9 +87,14 @@ def list_enrollments(
         condition = Enrollment.academic_class_id == academic_class_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
+    if selected_ids:
+        condition = col(Enrollment.id).in_(selected_ids)
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
     total = session.exec(count_statement).one()
     results = session.exec(
         statement.order_by(
+            col(Student.name),
             col(AcademicSession.year),
             col(Enrollment.created_at).desc(),
         )

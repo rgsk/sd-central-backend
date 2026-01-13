@@ -8,7 +8,7 @@ from models.academic_class import AcademicClass, AcademicClassRead
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
-from models.datesheet import DateSheet, DateSheetRead
+from models.datesheet import DateSheet, DateSheetReadDetail
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
 from models.report_card import ReportCard, ReportCardReadDetail
@@ -28,7 +28,7 @@ router = APIRouter(
 class AdmitCardDataResponse(SQLModel):
     enrollment: EnrollmentRead
     academic_term: AcademicTermRead
-    datesheet_subjects: list[DateSheetSubjectRead]
+    date_sheet: DateSheetReadDetail | None = None
 
 
 def _query_date_sheet_subjects(
@@ -59,7 +59,6 @@ def _query_date_sheet_subjects(
 
 class ReportCardDataResponse(SQLModel):
     report_card: ReportCardReadDetail
-    report_card_subjects: list[ReportCardSubjectRead] = []
 
 
 @router.get("/report-card-data", response_model=ReportCardDataResponse)
@@ -120,9 +119,9 @@ def get_report_card(
         ReportCardSubjectRead.model_validate(item)
         for item in results
     ]
+    read_report_card.report_card_subjects = report_card_subjects
     return ReportCardDataResponse(
         report_card=read_report_card,
-        report_card_subjects=report_card_subjects,
     )
 
 
@@ -175,10 +174,15 @@ def get_admit_card(
             session, date_sheet.id
         )
 
+    date_sheet_read: DateSheetReadDetail | None = None
+    if date_sheet:
+        date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
+        date_sheet_read.datesheet_subjects = date_sheet_subjects
+
     return AdmitCardDataResponse(
         enrollment=EnrollmentRead.model_validate(enrollment),
         academic_term=AcademicTermRead.model_validate(academic_term),
-        datesheet_subjects=date_sheet_subjects,
+        date_sheet=date_sheet_read,
     )
 
 
@@ -219,8 +223,7 @@ def get_id_card_data(
 
 
 class DateSheetDataResponse(SQLModel):
-    date_sheet: DateSheetRead
-    date_sheet_subjects: list[DateSheetSubjectRead]
+    date_sheet: DateSheetReadDetail
 
 
 @router.get("/date-sheet-data", response_model=DateSheetDataResponse)
@@ -247,10 +250,9 @@ def get_date_sheet_data(
             session, date_sheet.id
         )
 
-    return DateSheetDataResponse(
-        date_sheet=DateSheetRead.model_validate(date_sheet),
-        date_sheet_subjects=date_sheet_subjects,
-    )
+    date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
+    date_sheet_read.datesheet_subjects = date_sheet_subjects
+    return DateSheetDataResponse(date_sheet=date_sheet_read)
 
 
 @router.get("/academic-sessions", response_model=list[AcademicSessionRead])

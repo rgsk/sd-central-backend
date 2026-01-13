@@ -8,6 +8,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 from models.academic_class import AcademicClassRead
 from models.academic_term import AcademicTermRead
+from models.datesheet_subject import DateSheetSubjectRead
 
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
@@ -77,6 +78,10 @@ class DateSheetRead(DateSheetBase, DateSheetId):
     created_at: datetime
     academic_class: Optional["AcademicClassRead"] = None
     academic_term: Optional["AcademicTermRead"] = None
+
+
+class DateSheetReadDetail(DateSheetRead):
+    datesheet_subjects: list[DateSheetSubjectRead] = []
 
 
 class DateSheetReadRaw(DateSheetBase, DateSheetId):

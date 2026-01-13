@@ -4,24 +4,24 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
-from sqlmodel import Session, col, select
+from sqlmodel import Session, SQLModel, col, select
 
 from db import get_session
 from models.academic_class import AcademicClass
 from models.academic_session import AcademicSession
-from models.enrollment import (
-    Enrollment,
-    EnrollmentCreate,
-    EnrollmentListResponse,
-    EnrollmentRead,
-    EnrollmentUpdate,
-)
+from models.enrollment import (Enrollment, EnrollmentCreate,
+                               EnrollmentListResponse, EnrollmentRead,
+                               EnrollmentUpdate)
 from models.student import Student
 
 router = APIRouter(
     prefix="/enrollments",
     tags=["enrollments"],
 )
+
+
+class EnrollmentCountResponse(SQLModel):
+    total: int
 
 
 @router.post("", response_model=EnrollmentRead)
@@ -96,6 +96,20 @@ def list_enrollments(
     ).all()
     items = cast(list[EnrollmentRead], results)
     return EnrollmentListResponse(total=total, items=items)
+
+
+@router.get("/count", response_model=EnrollmentCountResponse)
+def count_enrollments(
+    academic_class_id: UUID,
+    session: Session = Depends(get_session),
+):
+    statement = select(func.count()).select_from(Enrollment)
+    if academic_class_id:
+        statement = statement.where(
+            Enrollment.academic_class_id == academic_class_id
+        )
+    total = session.exec(statement).one()
+    return EnrollmentCountResponse(total=total)
 
 
 @router.get("/{enrollment_id}", response_model=EnrollmentRead)

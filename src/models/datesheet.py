@@ -81,7 +81,7 @@ class DateSheetRead(DateSheetBase, DateSheetId):
 
 
 class DateSheetReadDetail(DateSheetRead):
-    datesheet_subjects: list[DateSheetSubjectRead] = []
+    date_sheet_subjects: list[DateSheetSubjectRead] = []
 
 
 class DateSheetReadRaw(DateSheetBase, DateSheetId):

@@ -177,7 +177,7 @@ def get_admit_card(
     date_sheet_read: DateSheetReadDetail | None = None
     if date_sheet:
         date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
-        date_sheet_read.datesheet_subjects = date_sheet_subjects
+        date_sheet_read.date_sheet_subjects = date_sheet_subjects
 
     return AdmitCardDataResponse(
         enrollment=EnrollmentRead.model_validate(enrollment),
@@ -251,7 +251,7 @@ def get_date_sheet_data(
         )
 
     date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
-    date_sheet_read.datesheet_subjects = date_sheet_subjects
+    date_sheet_read.date_sheet_subjects = date_sheet_subjects
     return DateSheetDataResponse(date_sheet=date_sheet_read)
 
 

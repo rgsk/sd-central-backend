@@ -18,7 +18,7 @@ from models.report_card_subject import (ReportCardSubject,
                                         ReportCardSubjectReadRaw)
 from models.student import Student, StudentReadRaw
 from models.subject import Subject, SubjectRead
-from models.user import User, UserRead
+from models.user import User, UserReadRaw
 
 router = APIRouter(prefix="/test", tags=["test"])
 
@@ -207,7 +207,7 @@ def list_raw_date_sheet_subjects(
     return results
 
 
-@router.get("/users", response_model=list[UserRead])
+@router.get("/users", response_model=list[UserReadRaw])
 def list_raw_users(session: Session = Depends(get_session)):
     statement = select(User).order_by(col(User.created_at).desc())
     results = session.exec(statement).all()

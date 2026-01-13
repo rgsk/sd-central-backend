@@ -83,6 +83,10 @@ class UserRead(UserBase, UserId):
     default_academic_class: Optional[AcademicClassReadRaw] = None
 
 
+class UserReadRaw(UserBase, UserId):
+    created_at: datetime
+
+
 class UserListResponse(SQLModel):
     total: int
     items: list[UserRead]

@@ -9,11 +9,12 @@ from sqlmodel import Field, Relationship, SQLModel
 
 from models.academic_term import AcademicTermRead
 from models.enrollment import EnrollmentRead
+from models.report_card_subject import ReportCardSubjectRead
 
 if TYPE_CHECKING:
     from models.academic_term import AcademicTerm
-    from models.report_card_subject import ReportCardSubject
     from models.enrollment import Enrollment
+    from models.report_card_subject import ReportCardSubject
 
 
 class ReportCardDB(SQLModel):
@@ -107,6 +108,7 @@ class ReportCardRead(ReportCardBase, ReportCardId):
 class ReportCardReadDetail(ReportCardRead):
     enrollment: Optional[EnrollmentRead] = None
     academic_term: Optional[AcademicTermRead] = None
+    report_card_subjects: list[ReportCardSubjectRead] = []
     overall_percentage: Optional[int] = None
     rank: Optional[int] = None
 

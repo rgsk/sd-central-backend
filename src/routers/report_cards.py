@@ -13,8 +13,10 @@ from models.enrollment import Enrollment, EnrollmentReadRaw
 from models.report_card import (ReportCard, ReportCardCreate,
                                 ReportCardListResponse, ReportCardRead,
                                 ReportCardReadDetail, ReportCardUpdate)
-from models.report_card_subject import ReportCardSubject
+from models.report_card_subject import (ReportCardSubject,
+                                        ReportCardSubjectRead)
 from models.student import Student
+from routers.report_card_subjects import REPORT_CARD_SUBJECT_ORDER_BY
 
 router = APIRouter(
     prefix="/report-cards",
@@ -241,6 +243,33 @@ def list_report_cards(
                     report_card.id
                 ]
                 report_card.rank = ranks_by_id.get(report_card.id)
+
+    if items:
+        item_ids = [report_card.id for report_card in items]
+        subjects = session.exec(
+            select(ReportCardSubject)
+            .join(
+                AcademicClassSubject,
+                col(AcademicClassSubject.id)
+                == col(ReportCardSubject.academic_class_subject_id),
+            )
+            .where(col(ReportCardSubject.report_card_id).in_(item_ids))
+            .order_by(
+                col(ReportCardSubject.report_card_id),
+                *REPORT_CARD_SUBJECT_ORDER_BY,
+            )
+        ).all()
+        subjects_by_report_card: dict[
+            UUID, list[ReportCardSubjectRead]
+        ] = {report_card_id: [] for report_card_id in item_ids}
+        for subject in subjects:
+            subjects_by_report_card[subject.report_card_id].append(
+                ReportCardSubjectRead.model_validate(subject)
+            )
+        for report_card in items:
+            report_card.report_card_subjects = subjects_by_report_card.get(
+                report_card.id, []
+            )
 
     return ReportCardListResponse(total=total, items=items)
 

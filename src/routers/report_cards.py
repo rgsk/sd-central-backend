@@ -9,7 +9,7 @@ from sqlmodel import Session, SQLModel, col, select
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm
-from models.enrollment import Enrollment
+from models.enrollment import Enrollment, EnrollmentReadRaw
 from models.report_card import (ReportCard, ReportCardCreate,
                                 ReportCardListResponse, ReportCardRead,
                                 ReportCardReadDetail, ReportCardUpdate)
@@ -269,14 +269,15 @@ def generate_report_cards(
             == academic_term.academic_session_id,
         )
     ).all()
-    if not enrollments:
+    if len(enrollments) == 0:
         return ReportCardGenerationResponse(total=0)
 
-    enrollment_ids = [
-        enrollment.id
+    enrollments = [
+        EnrollmentReadRaw.model_validate(enrollment)
         for enrollment in enrollments
-        if enrollment.id is not None
     ]
+
+    enrollment_ids = [enrollment.id for enrollment in enrollments]
     existing_enrollment_ids_raw = session.exec(
         select(ReportCard.enrollment_id)
         .where(
@@ -287,15 +288,11 @@ def generate_report_cards(
     existing_enrollment_ids = {
         enrollment_id
         for enrollment_id in existing_enrollment_ids_raw
-        if enrollment_id is not None
     }
 
     created = 0
     for enrollment in enrollments:
-        if (
-            enrollment.id is None
-            or enrollment.id in existing_enrollment_ids
-        ):
+        if enrollment.id in existing_enrollment_ids:
             continue
 
         try:

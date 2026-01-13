@@ -8,8 +8,8 @@ from models.academic_class import AcademicClass, AcademicClassRead
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
-from models.datesheet import DateSheet, DateSheetReadDetail
-from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
+from models.date_sheet import DateSheet, DateSheetReadDetail
+from models.date_sheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
 from models.report_card import ReportCard, ReportCardReadDetail
 from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
@@ -41,7 +41,7 @@ def _query_date_sheet_subjects(
             col(AcademicClassSubject.id)
             == col(DateSheetSubject.academic_class_subject_id),
         )
-        .where(DateSheetSubject.datesheet_id == date_sheet_id)
+        .where(DateSheetSubject.date_sheet_id == date_sheet_id)
         .order_by(
             col(DateSheetSubject.exam_date).asc().nulls_last(),
             col(DateSheetSubject.start_time).asc().nulls_last(),

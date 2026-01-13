@@ -10,10 +10,10 @@ from db import get_session
 from models.academic_class import AcademicClass
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm
-from models.datesheet import (DateSheet, DateSheetCreate,
-                              DateSheetListResponse, DateSheetRead,
-                              DateSheetUpdate)
-from models.datesheet_subject import DateSheetSubject
+from models.date_sheet import (DateSheet, DateSheetCreate,
+                               DateSheetListResponse, DateSheetRead,
+                               DateSheetUpdate)
+from models.date_sheet_subject import DateSheetSubject
 
 router = APIRouter(
     prefix="/date-sheets",
@@ -68,7 +68,7 @@ def create_date_sheet(
         session.add_all(
             [
                 DateSheetSubject(
-                    datesheet_id=db_date_sheet.id,
+                    date_sheet_id=db_date_sheet.id,
                     academic_class_subject_id=class_subject_id,
                 )
                 for class_subject_id in class_subject_ids

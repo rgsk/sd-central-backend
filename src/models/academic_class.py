@@ -12,7 +12,7 @@ from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
     from models.academic_session import AcademicSession
-    from models.datesheet import DateSheet
+    from models.date_sheet import DateSheet
     from models.enrollment import Enrollment
 
 

@@ -10,9 +10,8 @@ from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectRead)
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermReadRaw
-from models.datesheet import DateSheet, DateSheetReadRaw
-from models.datesheet_subject import (DateSheetSubject,
-                                      DateSheetSubjectReadRaw)
+from models.date_sheet import DateSheet, DateSheetReadRaw
+from models.date_sheet_subject import DateSheetSubject, DateSheetSubjectReadRaw
 from models.enrollment import Enrollment, EnrollmentReadRaw
 from models.report_card import ReportCard, ReportCardRead
 from models.report_card_subject import (ReportCardSubject,

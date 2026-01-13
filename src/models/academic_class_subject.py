@@ -11,7 +11,7 @@ from models.subject import SubjectRead
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
     from models.academic_term import AcademicTerm
-    from models.datesheet_subject import DateSheetSubject
+    from models.date_sheet_subject import DateSheetSubject
     from models.report_card_subject import ReportCardSubject
     from models.subject import Subject
 

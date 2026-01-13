@@ -8,12 +8,12 @@ from sqlmodel import Field, Relationship, SQLModel
 
 from models.academic_class import AcademicClassRead
 from models.academic_term import AcademicTermRead
-from models.datesheet_subject import DateSheetSubjectRead
+from models.date_sheet_subject import DateSheetSubjectRead
 
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
     from models.academic_term import AcademicTerm
-    from models.datesheet_subject import DateSheetSubject
+    from models.date_sheet_subject import DateSheetSubject
 
 
 class DateSheetDB(SQLModel):

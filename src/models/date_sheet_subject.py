@@ -10,7 +10,7 @@ from models.academic_class_subject import AcademicClassSubjectReadWithSubject
 
 if TYPE_CHECKING:
     from models.academic_class_subject import AcademicClassSubject
-    from models.datesheet import DateSheet
+    from models.date_sheet import DateSheet
 
 
 class DateSheetSubjectDB(SQLModel):
@@ -26,7 +26,7 @@ class DateSheetSubjectDB(SQLModel):
 
 
 class DateSheetSubjectBase(SQLModel):
-    datesheet_id: UUID = Field(
+    date_sheet_id: UUID = Field(
         sa_column=Column(
             PG_UUID(as_uuid=True),
             ForeignKey(
@@ -70,7 +70,7 @@ class DateSheetSubjectCreate(DateSheetSubjectBase):
 
 
 class DateSheetSubjectUpdate(SQLModel):
-    datesheet_id: Optional[UUID] = None
+    date_sheet_id: Optional[UUID] = None
     academic_class_subject_id: Optional[UUID] = None
     paper_code: Optional[str] = None
     exam_date: Optional[date] = None

@@ -10,11 +10,11 @@ from db import get_session
 from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectCreate,
                                            AcademicClassSubjectListResponse,
-                                           AcademicClassSubjectReorderRequest,
                                            AcademicClassSubjectReadWithSubject,
+                                           AcademicClassSubjectReorderRequest,
                                            AcademicClassSubjectUpdate)
-from models.datesheet import DateSheet
-from models.datesheet_subject import DateSheetSubject
+from models.date_sheet import DateSheet
+from models.date_sheet_subject import DateSheetSubject
 from models.enrollment import Enrollment
 from models.report_card import ReportCard
 from models.report_card_subject import ReportCardSubject
@@ -110,10 +110,10 @@ def create_academic_class_subject(
     ]
     if date_sheet_ids:
         existing_date_sheet_ids_raw = session.exec(
-            select(DateSheetSubject.datesheet_id).where(
+            select(DateSheetSubject.date_sheet_id).where(
                 DateSheetSubject.academic_class_subject_id
                 == db_class_subject.id,
-                col(DateSheetSubject.datesheet_id).in_(date_sheet_ids),
+                col(DateSheetSubject.date_sheet_id).in_(date_sheet_ids),
             )
         ).all()
         existing_date_sheet_ids = [
@@ -127,7 +127,7 @@ def create_academic_class_subject(
         if missing_date_sheet_ids:
             new_date_sheet_subjects = [
                 DateSheetSubject(
-                    datesheet_id=date_sheet_id,
+                    date_sheet_id=date_sheet_id,
                     academic_class_subject_id=db_class_subject.id,
                 )
                 for date_sheet_id in missing_date_sheet_ids
@@ -205,7 +205,8 @@ def reorder_academic_class_subjects(
 
     if len(db_items) != len(ids):
         found_ids = {item.id for item in db_items if item.id is not None}
-        missing_ids = [str(item_id) for item_id in ids if item_id not in found_ids]
+        missing_ids = [str(item_id)
+                       for item_id in ids if item_id not in found_ids]
         raise HTTPException(
             status_code=404,
             detail=f"Academic class subjects not found: {', '.join(missing_ids)}",

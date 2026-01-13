@@ -7,11 +7,11 @@ from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
-from models.datesheet_subject import (DateSheetSubject,
-                                      DateSheetSubjectCreate,
-                                      DateSheetSubjectListResponse,
-                                      DateSheetSubjectRead,
-                                      DateSheetSubjectUpdate)
+from models.date_sheet_subject import (DateSheetSubject,
+                                       DateSheetSubjectCreate,
+                                       DateSheetSubjectListResponse,
+                                       DateSheetSubjectRead,
+                                       DateSheetSubjectUpdate)
 
 router = APIRouter(
     prefix="/date-sheet-subjects",
@@ -44,7 +44,7 @@ def list_date_sheet_subjects(
     statement = select(DateSheetSubject)
     count_statement = select(func.count()).select_from(DateSheetSubject)
     if datesheet_id:
-        condition = DateSheetSubject.datesheet_id == datesheet_id
+        condition = DateSheetSubject.date_sheet_id == datesheet_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     if academic_class_subject_id:

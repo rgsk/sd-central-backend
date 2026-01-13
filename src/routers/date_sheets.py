@@ -175,12 +175,14 @@ def find_date_sheet(
     ).first()
     if not date_sheet:
         raise HTTPException(status_code=404, detail="Date sheet not found")
-    date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
+    date_sheet_read = DateSheetRead.model_validate(date_sheet)
     date_sheet_subjects = query_date_sheet_subjects(
         session, date_sheet_read.id
     )
-    date_sheet_read.date_sheet_subjects = date_sheet_subjects
-    return date_sheet_read
+    return DateSheetReadDetail(
+        **date_sheet_read.model_dump(),
+        date_sheet_subjects=date_sheet_subjects,
+    )
 
 
 @router.get("/{date_sheet_id}", response_model=DateSheetRead)

@@ -8,7 +8,7 @@ from models.academic_class import AcademicClass, AcademicClassRead
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermRead
-from models.date_sheet import DateSheet, DateSheetReadDetail
+from models.date_sheet import DateSheet, DateSheetRead, DateSheetReadDetail
 from models.date_sheet_subject import DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
 from models.report_card import ReportCard, ReportCardReadDetail
@@ -151,8 +151,11 @@ def get_admit_card(
 
     date_sheet_read: DateSheetReadDetail | None = None
     if date_sheet:
-        date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
-        date_sheet_read.date_sheet_subjects = date_sheet_subjects
+        date_sheet_base = DateSheetRead.model_validate(date_sheet)
+        date_sheet_read = DateSheetReadDetail(
+            **date_sheet_base.model_dump(),
+            date_sheet_subjects=date_sheet_subjects,
+        )
 
     return AdmitCardDataResponse(
         enrollment=EnrollmentRead.model_validate(enrollment),
@@ -225,8 +228,11 @@ def get_date_sheet_data(
             session, date_sheet.id
         )
 
-    date_sheet_read = DateSheetReadDetail.model_validate(date_sheet)
-    date_sheet_read.date_sheet_subjects = date_sheet_subjects
+    date_sheet_base = DateSheetRead.model_validate(date_sheet)
+    date_sheet_read = DateSheetReadDetail(
+        **date_sheet_base.model_dump(),
+        date_sheet_subjects=date_sheet_subjects,
+    )
     return DateSheetDataResponse(date_sheet=date_sheet_read)
 
 

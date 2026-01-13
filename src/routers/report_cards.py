@@ -163,10 +163,14 @@ def list_report_cards(
     normalized_sort_by = sort_by.lower() if sort_by else None
     normalized_sort_dir = (sort_dir or "desc").lower()
     should_sort_by_rank = (
-        normalized_sort_by == "rank" and academic_class_id
+        normalized_sort_by == "rank"
+        and academic_class_id
+        and academic_term_id
     )
     should_sort_by_percentage = (
-        normalized_sort_by == "percentage" and academic_class_id
+        normalized_sort_by == "percentage"
+        and academic_class_id
+        and academic_term_id
     )
     sort_desc = normalized_sort_dir != "asc"
 
@@ -190,7 +194,7 @@ def list_report_cards(
     ]
     percentages_by_id: dict[UUID, int] = {}
     ranks_by_id: dict[UUID, int] = {}
-    if academic_class_id and report_card_ids:
+    if academic_class_id and academic_term_id and report_card_ids:
         percentages_by_id, ranks_by_id = _compute_percentages_and_ranks(
             session,
             report_card_ids,

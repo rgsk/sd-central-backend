@@ -1,10 +1,10 @@
 import math
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Body, Depends, HTTPException, Query
 from sqlalchemy import case, func, or_
 from sqlalchemy.exc import IntegrityError
-from sqlmodel import Session, col, select
+from sqlmodel import Session, SQLModel, col, select
 
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
@@ -20,6 +20,10 @@ router = APIRouter(
     prefix="/report-cards",
     tags=["report-cards"],
 )
+
+
+class ReportCardGenerationResponse(SQLModel):
+    total: int
 
 
 @router.post("", response_model=ReportCardRead)
@@ -239,6 +243,76 @@ def list_report_cards(
                 report_card.rank = ranks_by_id.get(report_card.id)
 
     return ReportCardListResponse(total=total, items=items)
+
+
+class ReportCardGenerationRequest(SQLModel):
+    academic_class_id: UUID
+    academic_term_id: UUID
+
+
+@router.post("/generate", response_model=ReportCardGenerationResponse)
+def generate_report_cards(
+    payload: ReportCardGenerationRequest = Body(...),
+    session: Session = Depends(get_session),
+):
+    academic_term = session.get(AcademicTerm, payload.academic_term_id)
+    if not academic_term:
+        raise HTTPException(
+            status_code=404, detail="Academic term not found"
+        )
+
+    enrollments = session.exec(
+        select(Enrollment)
+        .where(
+            Enrollment.academic_class_id == payload.academic_class_id,
+            Enrollment.academic_session_id
+            == academic_term.academic_session_id,
+        )
+    ).all()
+    if not enrollments:
+        return ReportCardGenerationResponse(total=0)
+
+    enrollment_ids = [
+        enrollment.id
+        for enrollment in enrollments
+        if enrollment.id is not None
+    ]
+    existing_enrollment_ids_raw = session.exec(
+        select(ReportCard.enrollment_id)
+        .where(
+            ReportCard.academic_term_id == payload.academic_term_id,
+            col(ReportCard.enrollment_id).in_(enrollment_ids),
+        )
+    ).all()
+    existing_enrollment_ids = {
+        enrollment_id
+        for enrollment_id in existing_enrollment_ids_raw
+        if enrollment_id is not None
+    }
+
+    created = 0
+    for enrollment in enrollments:
+        if (
+            enrollment.id is None
+            or enrollment.id in existing_enrollment_ids
+        ):
+            continue
+
+        try:
+            create_report_card(
+                ReportCardCreate(
+                    enrollment_id=enrollment.id,
+                    academic_term_id=payload.academic_term_id,
+                ),
+                session,
+            )
+        except HTTPException as exc:
+            if exc.status_code == 409:
+                continue
+            raise
+        created += 1
+
+    return ReportCardGenerationResponse(total=created)
 
 
 def populate_rank_and_percentage(report_card: ReportCardReadDetail, session: Session = Depends(get_session)):

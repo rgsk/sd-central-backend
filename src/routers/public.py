@@ -12,9 +12,11 @@ from models.datesheet import DateSheet, DateSheetRead
 from models.datesheet_subject import DateSheetSubject, DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
 from models.report_card import ReportCard, ReportCardReadDetail
+from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
 from models.student import Student
 from routers.academic_classes import grade_rank
 from routers.academic_terms import term_rank
+from routers.report_card_subjects import REPORT_CARD_SUBJECT_ORDER_BY
 from routers.report_cards import populate_rank_and_percentage
 
 router = APIRouter(
@@ -57,6 +59,7 @@ def _query_date_sheet_subjects(
 
 class ReportCardDataResponse(SQLModel):
     report_card: ReportCardReadDetail
+    report_card_subjects: list[ReportCardSubjectRead] = []
 
 
 @router.get("/report-card-data", response_model=ReportCardDataResponse)
@@ -98,13 +101,28 @@ def get_report_card(
     report_card = session.exec(
         select(ReportCard).where(
             ReportCard.academic_term_id == academic_term_id,
-            ReportCard.enrollment_id == enrollment.id
+            ReportCard.enrollment_id == enrollment.id,
         )
     ).first()
     read_report_card = ReportCardReadDetail.model_validate(report_card)
     populate_rank_and_percentage(read_report_card, session)
+    results = session.exec(
+        select(ReportCardSubject)
+        .join(
+            AcademicClassSubject,
+            col(AcademicClassSubject.id)
+            == col(ReportCardSubject.academic_class_subject_id),
+        )
+        .where(ReportCardSubject.report_card_id == read_report_card.id)
+        .order_by(*REPORT_CARD_SUBJECT_ORDER_BY)
+    ).all()
+    report_card_subjects = [
+        ReportCardSubjectRead.model_validate(item)
+        for item in results
+    ]
     return ReportCardDataResponse(
-        report_card=read_report_card
+        report_card=read_report_card,
+        report_card_subjects=report_card_subjects,
     )
 
 

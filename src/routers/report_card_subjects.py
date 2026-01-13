@@ -8,17 +8,24 @@ from sqlmodel import Session, col, select
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
 from models.academic_term import AcademicTerm, AcademicTermType
+from models.enrollment import Enrollment
 from models.report_card import ReportCard
 from models.report_card_subject import (ReportCardSubject,
                                         ReportCardSubjectCreate,
                                         ReportCardSubjectListResponse,
                                         ReportCardSubjectRead,
                                         ReportCardSubjectUpdate)
-from models.enrollment import Enrollment
 
 router = APIRouter(
     prefix="/report-card-subjects",
     tags=["report-card-subjects"],
+)
+
+
+REPORT_CARD_SUBJECT_ORDER_BY = (
+    col(AcademicClassSubject.is_additional).asc(),
+    col(AcademicClassSubject.position).asc(),
+    col(ReportCardSubject.created_at).desc(),
 )
 
 
@@ -64,11 +71,7 @@ def list_report_card_subjects(
             col(AcademicClassSubject.id)
             == col(ReportCardSubject.academic_class_subject_id),
         )
-        .order_by(
-            col(AcademicClassSubject.is_additional).asc(),
-            col(AcademicClassSubject.position).asc(),
-            col(ReportCardSubject.created_at).desc(),
-        )
+        .order_by(*REPORT_CARD_SUBJECT_ORDER_BY)
         .offset(offset)
         .limit(limit)
     ).all()

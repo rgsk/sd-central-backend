@@ -92,6 +92,7 @@ def list_report_cards(
     academic_term_id: UUID | None = Query(default=None),
     academic_session_id: UUID | None = Query(default=None),
     academic_class_id: UUID | None = Query(default=None),
+    selected_ids: list[UUID] | None = Query(default=None),
     search: str | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
@@ -153,6 +154,11 @@ def list_report_cards(
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
         id_statement = id_statement.where(condition)
+    if selected_ids:
+        condition = col(ReportCard.id).in_(selected_ids)
+        statement = statement.where(condition)
+        count_statement = count_statement.where(condition)
+        id_statement = id_statement.where(condition)
     total = session.exec(count_statement).one()
     order_by_clauses = [col(ReportCard.created_at).desc()]
     if academic_class_id:
@@ -194,10 +200,25 @@ def list_report_cards(
     ]
     percentages_by_id: dict[UUID, int] = {}
     ranks_by_id: dict[UUID, int] = {}
-    if academic_class_id and academic_term_id and report_card_ids:
+    rank_report_card_ids: list[UUID] = []
+    if academic_class_id and academic_term_id:
+        rank_report_card_ids_raw = session.exec(
+            select(ReportCard.id)
+            .join(Enrollment)
+            .where(
+                Enrollment.academic_class_id == academic_class_id,
+                ReportCard.academic_term_id == academic_term_id,
+            )
+        ).all()
+        rank_report_card_ids = [
+            report_card_id
+            for report_card_id in rank_report_card_ids_raw
+            if report_card_id is not None
+        ]
+    if rank_report_card_ids:
         percentages_by_id, ranks_by_id = _compute_percentages_and_ranks(
             session,
-            report_card_ids,
+            rank_report_card_ids,
         )
         for report_card in items:
             if report_card.id in percentages_by_id:

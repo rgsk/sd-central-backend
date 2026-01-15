@@ -11,7 +11,8 @@ from models.academic_term import AcademicTerm, AcademicTermRead
 from models.date_sheet import DateSheet, DateSheetRead, DateSheetReadDetail
 from models.date_sheet_subject import DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
-from models.report_card import ReportCard, ReportCardReadDetail
+from models.report_card import (ReportCard, ReportCardReadDetail,
+                                ReportCardReadDetailWithSubjects)
 from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
 from models.student import Student
 from routers.academic_classes import grade_rank
@@ -33,7 +34,7 @@ class AdmitCardDataResponse(SQLModel):
 
 
 class ReportCardDataResponse(SQLModel):
-    report_card: ReportCardReadDetail
+    report_card: ReportCardReadDetailWithSubjects
 
 
 @router.get("/report-card-data", response_model=ReportCardDataResponse)
@@ -94,9 +95,12 @@ def get_report_card(
         ReportCardSubjectRead.model_validate(item)
         for item in results
     ]
-    read_report_card.report_card_subjects = report_card_subjects
+    rc_with_subjects = ReportCardReadDetailWithSubjects(
+        **read_report_card.model_dump(),
+        report_card_subjects=report_card_subjects,
+    )
     return ReportCardDataResponse(
-        report_card=read_report_card,
+        report_card=rc_with_subjects,
     )
 
 

@@ -12,9 +12,10 @@ from models.academic_term import AcademicTerm
 from models.enrollment import Enrollment, EnrollmentReadRaw
 from models.report_card import (ReportCard, ReportCardCreate,
                                 ReportCardListResponse, ReportCardRead,
-                                ReportCardReadDetail, ReportCardUpdate)
-from models.report_card_subject import (ReportCardSubject,
-                                        ReportCardSubjectRead)
+                                ReportCardReadDetail,
+                                ReportCardReadDetailWithSubjects,
+                                ReportCardUpdate)
+from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
 from models.student import Student
 from routers.report_card_subjects import REPORT_CARD_SUBJECT_ORDER_BY
 
@@ -269,6 +270,7 @@ def list_report_cards(
                 ]
                 report_card.rank = ranks_by_id.get(report_card.id)
 
+    report_cards_with_subjects: list[ReportCardReadDetailWithSubjects] = []
     if items:
         item_ids = [report_card.id for report_card in items]
         subjects = session.exec(
@@ -291,12 +293,17 @@ def list_report_cards(
             subjects_by_report_card[subject.report_card_id].append(
                 ReportCardSubjectRead.model_validate(subject)
             )
-        for report_card in items:
-            report_card.report_card_subjects = subjects_by_report_card.get(
-                report_card.id, []
+        report_cards_with_subjects = [
+            ReportCardReadDetailWithSubjects(
+                **rc.model_dump(),
+                report_card_subjects=subjects_by_report_card.get(
+                    rc.id, []
+                ),
             )
+            for rc in items
+        ]
 
-    return ReportCardListResponse(total=total, items=items)
+    return ReportCardListResponse(total=total, items=report_cards_with_subjects)
 
 
 class ReportCardGenerationRequest(SQLModel):

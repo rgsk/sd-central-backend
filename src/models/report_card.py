@@ -108,11 +108,14 @@ class ReportCardRead(ReportCardBase, ReportCardId):
 class ReportCardReadDetail(ReportCardRead):
     enrollment: Optional[EnrollmentRead] = None
     academic_term: Optional[AcademicTermRead] = None
-    report_card_subjects: list[ReportCardSubjectRead] = []
     overall_percentage: Optional[int] = None
     rank: Optional[int] = None
 
 
+class ReportCardReadDetailWithSubjects(ReportCardReadDetail):
+    report_card_subjects: list[ReportCardSubjectRead] = []
+
+
 class ReportCardListResponse(SQLModel):
     total: int
-    items: list[ReportCardReadDetail]
+    items: list[ReportCardReadDetailWithSubjects]

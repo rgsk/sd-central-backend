@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -11,7 +12,7 @@ from sqlmodel import Session, select
 SCRIPT_DIR = os.path.dirname(__file__)
 SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "src"))
 sys.path.append(SRC_DIR)
-DATA_DIR = os.path.join(SCRIPT_DIR, "data")
+BASE_DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 
 from db import engine  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
@@ -458,6 +459,7 @@ def get_or_create_user(
 
 def seed_students(
     session: Session,
+    data_dir: str,
 ) -> tuple[
     tuple[int, int],
     tuple[int, int],
@@ -498,31 +500,31 @@ def seed_students(
     user_skipped = 0
 
     academic_sessions = load_json(
-        os.path.join(DATA_DIR, "academic_sessions.json")
+        os.path.join(data_dir, "academic_sessions.json")
     )
     academic_terms = load_json(
-        os.path.join(DATA_DIR, "academic_terms.json")
+        os.path.join(data_dir, "academic_terms.json")
     )
     academic_classes = load_json(
-        os.path.join(DATA_DIR, "academic_classes.json")
+        os.path.join(data_dir, "academic_classes.json")
     )
-    students = load_json(os.path.join(DATA_DIR, "students.json"))
+    students = load_json(os.path.join(data_dir, "students.json"))
     enrollments = load_json(
-        os.path.join(DATA_DIR, "enrollments.json")
+        os.path.join(data_dir, "enrollments.json")
     )
-    subjects = load_json(os.path.join(DATA_DIR, "subjects.json"))
+    subjects = load_json(os.path.join(data_dir, "subjects.json"))
     academic_class_subjects = load_json(
-        os.path.join(DATA_DIR, "academic_class_subjects.json")
+        os.path.join(data_dir, "academic_class_subjects.json")
     )
-    report_cards = load_json(os.path.join(DATA_DIR, "report_cards.json"))
+    report_cards = load_json(os.path.join(data_dir, "report_cards.json"))
     report_card_subjects = load_json(
-        os.path.join(DATA_DIR, "report_card_subjects.json")
+        os.path.join(data_dir, "report_card_subjects.json")
     )
-    date_sheets = load_json(os.path.join(DATA_DIR, "date_sheets.json"))
+    date_sheets = load_json(os.path.join(data_dir, "date_sheets.json"))
     date_sheet_subjects = load_json(
-        os.path.join(DATA_DIR, "date_sheet_subjects.json")
+        os.path.join(data_dir, "date_sheet_subjects.json")
     )
-    users = load_json(os.path.join(DATA_DIR, "users.json"))
+    users = load_json(os.path.join(data_dir, "users.json"))
 
     session_map: dict[UUID, AcademicSession] = {}
     for raw in academic_sessions:
@@ -750,6 +752,18 @@ def seed_students(
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Seed database using JSON files."
+    )
+    parser.add_argument(
+        "--data-name",
+        help="Seed data folder name under seeders/data",
+    )
+    args = parser.parse_args()
+
+    data_dir = BASE_DATA_DIR
+    if args.data_name:
+        data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
 
     with Session(engine) as session:
         (
@@ -765,7 +779,7 @@ if __name__ == "__main__":
             (date_sheet_inserted, date_sheet_skipped),
             (date_sheet_subject_inserted, date_sheet_subject_skipped),
             (user_inserted, user_skipped),
-        ) = seed_students(session)
+        ) = seed_students(session, data_dir)
 
     print(
         "Seeded academic sessions.",

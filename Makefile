@@ -1,5 +1,14 @@
 .PHONY: help dev reset_db seed_db populate_seed verify_seed
 
+DATA_NAME ?=
+EXTRA_GOALS := $(filter-out $@,$(MAKECMDGOALS))
+SEED_NAME := $(if $(DATA_NAME),$(DATA_NAME),$(firstword $(EXTRA_GOALS)))
+
+ifneq ($(filter verify_seed,$(MAKECMDGOALS)),)
+  EXTRA_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  $(eval $(EXTRA_ARGS):;@:)
+endif
+
 help: ## Show available commands
 	@awk -F':.*## ' '/^[a-zA-Z0-9_%-]+:.*## /{printf "%-20s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
@@ -20,4 +29,4 @@ populate_seed: ## Populate seed json files with reponse from test routes
 	python scripts/populate_test_routes.py
 
 verify_seed: ## Verify that seed json files match with reponse from test routes
-	python scripts/verify_test_routes.py
+	python scripts/verify_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)

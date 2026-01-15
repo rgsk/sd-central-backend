@@ -6,7 +6,7 @@ import sys
 import urllib.error
 import urllib.request
 
-DATA_DIR = os.path.join(
+BASE_DATA_DIR = os.path.join(
     os.path.dirname(os.path.dirname(__file__)),
     "seeders",
     "data",
@@ -57,9 +57,16 @@ def main():
         nargs="*",
         help="Only update these routes (space-separated)",
     )
+    parser.add_argument(
+        "--data-name",
+        help="Seed data folder name under seeders/data",
+    )
     args = parser.parse_args()
 
     base_url = args.base_url.rstrip("/")
+    data_dir = BASE_DATA_DIR
+    if args.data_name:
+        data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
     routes = ROUTES
     if args.only:
         routes = {k: v for k, v in ROUTES.items() if k in args.only}
@@ -71,7 +78,7 @@ def main():
     failures = 0
     for route, filename in routes.items():
         url = f"{base_url}/test/{route}"
-        file_path = os.path.join(DATA_DIR, filename)
+        file_path = os.path.join(data_dir, filename)
         print(f"Fetching {url} -> {file_path}...")
         try:
             data = fetch_json(url)

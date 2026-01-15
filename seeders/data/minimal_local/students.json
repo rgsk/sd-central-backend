@@ -1,0 +1,92 @@
+[
+  {
+    "id": "575f49cb-4f15-456d-965e-247ceb6e729d",
+    "registration_no": "SDCA620",
+    "name": "SUNDARI",
+    "dob": "2019-10-11",
+    "father_name": "KAPIL DEV",
+    "mother_name": "KIRAN DEVI",
+    "created_at": "2026-01-02T07:16:01.074345"
+  },
+  {
+    "id": "df1e34c2-5f92-4c34-b9a1-cb072355e543",
+    "registration_no": "SDCA612",
+    "name": "ANANYA",
+    "dob": "2019-01-01",
+    "father_name": "NEBULAL",
+    "mother_name": "NOOTAN SAROJ",
+    "created_at": "2026-01-02T07:16:01.072961"
+  },
+  {
+    "id": "a48fa016-b570-4106-a461-2a87f1ffb8c5",
+    "registration_no": "SDCA637",
+    "name": "HARSH KANNAUJIYA",
+    "dob": "2019-01-01",
+    "father_name": "KHAJANTIKA",
+    "mother_name": "GITANJALI",
+    "created_at": "2026-01-02T07:16:01.071790"
+  },
+  {
+    "id": "9777569a-ec36-488e-932d-dd9276c2cc91",
+    "registration_no": "SDCA317",
+    "name": "SHIVANSH MISHRA",
+    "dob": "2019-01-01",
+    "father_name": "RAMASHANKAR MISHRA",
+    "mother_name": "RISHU MISHRA",
+    "created_at": "2026-01-02T07:16:01.070568"
+  },
+  {
+    "id": "7eae9a36-efba-4c88-901d-4a2aa45dc64c",
+    "registration_no": "SDCA 336",
+    "name": "PRAGYA MISHRA",
+    "dob": "2019-01-01",
+    "father_name": "RAMASHANKAR MISHRA",
+    "mother_name": "RISHU MISHRA",
+    "created_at": "2026-01-02T07:16:01.069279"
+  },
+  {
+    "id": "e5e9aedd-7a15-41d0-9f55-7428447db680",
+    "registration_no": "SDCA561",
+    "name": "SUBH MISHRA",
+    "dob": "2019-01-01",
+    "father_name": "UTTAM MISHRA",
+    "mother_name": "NIDHI MISHRA",
+    "created_at": "2026-01-02T07:16:01.067868"
+  },
+  {
+    "id": "ca9a08f8-7ce7-4ecc-9e31-9a905a8ce8d0",
+    "registration_no": "SDCA562",
+    "name": "RISHU GUPTA",
+    "dob": "2019-01-01",
+    "father_name": "DURGESH GUPTA",
+    "mother_name": "BABLI DEVI",
+    "created_at": "2026-01-02T07:16:01.066397"
+  },
+  {
+    "id": "5b62ee09-48a2-4b5a-ae07-08f10f9b5117",
+    "registration_no": "SDCA556",
+    "name": "AYUSH KUMAR",
+    "dob": "2019-01-01",
+    "father_name": "RAM BHROSHE",
+    "mother_name": "SITA BHROSHE",
+    "created_at": "2026-01-02T07:16:01.064984"
+  },
+  {
+    "id": "cf4b740c-26ba-443e-888d-f396f3a7b170",
+    "registration_no": "SDCA530",
+    "name": "AYUSH KUMAR",
+    "dob": "2019-01-01",
+    "father_name": "MUNNA KAUMAR",
+    "mother_name": "CHANDANI DEVI",
+    "created_at": "2026-01-02T07:16:01.063569"
+  },
+  {
+    "id": "f07ac4b2-d729-467b-a4cc-341bca77e181",
+    "registration_no": "SDCA636",
+    "name": "AAYANSHI SINGH",
+    "dob": "2019-01-01",
+    "father_name": "LALIT NARAYAN SINGH",
+    "mother_name": "POOJA SINGH",
+    "created_at": "2026-01-02T07:16:01.061624"
+  }
+]

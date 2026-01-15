@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ebd34f54-56ee-4569-b3c6-b014b150a55a",
+    "date_sheet_id": "86709009-2212-47d7-b8dd-8d2dc8315663",
+    "academic_class_subject_id": "69aac4ac-c539-4cfc-a3e1-27bfbe2d7bf2",
+    "paper_code": "P01",
+    "exam_date": "2026-02-01",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-02T07:37:31"
+  },
+  {
+    "id": "33796542-7e37-43af-98ea-6ee5df1602c7",
+    "date_sheet_id": "86709009-2212-47d7-b8dd-8d2dc8315663",
+    "academic_class_subject_id": "9b3f7c06-e0d9-4f64-a86c-7e383e4ec6a2",
+    "paper_code": "P02",
+    "exam_date": "2026-02-02",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-02T07:37:31"
+  },
+  {
+    "id": "24671dca-b7e9-446c-91fa-6b84676a68a5",
+    "date_sheet_id": "86709009-2212-47d7-b8dd-8d2dc8315663",
+    "academic_class_subject_id": "fef58726-5702-4012-a23c-1e8d520e9ed6",
+    "paper_code": "P03",
+    "exam_date": "2026-02-03",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-02T07:37:31"
+  },
+  {
+    "id": "1079a749-f13b-4d94-b61f-dfc76f45487d",
+    "date_sheet_id": "f883448c-59b8-4131-a451-5515e9a59079",
+    "academic_class_subject_id": "c2504c64-7c96-42a9-be08-e18e557ee97d",
+    "paper_code": "P01",
+    "exam_date": "2026-02-06",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-02T07:37:31"
+  },
+  {
+    "id": "b219c834-1f67-433a-91ec-63f39a2f848b",
+    "date_sheet_id": "f883448c-59b8-4131-a451-5515e9a59079",
+    "academic_class_subject_id": "ee5039d1-5b93-4c03-8996-3e5ca618bade",
+    "paper_code": "P02",
+    "exam_date": "2026-02-07",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-02T07:37:31"
+  },
+  {
+    "id": "ecaae7e8-0ffc-4136-b991-45c29daee85d",
+    "date_sheet_id": "f883448c-59b8-4131-a451-5515e9a59079",
+    "academic_class_subject_id": "73d17f54-6084-4839-905c-f27917a53aea",
+    "paper_code": "P03",
+    "exam_date": "2026-02-08",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-02T07:37:31"
+  },
+  {
+    "id": "cfe62dbe-c60f-46ba-b51e-a2ef7fb49f0b",
+    "date_sheet_id": "f883448c-59b8-4131-a451-5515e9a59079",
+    "academic_class_subject_id": "3a42a14e-48e3-48b1-91bf-86d1982c1f5c",
+    "paper_code": "P04",
+    "exam_date": "2026-02-09",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-02T07:37:31"
+  }
+]

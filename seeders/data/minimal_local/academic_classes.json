@@ -1,0 +1,23 @@
+[
+  {
+    "id": "15725dd2-485f-4249-9f5d-3263118af473",
+    "academic_session_id": "4e4f4622-3ab1-41ef-b8ad-d7fa572aae04",
+    "grade": "UKG",
+    "section": "A",
+    "created_at": "2026-01-02T07:37:30.895975"
+  },
+  {
+    "id": "18af74b7-eae7-46e3-a709-224dbedb6fb1",
+    "academic_session_id": "6c7a3e90-2b3e-4a64-a1e4-2ef587ac4481",
+    "grade": "LKG",
+    "section": "A",
+    "created_at": "2026-01-02T07:37:30.893422"
+  },
+  {
+    "id": "c9fdf83d-6170-411e-b507-cda4dd9f31cd",
+    "academic_session_id": "6c7a3e90-2b3e-4a64-a1e4-2ef587ac4481",
+    "grade": "NURSERY",
+    "section": "A",
+    "created_at": "2026-01-02T07:37:30.890390"
+  }
+]

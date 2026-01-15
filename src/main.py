@@ -3,10 +3,8 @@ from contextlib import asynccontextmanager
 from fastapi import APIRouter, Depends, FastAPI, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
-from sqlmodel import SQLModel
 
 from admin import setup_admin
-from db import engine
 from lib.auth import get_bearer_token, get_decoded_token, require_user
 from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject, academic_session,
@@ -41,7 +39,7 @@ async def lifespan(app: FastAPI):
         subject,
         user,
     ]
-    SQLModel.metadata.create_all(engine)
+    # SQLModel.metadata.create_all(engine)
     yield
     # Shutdown logic (optional)
 

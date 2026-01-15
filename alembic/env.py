@@ -1,9 +1,8 @@
-from logging.config import fileConfig
 import os
 import sys
+from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
 
@@ -17,13 +16,23 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Ensure app modules are importable when running Alembic.
-PROJECT_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
+PROJECT_SRC = os.path.abspath(os.path.join(
+    os.path.dirname(__file__), "..", "src"))
 if PROJECT_SRC not in sys.path:
     sys.path.append(PROJECT_SRC)
 
-from lib.env import env  # noqa: E402
 from sqlmodel import SQLModel  # noqa: E402
-from models import academic_class, enrollment, report_card, student  # noqa: F401, E402
+
+from lib.env import env  # noqa: E402
+from models import (academic_class, academic_class_subject,  # noqa: F401, E402
+                    academic_session, academic_term, app_settings, date_sheet,
+                    date_sheet_subject, enrollment, report_card,
+                    report_card_subject, student, subject, user)
+
+_ = [academic_class, academic_class_subject,
+     academic_session, academic_term, app_settings, date_sheet,
+     date_sheet_subject, enrollment, report_card,
+     report_card_subject, student, subject, user]
 
 # Use SQLModel metadata for autogenerate support.
 target_metadata = SQLModel.metadata

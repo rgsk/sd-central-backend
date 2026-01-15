@@ -39,7 +39,9 @@ async def lifespan(app: FastAPI):
         subject,
         user,
     ]
+    # below line creates all the models without running migrations
     # SQLModel.metadata.create_all(engine)
+
     yield
     # Shutdown logic (optional)
 

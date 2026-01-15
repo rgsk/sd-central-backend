@@ -1,11 +1,11 @@
 .PHONY: help dev reset_db seed_db populate_seed verify_seed
 
 DATA_NAME ?=
-SEED_GOALS := $(filter-out verify_seed,$(MAKECMDGOALS))
-SEED_NAME := $(if $(DATA_NAME),$(DATA_NAME),$(firstword $(SEED_GOALS)))
+SEED_TARGETS := seed_db populate_seed verify_seed
+EXTRA_ARGS := $(filter-out $(SEED_TARGETS),$(MAKECMDGOALS))
+SEED_NAME := $(if $(DATA_NAME),$(DATA_NAME),$(firstword $(EXTRA_ARGS)))
 
-ifneq ($(filter verify_seed,$(MAKECMDGOALS)),)
-  EXTRA_ARGS := $(SEED_GOALS)
+ifneq ($(filter $(SEED_TARGETS),$(MAKECMDGOALS)),)
   $(eval $(EXTRA_ARGS):;@:)
 endif
 

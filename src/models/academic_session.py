@@ -33,7 +33,7 @@ class AcademicSession(AcademicSessionBase, AcademicSessionDB, table=True):
     __table_args__ = (
         UniqueConstraint(
             "year",
-            name="academic_sessions_year_key",
+            name="uq_academic_session_year",
         ),
     )
     academic_classes: list["AcademicClass"] = Relationship(

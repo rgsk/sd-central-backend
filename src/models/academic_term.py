@@ -50,7 +50,7 @@ class AcademicTerm(AcademicTermBase, AcademicTermDB, table=True):
         UniqueConstraint(
             "academic_session_id",
             "term_type",
-            name="academic_terms_academic_session_id_term_type_key",
+            name="uq_academic_term_session_term_type",
         ),
     )
     academic_session: Optional["AcademicSession"] = Relationship(

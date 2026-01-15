@@ -59,14 +59,13 @@ def main():
     )
     parser.add_argument(
         "--data-name",
+        required=True,
         help="Seed data folder name under seeders/data",
     )
     args = parser.parse_args()
 
     base_url = args.base_url.rstrip("/")
-    data_dir = BASE_DATA_DIR
-    if args.data_name:
-        data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
+    data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
     routes = ROUTES
     if args.only:
         routes = {k: v for k, v in ROUTES.items() if k in args.only}

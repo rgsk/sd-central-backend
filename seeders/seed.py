@@ -757,13 +757,12 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--data-name",
+        required=True,
         help="Seed data folder name under seeders/data",
     )
     args = parser.parse_args()
 
-    data_dir = BASE_DATA_DIR
-    if args.data_name:
-        data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
+    data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
 
     with Session(engine) as session:
         (

@@ -1,1 +1,2730 @@
-[]
+[
+  {
+    "id": "57548115-28e3-46d7-a235-eb9e1f8cccb3",
+    "student_id": "108187e8-ffbc-43e5-aa96-67574b453ea0",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/853d449b-c06c-4b07-b1ce-cfa348d4a893/1000408634.jpg",
+    "created_at": "2025-10-10T01:56:14.471000"
+  },
+  {
+    "id": "2a48efb5-13a1-4c28-8684-5c0a771be879",
+    "student_id": "6acc3593-2304-4fb6-b284-6be0d2d0708b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d5cc3086-5a9a-43b5-85fe-67c742aef688/1000361020.jpg",
+    "created_at": "2025-09-03T05:18:06.979000"
+  },
+  {
+    "id": "87eed975-3ba2-4153-adfc-c23b9b6a2aa6",
+    "student_id": "4ef7351e-2a31-4c0d-875d-c1bcce26eb55",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4a5a422d-fa64-48c0-9eae-7ae20cad5a39/1000361022.jpg",
+    "created_at": "2025-09-03T05:16:44.864000"
+  },
+  {
+    "id": "29ffe390-fdb9-4b9b-87a0-30210029c20b",
+    "student_id": "ba277b86-d758-4c10-ac84-986c39aceaa6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d7246b2e-e35d-4696-b83d-69bd68739f1e/1000361021.jpg",
+    "created_at": "2025-09-03T05:14:55.675000"
+  },
+  {
+    "id": "312fa8c9-aa31-4ccd-b4c4-81f1a2c69998",
+    "student_id": "5f375aa4-aac1-4c89-a021-75c4173e652a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/160a96f2-9014-40d7-80df-17310aa0a23a/1000361023.jpg",
+    "created_at": "2025-09-03T05:12:51.600000"
+  },
+  {
+    "id": "51c6c6a4-dc2c-422b-9440-504f638dd425",
+    "student_id": "b7102042-05d6-4bd3-8e62-d8b4b4658a16",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/752315d3-07e5-4340-b9a2-5d2d1bacc986/1000360649.jpg",
+    "created_at": "2025-09-02T05:34:22.866000"
+  },
+  {
+    "id": "f5f7d798-2274-4897-b4b8-0d309a13bcdb",
+    "student_id": "ed5c36b9-cf40-4e92-94f7-a3fb86fe52b8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c9a127dc-4405-48d6-bb7f-d52231b88458/1000360650.jpg",
+    "created_at": "2025-09-02T05:29:43.710000"
+  },
+  {
+    "id": "144e0ef2-4a60-4e96-90d4-ad711f75e202",
+    "student_id": "23bc12fa-77c1-4884-a6fa-c12908ba4eff",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/45271362-021e-423d-90e6-32b4f422bad5/1000360652.jpg",
+    "created_at": "2025-08-30T10:52:43.745000"
+  },
+  {
+    "id": "dca38521-a0f3-4c25-b696-7cd31852cd3a",
+    "student_id": "9fdc9838-aca5-4a0f-9f3b-3b8fd2717c28",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e776840c-48eb-45eb-8b28-02291e2345e9/1000354833.jpg",
+    "created_at": "2025-08-27T23:23:04.850000"
+  },
+  {
+    "id": "1e03c3fd-9eb7-4384-af12-6316d4283d89",
+    "student_id": "5424ada4-8a96-4bc0-9793-870e3218e12d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2d911623-c344-417e-b3d4-78ec40d0998e/1000357250.jpg",
+    "created_at": "2025-08-27T10:59:32.200000"
+  },
+  {
+    "id": "da622eb7-266a-4b33-aab7-9c2e4bffa495",
+    "student_id": "0ad39dd6-d347-457d-9594-63ea2c496106",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/10bdaa9d-ad2e-4ca4-8895-141fa0dbb704/1000357234.jpg",
+    "created_at": "2025-08-27T10:58:48.398000"
+  },
+  {
+    "id": "c0216d99-b1b5-4da0-8373-27403ec26d45",
+    "student_id": "bae142fc-7ffb-4876-acb6-52f289e552f3",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d9ff5bb6-99ca-4745-ae95-bf7b923bf95b/1000357225.jpg",
+    "created_at": "2025-08-27T10:57:25.389000"
+  },
+  {
+    "id": "be5048a0-472b-4ab6-be61-1fc28385dda9",
+    "student_id": "ed75551a-72fd-4546-8097-9d8d26ef4a84",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/dacf3a19-25ea-41b5-95dd-d3d1d1e82e9e/1000357223.jpg",
+    "created_at": "2025-08-27T10:56:05.195000"
+  },
+  {
+    "id": "ea9011e6-2de2-4f23-93b2-264129cc0a6e",
+    "student_id": "2d0e6574-7234-4db6-b61d-a4e660e472f1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b55e711c-e79b-45e3-8507-c2ed6a9663d7/1000357235.jpg",
+    "created_at": "2025-08-27T10:54:57.293000"
+  },
+  {
+    "id": "1a763169-36df-401e-ad39-5c1b0f995883",
+    "student_id": "cc0e669f-294d-4614-9d9f-b4e2ee44e954",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a3bdffa1-d7aa-466f-be6d-a7a9e2adf9b7/1000354834.jpg",
+    "created_at": "2025-08-27T10:53:32.126000"
+  },
+  {
+    "id": "816062ca-2716-4511-92a7-95d7606ea34d",
+    "student_id": "31eb466d-5ea6-4752-a837-47d496fbe880",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/28229ac2-3154-4086-b028-4392cdcfba41/1000354839.jpg",
+    "created_at": "2025-08-27T10:51:55.323000"
+  },
+  {
+    "id": "d5fed32a-4cde-46b2-b73a-4b7c7022b745",
+    "student_id": "53f59b5c-f095-41f7-ad50-5b18047cdf1c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b44993e3-eb65-4bab-83fa-691d552ee3dc/1000357222.jpg",
+    "created_at": "2025-08-27T10:49:53.620000"
+  },
+  {
+    "id": "92723e8d-4a04-49cc-9e6f-e47d979e871e",
+    "student_id": "abfdfc3f-fb71-4b02-948c-62b7b4def326",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1af5d5e3-990b-451f-81cd-6ce2d9e7e0eb/1000354840.jpg",
+    "created_at": "2025-08-27T10:47:56.488000"
+  },
+  {
+    "id": "73b8c2e4-c287-4eb7-8226-4084e8fa6250",
+    "student_id": "0b47dc30-b5a4-4b6e-8af4-bfdcdf44ba43",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/314f590f-c9b0-44a7-b8f2-eaad46166f3b/1000360651.jpg",
+    "created_at": "2025-08-27T10:46:58.375000"
+  },
+  {
+    "id": "aa3c28a0-fae1-4d0d-aed6-cc6771af6a17",
+    "student_id": "6caacb77-c3c6-4daa-88b7-d1175311d119",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4c98eb18-82bf-468a-9a19-49e904cb8804/1000354837.jpg",
+    "created_at": "2025-08-27T10:44:53.701000"
+  },
+  {
+    "id": "f336a7b2-2d10-477b-af27-d393028cdcd1",
+    "student_id": "5661df6b-ccd1-4e2d-b5a6-fb8a3600a3c2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/44113818-67ec-4452-9df9-c717d1902c28/1000408635.jpg",
+    "created_at": "2025-08-27T10:40:12.085000"
+  },
+  {
+    "id": "78c9e31d-730a-4c8b-bbd5-37ccd765b930",
+    "student_id": "c410cdb2-d03c-41c5-a062-27313aaa2eea",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4d848cd6-69f8-46da-9bef-acfd684fbc71/1000355022.jpg",
+    "created_at": "2025-08-27T10:38:49.878000"
+  },
+  {
+    "id": "69da9faa-99d8-470f-b2ac-e4d4f9f78562",
+    "student_id": "4f079590-90d0-4bec-8f11-02551b90cda8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d4de0775-fbd4-4c7c-8003-e0db36c731ff/1000357227.jpg",
+    "created_at": "2025-08-27T10:37:12.786000"
+  },
+  {
+    "id": "75d96944-25cc-4185-a0b9-c6f2b7994544",
+    "student_id": "73224161-fbe8-41b8-bcaf-5899f26f2088",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/13448d92-b48e-47fe-a5e8-a51122898593/1000357217.jpg",
+    "created_at": "2025-08-27T10:34:10.787000"
+  },
+  {
+    "id": "1502543d-d0dc-4eb7-ba75-f3ffbc9dd6e3",
+    "student_id": "4c8afb96-2538-4559-8256-c2e05034eca3",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8ba7bdaf-088d-4583-bb5d-72c07b1d4d4b/1000355012.jpg",
+    "created_at": "2025-08-27T10:07:36.285000"
+  },
+  {
+    "id": "bc4e2920-10cf-4dee-8664-4751ba0c2367",
+    "student_id": "2c8a4506-0d6d-4dc1-a5fa-704033570fe8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/862d5a4b-48b6-41ab-817c-e1623925b06e/1000355013.jpg",
+    "created_at": "2025-08-27T10:05:03.392000"
+  },
+  {
+    "id": "df97fdb5-a574-4016-88fc-e3cc87364258",
+    "student_id": "6beecc9f-5330-4156-8dbe-583792224939",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5a10eccc-b201-4e9d-aa1c-33b0605d6653/1000355014.jpg",
+    "created_at": "2025-08-27T00:08:44.825000"
+  },
+  {
+    "id": "d0619738-2cd6-4c77-9ed9-13bbf7214530",
+    "student_id": "184a82b5-5a24-4b65-a966-d34474952fc2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/506a5fa7-f2d3-4e7f-b0e3-fd4faed88664/1000351402.jpg",
+    "created_at": "2025-08-26T03:49:27.501000"
+  },
+  {
+    "id": "1ed3dc84-23d7-47e6-a97d-ac6bdf3a734f",
+    "student_id": "4750139f-945f-42b6-b387-a6057e6b2bcf",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/29e88612-35a6-4b89-a27f-f1f5cd3cc484/1000349331.jpg",
+    "created_at": "2025-08-22T19:16:28.739000"
+  },
+  {
+    "id": "b0f8645e-3593-4b59-ab7c-0d18a4da3150",
+    "student_id": "1bd0564e-6899-4591-a8f9-8092778948e3",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/300acf8d-53b4-48ab-9019-232c86be03f0/1000347533.jpg",
+    "created_at": "2025-08-20T04:34:11.159000"
+  },
+  {
+    "id": "4e81ba6d-d1d1-4ed3-990e-1d2998b1e726",
+    "student_id": "1acdee62-e88c-47a3-b150-7d5fbc280ded",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0fca0482-f7b1-4529-adcf-f3466a83bc3f/1000347531.jpg",
+    "created_at": "2025-08-20T04:32:08.257000"
+  },
+  {
+    "id": "1d2a35d0-2e2f-4106-ad75-82cbe6553a06",
+    "student_id": "d111135e-68c0-4abb-85b6-7c409584c2d8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e80c1900-21e4-4737-8779-35851f23c1bc/1000350525.jpg",
+    "created_at": "2025-08-20T04:23:34.203000"
+  },
+  {
+    "id": "f0e1cb60-d856-4295-9494-6249b0f12036",
+    "student_id": "577b50c7-82c9-4c1b-9335-bd0d8ee36b68",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b85e57d0-44b4-4735-af96-aa90965c33fd/1000353116.jpg",
+    "created_at": "2025-08-13T11:23:57.777000"
+  },
+  {
+    "id": "d2385984-2405-44e5-985f-9833e4c64abf",
+    "student_id": "afb3a480-4da3-42f6-abed-4db34b3f41c8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1e95792f-b9db-4349-a251-82b7b902dd74/1000348719.jpg",
+    "created_at": "2025-08-13T11:22:15.639000"
+  },
+  {
+    "id": "f3e30e6e-8a4d-4adf-a26c-827af9cb6222",
+    "student_id": "6ce402ea-cf28-4a17-95f9-4fda81c2b28f",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2c65e0a5-8b3f-4e03-8de2-23da63404896/1000355031.jpg",
+    "created_at": "2025-08-13T11:20:13.018000"
+  },
+  {
+    "id": "0a53e8a0-9367-4cf7-be5d-13a111da7160",
+    "student_id": "9e7356df-b8c0-4103-bb83-33f3bf693c2c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/73844d4c-30ff-4821-bb9d-bdaba76dc352/1000348691.jpg",
+    "created_at": "2025-08-13T11:16:01.433000"
+  },
+  {
+    "id": "a4508e34-ab81-4e25-b3a9-e67bbcfaf38d",
+    "student_id": "3a166626-ea9f-48ed-b9ed-27ed73454cdd",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/64c60019-ca32-4b39-b39d-b8143d5035c4/1000357239.jpg",
+    "created_at": "2025-08-13T11:14:04.553000"
+  },
+  {
+    "id": "033cccbc-2296-4563-b9f9-05fd7deb28cd",
+    "student_id": "96aef8e1-de13-4b44-a18b-edebe76fd297",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/75f46fdc-be58-4bd2-ba89-b562c1b5872e/1000357252.jpg",
+    "created_at": "2025-08-13T11:12:34.459000"
+  },
+  {
+    "id": "ec88dc9b-be58-4bc4-97b7-a82a7c02363a",
+    "student_id": "8ee017a7-91d4-492d-b003-98bcd1d2e77d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9112bd0b-2280-4ead-b0c1-9228ae65e0a3/1000355029.jpg",
+    "created_at": "2025-08-13T11:10:51.635000"
+  },
+  {
+    "id": "921f6dff-f940-46a3-9928-d9168ad2a824",
+    "student_id": "2898e662-0780-444c-a1f4-5038777c5bb7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f6ee4e05-aa69-4494-824e-f7d904639be5/1000351413.jpg",
+    "created_at": "2025-08-13T11:07:59.132000"
+  },
+  {
+    "id": "f9a82b2c-e1e9-4208-b31b-576174483128",
+    "student_id": "f60539e3-8a28-467a-8627-15eeb7d2d2f2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/85020915-46df-494e-95cd-f5723318325e/1000357248.jpg",
+    "created_at": "2025-08-13T11:06:40.722000"
+  },
+  {
+    "id": "45a5bc2a-8be3-4877-b7b4-b070e3d7c9d5",
+    "student_id": "3466f678-db77-4111-b3fc-80a7130a9435",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/12cf921f-c27e-402b-8a47-d5fd869698fe/1000351418.jpg",
+    "created_at": "2025-08-13T11:04:53.050000"
+  },
+  {
+    "id": "8d23f2d1-13da-4e2e-b75f-3c2ca6a59e26",
+    "student_id": "8effeeaf-5038-40f8-b4f8-1cec5e0ced8d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d91bd79b-fcdf-43e1-97c7-ed364bf2ebb9/1000354838.jpg",
+    "created_at": "2025-08-13T11:03:27.300000"
+  },
+  {
+    "id": "3afdde3a-f7ea-45a7-ba44-b6e430e007e5",
+    "student_id": "6aa39723-aaf9-413a-ac7c-5773c41c7297",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/13aa1f3f-099d-4a9f-9773-ebc65510a3b7/1000357233.jpg",
+    "created_at": "2025-08-13T11:01:17.139000"
+  },
+  {
+    "id": "5654d98c-cd4b-4dcb-9b8c-b4018ab6e639",
+    "student_id": "b035c8cd-a271-48ec-9f8e-2adc77e1ad36",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/51c33081-2a9b-48ff-b89f-fcc462a2a3ea/1000351404.jpg",
+    "created_at": "2025-08-13T10:58:08.821000"
+  },
+  {
+    "id": "1244de4e-a38a-4a4e-8a67-b7428293c64d",
+    "student_id": "abf99471-7f10-4f2c-8d13-ed043a801763",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1034e1c0-9b85-427b-ae55-7f9cdc5a5e1f/1000354827.jpg",
+    "created_at": "2025-08-13T10:56:19.536000"
+  },
+  {
+    "id": "cb97c6aa-07f9-4778-89ad-662e4ed4ab1b",
+    "student_id": "aa409609-9268-4572-851e-46049b39dadf",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f2b9347e-f2c9-4809-9b40-6e99b6646e93/1000357251.jpg",
+    "created_at": "2025-08-13T10:54:37.401000"
+  },
+  {
+    "id": "6254dd0e-1cf4-4da1-bb38-5a9e979b7c7c",
+    "student_id": "02c5be49-9240-47e0-b127-02f9938eb9fa",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5a5e4d66-532a-4584-b1c9-723fba23f0c2/1000354835.jpg",
+    "created_at": "2025-08-13T10:51:36.554000"
+  },
+  {
+    "id": "4c0b565d-3a6b-4956-ba51-f84d19fd9632",
+    "student_id": "0b49eefd-5ef9-449f-b5e6-cb342d4d5793",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8c4b07dd-5234-4e7e-8332-4e344b11aa59/1000346673.jpg",
+    "created_at": "2025-08-13T10:49:26.881000"
+  },
+  {
+    "id": "c6897bd7-ea64-4ca7-beaa-3c5f2dd42688",
+    "student_id": "eb6fe4c2-bd0a-44a8-b90c-9f30332e4b15",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0749f42d-37e6-456e-8744-0ed85f6f4e63/1000357242.jpg",
+    "created_at": "2025-08-13T10:47:10.681000"
+  },
+  {
+    "id": "68babafc-7db9-4887-ad2e-4f2ad0292ac6",
+    "student_id": "6ea292ab-208f-411f-935c-4be1d9c21a95",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e9da5a9b-f1d8-4651-9790-c8144d19884c/1000354842.jpg",
+    "created_at": "2025-08-13T10:45:13.970000"
+  },
+  {
+    "id": "4db309f1-f266-4a9f-9d76-c122d486e949",
+    "student_id": "92d956fb-d8cb-454e-b500-ad37e6f9562d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/35025994-9841-430b-afbb-f598141b692a/1000351416.jpg",
+    "created_at": "2025-08-11T19:30:01.086000"
+  },
+  {
+    "id": "28757c95-47a4-4700-82ba-d04ad1b753d0",
+    "student_id": "72b49963-4ba4-4541-a868-054ccee37ad2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/627a0c86-eaf4-4389-933b-14a0495d942d/1000333839.jpg",
+    "created_at": "2025-08-11T19:27:05.088000"
+  },
+  {
+    "id": "be0f59cc-873e-4878-a03c-01a8d8abc92b",
+    "student_id": "4300c3a1-0380-435f-b684-d00d08904104",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a4a623ed-6285-4cf9-90c4-6e3a2af2aefb/1000332893.jpg",
+    "created_at": "2025-08-11T00:30:35.962000"
+  },
+  {
+    "id": "786a0174-c288-4d24-848e-69a5f21c75a7",
+    "student_id": "524632e5-6e28-4349-8a98-b593809baada",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/3ca4cdb5-addb-499b-9ca5-bf05bb732ba2/1000332894.jpg",
+    "created_at": "2025-08-11T00:28:32.034000"
+  },
+  {
+    "id": "65bfa29c-cdfd-4291-80b5-567c5146bc5e",
+    "student_id": "b9c04502-5e6c-4216-8941-c393bb1dd094",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ff04f192-eb62-4f6c-a40f-929f56872339/1000332895.jpg",
+    "created_at": "2025-08-11T00:15:05.589000"
+  },
+  {
+    "id": "8f13cc12-baa6-490e-8180-a8bfebf98ea8",
+    "student_id": "a84ae77c-234a-40c9-a3a9-0e0e234bf4b2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c35c27a5-43c1-4dd9-a04a-dcb4da553a0f/1000332896.jpg",
+    "created_at": "2025-08-11T00:14:55.488000"
+  },
+  {
+    "id": "519daf8a-9600-43aa-90b6-c7cdb065f9f9",
+    "student_id": "dabcdd7b-6317-4858-b841-3b469318b3a3",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4c5387cf-5104-4c7d-9cd7-d7b3f12da5ce/1000353125.jpg",
+    "created_at": "2025-08-10T11:00:11.336000"
+  },
+  {
+    "id": "f22fbe34-4093-4b4e-89e3-39945df7714b",
+    "student_id": "ce3abcff-23e6-4676-baf5-4ed7092ea752",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b9a3ba2e-3b1d-4be1-a364-aa81fd8e0c42/1000348692.jpg",
+    "created_at": "2025-08-10T10:57:33.581000"
+  },
+  {
+    "id": "26b2db80-3650-4615-acd2-479447cea402",
+    "student_id": "752f8448-1b36-421a-840d-3c0cec949726",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9152e3ba-955d-4357-8e4a-ebe34d172eeb/1000357241.jpg",
+    "created_at": "2025-08-10T10:55:25.504000"
+  },
+  {
+    "id": "9359fbd3-212b-4e40-aada-701b9a371960",
+    "student_id": "10ffe527-9104-4367-a525-ef65f6bff1f7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/98719b77-89d0-4153-a0a9-e1ed21331e6f/1000348694.jpg",
+    "created_at": "2025-08-10T10:46:50.577000"
+  },
+  {
+    "id": "f2f0393d-0a10-4d03-a88b-64793c96a7fb",
+    "student_id": "2adafc86-aa86-4d2a-aeaf-875b97edad9c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0f541edc-0c48-4228-909f-48f88d0b9ef7/1000361004.jpg",
+    "created_at": "2025-08-10T10:44:36.560000"
+  },
+  {
+    "id": "1ddc1a7d-d3d8-4cdb-89a6-92b932410410",
+    "student_id": "63da1ba8-1720-4b67-b1f0-56a579898c1b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6fa78b08-f62d-4f6c-a4fa-d82d3b03f007/1000354841.jpg",
+    "created_at": "2025-08-10T10:42:43.005000"
+  },
+  {
+    "id": "e05da59e-4182-49b6-b6ff-0873b5e84655",
+    "student_id": "5a9e0232-005d-4123-abf5-b0a010ba0a2c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/3464e1ad-7425-472f-98d1-3115296e80c7/1000333852.jpg",
+    "created_at": "2025-08-10T10:38:13.476000"
+  },
+  {
+    "id": "20578035-a903-4e7c-8ff5-49317989109b",
+    "student_id": "4afbd600-326e-4ac9-93de-6cb2325b9352",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/55865dce-fc3e-47df-b5d6-15c81c6fc652/1000333847.jpg",
+    "created_at": "2025-08-10T10:35:45.688000"
+  },
+  {
+    "id": "0df8af7c-3a75-4966-bf3e-dcd53f663b8c",
+    "student_id": "19376ec6-a6d3-4095-b54a-1b034dcfeb9f",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/82dceaaa-85ea-4adf-81d0-fcddd612342b/1000353133.jpg",
+    "created_at": "2025-08-10T10:33:10.858000"
+  },
+  {
+    "id": "9fa49eeb-2503-46f8-b1a9-b865c4813051",
+    "student_id": "e1edbaa0-c7b5-4ae6-818b-83fe8baafa37",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e92f243b-d897-4144-b6ac-bc17d3eadaf0/1000357249.jpg",
+    "created_at": "2025-08-10T10:30:45.425000"
+  },
+  {
+    "id": "cbba3b81-640e-4df5-ac32-ebbfaee9e1df",
+    "student_id": "2aba84fb-2ab3-4ed7-a461-36f1be2e9092",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6f13fc24-e23b-4042-a423-63f57f8401a0/1000346672.jpg",
+    "created_at": "2025-08-10T10:28:21.346000"
+  },
+  {
+    "id": "150bff60-d1fd-4b0f-9d6f-95a773edafd4",
+    "student_id": "12653d1d-8e93-4718-b85e-3043a3177f9a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/03fe90bf-13ba-4c24-a23c-89b0ca848dfa/1000351406.jpg",
+    "created_at": "2025-08-07T04:35:12.092000"
+  },
+  {
+    "id": "4fb87062-9f41-4d10-bbac-379a6b4e02b1",
+    "student_id": "ab5032be-d71b-4edb-98b1-8a325854a115",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/19701e97-a7e4-42e4-bcae-1c17346d7ddf/1000333843.jpg",
+    "created_at": "2025-08-07T04:32:56.219000"
+  },
+  {
+    "id": "95a24c50-1976-4512-859b-37f374bbd66a",
+    "student_id": "6e0b70ab-30d9-482e-a5ef-ef305688defd",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/842723a1-3174-4885-89d9-4c71d97e58e9/1000351412.jpg",
+    "created_at": "2025-08-07T04:29:22.288000"
+  },
+  {
+    "id": "cda2f1be-8a04-403f-b08a-a678ad4de9c0",
+    "student_id": "b73f3960-c8f7-4cf5-8a3e-d3120ca8bf79",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c946b8ae-665d-4e01-90e9-dd48227f512d/1000333851.jpg",
+    "created_at": "2025-08-07T04:25:59.650000"
+  },
+  {
+    "id": "f1be4fab-2357-4a1b-b3ed-11ee7e015bbf",
+    "student_id": "8042020f-202a-4402-8258-5c0dd8e0b5d0",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/20321545-8090-4374-a93d-5e8b9a2e977c/1000357219.jpg",
+    "created_at": "2025-08-07T04:24:18.220000"
+  },
+  {
+    "id": "bfad349e-e054-4ea6-898f-efcfbfd059b4",
+    "student_id": "0907f78b-4db3-4688-a4d4-49ee36258fa6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c371df9c-fcde-4859-8338-c22300a7c37c/1000357218.jpg",
+    "created_at": "2025-08-07T04:18:39.075000"
+  },
+  {
+    "id": "a2450e61-11cc-4385-a684-ceafcb50252d",
+    "student_id": "0b7df53f-51ec-4c05-a2a5-88456ad15a9a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/dd809256-f4c6-4818-a3cf-5809eb5c3fe6/1000357240.jpg",
+    "created_at": "2025-08-07T04:15:45.134000"
+  },
+  {
+    "id": "1bf2a4cd-03f1-4a3a-907e-5dcf0bf9b8f3",
+    "student_id": "27edf195-610c-46af-9d9f-c22ab96dc9f2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d612b9e2-670e-4539-97a7-66f27bc0e5ae/1000318573.jpg",
+    "created_at": "2025-07-30T02:28:52.600000"
+  },
+  {
+    "id": "8940eca9-0d0e-4205-8f7e-e74a37102cfe",
+    "student_id": "14c846e3-6fa5-4c68-8f2a-cc2828c44edc",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6f6011d6-6eac-4d12-92c8-6dd8444f101d/1000318577.jpg",
+    "created_at": "2025-07-30T02:24:49.605000"
+  },
+  {
+    "id": "f4fb2e99-7248-4242-8909-4af67107f44b",
+    "student_id": "10269721-693a-4e16-8f85-90b5de759d66",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6fe988a1-89d9-4ee6-bdbe-034e332156e2/1000357226.jpg",
+    "created_at": "2025-07-08T07:38:41.297000"
+  },
+  {
+    "id": "4ff0a345-53a9-4cca-baa3-f1dcaa734aeb",
+    "student_id": "59afa1db-f4cb-4347-b833-ce209247f7d6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/89f0b40c-9f39-4e95-b971-cd46f69dc763/1000242193.jpg",
+    "created_at": "2025-07-08T07:38:41.289000"
+  },
+  {
+    "id": "d261d04c-1728-4f05-b270-7eeda5fade86",
+    "student_id": "a43dcff8-4d8d-4929-95b7-0dae93b54502",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4fcc8e03-6d5d-4aaa-b01d-244cce908694/1000212018.jpg",
+    "created_at": "2025-07-08T07:38:41.287000"
+  },
+  {
+    "id": "f4e8e156-db23-4b08-9574-188b367ac53f",
+    "student_id": "3af4976e-9fe6-43da-bf0e-0a9ab4ff063a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4c742f06-c81e-4993-9ae1-03b07b16811e/1000230633.jpg",
+    "created_at": "2025-07-08T07:38:41.285000"
+  },
+  {
+    "id": "a3db86a0-727c-4bbb-b88c-19525ece18b6",
+    "student_id": "323b60cb-a392-4aa4-90df-80e92af53835",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9bc99cf9-2a7c-4849-8d45-288cb8f53df9/1000359540.jpg",
+    "created_at": "2025-07-08T07:38:41.283000"
+  },
+  {
+    "id": "98370633-67ba-487f-b581-9488925559e0",
+    "student_id": "eac56c68-6240-4cb6-a8d1-5f9a783c25c8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.280000"
+  },
+  {
+    "id": "dfa62ee7-f02e-49db-890e-1afef4f66fde",
+    "student_id": "08d08a92-9b81-4005-8b61-79e9a21dca94",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/327fd594-8366-4609-adee-f28bc828f742/1000242200.jpg",
+    "created_at": "2025-07-08T07:38:41.279000"
+  },
+  {
+    "id": "dacd2e01-9eb0-4e7d-a23b-dafb0bc4614c",
+    "student_id": "43371035-1187-4ad9-86e8-3f34d2578687",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/df32b2e0-d023-4d3e-a665-edcf6c66c25e/1000241075.jpg",
+    "created_at": "2025-07-08T07:38:41.278000"
+  },
+  {
+    "id": "d2d42bdc-7890-44c3-9eac-129bf02f7efd",
+    "student_id": "2e8a2148-ac29-4b95-9090-f5b774b0f1b9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.277000"
+  },
+  {
+    "id": "ec71a66c-4ab7-458d-a212-6503ffb051ae",
+    "student_id": "f7dc9842-909e-413e-ab64-619820db321c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4ff02940-ff9b-4c9b-844b-3fe5dad8ec53/1000234364.jpg",
+    "created_at": "2025-07-08T07:38:41.276000"
+  },
+  {
+    "id": "20275191-77a4-4b4c-b094-ed4343cb7080",
+    "student_id": "177360d2-0990-4b90-b683-565f4986656b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/23b961ce-62e0-4ae3-b741-6a41f886d9ae/1000233429.jpg",
+    "created_at": "2025-07-08T07:38:41.258000"
+  },
+  {
+    "id": "3e915471-3501-47af-99aa-35d135e73a51",
+    "student_id": "2a38d62d-e9ed-441f-a03c-9b768eb087eb",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0219d8de-8bb0-463b-8b84-fcb7bff66100/1000233431.jpg",
+    "created_at": "2025-07-08T07:38:41.257000"
+  },
+  {
+    "id": "b1d254d7-7d45-4345-882e-73a9eb099de2",
+    "student_id": "56f7b5dc-4466-410b-98cf-fa63841cd163",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0f0dbd80-17e5-4a13-bc05-069749673069/1000233430.jpg",
+    "created_at": "2025-07-08T07:38:41.256000"
+  },
+  {
+    "id": "9fa494e6-3d9d-4a4a-b4c0-c9c8733c1286",
+    "student_id": "ceb672b1-8d7d-4a2a-8e68-d111f8fbb555",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/65f48f01-1501-453b-bb82-49cf348f452e/1000233432.jpg",
+    "created_at": "2025-07-08T07:38:41.255000"
+  },
+  {
+    "id": "28cfaf42-e563-47ba-af88-ee51e046ea01",
+    "student_id": "b405f2a3-39f8-4d14-a1e4-37c370b8db34",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4b1cba28-831e-461d-ba27-2d13f381b20d/1000233467.jpg",
+    "created_at": "2025-07-08T07:38:41.254000"
+  },
+  {
+    "id": "e1542abc-f5c4-4d5e-898a-432b79bb7bc9",
+    "student_id": "5bb8e341-944e-4640-ab4c-129ea0d73989",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d748d62f-8389-46a0-9f84-65277b6342c2/1000233434.jpg",
+    "created_at": "2025-07-08T07:38:41.252000"
+  },
+  {
+    "id": "ce3e6776-5468-4374-838a-4670710210f6",
+    "student_id": "3042960a-b220-4a36-a0e6-b1a7926f6b9f",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f751ec2c-b8cc-4f01-89df-4ca42e4dea48/1000233437.jpg",
+    "created_at": "2025-07-08T07:38:41.251000"
+  },
+  {
+    "id": "94e7cbf9-58a7-4356-ac69-bf084ae5904c",
+    "student_id": "d034a660-2381-4764-9341-76cd28359a62",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6255ecdf-86b7-4312-83e2-da2c9b1b6b32/1000233438.jpg",
+    "created_at": "2025-07-08T07:38:41.250000"
+  },
+  {
+    "id": "908914df-4673-459a-9618-eb768a83ca64",
+    "student_id": "7d486875-6e13-46db-9831-0913a73848bb",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/db920546-cdd0-4e7d-b245-df538007ac8f/1000233441.jpg",
+    "created_at": "2025-07-08T07:38:41.249000"
+  },
+  {
+    "id": "e3ab6487-33be-42b2-9645-2b282c946552",
+    "student_id": "ccb4f89d-1018-4272-9143-7cbfd9988854",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5643744d-b310-4a37-9e2c-3f6f279ee77b/1000233442.jpg",
+    "created_at": "2025-07-08T07:38:41.248000"
+  },
+  {
+    "id": "9a8dc96e-444c-4147-a6e4-18ef2fbe7161",
+    "student_id": "d800788c-2e66-4b2c-883e-97b7e84d1c0b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0ab7a166-cf09-43a7-bb7e-c9869d5d6906/1000233440.jpg",
+    "created_at": "2025-07-08T07:38:41.247000"
+  },
+  {
+    "id": "3201f92d-2a87-49d4-8a23-76f0d8ac942d",
+    "student_id": "78f36e28-b63f-44bf-bf2e-f6de0d6ab448",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/44d44003-0c7b-499d-8ba6-5b97a6519cb9/1000233439.jpg",
+    "created_at": "2025-07-08T07:38:41.246000"
+  },
+  {
+    "id": "c1fee00a-4ddc-42b4-a5fb-07deac5018a3",
+    "student_id": "b26d84c7-f163-4efa-96fe-27a3dcf425df",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e57a8a5e-06a1-4936-b146-a96d7ca95424/1000355032.jpg",
+    "created_at": "2025-07-08T07:38:41.245000"
+  },
+  {
+    "id": "d92e0b32-a722-4b53-b8c2-dedaf5acdbd0",
+    "student_id": "620c9cf7-856c-481b-8b3f-b041af0bd69f",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f5663ceb-1f32-48d8-8d32-31ba1ae994f9/1000354826.jpg",
+    "created_at": "2025-07-08T07:38:41.244000"
+  },
+  {
+    "id": "3ab79141-15ec-477b-8220-f7133da134db",
+    "student_id": "535261a4-8d19-4f41-be22-0f32bcdf77d6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0715448e-ff60-4850-8601-577321e49781/1000233445.jpg",
+    "created_at": "2025-07-08T07:38:41.243000"
+  },
+  {
+    "id": "83cb9983-4e2a-4ff7-9e87-eb83d42bab2e",
+    "student_id": "a372fd31-604a-47c3-9b07-3998be4d37a7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/dea9b3ca-e4c5-4055-88d1-01f5372c5d72/1000233458.jpg",
+    "created_at": "2025-07-08T07:38:41.242000"
+  },
+  {
+    "id": "cfcaa399-923b-42d9-b170-d84665eadea3",
+    "student_id": "61776f2b-ace5-4880-9e71-c5dcc8096bc1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/7baf030a-fd51-4d11-abf3-ee120d598bb1/1000233461.jpg",
+    "created_at": "2025-07-08T07:38:41.241000"
+  },
+  {
+    "id": "4897f537-4915-4680-91c5-bc4ed33ed80f",
+    "student_id": "70071c31-6563-405e-a5cd-141c239fa7ef",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/3fc1193b-6bf4-4a27-aab2-194367ad394f/1000233463.jpg",
+    "created_at": "2025-07-08T07:38:41.239000"
+  },
+  {
+    "id": "43c68a10-1c3f-4e0b-a9ee-e41397fe87b9",
+    "student_id": "22892e8e-75ab-4646-b252-e44e735c0a16",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/16606b3e-9111-4a4b-8e21-fcce66444b39/1000233462.jpg",
+    "created_at": "2025-07-08T07:38:41.238000"
+  },
+  {
+    "id": "4fd37426-cf77-408f-95a8-e5206cbd3ad6",
+    "student_id": "d698926b-b76e-48ce-9ce1-fcda17266446",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/592d14cb-2ac3-4671-96c3-a8b186d18b04/1000354828.jpg",
+    "created_at": "2025-07-08T07:38:41.237000"
+  },
+  {
+    "id": "cff6ca4d-56f4-4d42-867e-3bb839dd2b4d",
+    "student_id": "e2f7d160-4502-4622-8233-bf91438775c0",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/3cb9d3e2-0cbb-4b2c-bbdc-b34a37149150/1000233468.jpg",
+    "created_at": "2025-07-08T07:38:41.236000"
+  },
+  {
+    "id": "f4dc569c-97bd-4b31-8596-0826a48ea912",
+    "student_id": "4a8dad5f-57cc-4553-99cb-aea472bc28fa",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "e3df6143-b137-454e-bf5c-85bf76367142",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e32e008a-1f69-4c55-8e3f-9e73882ada2d/1000355034.jpg",
+    "created_at": "2025-07-08T07:38:41.235000"
+  },
+  {
+    "id": "cd8fc4ae-14a2-414b-99f3-dedc220ac711",
+    "student_id": "2e5cc939-919c-44b6-b602-29d5c2e50284",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "abf1a44c-d83a-4d17-8880-6f38c7a6a7ae",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/233691da-89c9-42d2-b9c0-a130041fc68f/1000357228.jpg",
+    "created_at": "2025-07-08T07:38:41.234000"
+  },
+  {
+    "id": "67449f2c-ce87-4e5c-8273-461206320d7b",
+    "student_id": "f22f2b22-c6a0-4e7f-949f-63c47d1ca6c4",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8505d6e1-2e39-467f-b42b-b60f8f55c7c4/1000353122.jpg",
+    "created_at": "2025-07-08T07:38:41.233000"
+  },
+  {
+    "id": "65e973b7-ab5f-48a9-8b99-811b7672ac8d",
+    "student_id": "78afa6d2-f266-4c17-9f01-6e3f3091d239",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/eb5862cb-6832-483c-ad5a-2ec72d878a0d/1000353129.jpg",
+    "created_at": "2025-07-08T07:38:41.232000"
+  },
+  {
+    "id": "9f800a19-0438-4e53-aa29-73a0cdd399de",
+    "student_id": "86fbff56-af96-4efc-98c6-f016ba143f3b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/49eeba15-2ea0-41f4-848a-36543b598145/1000353132.jpg",
+    "created_at": "2025-07-08T07:38:41.231000"
+  },
+  {
+    "id": "424827ca-354f-4946-b724-e7cd721a06e9",
+    "student_id": "94cc24dc-53e0-497d-bfc7-ea84b22e2277",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/78519600-33d9-43b3-87a2-1cf6877ad508/1000354439.jpg",
+    "created_at": "2025-07-08T07:38:41.230000"
+  },
+  {
+    "id": "05f643e1-1730-4aa5-be8c-970ffb46e1c6",
+    "student_id": "51df2ce0-f3fc-445a-84e4-fb5ec1435b64",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c3626dbe-a364-491c-abeb-63c1f6eff060/1000354432.jpg",
+    "created_at": "2025-07-08T07:38:41.229000"
+  },
+  {
+    "id": "c3442a21-9be4-42c6-a205-c0b103a41478",
+    "student_id": "8087098e-2d6c-4da9-bc39-d421e938adf7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ccdad851-cb35-4167-944b-bd5bb0bc51fc/1000353115.jpg",
+    "created_at": "2025-07-08T07:38:41.228000"
+  },
+  {
+    "id": "d263c05c-286f-49d2-8ccb-a231d34a1764",
+    "student_id": "d472949d-eb8d-4b10-b26c-814c6e92d43d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f91eb27a-fc46-4157-9a66-ec57e07e41a4/1000353117.jpg",
+    "created_at": "2025-07-08T07:38:41.227000"
+  },
+  {
+    "id": "57ceb238-4a28-4a3d-a0bf-91f978401b3b",
+    "student_id": "7ae80896-1928-49a1-909d-07adba4df655",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.226000"
+  },
+  {
+    "id": "f7631587-31d3-49d2-8eb1-fdff9838cf78",
+    "student_id": "3b2cf7e2-fc7b-4438-a84b-8ed52ee4699b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/65f148e9-3cb8-48d7-bc68-eae45b79bce6/1000234367.jpg",
+    "created_at": "2025-07-08T07:38:41.225000"
+  },
+  {
+    "id": "b5ab55bd-1a75-4d59-8170-be9c7905ac9d",
+    "student_id": "51200cc9-41e0-40b8-a974-c8eabec67b56",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ecbc099e-a023-4fa5-be0f-4bb8f37adb7d/1000234369.jpg",
+    "created_at": "2025-07-08T07:38:41.224000"
+  },
+  {
+    "id": "2737e8f4-b325-4568-b6db-efe394420f14",
+    "student_id": "53aa124f-7e81-4907-823a-57cac60c83c4",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b187117e-bcf7-4bd1-9d88-bf8acd085f7d/1000234366.jpg",
+    "created_at": "2025-07-08T07:38:41.223000"
+  },
+  {
+    "id": "8fe2ab14-ef96-4b37-ba2c-767f21559754",
+    "student_id": "cf3fd774-7f0e-4950-a391-8d3e3d1dda5c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/735b2f4f-95c2-4ba7-bc3c-0cc0f659938e/1000234358.jpg",
+    "created_at": "2025-07-08T07:38:41.222000"
+  },
+  {
+    "id": "ea10966e-46f8-4aae-884a-dcb48b98c65d",
+    "student_id": "1ca596a8-412e-4e2c-a77f-a5296e5bd609",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b0df45dd-f267-4314-893c-5c1cccd45fd2/1000234357.jpg",
+    "created_at": "2025-07-08T07:38:41.221000"
+  },
+  {
+    "id": "e8fddb82-8013-4d68-ac83-285fab4864b9",
+    "student_id": "3a3d66cc-d948-4ea3-afff-2daf1e0044dc",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8a3568bc-fb55-49c6-b12f-74de5083574e/1000234360.jpg",
+    "created_at": "2025-07-08T07:38:41.220000"
+  },
+  {
+    "id": "a7b7e73c-4be8-4cc1-ab2b-61c4533c8c20",
+    "student_id": "e3eb06ac-b904-4a08-baed-948ed36434c4",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/82936c69-6d6e-40b3-8810-9dcd2c6f4eab/1000234361.jpg",
+    "created_at": "2025-07-08T07:38:41.219000"
+  },
+  {
+    "id": "38a59b2e-646b-4c6e-a6fb-4b44966d4b99",
+    "student_id": "db8fbfe1-8411-41cc-8231-1dd71679fa57",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/33a693e0-6bf9-4b70-842b-ca6446d1801b/1000234363.jpg",
+    "created_at": "2025-07-08T07:38:41.218000"
+  },
+  {
+    "id": "193cd297-7bba-4958-97d6-43c1a07f006c",
+    "student_id": "4c1e7610-5faf-4961-b107-120d0716b517",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/96d53ae5-d995-4df7-9d8a-74885b1990f1/1000234365.jpg",
+    "created_at": "2025-07-08T07:38:41.217000"
+  },
+  {
+    "id": "d8fc14ab-6768-4bb2-8c3c-9728142a2921",
+    "student_id": "9d29ac19-57d2-4e10-a81f-886645654ac4",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1356672d-d726-4488-855c-1f10049464b1/1000234368.jpg",
+    "created_at": "2025-07-08T07:38:41.216000"
+  },
+  {
+    "id": "b90e3278-1260-4107-853f-b28ac083b8c2",
+    "student_id": "6918e9ff-7686-4707-894e-4572a551a090",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1c7385c8-3190-489e-8cf2-4a26835d86f6/1000234359.jpg",
+    "created_at": "2025-07-08T07:38:41.215000"
+  },
+  {
+    "id": "f4b3ef4d-1753-4a5b-b62d-dcef56cc54a9",
+    "student_id": "0fecab46-c36a-492e-acaa-f464f5e68025",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9f91a8f5-117f-4e51-b809-7a0d16eea906/1000234362.jpg",
+    "created_at": "2025-07-08T07:38:41.214000"
+  },
+  {
+    "id": "96cef8d0-31a7-4677-8c7c-3f55acb9dffd",
+    "student_id": "10181a91-7bdd-44c2-93a7-48307c110736",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f8d24fba-94db-4cc7-bbbe-af2016385b3c/1000234370.jpg",
+    "created_at": "2025-07-08T07:38:41.213000"
+  },
+  {
+    "id": "67c4e1fc-033c-4633-9e44-0d7f37f39842",
+    "student_id": "388aa549-e12a-4810-84a0-bf4b73e56644",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3347528-844a-4b8e-bc92-18084217f49d",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5b046a0a-978e-49db-aa79-b44a3d252aa0/1000234371.jpg",
+    "created_at": "2025-07-08T07:38:41.212000"
+  },
+  {
+    "id": "13830fc1-7252-472b-a818-3ca4c5929c7e",
+    "student_id": "92c9a125-41b3-4467-a95f-73e4b4b2f515",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/991ecd95-594f-4367-af92-7b702967dcf3/1000353121.jpg",
+    "created_at": "2025-07-08T07:38:41.210000"
+  },
+  {
+    "id": "831531cd-a382-46ec-98a4-384772d8c38c",
+    "student_id": "750d2c56-36ed-41de-ac08-77c61a2a673b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f4f66d0f-425a-4768-8aa4-9fde2c71381e/1000355017.jpg",
+    "created_at": "2025-07-08T07:38:41.209000"
+  },
+  {
+    "id": "4cd56783-86fe-4fe2-8226-1902c8d7f3aa",
+    "student_id": "bcc749ee-f22f-4a6c-abd5-8842445266bc",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.208000"
+  },
+  {
+    "id": "304d06df-9255-433f-ab27-98ccac8a15ed",
+    "student_id": "aca20063-9ef7-4862-a889-01200c8809bf",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/106bd1a4-6852-47b2-9dc5-03943128b525/1000353131.jpg",
+    "created_at": "2025-07-08T07:38:41.207000"
+  },
+  {
+    "id": "74bc04f6-7b83-4a32-a1d3-506ae158ac5a",
+    "student_id": "fc6878fd-c912-4fed-a31b-d3e2ddfbd5ef",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/7eece442-d7c8-4d08-925b-53543aefe5f3/1000354436.jpg",
+    "created_at": "2025-07-08T07:38:41.206000"
+  },
+  {
+    "id": "92a50507-4607-437c-82bf-9989f39e3195",
+    "student_id": "94fe1cca-c731-4ee5-a803-31db01c2072b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9cabe9f5-e8f8-437c-a92c-224de8cfae5f/1000353127.jpg",
+    "created_at": "2025-07-08T07:38:41.205000"
+  },
+  {
+    "id": "6400fbfc-79fd-4923-8f4e-d84f9a7503ae",
+    "student_id": "c13d0c2f-fa88-4dcb-a715-8f82078436e1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d5b635c8-ccfe-4b46-8c5b-86fe59191259/1000235401.jpg",
+    "created_at": "2025-07-08T07:38:41.204000"
+  },
+  {
+    "id": "2f14b53a-5198-4269-9943-b11363ae42b7",
+    "student_id": "fe029b25-0ec2-44e4-8260-82ec2c80504b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/079eac02-0cc6-4abb-b327-c32075f6069d/1000235402.jpg",
+    "created_at": "2025-07-08T07:38:41.202000"
+  },
+  {
+    "id": "cab857d1-f183-4140-b54b-c24aa2d3ce69",
+    "student_id": "6dcea2cd-3beb-47ce-b0f9-64c8a31e9e96",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b4ed3e80-5faf-4f7c-be83-af838c76a578/1000235403.jpg",
+    "created_at": "2025-07-08T07:38:41.201000"
+  },
+  {
+    "id": "ed2e7bbc-6203-4b15-a555-e7738f1ca102",
+    "student_id": "73bd131d-03fc-4394-be0a-4a15c5e8cabc",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/913a2ec5-468a-45cc-a1d8-6beed8106c4c/1000235395.jpg",
+    "created_at": "2025-07-08T07:38:41.200000"
+  },
+  {
+    "id": "ea17a2a4-87e1-4f6c-8efa-5292a86a143e",
+    "student_id": "6398d559-303f-4a96-8ebe-f10b317c1fe9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/170b3d32-091f-40f2-98bb-b19d6883c546/1000235398.jpg",
+    "created_at": "2025-07-08T07:38:41.199000"
+  },
+  {
+    "id": "e55c284b-fa60-41fc-806d-9ab4dac4445c",
+    "student_id": "a9ddcbbe-b02e-4d42-b850-99f6a72a2a40",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ec5462a1-5848-4da1-9b59-3ef60e28bdf6/1000235399.jpg",
+    "created_at": "2025-07-08T07:38:41.198000"
+  },
+  {
+    "id": "0936a646-5807-471c-a192-7476fa34d460",
+    "student_id": "b45fb359-f6c0-4ec8-b8f3-4a7e8da76c25",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/cedcf7c2-1aac-49b9-a5ac-301d89a6022b/1000235397.jpg",
+    "created_at": "2025-07-08T07:38:41.197000"
+  },
+  {
+    "id": "66381ac0-59de-476c-ad66-69edf89a7317",
+    "student_id": "570345f8-e394-4062-81bf-88ade340180a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d03eb6aa-7c27-40bf-b864-a9bedbbd4a99/1000235404.jpg",
+    "created_at": "2025-07-08T07:38:41.196000"
+  },
+  {
+    "id": "d6a99371-7093-4359-84cc-da2d24b86641",
+    "student_id": "d25ff64a-d0eb-423c-bc94-2729d2d6061c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/642590e2-5418-4816-aa29-49b359be49cb/1000318609.jpg",
+    "created_at": "2025-07-08T07:38:41.194000"
+  },
+  {
+    "id": "79abe6db-dd2f-4028-bcd5-48afdbe09690",
+    "student_id": "79c61549-57ce-443e-97b4-43b5dc4be5a2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9b2cc0d3-8d77-4f53-aaad-d12b61eb75bf/1000235413.jpg",
+    "created_at": "2025-07-08T07:38:41.193000"
+  },
+  {
+    "id": "e646d81b-df6a-4b05-b5a0-8a3415373f3f",
+    "student_id": "51cbf31d-b7ed-489b-b306-ad00977c6344",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e6811e07-733c-4d9c-a065-b15d444fc4bd/1000235417.jpg",
+    "created_at": "2025-07-08T07:38:41.191000"
+  },
+  {
+    "id": "9d2947d4-7c47-4dca-bb89-ef88410d455d",
+    "student_id": "c97bb0d3-bd33-4cc3-90a3-739e48106eb2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d5c414d7-c22d-4ead-abc5-28625d612015/1000235394.jpg",
+    "created_at": "2025-07-08T07:38:41.190000"
+  },
+  {
+    "id": "d9518a0c-303d-48fa-be54-34d2818ed15e",
+    "student_id": "0480150c-3600-4050-9187-272ca3b634b7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a4d91f92-6bf3-4c46-b068-7f89453ac411/1000235396.jpg",
+    "created_at": "2025-07-08T07:38:41.189000"
+  },
+  {
+    "id": "2d727902-69ea-48fd-bc75-1569d7952785",
+    "student_id": "9aa29870-9774-4179-92e5-eb1ed4555bec",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.188000"
+  },
+  {
+    "id": "150bf67b-0aca-4628-a2a9-dceeb499c0b9",
+    "student_id": "bc146850-d8fa-4dab-9ba4-c3b4312c751b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f461ee63-46c9-40ab-b25b-1608715ddee2/1000235405.jpg",
+    "created_at": "2025-07-08T07:38:41.187000"
+  },
+  {
+    "id": "1feea08d-98e0-422e-853e-7aa1dda7093f",
+    "student_id": "f2fa5791-f7a2-431e-bd40-987f8892d5fa",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e21919d0-b2a9-4fdf-94fc-12806e5500e5/1000235409.jpg",
+    "created_at": "2025-07-08T07:38:41.186000"
+  },
+  {
+    "id": "26084e6d-3eb1-40cc-a120-69cc52d20d8f",
+    "student_id": "7cef1a74-f50d-43d2-acb0-de26082ddc49",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/631c8b93-c8a5-42d5-9aab-f7cd3c294d1d/1000235410.jpg",
+    "created_at": "2025-07-08T07:38:41.185000"
+  },
+  {
+    "id": "e56e1441-cbf3-4e1e-a001-156be63494fe",
+    "student_id": "210c545d-c2ea-4549-8e54-0bf38a468481",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2fab912d-1455-4f7f-bc21-46590889a8a9/1000235412.jpg",
+    "created_at": "2025-07-08T07:38:41.184000"
+  },
+  {
+    "id": "e78fa8b3-b7eb-4c58-8313-4accf953a104",
+    "student_id": "000cb967-974a-42ab-ac00-970f06f4d7ac",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b52d3bec-618a-47f1-bf90-6f3551b97320/1000235419.jpg",
+    "created_at": "2025-07-08T07:38:41.183000"
+  },
+  {
+    "id": "2f90478f-16d3-4403-aa2b-5ceecc061506",
+    "student_id": "b1a78761-5580-4d27-b252-a377f7204250",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b2eb2aa7-4deb-46ce-ae82-9e49895cd12e/1000235420.jpg",
+    "created_at": "2025-07-08T07:38:41.182000"
+  },
+  {
+    "id": "825f7773-a5e2-4e57-b6f1-849ab2195e1c",
+    "student_id": "6761b38e-4dc9-4bc0-a44e-7fb4a7c3218d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/bf9e8050-b14f-4404-b96e-30ad6445f6c1/1000235416.jpg",
+    "created_at": "2025-07-08T07:38:41.181000"
+  },
+  {
+    "id": "cdccfbdc-7e58-4cc8-9a9d-3a2f0e6859c7",
+    "student_id": "a3419981-7134-47b4-ba82-c7239193928d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8d867e57-9cf4-421c-9171-340c2edbc3e9/1000235421.jpg",
+    "created_at": "2025-07-08T07:38:41.180000"
+  },
+  {
+    "id": "40b55f9a-9576-484e-8397-2b02386835df",
+    "student_id": "b02f1d67-a55c-4dc8-93e9-38f973ea2a48",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a952b786-b6d0-4236-9ef3-660d45db312b/1000235408.jpg",
+    "created_at": "2025-07-08T07:38:41.179000"
+  },
+  {
+    "id": "c42c8bf1-236a-4f93-96ae-c71cec7f96af",
+    "student_id": "5540e1a0-3e74-4994-a724-ed00eab3c6c2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/da6968cc-0a34-407c-ac5c-10efdf87693d/1000235411.jpg",
+    "created_at": "2025-07-08T07:38:41.178000"
+  },
+  {
+    "id": "b1f0e84d-fb1b-45ed-9081-1b636a008071",
+    "student_id": "1f9777a4-2eb7-433a-9128-b7bc6738b609",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e411cb26-da6d-4f14-a8fe-637b45bb9c71/1000235407.jpg",
+    "created_at": "2025-07-08T07:38:41.177000"
+  },
+  {
+    "id": "d8670c30-0115-40aa-838f-3d06adea41b6",
+    "student_id": "390f2f20-e15e-48ac-94e5-379266331435",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "a3a0491b-7696-4f8a-9d45-e206928adad7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/cac9e95d-9401-493d-80b3-3bcc398cf512/1000235400.jpg",
+    "created_at": "2025-07-08T07:38:41.176000"
+  },
+  {
+    "id": "f2130911-b1fe-4025-b32d-400a625c22ef",
+    "student_id": "5c8a1c41-cb02-4ed9-b272-39a7fbe06785",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ff9b7697-3a97-4252-8b73-c3a8daaa6142/1000353124.jpg",
+    "created_at": "2025-07-08T07:38:41.175000"
+  },
+  {
+    "id": "50959a4e-4e7e-43e3-94bb-a556e90bc061",
+    "student_id": "0735ffd3-b8bf-4827-9699-b283e9ddb037",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9c99a4e5-e5d6-4739-9a5e-21e3d6fc2b2d/1000353120.jpg",
+    "created_at": "2025-07-08T07:38:41.174000"
+  },
+  {
+    "id": "820f1176-5627-4228-b8b2-9968efcdfdae",
+    "student_id": "9132fd4c-e224-43d6-a18a-bc6aeb13e840",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5b281a5f-c373-40f7-a81f-c24a36bd0fbb/1000353126.jpg",
+    "created_at": "2025-07-08T07:38:41.173000"
+  },
+  {
+    "id": "d2c14a17-2a7e-4748-a4e4-316dc6c5d352",
+    "student_id": "116f9912-f3e1-4030-b592-86bb18b1a0c2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1e9a510f-5483-47fa-a72c-42bc48915ddf/1000236195.jpg",
+    "created_at": "2025-07-08T07:38:41.172000"
+  },
+  {
+    "id": "217d25bd-9121-49e6-84bd-f0b86af945a2",
+    "student_id": "86a61a14-5e57-4693-9c27-f2e8c3734f26",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/69b1ccf8-cdd9-459e-b7cc-1a5f0a67a9d1/1000236187.jpg",
+    "created_at": "2025-07-08T07:38:41.171000"
+  },
+  {
+    "id": "a866b2ac-2b0e-47a4-8c8f-da5ba0938f17",
+    "student_id": "c4f88e09-204e-4d10-8235-2c56adbc8c81",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/caf36d07-791a-498f-ad71-afd30e63f9b1/1000236192.jpg",
+    "created_at": "2025-07-08T07:38:41.170000"
+  },
+  {
+    "id": "801a7c09-52cf-420b-96da-5b15f0d52268",
+    "student_id": "e462d694-dc26-49a8-a060-8878cfa92555",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c9466cc0-a145-43bd-8cb6-70b65b1817f6/1000236183.jpg",
+    "created_at": "2025-07-08T07:38:41.169000"
+  },
+  {
+    "id": "7ccfc5aa-d50b-4171-ad88-17f5f91e8caf",
+    "student_id": "031afffb-53aa-4a82-a741-d4ce41ae2452",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/306fd384-9d49-4930-a221-e51f390b8f86/1000236189.jpg",
+    "created_at": "2025-07-08T07:38:41.168000"
+  },
+  {
+    "id": "18e70656-06b1-4b1a-9a0c-6b784daeefd1",
+    "student_id": "54ef32aa-033b-429e-8068-3db0d7aea521",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/7cd13b7a-676e-45c7-a6bf-fe30be983d20/1000236180.jpg",
+    "created_at": "2025-07-08T07:38:41.167000"
+  },
+  {
+    "id": "06d4ae85-7f4b-4c0e-a700-227206c6f33c",
+    "student_id": "2829f64d-74a2-4818-bf8f-0cd2b56bbeb6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4da2908b-3166-4e03-9dc6-77929993c154/1000236179.jpg",
+    "created_at": "2025-07-08T07:38:41.166000"
+  },
+  {
+    "id": "480cf449-928c-4c29-a431-eb51dcbf45ca",
+    "student_id": "ea6bf4c1-1792-47dc-92b7-cacaacb08817",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/43c540ce-d709-49db-842d-3383d918d401/1000236194.jpg",
+    "created_at": "2025-07-08T07:38:41.165000"
+  },
+  {
+    "id": "16685560-5dbd-40f3-b4d6-61c2b33102da",
+    "student_id": "6f938c3f-4030-4822-9798-9e771baae33c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5c3ce1bc-7002-4a40-9d70-c0f7d11f9e2a/1000236176.jpg",
+    "created_at": "2025-07-08T07:38:41.164000"
+  },
+  {
+    "id": "cf421ea4-70b7-4c07-8f7e-46e942c340c8",
+    "student_id": "d468ade1-d21c-4bc7-90c0-aa4d10bc8efb",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/829c66d6-7ade-444d-8bb8-d1d539ee6dc7/1000236177.jpg",
+    "created_at": "2025-07-08T07:38:41.163000"
+  },
+  {
+    "id": "a5029455-d6f1-4028-bf8a-1738b2825af0",
+    "student_id": "406ffa5e-2a5f-40cd-83b5-49b3d63a37a7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/7498fda9-a8d5-4a42-83cd-24bbeb08a230/1000236175.jpg",
+    "created_at": "2025-07-08T07:38:41.162000"
+  },
+  {
+    "id": "4e817995-8db6-4ebd-9abb-a023abfa053a",
+    "student_id": "621fd383-3658-4f4f-8146-9a4cbf11773a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b7c353bc-ab23-42b5-9367-562c73217712/1000236178.jpg",
+    "created_at": "2025-07-08T07:38:41.161000"
+  },
+  {
+    "id": "f5bbcd25-a3b2-4b6d-899e-e263eb262bfc",
+    "student_id": "ba909676-837d-40c1-bacd-a0e8b522bf77",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "bdf0edd2-15aa-4ca5-9316-8910e13b5ae7",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.160000"
+  },
+  {
+    "id": "1f3b192a-335c-4f05-80b3-b1a1aeda0790",
+    "student_id": "96f7f05e-0aee-4975-bf1e-95f04916923f",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a1f26ef0-77b6-4b44-b3bd-2afc9c0c5dc4/1000235896.jpg",
+    "created_at": "2025-07-08T07:38:41.159000"
+  },
+  {
+    "id": "3873b8ed-76cc-46ff-a2be-20c87bcf7038",
+    "student_id": "d3149fa3-41ad-4c9c-afe6-a1d652598da0",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8bbf3e1a-301d-4c9c-8e4d-2e8c839d6f0e/1000235851.jpg",
+    "created_at": "2025-07-08T07:38:41.158000"
+  },
+  {
+    "id": "ae20bec0-d246-43a1-8cac-ca30ef354113",
+    "student_id": "ecef241e-9030-445a-a85e-047eaceb9d45",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d05b9465-3b50-40b3-bb6f-33cb5376b12b/1000350519.jpg",
+    "created_at": "2025-07-08T07:38:41.157000"
+  },
+  {
+    "id": "0f5cd4fa-97d6-4201-8d9f-1b4d0fef3bf6",
+    "student_id": "36979021-9b60-477c-975c-89f72a586a42",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ec71ee10-ffdc-4414-a8fe-6d25608b02b3/1000351403.jpg",
+    "created_at": "2025-07-08T07:38:41.156000"
+  },
+  {
+    "id": "5545e741-0504-4164-972f-184dc6df4ecd",
+    "student_id": "c712bb5b-8264-48c2-a87c-aa683ff6d3c9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a60ae4e5-be17-44e1-902b-339cfe609184/1000235908.jpg",
+    "created_at": "2025-07-08T07:38:41.155000"
+  },
+  {
+    "id": "147151e2-2417-4fd0-afde-d14fbe4f9947",
+    "student_id": "7e055b9f-67fb-47fb-960f-907b8f8fe4db",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1980a529-e566-4d86-af02-eb4791fe721a/1000235817.jpg",
+    "created_at": "2025-07-08T07:38:41.154000"
+  },
+  {
+    "id": "8f6fc9bd-d9f0-4816-87ef-a371f395c8ea",
+    "student_id": "ffe4fc28-3c7e-4d76-85fe-bf39fc7900d1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/42986c5a-1a3c-49cf-9ef8-fa1d84bc764d/1000351411.jpg",
+    "created_at": "2025-07-08T07:38:41.153000"
+  },
+  {
+    "id": "5d146ba0-23c6-4001-9653-cda4a73f927d",
+    "student_id": "6266c00b-b30c-4a29-a8dd-689c82818100",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/108fc730-c397-4ea8-afbf-08358a8edc43/1000351414.jpg",
+    "created_at": "2025-07-08T07:38:41.152000"
+  },
+  {
+    "id": "cf182b3a-d67c-451c-8d67-abbe76152f88",
+    "student_id": "f4ba67b7-30b5-4567-bbe5-2df904e71d87",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/efe2e63c-31ae-4c2e-a303-807131caf398/1000351415.jpg",
+    "created_at": "2025-07-08T07:38:41.151000"
+  },
+  {
+    "id": "b88f85dd-0ae2-4991-8e07-2fec8b3d3dc3",
+    "student_id": "f6b804c2-1725-49d4-b0f2-ab353849cdf7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/de981b8f-882e-438a-bc74-169c2b53174c/1000351410.jpg",
+    "created_at": "2025-07-08T07:38:41.150000"
+  },
+  {
+    "id": "02e91167-6320-4b0a-bef8-e1a548b4677e",
+    "student_id": "5de71649-9faf-4923-a7de-c7b64aa7d311",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0350c97e-e392-469a-91df-3f2220eddf7d/1000351417.jpg",
+    "created_at": "2025-07-08T07:38:41.149000"
+  },
+  {
+    "id": "cdb7a487-a9a5-42dd-b7b9-a2eea164804c",
+    "student_id": "01e26c2c-0123-42cc-95ab-a97cb0c10cdd",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.148000"
+  },
+  {
+    "id": "7503a6e1-53b8-4e1e-a881-35dcc59f3e4c",
+    "student_id": "dc40b3f4-4c41-484d-b684-3cc094fc4910",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0d7b4930-87b5-4d26-9579-da1e6b5228e7/1000235887.jpg",
+    "created_at": "2025-07-08T07:38:41.147000"
+  },
+  {
+    "id": "e8e73292-74b9-434d-8f88-c3b9b1c85a33",
+    "student_id": "6cf93349-2eea-4333-9e91-859e69a17606",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d8fb38b8-1252-4d1a-8f28-2f3709b29fc4/1000235864.jpg",
+    "created_at": "2025-07-08T07:38:41.146000"
+  },
+  {
+    "id": "22ab7b42-f10a-4f25-99a4-39b1cc27666b",
+    "student_id": "02bb7392-2b76-4af4-9d3f-110679900a98",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.145000"
+  },
+  {
+    "id": "a55c1337-3ed0-4223-a27f-e50116d07e50",
+    "student_id": "ca604921-8bc6-458d-a6f4-792bd836ef53",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.143000"
+  },
+  {
+    "id": "f3fd67fc-5e6b-4465-aa1d-cc589008a0f1",
+    "student_id": "6228f275-6a66-41a0-abec-c8eff3cde828",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.142000"
+  },
+  {
+    "id": "99d0998c-c471-41c3-9fa0-e66986776845",
+    "student_id": "62b90657-6255-4b2e-b644-cb13b038eacb",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f1ff0529-4320-47bc-a235-945c0d0afd02/1000235845.jpg",
+    "created_at": "2025-07-08T07:38:41.141000"
+  },
+  {
+    "id": "20cd5335-e934-4905-abd0-d09e455cde29",
+    "student_id": "89bb6785-ecee-481d-b620-0a4a6ad4c463",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/77b0604e-aa1b-45c9-b20c-b0edbf19fa0e/1000235881.jpg",
+    "created_at": "2025-07-08T07:38:41.140000"
+  },
+  {
+    "id": "69910a94-3887-4d36-8fab-df747eec03f7",
+    "student_id": "403c5d54-15ef-49eb-9207-1fbedbc3648e",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8930c67c-fe5d-4c7b-bec1-5235e22e3d50/1000235926.jpg",
+    "created_at": "2025-07-08T07:38:41.139000"
+  },
+  {
+    "id": "2f268ff3-77e2-46ab-a885-a92df216b699",
+    "student_id": "03c24740-1339-4537-b267-4ded3efd73a9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/debb8eb3-8b3b-4824-bd74-9865b62f4997/1000235829.jpg",
+    "created_at": "2025-07-08T07:38:41.138000"
+  },
+  {
+    "id": "778041c8-e245-4ca1-bc33-fb6f0329446c",
+    "student_id": "e1086f19-12aa-41db-87b0-eb6415010f5a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c1d9083d-0c38-471d-b234-eb4c011c022a/1000235839.jpg",
+    "created_at": "2025-07-08T07:38:41.137000"
+  },
+  {
+    "id": "295368d5-00fb-403d-bb58-878c1dce2a80",
+    "student_id": "6e4111f2-3990-48f0-a3f3-0d2c6a929b2a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ec0030eb-d42f-4f07-9fc9-18a0733200c4/1000235938.jpg",
+    "created_at": "2025-07-08T07:38:41.136000"
+  },
+  {
+    "id": "73a0d67f-5efc-4d9c-b928-3777cd69e55a",
+    "student_id": "cea54a5d-bd93-4fc2-8bf3-3749434427c8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a7d2b768-c0eb-439e-8ffb-17d18ac339f6/1000352176.jpg",
+    "created_at": "2025-07-08T07:38:41.135000"
+  },
+  {
+    "id": "949ae6c1-63c4-4838-96ca-16be02fd3ab7",
+    "student_id": "e4b3b684-f3da-4392-b8b2-694ae1485b59",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/3c8a4aa1-8297-4c1b-94cd-d02f6cc85209/1000235950.jpg",
+    "created_at": "2025-07-08T07:38:41.134000"
+  },
+  {
+    "id": "6b32da83-3621-4089-8f66-c6300029026c",
+    "student_id": "37f5a80d-8209-483e-9864-653c08d6b8eb",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5d3592e4-5320-46da-ac36-95ab94910dc3/1000240851.jpg",
+    "created_at": "2025-07-08T07:38:41.133000"
+  },
+  {
+    "id": "6f10d70f-f762-434f-92f7-a36a67684f3c",
+    "student_id": "a50536f0-b1b3-473c-af13-ef7e8811016e",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ffebabf1-6c0d-42c2-b03d-5e96304301ac/1000240854.jpg",
+    "created_at": "2025-07-08T07:38:41.132000"
+  },
+  {
+    "id": "eb335796-84d5-4edf-8cfc-eb19fc5e3562",
+    "student_id": "7749a147-ecde-4703-b762-6614e1e750c9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1097833d-b467-4e53-8e9c-c31430039124/1000240853.jpg",
+    "created_at": "2025-07-08T07:38:41.131000"
+  },
+  {
+    "id": "e987c0b8-9432-47bb-b65c-57943f279217",
+    "student_id": "c02ea40c-9c97-461b-ac65-81e3edba2ed5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/36be4bfe-15f2-4d59-b88b-447e756d5a93/1000240852.jpg",
+    "created_at": "2025-07-08T07:38:41.130000"
+  },
+  {
+    "id": "54953941-aa13-4d59-be88-176d89e007b0",
+    "student_id": "4354ce84-f9d6-44f1-807d-b23ae1374869",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/751a9a37-b6cf-4229-b3c7-aba218f7844e/1000240855.jpg",
+    "created_at": "2025-07-08T07:38:41.129000"
+  },
+  {
+    "id": "8ca2f118-45b0-4437-883f-774ea8786f12",
+    "student_id": "25921eab-b894-44b9-847c-e59533501e4c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f3bcc60f-e227-444b-a0b1-8198e0f019ff/1000240857.jpg",
+    "created_at": "2025-07-08T07:38:41.128000"
+  },
+  {
+    "id": "7b6c5c3c-1d0a-498b-9f0e-207c45d0394b",
+    "student_id": "a4fd1915-4e5d-4bcc-a132-d6ac339f6e35",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5a9b7ffa-2590-44b0-ab54-84273e7a355b/1000240972.jpg",
+    "created_at": "2025-07-08T07:38:41.127000"
+  },
+  {
+    "id": "c65188db-07a0-4245-a896-d3bbe2dc7e4a",
+    "student_id": "2cded0db-6436-458f-a06e-7b719e522fbc",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b32d42c1-e104-46f0-a73d-91b8b5fc8b81/1000345980.jpg",
+    "created_at": "2025-07-08T07:38:41.126000"
+  },
+  {
+    "id": "94e89a01-d189-49f4-9f17-6377dadd99ae",
+    "student_id": "99f97b67-623a-492e-8f8e-4c8e317c0644",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2ad79403-6193-4698-b508-6cf3d033c201/1000240974.jpg",
+    "created_at": "2025-07-08T07:38:41.125000"
+  },
+  {
+    "id": "a56a5413-79b6-4700-aa0a-a2b69fc736f9",
+    "student_id": "2ded4ece-6b70-42c9-807b-7ebc90b60284",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e6bb87ea-fbab-4650-a675-5e758bb0cedc/1000240975.jpg",
+    "created_at": "2025-07-08T07:38:41.124000"
+  },
+  {
+    "id": "c7665504-ff33-4c33-8b7c-34b5afee9de0",
+    "student_id": "224f6a1a-d04f-404c-83dc-6716ada072f3",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/bc5c9cde-57d5-4467-a324-6de4b6282bed/1000240985.jpg",
+    "created_at": "2025-07-08T07:38:41.123000"
+  },
+  {
+    "id": "78bbce92-8c42-452c-bf02-b168adf57234",
+    "student_id": "cdb55f33-9782-4bbc-9f3f-468780eca544",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2f485719-1acb-407c-bc19-28d055c9c68b/1000240986.jpg",
+    "created_at": "2025-07-08T07:38:41.122000"
+  },
+  {
+    "id": "96df987d-5571-4acb-a19b-3593ed012b8d",
+    "student_id": "44bee29e-57d9-4dc5-b221-0e3922ad68fe",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/398ee520-0f98-44ac-ae38-eadfe1f8babb/1000240984.jpg",
+    "created_at": "2025-07-08T07:38:41.121000"
+  },
+  {
+    "id": "051e8947-b1e2-4258-be7b-1b3507343a55",
+    "student_id": "b2e7708b-89aa-48d9-9592-8ea4b1c4a662",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a6a04c29-a1ec-4c27-b667-8dcec33003a0/1000240987.jpg",
+    "created_at": "2025-07-08T07:38:41.120000"
+  },
+  {
+    "id": "58bfd408-02e9-4ef4-bdba-ff73acd0a445",
+    "student_id": "2118eff6-0905-4b29-8d1f-73ca16058195",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4ecaad99-37b9-44a4-91f6-82d3b7bae1f5/1000240976.jpg",
+    "created_at": "2025-07-08T07:38:41.119000"
+  },
+  {
+    "id": "6f95957d-6edf-48e2-a45f-2a6004130bfb",
+    "student_id": "2bb6def6-25dc-4f1e-b800-f51e878fafaa",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/08c9ed66-8031-4db8-be23-2a9c58c991b3/1000240988.jpg",
+    "created_at": "2025-07-08T07:38:41.118000"
+  },
+  {
+    "id": "2f90d205-f6d6-4d0f-8b3d-83ac0e45703e",
+    "student_id": "b08ae60e-29a0-4781-be6c-d9b502dbbca5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5d0911b6-3ac3-4a9a-8b25-7bd143ceb6f6/1000240989.jpg",
+    "created_at": "2025-07-08T07:38:41.117000"
+  },
+  {
+    "id": "f788a087-399b-4242-b8f0-629402d1bd08",
+    "student_id": "965798f7-e436-4bef-ae28-65bbb6e21057",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4752982a-8adf-47fa-a739-4987d25daa7f/1000332954.jpg",
+    "created_at": "2025-07-08T07:38:41.116000"
+  },
+  {
+    "id": "e91f3536-c14a-4294-a1f7-fee6cb3db1c4",
+    "student_id": "69c65962-131a-4c6b-837f-540ff53f58b5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/441a6dcd-5d53-4859-8bff-fffe1e45c593/1000241006.jpg",
+    "created_at": "2025-07-08T07:38:41.115000"
+  },
+  {
+    "id": "d48215f9-8f0a-488f-8fcf-957658eb0806",
+    "student_id": "463d919e-d7ef-4844-9b61-7898666330c5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4046aebc-637e-40ea-a64d-10ebd99c3632/1000241020.jpg",
+    "created_at": "2025-07-08T07:38:41.114000"
+  },
+  {
+    "id": "6cc3817c-567b-4347-8ed3-fa795b3b310b",
+    "student_id": "849ae8f0-3207-44f6-9a02-4b29d8591a05",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/87ee1270-3f34-4cff-a359-6b0652172345/1000241008.jpg",
+    "created_at": "2025-07-08T07:38:41.113000"
+  },
+  {
+    "id": "e983e7de-6bc7-4ae8-be80-5f785d3e45bc",
+    "student_id": "9c3427db-d1cb-40a2-bfbc-3acff8e5e59f",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e20f08f3-3a8c-4214-a321-e833729a6091/1000241017.jpg",
+    "created_at": "2025-07-08T07:38:41.112000"
+  },
+  {
+    "id": "2a4c7c39-32af-490e-9d61-bd0e87996f8f",
+    "student_id": "5b0defbc-943e-4164-b429-320e2cc4b2ca",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e97ae7cb-e53a-40f0-8cf4-0a25faa40465/1000241009.jpg",
+    "created_at": "2025-07-08T07:38:41.111000"
+  },
+  {
+    "id": "f44252cc-e98b-4fd2-a878-00fad4fd1098",
+    "student_id": "cb660cb1-09c2-47fb-8245-85e9e5615c47",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e391d9e3-118d-4725-bcb3-c1bde18eada2/1000241010.jpg",
+    "created_at": "2025-07-08T07:38:41.110000"
+  },
+  {
+    "id": "47283670-6d35-4dea-b2b5-1dc1eee1858a",
+    "student_id": "14035f60-06d6-4903-bc64-76a825aa42fb",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/680a739e-2e0d-4f59-a719-0ca2ee359655/1000241011.jpg",
+    "created_at": "2025-07-08T07:38:41.109000"
+  },
+  {
+    "id": "d07e35d8-5be3-4aa9-b860-c4d340890ef6",
+    "student_id": "f2200c7c-e56e-4693-be3c-7178d3bd3aea",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/cfa69476-04e8-4316-967f-05e08a122e31/1000241012.jpg",
+    "created_at": "2025-07-08T07:38:41.108000"
+  },
+  {
+    "id": "6e02ab7b-1ae4-4d85-889e-0491b2641a70",
+    "student_id": "b4f2cfe0-50de-4a2c-ad9c-da6c4b29cf46",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ed017710-b8ed-47db-8662-98a017317b87/1000240971.jpg",
+    "created_at": "2025-07-08T07:38:41.107000"
+  },
+  {
+    "id": "e9e23d0d-090e-4446-a4b6-f7ac3f9691e2",
+    "student_id": "8c5eb23d-3a18-4bec-a3e6-bc87dd81bca4",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6295ff77-e0e1-4185-bba3-a69559f323b8/1000235944.jpg",
+    "created_at": "2025-07-08T07:38:41.106000"
+  },
+  {
+    "id": "fd30adc6-cddf-4159-a31a-c6d5395d277f",
+    "student_id": "1633dbb2-9171-47f2-a243-47689372c412",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/924908aa-9c83-4ae4-b022-cdf27b27086b/1000352181.jpg",
+    "created_at": "2025-07-08T07:38:41.105000"
+  },
+  {
+    "id": "61967e75-68f2-4b37-a7c2-c310be38796e",
+    "student_id": "46282e11-159b-4766-a3f8-39c6f93f2139",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/94a7e030-f0af-4597-aa00-5b742a446b67/1000235857.jpg",
+    "created_at": "2025-07-08T07:38:41.104000"
+  },
+  {
+    "id": "3aa3a4bb-03ee-42be-8aba-89371318fc59",
+    "student_id": "3df20b4d-2668-418d-a54b-a26c581961ed",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9dfa8216-067e-4668-9b7f-88d5e6fae43c/1000235932.jpg",
+    "created_at": "2025-07-08T07:38:41.103000"
+  },
+  {
+    "id": "e2e6be0c-7b04-4c93-90b0-d3ae499b0808",
+    "student_id": "c4ad9017-cdaa-43d1-847f-f4b74d085dac",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/de466692-c3f3-4557-b640-70f34c45d354/1000351405.jpg",
+    "created_at": "2025-07-08T07:38:41.102000"
+  },
+  {
+    "id": "9afd5527-2955-4596-81e4-baef3def31c2",
+    "student_id": "3a207dc9-a149-4db6-a25a-acdb44e3f815",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/88cc42d4-cc73-45fb-9759-a981f5ff60b8/1000235823.jpg",
+    "created_at": "2025-07-08T07:38:41.101000"
+  },
+  {
+    "id": "17ceeb09-950f-4d8f-8c02-4b96fce77c56",
+    "student_id": "7c5e4ac5-b266-4930-b031-e4ce879850a9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2c1e2030-a4e3-40ca-a208-fd76ed33a73a",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5c901806-684d-4378-9873-ace988115d4f/1000235875.jpg",
+    "created_at": "2025-07-08T07:38:41.100000"
+  },
+  {
+    "id": "61e1b6a0-3311-4aac-af55-390fca797494",
+    "student_id": "b73d6ab2-7223-4ea1-9a6e-593d97895b85",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/5ce1b6c7-76ba-48bb-b649-7ea6c40451e1/1000241051.jpg",
+    "created_at": "2025-07-08T07:38:41.099000"
+  },
+  {
+    "id": "ccead653-62f3-44a9-9c8e-69984e1bc483",
+    "student_id": "eb6608eb-d3f6-4fe9-bf0d-fa59e96ad7f6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c12c1ea4-2639-4c28-97ee-ccf2d7ffe823/1000241052.jpg",
+    "created_at": "2025-07-08T07:38:41.098000"
+  },
+  {
+    "id": "3a44b93a-7769-464f-b7cc-2371836fde1c",
+    "student_id": "6a8bc511-66f6-487b-b713-debd347d0c6b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e95acb92-b743-4f77-a5d6-fa9cf0023ba5/1000241062.jpg",
+    "created_at": "2025-07-08T07:38:41.097000"
+  },
+  {
+    "id": "39880423-3d2f-4033-b3ae-61d4e7bcf832",
+    "student_id": "01a5eaa3-487b-4592-8272-0118fb458546",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/64de2461-9761-4af5-af81-13cc7a5e04b2/1000241057.jpg",
+    "created_at": "2025-07-08T07:38:41.096000"
+  },
+  {
+    "id": "da278e05-4c47-4b3b-ad19-10ef1658acd8",
+    "student_id": "dc057033-407d-4440-911c-b11167ef5f35",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/9fc4df9a-d0e3-4033-8341-ad644ac17ce5/1000241056.jpg",
+    "created_at": "2025-07-08T07:38:41.095000"
+  },
+  {
+    "id": "5271d91b-c36f-4ec7-a4dd-bdc420909252",
+    "student_id": "7b45872d-dadc-4a8a-8db5-4efb2bf2f0f7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/48956c4b-02f7-45e7-b9fc-706c17736607/1000241063.jpg",
+    "created_at": "2025-07-08T07:38:41.094000"
+  },
+  {
+    "id": "cd618f43-3afd-4dbc-b224-e08717fef343",
+    "student_id": "d706b84f-773c-4b0a-8758-8fb464c697d5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/568f50a5-da04-4678-b2d8-074e6413cfce/1000241066.jpg",
+    "created_at": "2025-07-08T07:38:41.093000"
+  },
+  {
+    "id": "9b318393-ca68-4968-939a-47e9d684ee8f",
+    "student_id": "03776b19-7b5e-4da3-9d6b-7f4cd1989624",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/612b8de2-d4ea-429a-b8ea-39a80130675e/1000241072.jpg",
+    "created_at": "2025-07-08T07:38:41.092000"
+  },
+  {
+    "id": "0a00cae0-9ccc-4ccf-a3bd-81bb83612fcb",
+    "student_id": "1052f3fb-7dc1-4d07-80a3-d2561535d41d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/68ef69bb-5586-4342-877c-173a2bea568e/1000241077.jpg",
+    "created_at": "2025-07-08T07:38:41.091000"
+  },
+  {
+    "id": "b3d09a3e-6e40-4792-b9cc-beb86f703b47",
+    "student_id": "d2bef477-5189-4de5-895b-630f7a8d03db",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e8f4d309-aa01-4f94-96e9-4ad0265d3ece/1000241074.jpg",
+    "created_at": "2025-07-08T07:38:41.090000"
+  },
+  {
+    "id": "31329f03-3142-4332-a87c-2df03802a515",
+    "student_id": "c5150a57-6aa3-4a74-af69-2be3c1a6e2fe",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/faae766e-2c3c-4257-a519-94780b59e6a0/1000241058.jpg",
+    "created_at": "2025-07-08T07:38:41.089000"
+  },
+  {
+    "id": "bd243756-051a-423d-9733-646b2b4c2786",
+    "student_id": "f4ba4cd4-df02-4cbd-9140-73bc545a36f8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/20d6045c-cb83-4232-bcf6-281df4249243/1000333872.jpg",
+    "created_at": "2025-07-08T07:38:41.088000"
+  },
+  {
+    "id": "c2ef0e66-c3a7-4795-8931-332945036fc2",
+    "student_id": "c5ddcd82-fb32-4ffe-a9c8-7ccc67711271",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4572f3e8-cd80-44fe-951f-145bd847922a/1000241068.jpg",
+    "created_at": "2025-07-08T07:38:41.087000"
+  },
+  {
+    "id": "53af7d15-5d28-4830-92fc-18b819cb9b60",
+    "student_id": "b980cd8a-b68c-47b8-b1dd-c34c299f2762",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/699aee0e-4781-40db-8697-37010aad4d34/1000241054.jpg",
+    "created_at": "2025-07-08T07:38:41.086000"
+  },
+  {
+    "id": "da1ded1a-dc03-4988-8016-fa0bf25041a0",
+    "student_id": "78541b15-0b1f-4096-9d80-f697e8565bdd",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b725bb77-c01d-4a96-b9fe-32dfc2757780/1000241055.jpg",
+    "created_at": "2025-07-08T07:38:41.085000"
+  },
+  {
+    "id": "9a05a96b-6c23-4b79-a96c-dc71435a975b",
+    "student_id": "6b9193fc-7579-463a-9d66-fc40b54ce7dc",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/fb300db7-95d4-4451-87dc-c3957dbef8ac/1000243353.jpg",
+    "created_at": "2025-07-08T07:38:41.084000"
+  },
+  {
+    "id": "3a21446d-2a13-4589-a0c5-d80e1c4bf882",
+    "student_id": "644bce54-434b-4ed2-a78b-b0a33aabff27",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/049f7469-02cc-4176-8b3f-4b227f5f0298/1000241097.jpg",
+    "created_at": "2025-07-08T07:38:41.083000"
+  },
+  {
+    "id": "52087dbf-1f73-4495-adba-20dc40a82b39",
+    "student_id": "b8fb1219-92c0-41fb-934e-656149945719",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/aceee361-3489-4814-899c-1899598a8e94/1000243351.jpg",
+    "created_at": "2025-07-08T07:38:41.082000"
+  },
+  {
+    "id": "813acf88-5455-428e-b7f6-95343ee5e182",
+    "student_id": "2f8ae065-2e5f-46d1-8592-5509cc002c96",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/96deb89b-a8a9-4132-9d58-d611c05a3898/1000243354.jpg",
+    "created_at": "2025-07-08T07:38:41.081000"
+  },
+  {
+    "id": "bdd0ee25-5525-4b30-bb2d-3f8e72b422a4",
+    "student_id": "9d6341af-890a-4aa7-b910-405550cdba32",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/a7d0da15-b950-4bc2-b5d5-e8e722263fba/1000241073.jpg",
+    "created_at": "2025-07-08T07:38:41.080000"
+  },
+  {
+    "id": "718cc144-7d4f-46ee-824c-376c17b99225",
+    "student_id": "40ac8515-3fdf-4fb5-bd5b-e66c75ae41cf",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/02c7cf43-deff-46b0-888f-4f918e304498/1000241064.jpg",
+    "created_at": "2025-07-08T07:38:41.079000"
+  },
+  {
+    "id": "68302c18-2ad4-4cf1-95d6-9177d268780f",
+    "student_id": "668bc6cc-2ff9-42aa-afc1-31cb781e96de",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c2bd0536-0f50-4ed9-af43-e0a5548f8a58/1000348718.jpg",
+    "created_at": "2025-07-08T07:38:41.078000"
+  },
+  {
+    "id": "a370719c-532a-4712-841f-50a149fb5437",
+    "student_id": "8898b944-34a1-4d6e-9827-96cb34f88c4d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.077000"
+  },
+  {
+    "id": "bfab776e-4a4e-493f-9161-2ff3ce35c33a",
+    "student_id": "d410dbbe-edde-4e8c-bb4b-85e6b3a43e1d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f4249725-c2b8-4806-8904-01899a8d4965/1000243355.jpg",
+    "created_at": "2025-07-08T07:38:41.076000"
+  },
+  {
+    "id": "9e85bbfa-873c-4987-9f02-1ad9e6e9220b",
+    "student_id": "8287106c-9efb-4461-b4e7-81ca491b9274",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/baa0b5ca-be91-45fd-9430-209d8c75002a/1000348723.jpg",
+    "created_at": "2025-07-08T07:38:41.075000"
+  },
+  {
+    "id": "46ecb003-fe2d-42c5-a6a4-1ffe4409df3f",
+    "student_id": "f7707cdb-0981-498a-adbe-147facfe93a5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0e9d143a-e611-4ea7-ae8e-7b16f9f2c2a1/1000243352.jpg",
+    "created_at": "2025-07-08T07:38:41.074000"
+  },
+  {
+    "id": "c44c90a5-8e27-49dd-ac0e-91224833751a",
+    "student_id": "377653bd-68c5-4c0f-9ee0-62a9e0b8a0e8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/fbb35c5d-c9da-4f09-af73-fd4953bd14a3/1000350520.jpg",
+    "created_at": "2025-07-08T07:38:41.073000"
+  },
+  {
+    "id": "3fd15f48-b5d2-41f9-a686-e9c088127af7",
+    "student_id": "7a21edfd-ada9-47a3-a2ab-d09a80600452",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/814d134b-dd22-4be1-a7b6-bf5e2ada40cd/1000350521.jpg",
+    "created_at": "2025-07-08T07:38:41.072000"
+  },
+  {
+    "id": "1e02e1af-c4b7-4102-b511-fa9ca2eac531",
+    "student_id": "68c8f114-880b-4580-a96d-32fe76c42b70",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/3cec663a-cf2c-4378-977c-eee5ab401a4e/1000241065.jpg",
+    "created_at": "2025-07-08T07:38:41.071000"
+  },
+  {
+    "id": "a802ab4a-d456-467f-a96e-11c877ef7813",
+    "student_id": "f6db5920-c758-4585-83d9-4ff1c3629821",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2ade18f6-5b07-4535-aee8-03ddd6399e52/1000348705.jpg",
+    "created_at": "2025-07-08T07:38:41.070000"
+  },
+  {
+    "id": "5c7d47dd-415e-4af0-8e5c-821ab2dd3c6c",
+    "student_id": "384c90de-adc6-4b1a-819b-5ca39e7be972",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ccbfffa0-ea4e-4a74-9955-a3040fbf9866/1000243356.jpg",
+    "created_at": "2025-07-08T07:38:41.069000"
+  },
+  {
+    "id": "12578516-338e-499a-889d-4d096bbe4e68",
+    "student_id": "ec795e67-41d8-4af3-9a01-bff4e964fc17",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/fb1b0b91-acea-4c9e-931b-762c1e057f93/1000241076.jpg",
+    "created_at": "2025-07-08T07:38:41.068000"
+  },
+  {
+    "id": "cd19748f-b491-4dc9-8bb5-7f160622c667",
+    "student_id": "0658d0f0-ecc8-4a11-b056-50fbb9fd04b8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8fcc6cb6-431f-4b97-aed9-7e30c91f3698/1000241059.jpg",
+    "created_at": "2025-07-08T07:38:41.067000"
+  },
+  {
+    "id": "e7b6afc5-dd2d-4b9d-b8a2-cfc2a35c73e2",
+    "student_id": "cfdcd9f4-6e3f-4e64-8988-0c6c30ed0e9b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a935975-a173-4094-abc2-6bd32a02bc5c",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f626b802-908d-46a6-bccf-ce57f1366a8e/1000241053.jpg",
+    "created_at": "2025-07-08T07:38:41.066000"
+  },
+  {
+    "id": "960636c7-94ec-41da-ab01-d388e4514bf7",
+    "student_id": "2a2e14fb-dd4b-43ac-87f5-37975a2aec42",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/422e1db7-2547-457b-8033-ee744be179af/1000350522.jpg",
+    "created_at": "2025-07-08T07:38:41.065000"
+  },
+  {
+    "id": "f96a185a-49b3-402b-9272-a0cf0894d8f2",
+    "student_id": "472fff69-0020-4536-8286-7884d7c0b262",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c7695d55-3741-42c7-b6b9-b52ad6f37724/1000242201.jpg",
+    "created_at": "2025-07-08T07:38:41.064000"
+  },
+  {
+    "id": "e06354f9-f5c3-4b94-93d7-232f5a75dee3",
+    "student_id": "4d38e247-284e-419c-aba2-fe5ed1eab5e0",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/34b3e86f-ecd8-4ada-8ddb-2602542806f2/1000348711.jpg",
+    "created_at": "2025-07-08T07:38:41.063000"
+  },
+  {
+    "id": "67de4d91-b0a3-4115-9cfb-dd82e5f33136",
+    "student_id": "27fad7ff-89e8-47d2-88c4-5fde4e34fab5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d7ec42ca-6100-451e-90bf-91f948a51680/1000348695.jpg",
+    "created_at": "2025-07-08T07:38:41.062000"
+  },
+  {
+    "id": "368ce68b-3a46-4bdb-b828-5e36e3db7ac9",
+    "student_id": "a29a6106-4caa-4944-b571-321141d5d7e5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b79ca89d-39b7-419a-a213-17a7b2762df1/1000350518.jpg",
+    "created_at": "2025-07-08T07:38:41.061000"
+  },
+  {
+    "id": "39da7524-87dc-4357-9bd4-6932b9413c71",
+    "student_id": "9a9b0e73-b2d7-4255-bc44-41ed8d3c5982",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/bbeec6db-43c8-4167-8bf5-f482536cf1d1/1000238023.jpg",
+    "created_at": "2025-07-08T07:38:41.060000"
+  },
+  {
+    "id": "ae0c6023-a231-4c14-9d8e-7ae78e7f50ca",
+    "student_id": "d508df27-fb02-4c80-a372-e2cbe0a6a5c2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f48ab11d-4b57-42c7-95d0-84fad041546c/WhatsApp%20Image%202025-05-05%20at%207.40.46%20AM.jpeg",
+    "created_at": "2025-07-08T07:38:41.059000"
+  },
+  {
+    "id": "b37ec37f-1391-4d3d-afad-3427311e494d",
+    "student_id": "1f26dbff-7987-4bdb-8302-d65f410ecfab",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.058000"
+  },
+  {
+    "id": "cd90ccda-1bcc-43ad-b419-87bdbd88c4c0",
+    "student_id": "17088136-ce38-40bb-9547-ddfbd3b7faef",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/7c27b186-e2ba-4ede-9e35-438e2ca5d4e2/1000243362.jpg",
+    "created_at": "2025-07-08T07:38:41.057000"
+  },
+  {
+    "id": "b0a466bb-7700-4229-a9df-2344a03a2936",
+    "student_id": "c984a420-037a-4106-abc8-4e84b30924bf",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.056000"
+  },
+  {
+    "id": "3397c53a-626e-4efb-a578-3a51ad9a487e",
+    "student_id": "4c4e5ee0-9012-4142-ae35-cc34a53f56d3",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/46d060f8-efbd-4432-9284-3282df9dfe4f/1000243358.jpg",
+    "created_at": "2025-07-08T07:38:41.055000"
+  },
+  {
+    "id": "fe175db2-af5f-4125-841f-3ae3620af24c",
+    "student_id": "70a889db-189e-41b4-a7a3-0ba959db2207",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8cdcddd9-b16f-4c38-954f-3ebd16ebed87/1000243357.jpg",
+    "created_at": "2025-07-08T07:38:41.054000"
+  },
+  {
+    "id": "0b85033b-b69b-4a2c-80ea-18b191ebc79f",
+    "student_id": "563b95d3-6146-49d7-ac26-03c132d2d46b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/49a457c8-0526-447d-baff-26723cc9a144/1000243364.jpg",
+    "created_at": "2025-07-08T07:38:41.053000"
+  },
+  {
+    "id": "1d65c7f1-ab49-48f4-a743-c3bc1a229a7a",
+    "student_id": "412bbe43-caab-452b-8670-6b2605171cd1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/861d09b1-2983-4bf9-942b-be4a705f15b1/1000243359.jpg",
+    "created_at": "2025-07-08T07:38:41.052000"
+  },
+  {
+    "id": "068d6c73-e0bc-4677-8815-0c821c595dd4",
+    "student_id": "fe02fee0-bc83-43b5-8a6e-fb8907a7ddd2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/156a8e25-cfd8-4d59-8385-ee97cc0f3ed2/1000243363.jpg",
+    "created_at": "2025-07-08T07:38:41.051000"
+  },
+  {
+    "id": "4bd81f8e-c2dc-4b7e-bd98-f52fe5c09a3d",
+    "student_id": "951435df-cf80-4971-8262-e672266597a1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "8a3e3421-e6c7-400e-af0f-6192210817b6",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/968d0482-488f-4117-bca8-a8d2d20f9a3c/1000348710.jpg",
+    "created_at": "2025-07-08T07:38:41.050000"
+  },
+  {
+    "id": "d5421bb7-4071-406d-ba8b-394b60b4920c",
+    "student_id": "0fc47193-a5c5-4b48-aa5d-c4204b7e1cb1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1ee54f7f-3949-46df-a658-32180abed7ac/1000242196.jpg",
+    "created_at": "2025-07-08T07:38:41.049000"
+  },
+  {
+    "id": "8e4e3e9b-925d-4621-8efc-554b1e29e5ff",
+    "student_id": "20bf3736-1418-427c-a100-d5052ca9c6c2",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/c066e238-21ec-40cf-8866-05defa3792bc/1000242195.jpg",
+    "created_at": "2025-07-08T07:38:41.048000"
+  },
+  {
+    "id": "ef551e0a-f47e-407f-887d-44bb29c9dc76",
+    "student_id": "3a6b6e17-849f-42d6-be6e-134f5a837737",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ed0a82f4-bd7e-47f9-9d51-7e6f4120f0b3/1000242209.jpg",
+    "created_at": "2025-07-08T07:38:41.047000"
+  },
+  {
+    "id": "aa2e8106-19c1-4519-abb7-af43563cbece",
+    "student_id": "a8f8e53d-c668-4ab8-b2ac-c4e3964c2b3a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/46f3a10f-6fdc-4741-a987-ccf54f3797d3/1000346667.jpg",
+    "created_at": "2025-07-08T07:38:41.046000"
+  },
+  {
+    "id": "3d34cb46-f350-4f87-89ca-16dabe787344",
+    "student_id": "d1e2efd1-7b7b-4dc6-9b34-47a3cd8d6b5e",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2b9a0043-406f-4048-8ce5-6e3ed53f7035/1000347537.jpg",
+    "created_at": "2025-07-08T07:38:41.045000"
+  },
+  {
+    "id": "21b23e1e-4238-4724-87d3-218a982a97ae",
+    "student_id": "909e90a9-030b-459b-857e-9375d9f5f538",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/13abde69-98f2-4649-b3fd-fc6e66314985/1000242231.jpg",
+    "created_at": "2025-07-08T07:38:41.044000"
+  },
+  {
+    "id": "b32bd24a-9193-4841-8082-d978b72ffe2f",
+    "student_id": "0390ff58-c76a-4352-843f-e79e2c54636c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/3265ddc9-13b6-4b00-bff2-33289ba2453c/1000242210.jpg",
+    "created_at": "2025-07-08T07:38:41.043000"
+  },
+  {
+    "id": "835e485d-3196-4fde-8454-9fc00745a454",
+    "student_id": "02a5951b-4572-49a8-bdf7-f4d8f8b935d1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0f753f37-88bf-42ee-8d2a-34420894c8ba/1000242190.jpg",
+    "created_at": "2025-07-08T07:38:41.042000"
+  },
+  {
+    "id": "215b2134-c7b2-4981-984d-8de24b5d25ab",
+    "student_id": "605bd642-b8e1-461f-8c4a-6c192c6acde9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/97798e65-b8d2-48fa-8ac5-8078746f0ba2/1000242225.jpg",
+    "created_at": "2025-07-08T07:38:41.041000"
+  },
+  {
+    "id": "2c97f173-8566-4432-9a9e-4d5864aad33a",
+    "student_id": "f90034ab-d8a7-4a1c-a90d-e2d5ba23206c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/46b7a6d9-7e9a-4b91-a85f-3a5ecd39f162/1000242199.jpg",
+    "created_at": "2025-07-08T07:38:41.040000"
+  },
+  {
+    "id": "87689fe8-c11c-45a4-be42-415e37bb3472",
+    "student_id": "11fff2be-6fe3-46de-bd83-876aa3a83d8f",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/95828fca-1525-4240-a57f-4f57dca00572/1000242192.jpg",
+    "created_at": "2025-07-08T07:38:41.039000"
+  },
+  {
+    "id": "afcec4c0-66a5-4ab8-8aea-92e5c8b01192",
+    "student_id": "6179a1ad-0400-4085-9339-3deaf07ffb05",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6e4e0a9f-430d-4572-94d1-5998cef7ebf1/1000242217.jpg",
+    "created_at": "2025-07-08T07:38:41.038000"
+  },
+  {
+    "id": "e485dfce-1344-4a38-a375-b9f9168f473e",
+    "student_id": "ea46eec1-a283-4bd3-9134-dd48a163b893",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f1e0c6f4-eae7-4c5a-a44c-4c5bc5265f1b/1000242211.jpg",
+    "created_at": "2025-07-08T07:38:41.037000"
+  },
+  {
+    "id": "414031b1-8358-404e-954b-a4715a5e3d52",
+    "student_id": "b1469b14-f16e-4b27-8b7d-a5128f762c95",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2c51d667-b298-4e27-9373-abd57f2af56a/1000242223.jpg",
+    "created_at": "2025-07-08T07:38:41.036000"
+  },
+  {
+    "id": "d7d050e7-62e0-472b-bf8d-9673be304af3",
+    "student_id": "1ca0e229-c5b9-4ff4-a203-a71d40904f38",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b4672304-18ab-4886-98cc-cd997c7d1a83/1000242198.jpg",
+    "created_at": "2025-07-08T07:38:41.035000"
+  },
+  {
+    "id": "99e70113-461d-4981-8e68-5efeb2d3bc47",
+    "student_id": "60f84df0-d588-43f6-94e4-edac1022e3d4",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6c1ad139-76e3-44d4-a810-09448c0116bb/1000347532.jpg",
+    "created_at": "2025-07-08T07:38:41.034000"
+  },
+  {
+    "id": "0b450998-12b8-417f-a05d-7728a36bdf5f",
+    "student_id": "e7cb217a-a026-4e61-80cb-b656da7aa924",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2c1c7316-a2b1-4c93-a758-e408a2648e98/1000242237.jpg",
+    "created_at": "2025-07-08T07:38:41.033000"
+  },
+  {
+    "id": "9696abcf-89b4-4fec-b076-bba5cd3fa6ce",
+    "student_id": "ea00ed57-94c4-4b4e-8765-50fc69ebee4d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1625ec25-0c12-43f1-96b7-5a3cfa0ac44b/1000242189.jpg",
+    "created_at": "2025-07-08T07:38:41.032000"
+  },
+  {
+    "id": "2db2bd20-2abf-47fa-95da-60020c933db8",
+    "student_id": "fd107748-1e04-4016-9ef6-3555fb4ad283",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/49d55dff-3c95-4c53-901c-3f317c0d5296/1000242207.jpg",
+    "created_at": "2025-07-08T07:38:41.031000"
+  },
+  {
+    "id": "84b7b062-3106-43d1-babf-656866b2a2f7",
+    "student_id": "39e48c73-91a4-44fa-9bb6-5a3ab28cb299",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/8a44af94-c72d-442b-b0bc-470ca4ddfdf2/1000242234.jpg",
+    "created_at": "2025-07-08T07:38:41.030000"
+  },
+  {
+    "id": "393c6275-31aa-42b9-a68c-d59f2abd4963",
+    "student_id": "7ea83e9c-b34d-48b7-b31c-4f0ee808ba8a",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/05b4cf56-57d9-4581-9808-2700d184b45b/1000242208.jpg",
+    "created_at": "2025-07-08T07:38:41.029000"
+  },
+  {
+    "id": "89327812-aba1-4d65-a00e-a806b6e773da",
+    "student_id": "48c61fc1-6ef1-4664-b28c-f30db35e1a22",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2a51600a-f8a5-4651-86ed-95df8f123d65/1000242233.jpg",
+    "created_at": "2025-07-08T07:38:41.028000"
+  },
+  {
+    "id": "4133cb86-33a9-494e-9e9b-cec7db5cb956",
+    "student_id": "da0a5c77-61a1-4752-a8a7-656f756220a1",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/313c9155-2212-4ba4-a7ea-5423dd0a4421/1000242205.jpg",
+    "created_at": "2025-07-08T07:38:41.027000"
+  },
+  {
+    "id": "e48c4e9c-3394-48fd-af3e-2902fa7d246a",
+    "student_id": "e9f39e0d-6c71-461e-990e-f14538576b82",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/dd360a1f-8a63-4ec6-87a3-42acb2e15882/1000242213.jpg",
+    "created_at": "2025-07-08T07:38:41.026000"
+  },
+  {
+    "id": "d5a88916-1acf-420d-a0ce-5c968d5c6b4b",
+    "student_id": "651170d4-46b9-41f4-95cf-92ae7d9ff4be",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/12e6e42d-9432-40fc-a0e6-e3f85e036846/1000242220.jpg",
+    "created_at": "2025-07-08T07:38:41.025000"
+  },
+  {
+    "id": "e82c3325-c8a5-4e68-b361-f74a19f8f1e1",
+    "student_id": "d338a31a-8850-4452-9155-dde3701e8ac5",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/75102ec3-c08c-43c5-967b-50b02bbd667e/1000242204.jpg",
+    "created_at": "2025-07-08T07:38:41.024000"
+  },
+  {
+    "id": "c61f1768-d9ac-4db3-8c0c-333c0d216730",
+    "student_id": "1b19d0d7-8fac-4bce-a370-232e1dbdad0d",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4d500929-8ce0-4dea-8861-3f1fc707b043/1000242203.jpg",
+    "created_at": "2025-07-08T07:38:41.023000"
+  },
+  {
+    "id": "ae0a70be-e6b3-4df2-b0b3-71f1fd9faaa0",
+    "student_id": "a537cf1a-0314-41cc-9a01-6a400912fd24",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b5915b08-b1ca-41f4-a0b4-f83bae1b77f5/1000242218.jpg",
+    "created_at": "2025-07-08T07:38:41.022000"
+  },
+  {
+    "id": "64c1c485-c697-4d67-aebf-a0fc2546d9bd",
+    "student_id": "ef963e2b-8bdd-4514-bbef-4ac7b33c660c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.021000"
+  },
+  {
+    "id": "548d82de-1de3-48e5-abd3-1554243c1915",
+    "student_id": "2eb8ff02-b264-4d00-8743-03f00289e80b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/81318af7-431d-4992-a728-955a4bb9a189/1000242197.jpg",
+    "created_at": "2025-07-08T07:38:41.020000"
+  },
+  {
+    "id": "dfed56a3-6f61-489d-bb82-740326ff9288",
+    "student_id": "d43e454e-2475-47c5-9cff-1b86f20ddd7b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/245fb130-677f-4b6d-a777-4be75edd245a/1000242202.jpg",
+    "created_at": "2025-07-08T07:38:41.019000"
+  },
+  {
+    "id": "9a9131a6-3e0e-4a66-b1d0-0edb8d5b81ee",
+    "student_id": "6b559232-a7f9-426e-813d-54ab4049f406",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/d0d727db-e295-45d6-826d-19164fcf8b0e/1000347553.jpg",
+    "created_at": "2025-07-08T07:38:41.018000"
+  },
+  {
+    "id": "7d61af4a-6cba-41e7-9a03-155386500e23",
+    "student_id": "a8219de7-c570-46a9-8844-22bfd44066b9",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/1369303d-c035-456f-ab25-0bc3b591f458/1000242239.jpg",
+    "created_at": "2025-07-08T07:38:41.017000"
+  },
+  {
+    "id": "934b8ba3-72a8-4d22-a5fa-32abdbc5c585",
+    "student_id": "cfeba766-735b-4c4e-b07c-bd7703652429",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "2b307e07-655e-425c-b143-a46117a0fa58",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/fc448130-cc3c-45e3-9466-ed43df8ba8a8/1000242194.jpg",
+    "created_at": "2025-07-08T07:38:41.016000"
+  },
+  {
+    "id": "0eaec3be-e977-4363-befb-45251999e5c2",
+    "student_id": "638857c8-454d-46cf-a712-2a491e3ffa4b",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/ee9f193b-d366-494e-a268-bb193d4d5ec5/1000347536.jpg",
+    "created_at": "2025-07-08T07:38:41.015000"
+  },
+  {
+    "id": "cc1c51b6-0c2c-4746-8c11-1c578179efae",
+    "student_id": "e7c9aab2-fbf1-4abf-a3ed-a2174e8ae1ae",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/924e3b23-5ae9-4286-80e9-776cb072c5e3/1000242228.jpg",
+    "created_at": "2025-07-08T07:38:41.014000"
+  },
+  {
+    "id": "acd258d8-f308-485f-9cfc-647d9df2a598",
+    "student_id": "5bb72f07-9295-4155-b792-6ca1a5d9074c",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6c2f634d-e06c-4ebe-bcaf-0aca8c275d3e/1000242215.jpg",
+    "created_at": "2025-07-08T07:38:41.013000"
+  },
+  {
+    "id": "5fb9e478-85a0-4f10-a4ec-1a7b1157245e",
+    "student_id": "ef1dcf1c-d70b-4af3-a22c-bab76b8fefed",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/e465b677-1f59-4a1f-9089-f70621aa9084/1000242226.jpg",
+    "created_at": "2025-07-08T07:38:41.012000"
+  },
+  {
+    "id": "09c35d44-6441-45d9-83b6-b2efd7e92f9d",
+    "student_id": "2db17db4-296f-4ed1-8758-7488805d4024",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/0bb2c600-30f8-4ed4-85b3-200c45c5be7d/1000242236.jpg",
+    "created_at": "2025-07-08T07:38:41.011000"
+  },
+  {
+    "id": "b1d9023d-376b-4cb2-81c1-82d9b890aa7a",
+    "student_id": "2670479b-cb83-4492-bc4c-3f9d6a3a66b8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/41c4aeed-69af-4fcd-8aba-e2c7d9c3b984/1000347534.jpg",
+    "created_at": "2025-07-08T07:38:41.010000"
+  },
+  {
+    "id": "86ce8fb5-d5e8-4a03-95c7-534a5b08a9fd",
+    "student_id": "307d8db4-b32e-4437-969c-15f9b47081b6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/29c0b7b0-cbff-40c5-82fc-a3f0de80938e/1000242214.jpg",
+    "created_at": "2025-07-08T07:38:41.009000"
+  },
+  {
+    "id": "5ff90965-7fdb-4175-835f-b28ff454c9e6",
+    "student_id": "03950841-fc32-45f1-bf17-047c958ac855",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/2f51fd94-774c-4972-9ae4-868b8d14724d/1000347557.jpg",
+    "created_at": "2025-07-08T07:38:41.008000"
+  },
+  {
+    "id": "178a3c26-b158-4e11-9956-0a7254f48fd6",
+    "student_id": "3e0a2292-422d-40c2-9b58-2c4a11941df8",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4afc78bd-e8b6-462c-9ac5-1db57110e455/1000346684.jpg",
+    "created_at": "2025-07-08T07:38:41.007000"
+  },
+  {
+    "id": "1fb69d31-a125-4c89-a1d1-84e1b00e54da",
+    "student_id": "57402033-35c7-4bf0-a804-c3801de62b45",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/6949dbfc-3177-4f84-bbc3-6e89e53db454/1000347535.jpg",
+    "created_at": "2025-07-08T07:38:41.006000"
+  },
+  {
+    "id": "0e8490a4-65fb-4107-816b-8a2d669763a9",
+    "student_id": "fa312191-df57-450e-88a4-a09f8c339bbd",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/da828fbd-3630-416f-a8f2-41a1c8e96c62/1000242219.jpg",
+    "created_at": "2025-07-08T07:38:41.005000"
+  },
+  {
+    "id": "71b2cb4a-cdd9-491a-a0aa-feb4f8795fbb",
+    "student_id": "300295e3-6b48-4c4b-99e7-d4f7a2c019a4",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/4bbc90ee-4582-4b4d-aaa3-8e5c0cdcdf99/1000242216.jpg",
+    "created_at": "2025-07-08T07:38:41.004000"
+  },
+  {
+    "id": "a2561734-daba-4e0a-a4bb-0e8a711cc248",
+    "student_id": "c26afd61-476c-4912-8e52-af92bbf88919",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": null,
+    "created_at": "2025-07-08T07:38:41.003000"
+  },
+  {
+    "id": "24eb68df-fba1-4264-8518-8539306f2a04",
+    "student_id": "dafcc696-5ab7-4083-b6c0-5e9e980dceb6",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/f96f2df1-aaba-43cd-9248-627c7ca7b38e/1000347530.jpg",
+    "created_at": "2025-07-08T07:38:41.002000"
+  },
+  {
+    "id": "2455906f-8c8b-4b17-9045-0fb96280d385",
+    "student_id": "7de51ce5-fbae-40b5-aca3-43dd9fd032d7",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/141cb723-a6e3-4323-a139-4ca7b437000e/1000242222.jpg",
+    "created_at": "2025-07-08T07:38:41.001000"
+  },
+  {
+    "id": "257ed03b-4a53-4d5a-97bb-e570c29ac5dd",
+    "student_id": "9d66bda6-6bac-44d3-8361-9def81784d0e",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/b1a6061e-5f2f-4ee4-bb6f-c0a699731345/1000242230.jpg",
+    "created_at": "2025-07-08T07:38:41"
+  },
+  {
+    "id": "907eaca9-1476-4a8e-8ba1-9380ce902951",
+    "student_id": "8c61044e-54be-4679-8af0-fa0134ae5778",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "3b72525b-2d6d-42af-a536-6e73d3b239aa",
+    "image": null,
+    "created_at": "2025-07-08T07:38:40.999000"
+  },
+  {
+    "id": "e367a6f0-ac23-464b-9fdc-89acb5681edc",
+    "student_id": "9cbd75a1-96bb-4876-8df6-7c78d85922f0",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "academic_class_id": "9276855d-473a-40c3-b39c-89aeb1913990",
+    "image": "https://public-ai-exp.s3.us-east-1.amazonaws.com/faa8cbeb-338c-478f-97dc-a474a9dde856/1000241018.jpg",
+    "created_at": "2025-07-08T07:38:40.998000"
+  }
+]

@@ -1,11 +1,11 @@
 .PHONY: help dev reset_db seed_db populate_seed verify_seed
 
 DATA_NAME ?=
-EXTRA_GOALS := $(filter-out $@,$(MAKECMDGOALS))
-SEED_NAME := $(if $(DATA_NAME),$(DATA_NAME),$(firstword $(EXTRA_GOALS)))
+SEED_GOALS := $(filter-out verify_seed,$(MAKECMDGOALS))
+SEED_NAME := $(if $(DATA_NAME),$(DATA_NAME),$(firstword $(SEED_GOALS)))
 
 ifneq ($(filter verify_seed,$(MAKECMDGOALS)),)
-  EXTRA_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  EXTRA_ARGS := $(SEED_GOALS)
   $(eval $(EXTRA_ARGS):;@:)
 endif
 
@@ -23,10 +23,10 @@ reset_db: ## Clear and restart Postgres
 	sh ./scripts/restart_postgres.sh
 
 seed_db: ## Seed db with seed json files
-	python seeders/seed.py
+	python seeders/seed.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)
 
 populate_seed: ## Populate seed json files with reponse from test routes
-	python scripts/populate_test_routes.py
+	python scripts/populate_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)
 
 verify_seed: ## Verify that seed json files match with reponse from test routes
 	python scripts/verify_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)

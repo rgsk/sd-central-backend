@@ -11,13 +11,13 @@ from lib.auth import get_bearer_token, get_decoded_token, require_user
 from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject, academic_session,
                     academic_term, app_settings, date_sheet,
-                    date_sheet_subject, enrollment, item, report_card,
+                    date_sheet_subject, enrollment, report_card,
                     report_card_subject, student, subject, user)
 from models.user import UserRead
 from routers import (academic_class_subjects, academic_classes,
                      academic_sessions, academic_terms)
 from routers import app_settings as settings
-from routers import (aws, date_sheet_subjects, date_sheets, enrollments, items,
+from routers import (aws, date_sheet_subjects, date_sheets, enrollments,
                      public, report_card_subjects, report_cards, students,
                      subjects, test, users)
 
@@ -35,7 +35,6 @@ async def lifespan(app: FastAPI):
         date_sheet,
         date_sheet_subject,
         enrollment,
-        item,
         report_card,
         report_card_subject,
         student,
@@ -109,7 +108,6 @@ if env.APP_ENV is AppEnv.DEVELOPMENT:
 
 app.include_router(public.router)
 
-protected_router.include_router(items.router)
 protected_router.include_router(students.router)
 protected_router.include_router(enrollments.router)
 protected_router.include_router(academic_classes.router)

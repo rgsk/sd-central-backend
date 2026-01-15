@@ -7,7 +7,6 @@ from models.academic_session import AcademicSession
 from models.academic_term import AcademicTerm
 from models.app_settings import AppSettings
 from models.enrollment import Enrollment
-from models.item import Item
 from models.report_card import ReportCard
 from models.report_card_subject import ReportCardSubject
 from models.student import Student
@@ -44,10 +43,6 @@ class EnrollmentAdmin(BaseModelView, model=Enrollment):
     pass
 
 
-class ItemAdmin(BaseModelView, model=Item):
-    pass
-
-
 class ReportCardAdmin(BaseModelView, model=ReportCard):
     pass
 
@@ -79,7 +74,6 @@ def setup_admin(app) -> Admin:
     admin.add_view(AcademicClassSubjectAdmin)
     admin.add_view(ReportCardAdmin)
     admin.add_view(ReportCardSubjectAdmin)
-    admin.add_view(ItemAdmin)
     admin.add_view(AppSettingsAdmin)
     admin.add_view(UserAdmin)
     return admin

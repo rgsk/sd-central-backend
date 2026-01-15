@@ -7,10 +7,12 @@ from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
+from models.academic_class import AcademicClass
 from models.academic_session import (AcademicSession, AcademicSessionCreate,
                                      AcademicSessionListResponse,
                                      AcademicSessionRead,
                                      AcademicSessionUpdate)
+from models.academic_term import AcademicTerm, AcademicTermType
 
 router = APIRouter(
     prefix="/academic-sessions",
@@ -110,3 +112,102 @@ def delete_academic_session(
     session.delete(db_academic_session)
     session.commit()
     return {"message": "Academic session deleted"}
+
+
+@router.post("/{academic_session_id}/create-academic-terms")
+def create_academic_terms(
+    academic_session_id: UUID,
+    session: Session = Depends(get_session),
+):
+    db_academic_session = session.get(AcademicSession, academic_session_id)
+    if not db_academic_session:
+        raise HTTPException(
+            status_code=404, detail="Academic session not found")
+
+    desired_terms = [
+        AcademicTermType.QUARTERLY,
+        AcademicTermType.HALF_YEARLY,
+        AcademicTermType.ANNUAL,
+    ]
+    existing_terms = session.exec(
+        select(AcademicTerm).where(
+            AcademicTerm.academic_session_id == academic_session_id
+        )
+    ).all()
+    existing_types = {term.term_type for term in existing_terms}
+    new_terms = [
+        AcademicTerm(
+            academic_session_id=academic_session_id,
+            term_type=term_type,
+        )
+        for term_type in desired_terms
+        if term_type not in existing_types
+    ]
+    if new_terms:
+        session.add_all(new_terms)
+        session.commit()
+
+    existing = [term_type for term_type in desired_terms
+                if term_type in existing_types]
+    created = [term.term_type for term in new_terms]
+    return {
+        "created": created,
+        "existing": existing,
+        "total": len(existing) + len(created),
+    }
+
+
+class_grades = [
+    "PRE-NURSERY",
+    "NURSERY",
+    "LKG",
+    "UKG",
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI",
+    "VII",
+    "VIII",
+]
+
+
+@router.post("/{academic_session_id}/create-academic-classes")
+def create_academic_classes(
+    academic_session_id: UUID,
+    session: Session = Depends(get_session),
+):
+    db_academic_session = session.get(AcademicSession, academic_session_id)
+    if not db_academic_session:
+        raise HTTPException(
+            status_code=404, detail="Academic session not found")
+
+    existing_classes = session.exec(
+        select(AcademicClass).where(
+            AcademicClass.academic_session_id == academic_session_id,
+            AcademicClass.section == "A",
+        )
+    ).all()
+    existing_grades = {academic_class.grade
+                       for academic_class in existing_classes}
+    new_classes = [
+        AcademicClass(
+            academic_session_id=academic_session_id,
+            grade=grade,
+            section="A",
+        )
+        for grade in class_grades
+        if grade not in existing_grades
+    ]
+    if new_classes:
+        session.add_all(new_classes)
+        session.commit()
+
+    existing = [grade for grade in class_grades if grade in existing_grades]
+    created = [academic_class.grade for academic_class in new_classes]
+    return {
+        "created": created,
+        "existing": existing,
+        "total": len(existing) + len(created),
+    }

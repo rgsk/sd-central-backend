@@ -1,1 +1,2258 @@
-[]
+[
+  {
+    "id": "80ecbad5-8264-4262-b5cf-ff806ba8e906",
+    "academic_class_subject_id": "0574e3f6-6413-478c-9071-020431af3e5c",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 92,
+    "average_marks": 83,
+    "created_at": "2026-01-20T18:43:09.483478"
+  },
+  {
+    "id": "987f06c3-be5a-4af1-809b-72fb2358b571",
+    "academic_class_subject_id": "6167dfbc-bd9c-4e34-bf8a-6d326ba99a00",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 93,
+    "average_marks": 85,
+    "created_at": "2026-01-20T18:43:09.468296"
+  },
+  {
+    "id": "26e712bd-ef4b-429a-b3cd-cb28fb857899",
+    "academic_class_subject_id": "247c2d8a-3188-4c58-b684-90307c06f035",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 96,
+    "average_marks": 84,
+    "created_at": "2026-01-20T18:43:09.459441"
+  },
+  {
+    "id": "8c8c34d7-762c-4819-8850-73323ff64fda",
+    "academic_class_subject_id": "e4e65637-5493-4a86-bd4d-ee0eb28bb3d1",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 78,
+    "created_at": "2026-01-20T18:43:09.451154"
+  },
+  {
+    "id": "d259112b-5820-4884-bdfd-f780662a13e2",
+    "academic_class_subject_id": "9174093a-d73a-4aa7-a426-61ea7001c23d",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 50,
+    "average_marks": 50,
+    "created_at": "2026-01-20T18:43:09.441495"
+  },
+  {
+    "id": "13e78227-702e-4d7d-b556-2b455bde4950",
+    "academic_class_subject_id": "8f269ac9-4c96-4696-aed1-d3e899b3581c",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 98,
+    "average_marks": 77,
+    "created_at": "2026-01-20T18:43:09.434972"
+  },
+  {
+    "id": "63522b88-ddb0-4e1f-bf06-dd220a337869",
+    "academic_class_subject_id": "df16d217-b066-4831-8a63-242c73d54881",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 97,
+    "average_marks": 82,
+    "created_at": "2026-01-20T18:43:09.429983"
+  },
+  {
+    "id": "e5986106-ef47-4b2a-b27c-2dbc6fe9d9f5",
+    "academic_class_subject_id": "177d9963-235a-4f41-bbb9-4fa48b8ec522",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 81,
+    "created_at": "2026-01-20T18:43:09.424205"
+  },
+  {
+    "id": "4fe3a157-e5af-498b-a009-bc78d8f0abdf",
+    "academic_class_subject_id": "93f70190-1086-4d7b-802a-42730006186f",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 78,
+    "created_at": "2026-01-20T18:43:09.421103"
+  },
+  {
+    "id": "e1a8f7f4-86c6-4cd8-935d-4aeb9d2153fb",
+    "academic_class_subject_id": "8666a7f7-5803-4a21-b796-7bfe6ff1c435",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:09.405236"
+  },
+  {
+    "id": "64723e40-2a2e-47e7-98dd-49510800c299",
+    "academic_class_subject_id": "fd3a5a6a-39ef-412a-9b33-bb9406e0ea10",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:09.399195"
+  },
+  {
+    "id": "5eede571-de38-4497-a894-15606abcf43a",
+    "academic_class_subject_id": "3151e484-aae4-4bc4-9283-ae6ed6b07c0c",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 98,
+    "average_marks": 86,
+    "created_at": "2026-01-20T18:43:09.387217"
+  },
+  {
+    "id": "df1abb97-1f39-406c-b3a4-cdc19c9d60c1",
+    "academic_class_subject_id": "f505d23c-119e-4e36-b7a6-e11b6c384860",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 82,
+    "created_at": "2026-01-20T18:43:09.381672"
+  },
+  {
+    "id": "8c41cee2-be76-4b6b-93e7-14e69d513cef",
+    "academic_class_subject_id": "3dc902f6-7110-4b69-9879-1cec2ffb8960",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 82,
+    "created_at": "2026-01-20T18:43:09.376978"
+  },
+  {
+    "id": "a638e03e-33af-40cb-b044-c533c0463c9c",
+    "academic_class_subject_id": "f7c57eae-eef4-401a-9b10-d2418877c8e5",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 92,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:09.371627"
+  },
+  {
+    "id": "10e4a8f3-8714-429f-85d9-2ab094085816",
+    "academic_class_subject_id": "ce66d09c-f801-4ff1-b9c4-eac2102c21ce",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 79,
+    "created_at": "2026-01-20T18:43:09.360204"
+  },
+  {
+    "id": "eb36086a-5b59-4a4a-9dc2-8cbd874f36f6",
+    "academic_class_subject_id": "67211725-9ecf-428d-8047-66aa0f8467f6",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:09.349505"
+  },
+  {
+    "id": "4264aae7-2210-4b9a-8854-ba90708b0850",
+    "academic_class_subject_id": "666ccf04-8c00-4b79-90d7-2fb5bba0c8e9",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 91,
+    "average_marks": 62,
+    "created_at": "2026-01-20T18:43:09.338722"
+  },
+  {
+    "id": "9661c3a7-2ffc-4e36-93bf-95d4fbbc9005",
+    "academic_class_subject_id": "aad392c9-5d7e-4a58-9f6a-b2b07f09a7de",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 94,
+    "average_marks": 57,
+    "created_at": "2026-01-20T18:43:09.332998"
+  },
+  {
+    "id": "d18b0846-d127-48f7-8627-0dff4787615f",
+    "academic_class_subject_id": "951f0f83-5fd8-4e11-aab6-45fb561ba076",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 53,
+    "created_at": "2026-01-20T18:43:09.312588"
+  },
+  {
+    "id": "fdfe18c8-b616-4d83-b8b5-18c8460e8ef1",
+    "academic_class_subject_id": "6f1b9c1e-1da1-4f93-ace9-9c41e44f1997",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 95,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:09.293615"
+  },
+  {
+    "id": "f182d564-80dc-40f2-a6e6-1987e99520b4",
+    "academic_class_subject_id": "7d76789a-d3ca-47f8-a942-59ef1d700bbd",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 72,
+    "average_marks": 42,
+    "created_at": "2026-01-20T18:43:09.281602"
+  },
+  {
+    "id": "0ee0374b-ba3d-4ec4-82a4-691f24786bd8",
+    "academic_class_subject_id": "f2e8d1dc-3355-41cb-8eff-fe2326bdddcc",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 65,
+    "average_marks": 45,
+    "created_at": "2026-01-20T18:43:09.274598"
+  },
+  {
+    "id": "c73d51fd-b649-4318-8f3d-57237045763b",
+    "academic_class_subject_id": "e3d34a92-925a-4aed-a09b-6bfdeeed64b4",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 62,
+    "created_at": "2026-01-20T18:43:09.253876"
+  },
+  {
+    "id": "a5c9aac9-a217-4ad5-bf54-dafaa3ee3e5a",
+    "academic_class_subject_id": "51a680d1-0a4d-45f6-b1b0-04b430f38991",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 91,
+    "average_marks": 52,
+    "created_at": "2026-01-20T18:43:09.249871"
+  },
+  {
+    "id": "170de1bc-bbb7-45a9-8e01-b9334f33aafd",
+    "academic_class_subject_id": "28c5f3d0-9e51-4796-90c4-0f42a0364c4c",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 94,
+    "created_at": "2026-01-20T18:43:09.228672"
+  },
+  {
+    "id": "0e2fd3cc-2f94-468e-87ec-d9932ac96746",
+    "academic_class_subject_id": "0eadbc75-e9f7-45cf-af7f-af046b36d272",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 94,
+    "average_marks": 73,
+    "created_at": "2026-01-20T18:43:09.213816"
+  },
+  {
+    "id": "8240f632-c7b9-45df-a688-46a8e55385b8",
+    "academic_class_subject_id": "843b3d22-e03e-4729-8957-5712bf687f09",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 91,
+    "average_marks": 49,
+    "created_at": "2026-01-20T18:43:09.190571"
+  },
+  {
+    "id": "ec6e1191-1207-4fe3-9f01-c5380a92618c",
+    "academic_class_subject_id": "32bec257-e180-4ce4-849f-791cc5aa17db",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 85,
+    "created_at": "2026-01-20T18:43:09.179552"
+  },
+  {
+    "id": "aa727956-75cf-4137-bf16-7a110b17abb9",
+    "academic_class_subject_id": "717c9eea-d84b-4bfb-adf4-00ddb247f236",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 76,
+    "average_marks": 51,
+    "created_at": "2026-01-20T18:43:09.172507"
+  },
+  {
+    "id": "837b0ead-e071-4326-9dc1-c03fe9512cf0",
+    "academic_class_subject_id": "2f29cd73-aede-41f4-9ff5-566463c42553",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 91,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:09.165117"
+  },
+  {
+    "id": "25e0dddc-8bde-4064-90c7-74b23d8e6561",
+    "academic_class_subject_id": "7b77ce3e-f102-4fe7-aeb6-502dec3f4124",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 79,
+    "average_marks": 56,
+    "created_at": "2026-01-20T18:43:09.162345"
+  },
+  {
+    "id": "e4b584e5-a950-4b3f-ad46-374f98484004",
+    "academic_class_subject_id": "868bc712-b003-4923-a407-bdcd8e0f2a7a",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 67,
+    "average_marks": 45,
+    "created_at": "2026-01-20T18:43:09.158844"
+  },
+  {
+    "id": "37336d10-b47c-4920-80ef-50c9c73dbdef",
+    "academic_class_subject_id": "ff108b61-ee63-4745-a51c-4bd244dd43b3",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 95,
+    "average_marks": 57,
+    "created_at": "2026-01-20T18:43:09.140868"
+  },
+  {
+    "id": "215e597b-88cc-4ba5-8df6-f9cebd351f81",
+    "academic_class_subject_id": "d009a29b-f1ee-4c41-ab42-38fb07cbaa50",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 96,
+    "average_marks": 94,
+    "created_at": "2026-01-20T18:43:09.132705"
+  },
+  {
+    "id": "297cbd5f-4e15-4066-b7ea-07829dea23f8",
+    "academic_class_subject_id": "b95cff3b-805f-4ec2-a39a-c76e2c001af6",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 92,
+    "average_marks": 51,
+    "created_at": "2026-01-20T18:43:09.119843"
+  },
+  {
+    "id": "367c115f-3803-4149-b27e-f12e67da358b",
+    "academic_class_subject_id": "f304d80d-99df-44c9-b316-a5ca959ed448",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 86,
+    "average_marks": 64,
+    "created_at": "2026-01-20T18:43:09.112130"
+  },
+  {
+    "id": "15421186-5d8a-4cf5-a5b5-d9ba75285a54",
+    "academic_class_subject_id": "37c01ee5-d755-43c6-a273-b373778e4c83",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 75,
+    "average_marks": 47,
+    "created_at": "2026-01-20T18:43:09.106356"
+  },
+  {
+    "id": "092f6f51-01fd-43a6-bdd5-3ad37b4e7178",
+    "academic_class_subject_id": "5624115e-28b8-41d4-b239-ac85ced1ff8a",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 96,
+    "average_marks": 69,
+    "created_at": "2026-01-20T18:43:09.097859"
+  },
+  {
+    "id": "d03280d5-eece-4ebc-bf61-33f3b6fb53cd",
+    "academic_class_subject_id": "4e477c21-b17e-42b1-b59f-b67ca46881e3",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:09.091623"
+  },
+  {
+    "id": "8732a26b-2872-4025-8c63-2e4611b8b1a7",
+    "academic_class_subject_id": "6e624568-dce6-4a76-bdf6-75bb97d2afe2",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 70,
+    "average_marks": 41,
+    "created_at": "2026-01-20T18:43:09.087977"
+  },
+  {
+    "id": "983d384c-b391-47be-863b-38376057df34",
+    "academic_class_subject_id": "29876d76-35c6-4c64-8156-dfcd0e837075",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 92,
+    "average_marks": 50,
+    "created_at": "2026-01-20T18:43:09.085333"
+  },
+  {
+    "id": "fd55ed01-f6a1-48d6-817c-0f54c012811d",
+    "academic_class_subject_id": "1f870d65-f8ae-4546-826c-b717fd43af51",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 87,
+    "average_marks": 51,
+    "created_at": "2026-01-20T18:43:09.080770"
+  },
+  {
+    "id": "652afd3e-a5af-47ef-a489-9cf8597550c2",
+    "academic_class_subject_id": "c54a039c-6645-43cb-8246-eb63ae02d6fa",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 78,
+    "average_marks": 49,
+    "created_at": "2026-01-20T18:43:09.076205"
+  },
+  {
+    "id": "022d0a15-9ed4-49cc-ac3d-a93a09c70b38",
+    "academic_class_subject_id": "496ee630-db7a-499f-ae1a-67cf426c36ea",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 98,
+    "average_marks": 94,
+    "created_at": "2026-01-20T18:43:09.067864"
+  },
+  {
+    "id": "61ab0cb9-567c-4c1b-b765-395ebd7d5f7b",
+    "academic_class_subject_id": "5ae7d157-2595-448a-afab-1ea578af4438",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 97,
+    "average_marks": 55,
+    "created_at": "2026-01-20T18:43:09.055875"
+  },
+  {
+    "id": "2a820a58-6748-4abf-9378-8b4f8c2186be",
+    "academic_class_subject_id": "33294ee2-eddf-4f33-b6c8-f4ed3b6c7897",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 68,
+    "created_at": "2026-01-20T18:43:09.050301"
+  },
+  {
+    "id": "0f8e54fb-0f10-4bae-a6ca-386e2ddc7c35",
+    "academic_class_subject_id": "a5ad5dd3-e289-46a6-b9cc-0ba0918f8cb2",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 98,
+    "average_marks": 58,
+    "created_at": "2026-01-20T18:43:09.026980"
+  },
+  {
+    "id": "ff5cf939-4c38-47f9-a2c9-8a65190620e3",
+    "academic_class_subject_id": "c73d9f3d-d86e-4a50-ab37-7a8fde836856",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:09.013013"
+  },
+  {
+    "id": "0edffa85-31b1-48aa-be56-51b373491da2",
+    "academic_class_subject_id": "d63f87ef-b7b6-44b4-84d8-5768155f0ad4",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 95,
+    "average_marks": 62,
+    "created_at": "2026-01-20T18:43:08.993854"
+  },
+  {
+    "id": "c25a68f2-cfb4-4ea3-979f-5c7c9f24ce43",
+    "academic_class_subject_id": "93d69751-c6a4-434b-8f90-bb95445df73b",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 96,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:08.985754"
+  },
+  {
+    "id": "89e97eaf-9ef4-4441-8dd4-216fba98f8d4",
+    "academic_class_subject_id": "5752c5fc-1d70-49e9-8bed-1d54696bbb64",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 56,
+    "average_marks": 47,
+    "created_at": "2026-01-20T18:43:08.976139"
+  },
+  {
+    "id": "70f55979-ecb7-469b-8220-88df1691677d",
+    "academic_class_subject_id": "34279963-8210-4ba9-8271-be220060e6c2",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 68,
+    "average_marks": 47,
+    "created_at": "2026-01-20T18:43:08.965577"
+  },
+  {
+    "id": "c9949f2d-63d9-4f5c-834e-fbbeb9ffb02d",
+    "academic_class_subject_id": "55058f87-1035-42cd-9a6e-6a80a37df2a8",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 96,
+    "average_marks": 91,
+    "created_at": "2026-01-20T18:43:08.958593"
+  },
+  {
+    "id": "ab3d13de-21b0-4296-a792-84d7e5afd993",
+    "academic_class_subject_id": "85367563-6311-4656-ac2f-18dbe18879d6",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 90,
+    "average_marks": 54,
+    "created_at": "2026-01-20T18:43:08.942190"
+  },
+  {
+    "id": "89f00ff8-ca14-4e53-b06f-1b62f4dcd6cb",
+    "academic_class_subject_id": "447b5bab-ec8c-4dc7-845b-53564ed2fcdf",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 61,
+    "created_at": "2026-01-20T18:43:08.924032"
+  },
+  {
+    "id": "4bcdb33d-e78f-44ff-a3cd-4de7295f19a6",
+    "academic_class_subject_id": "f18af28d-4cd5-4914-a8b3-772ee19ffc9a",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 97,
+    "average_marks": 60,
+    "created_at": "2026-01-20T18:43:08.910646"
+  },
+  {
+    "id": "cc21a805-2acd-4bc4-bcdb-2ae5642f0d1c",
+    "academic_class_subject_id": "8d6fc536-da8d-4003-83a1-aaca4533dfe9",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 93,
+    "average_marks": 67,
+    "created_at": "2026-01-20T18:43:08.892806"
+  },
+  {
+    "id": "366e5135-6e32-4ff1-828c-89c8f75bc9d8",
+    "academic_class_subject_id": "cd43a269-64f3-4804-912d-85d266bb5917",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 96,
+    "average_marks": 69,
+    "created_at": "2026-01-20T18:43:08.890363"
+  },
+  {
+    "id": "95ee87e0-4546-4d6a-b998-f240d1e8f3c0",
+    "academic_class_subject_id": "3093a33e-3781-47b2-b0ed-51aa78dcae8d",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 89,
+    "average_marks": 59,
+    "created_at": "2026-01-20T18:43:08.887553"
+  },
+  {
+    "id": "dbfa252d-40dc-4d28-97ee-dbb0bdc0c769",
+    "academic_class_subject_id": "da444003-0821-4795-90ba-e59e11325335",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 88,
+    "average_marks": 60,
+    "created_at": "2026-01-20T18:43:08.885174"
+  },
+  {
+    "id": "b378d67a-0b73-4af4-a447-4cf681501f21",
+    "academic_class_subject_id": "ea9af577-8de2-4a26-8e86-f8f7b5a085d6",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 50,
+    "created_at": "2026-01-20T18:43:08.880128"
+  },
+  {
+    "id": "0896838f-6ba4-4f27-933c-fd72f0b8e80c",
+    "academic_class_subject_id": "865b8fcc-1bf7-4ed5-b2c4-c86fdbe3e9ff",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 90,
+    "average_marks": 66,
+    "created_at": "2026-01-20T18:43:08.871231"
+  },
+  {
+    "id": "094c9c29-1098-40f9-b1f5-5dc4e15877ed",
+    "academic_class_subject_id": "0332979f-0d54-4e33-b9a1-7b14f23c0d52",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 94,
+    "average_marks": 57,
+    "created_at": "2026-01-20T18:43:08.859869"
+  },
+  {
+    "id": "9eb5d0d3-d65f-4d28-9132-479e8d4d15bf",
+    "academic_class_subject_id": "3ce8d095-ea37-4703-bc8d-d3e499fa7e6f",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 98,
+    "average_marks": 89,
+    "created_at": "2026-01-20T18:43:08.844844"
+  },
+  {
+    "id": "049e790d-d9dd-414b-b316-921af02c4bf0",
+    "academic_class_subject_id": "516ba7ac-e98b-434f-87c1-7ca6da807a74",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 93,
+    "average_marks": 56,
+    "created_at": "2026-01-20T18:43:08.825713"
+  },
+  {
+    "id": "126d30cd-d73a-4d8c-bb1c-d14bc40e5797",
+    "academic_class_subject_id": "3d32e10b-57e9-4ac9-bab6-26e8fb1955b1",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 86,
+    "average_marks": 67,
+    "created_at": "2026-01-20T18:43:08.818378"
+  },
+  {
+    "id": "8aee0262-78c0-494b-929d-60e804805aa9",
+    "academic_class_subject_id": "c65cf337-17ea-4c00-a6ee-63a2210384c0",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 91,
+    "average_marks": 62,
+    "created_at": "2026-01-20T18:43:08.810961"
+  },
+  {
+    "id": "98944c3e-25bb-4343-9ca4-23dff9356f84",
+    "academic_class_subject_id": "acb0c764-5285-4512-9652-69ab344d61c3",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 53,
+    "average_marks": 53,
+    "created_at": "2026-01-20T18:43:08.797794"
+  },
+  {
+    "id": "0c45de17-1f2c-45d0-86a7-351af3f69620",
+    "academic_class_subject_id": "9a56bbb8-ffe8-4cc8-aff7-a78014f9164c",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.790085"
+  },
+  {
+    "id": "586332e5-5bf9-4e45-9c92-d906bcce0b55",
+    "academic_class_subject_id": "bebe999f-16db-466c-99c9-1b711d16a422",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.782387"
+  },
+  {
+    "id": "b567b4a5-7b3f-49db-975e-030587cee2a9",
+    "academic_class_subject_id": "c8e58237-2c02-44ea-92db-86eb672ed62d",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 69,
+    "average_marks": 69,
+    "created_at": "2026-01-20T18:43:08.780664"
+  },
+  {
+    "id": "ff147484-832e-435a-9e8e-5bf753eb1833",
+    "academic_class_subject_id": "1a7b08a3-4a53-4337-b2b2-a450b59ca6d6",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 53,
+    "average_marks": 53,
+    "created_at": "2026-01-20T18:43:08.776948"
+  },
+  {
+    "id": "b9ee984e-278f-4aab-bb69-86f879c9e597",
+    "academic_class_subject_id": "61a357a5-ef46-4ea0-bfbe-59a6ca462dcc",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.770590"
+  },
+  {
+    "id": "f25d9582-1897-4e31-a0ce-28eed1736230",
+    "academic_class_subject_id": "69b84954-f3c6-4697-9952-324ef768a4a0",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.765765"
+  },
+  {
+    "id": "88731e4d-f9e9-4296-a6bb-f120b1ea696b",
+    "academic_class_subject_id": "b804b06f-d528-450f-b44f-99e72d7e8e13",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:08.757529"
+  },
+  {
+    "id": "f38ae871-694b-403b-b8fc-0eb308631403",
+    "academic_class_subject_id": "2231f44e-b0bc-46a7-876b-1cac366ac142",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.751575"
+  },
+  {
+    "id": "042cb2f2-698b-4916-bba0-8fa944bc2c14",
+    "academic_class_subject_id": "6af41448-a39c-4290-a527-bdb1c6aa55fe",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 100,
+    "average_marks": 76,
+    "created_at": "2026-01-20T18:43:08.747923"
+  },
+  {
+    "id": "c6477c2b-03ad-4293-aa04-69fc4536b502",
+    "academic_class_subject_id": "c449d917-dd3c-4d71-8745-f26b417b770d",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 61,
+    "created_at": "2026-01-20T18:43:08.743170"
+  },
+  {
+    "id": "e37bfc1e-c48c-4955-bd94-65276826e800",
+    "academic_class_subject_id": "d873555c-c766-46fb-98fd-391a1dc131a7",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 82,
+    "created_at": "2026-01-20T18:43:08.738840"
+  },
+  {
+    "id": "e0659e9c-921e-4e3e-8998-bfc588e79ead",
+    "academic_class_subject_id": "2034a92d-6708-4a8e-b69c-4ef40f7f2332",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.731001"
+  },
+  {
+    "id": "9a2d5e84-eca5-433a-82a3-87b6baad5b4c",
+    "academic_class_subject_id": "e09bbbd6-b0ff-4ce5-9790-a99caa06c814",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 98,
+    "average_marks": 63,
+    "created_at": "2026-01-20T18:43:08.723562"
+  },
+  {
+    "id": "f117fe40-e1bb-47dc-9a33-76156a8f1495",
+    "academic_class_subject_id": "d9572ae2-8b05-4695-a9dc-c32aefb02bfe",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 74,
+    "average_marks": 47,
+    "created_at": "2026-01-20T18:43:08.718762"
+  },
+  {
+    "id": "e0b14320-4f46-4ca8-9246-b6b61819e0fd",
+    "academic_class_subject_id": "b3a15af7-2383-4236-9cff-70387e527ec4",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 79,
+    "average_marks": 62,
+    "created_at": "2026-01-20T18:43:08.715713"
+  },
+  {
+    "id": "da927379-ed3d-4a1a-8438-fdedceb6a762",
+    "academic_class_subject_id": "08f1de5c-5957-40fa-a42b-75518cc9bc5f",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.714188"
+  },
+  {
+    "id": "8250a976-0045-4f34-8305-3076b9854e8b",
+    "academic_class_subject_id": "e7753004-c3bc-440e-a45e-fc2fd88a8723",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 94,
+    "average_marks": 62,
+    "created_at": "2026-01-20T18:43:08.709821"
+  },
+  {
+    "id": "7ca4129b-f07f-4f76-b19b-65c09a4030ee",
+    "academic_class_subject_id": "a0bda378-a892-46ce-bf1d-392e96aead7f",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.692607"
+  },
+  {
+    "id": "4b36cfa7-839c-4a9d-85e8-368d222b415e",
+    "academic_class_subject_id": "d6b7c1b9-f9fc-4a89-8054-4af18b6cd903",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": 99,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:08.689180"
+  },
+  {
+    "id": "58a82789-d577-485d-becf-efe1bd688110",
+    "academic_class_subject_id": "2a79625f-2ae0-42bb-a4d0-c8e28969b790",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.686312"
+  },
+  {
+    "id": "cec849df-f416-4df4-9e7c-167899678c71",
+    "academic_class_subject_id": "b79648b0-9931-4030-a85f-f03ac6e06be4",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.681748"
+  },
+  {
+    "id": "5a5aba8e-319b-4eb1-a80a-137188e26209",
+    "academic_class_subject_id": "1c92e253-6bff-4c52-8e9f-7f4b9d6b03c1",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.676285"
+  },
+  {
+    "id": "ea9b9530-bb38-4610-a7b5-e6d6568ddb01",
+    "academic_class_subject_id": "a142c34d-7a23-4326-9272-1488e542083f",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.665117"
+  },
+  {
+    "id": "b86e73b0-023d-4f1b-bb23-b19ab8e7fa21",
+    "academic_class_subject_id": "39eb0168-3c1b-47e5-9ff5-1de01b3f7c23",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.657484"
+  },
+  {
+    "id": "fb3d8c52-249e-40ae-8fbe-0dbdcc18a370",
+    "academic_class_subject_id": "be479f67-2cbd-44f2-95e3-8aff89c88536",
+    "academic_term_id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:08.654763"
+  },
+  {
+    "id": "e2a71cc0-7d9e-4471-83ad-8ccfe505da7e",
+    "academic_class_subject_id": "0574e3f6-6413-478c-9071-020431af3e5c",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 85,
+    "created_at": "2026-01-20T18:43:08.643016"
+  },
+  {
+    "id": "1a90b10d-3a41-4120-b425-149beff706a9",
+    "academic_class_subject_id": "6167dfbc-bd9c-4e34-bf8a-6d326ba99a00",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 99,
+    "average_marks": 88,
+    "created_at": "2026-01-20T18:43:08.630666"
+  },
+  {
+    "id": "684dcd60-d9cd-4bc9-9f73-a5bbedad30e7",
+    "academic_class_subject_id": "247c2d8a-3188-4c58-b684-90307c06f035",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 89,
+    "created_at": "2026-01-20T18:43:08.627491"
+  },
+  {
+    "id": "f7025c9a-ecd3-4062-8119-af5972d947b3",
+    "academic_class_subject_id": "e4e65637-5493-4a86-bd4d-ee0eb28bb3d1",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 88,
+    "created_at": "2026-01-20T18:43:08.624175"
+  },
+  {
+    "id": "394b9fdf-fe4a-4f36-98dd-4a7418295eb7",
+    "academic_class_subject_id": "9174093a-d73a-4aa7-a426-61ea7001c23d",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 96,
+    "average_marks": 94,
+    "created_at": "2026-01-20T18:43:08.618233"
+  },
+  {
+    "id": "25f9600b-01e0-4fcb-82be-16707a0db5f7",
+    "academic_class_subject_id": "8f269ac9-4c96-4696-aed1-d3e899b3581c",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 86,
+    "created_at": "2026-01-20T18:43:08.614744"
+  },
+  {
+    "id": "88db2821-5d48-418a-8a84-f7bb9dc75a2a",
+    "academic_class_subject_id": "df16d217-b066-4831-8a63-242c73d54881",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 85,
+    "created_at": "2026-01-20T18:43:08.591664"
+  },
+  {
+    "id": "b12cdaf2-694a-4d36-b580-5553b03e1153",
+    "academic_class_subject_id": "177d9963-235a-4f41-bbb9-4fa48b8ec522",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 89,
+    "created_at": "2026-01-20T18:43:08.573394"
+  },
+  {
+    "id": "85d2b45f-ffeb-4131-a535-ac401f68b926",
+    "academic_class_subject_id": "93f70190-1086-4d7b-802a-42730006186f",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 88,
+    "created_at": "2026-01-20T18:43:08.557319"
+  },
+  {
+    "id": "534cb1cb-0990-47d0-8a8b-03be021fd18e",
+    "academic_class_subject_id": "8666a7f7-5803-4a21-b796-7bfe6ff1c435",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 79,
+    "created_at": "2026-01-20T18:43:08.547766"
+  },
+  {
+    "id": "ff45ca9a-4fae-4655-a2fb-07ab37abb6ad",
+    "academic_class_subject_id": "fd3a5a6a-39ef-412a-9b33-bb9406e0ea10",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 93,
+    "average_marks": 90,
+    "created_at": "2026-01-20T18:43:08.539764"
+  },
+  {
+    "id": "bc8f00d7-3817-4535-bfe3-b2f5747e7cd2",
+    "academic_class_subject_id": "3151e484-aae4-4bc4-9283-ae6ed6b07c0c",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 88,
+    "created_at": "2026-01-20T18:43:08.514537"
+  },
+  {
+    "id": "3a6f5d4b-8f45-45e8-a571-6a313d68acb7",
+    "academic_class_subject_id": "f505d23c-119e-4e36-b7a6-e11b6c384860",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 84,
+    "created_at": "2026-01-20T18:43:08.512181"
+  },
+  {
+    "id": "fc39794b-21a9-40c0-9744-d8f29285ba50",
+    "academic_class_subject_id": "3dc902f6-7110-4b69-9879-1cec2ffb8960",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 87,
+    "created_at": "2026-01-20T18:43:08.508486"
+  },
+  {
+    "id": "282ff64e-5a04-4399-b3d3-9fa6fc892dbb",
+    "academic_class_subject_id": "f7c57eae-eef4-401a-9b10-d2418877c8e5",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 85,
+    "created_at": "2026-01-20T18:43:08.492127"
+  },
+  {
+    "id": "02e52e12-ea69-43f9-ae7e-c33db0223bbf",
+    "academic_class_subject_id": "ce66d09c-f801-4ff1-b9c4-eac2102c21ce",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 87,
+    "created_at": "2026-01-20T18:43:08.485826"
+  },
+  {
+    "id": "56fc3763-4186-4ff5-85b1-0cc483194484",
+    "academic_class_subject_id": "67211725-9ecf-428d-8047-66aa0f8467f6",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 90,
+    "average_marks": 90,
+    "created_at": "2026-01-20T18:43:08.476172"
+  },
+  {
+    "id": "514ac3a6-fb22-4b7d-9dc0-9bf0fccde749",
+    "academic_class_subject_id": "0eadbc75-e9f7-45cf-af7f-af046b36d272",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 96,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:08.416117"
+  },
+  {
+    "id": "9e5e9f00-cc3d-4f79-ae9e-0c42d55d250f",
+    "academic_class_subject_id": "32bec257-e180-4ce4-849f-791cc5aa17db",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 90,
+    "average_marks": 74,
+    "created_at": "2026-01-20T18:43:08.402969"
+  },
+  {
+    "id": "de14d5b4-d2cb-4763-a3e0-d279ce569ce8",
+    "academic_class_subject_id": "717c9eea-d84b-4bfb-adf4-00ddb247f236",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 94,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:08.395928"
+  },
+  {
+    "id": "bf7cd499-6348-4e6e-aaca-888754b1dce1",
+    "academic_class_subject_id": "2f29cd73-aede-41f4-9ff5-566463c42553",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 89,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:08.390262"
+  },
+  {
+    "id": "f5485a6e-6563-4ce1-aa66-35e9c56e063f",
+    "academic_class_subject_id": "7b77ce3e-f102-4fe7-aeb6-502dec3f4124",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 70,
+    "average_marks": 53,
+    "created_at": "2026-01-20T18:43:08.384984"
+  },
+  {
+    "id": "d693a4b1-cc04-4d1b-b0f1-fad9b924f65c",
+    "academic_class_subject_id": "868bc712-b003-4923-a407-bdcd8e0f2a7a",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:08.378000"
+  },
+  {
+    "id": "c69c9179-a1ec-447a-9084-5860978e6719",
+    "academic_class_subject_id": "ff108b61-ee63-4745-a51c-4bd244dd43b3",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 98,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:08.369860"
+  },
+  {
+    "id": "9db8f196-acb1-4e37-b0fd-63d5c97c2f39",
+    "academic_class_subject_id": "d009a29b-f1ee-4c41-ab42-38fb07cbaa50",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 86,
+    "created_at": "2026-01-20T18:43:08.363160"
+  },
+  {
+    "id": "8326eec7-fbfe-4b7b-8366-640240336f91",
+    "academic_class_subject_id": "b95cff3b-805f-4ec2-a39a-c76e2c001af6",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 68,
+    "created_at": "2026-01-20T18:43:08.357919"
+  },
+  {
+    "id": "2d84938b-8b73-4494-a944-acad53d035f4",
+    "academic_class_subject_id": "f304d80d-99df-44c9-b316-a5ca959ed448",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 90,
+    "average_marks": 77,
+    "created_at": "2026-01-20T18:43:08.354291"
+  },
+  {
+    "id": "293ab36e-7a7d-40dc-a5b0-9b29ec483eff",
+    "academic_class_subject_id": "37c01ee5-d755-43c6-a273-b373778e4c83",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 94,
+    "average_marks": 67,
+    "created_at": "2026-01-20T18:43:08.351563"
+  },
+  {
+    "id": "1c0cedad-2529-4f5a-89a1-8487691a8f02",
+    "academic_class_subject_id": "5624115e-28b8-41d4-b239-ac85ced1ff8a",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 99,
+    "average_marks": 75,
+    "created_at": "2026-01-20T18:43:08.348270"
+  },
+  {
+    "id": "aff79f78-9e5c-4fc9-aa59-9209bc821a99",
+    "academic_class_subject_id": "4e477c21-b17e-42b1-b59f-b67ca46881e3",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 83,
+    "created_at": "2026-01-20T18:43:08.341275"
+  },
+  {
+    "id": "33095c8f-7571-45d9-8297-73d59e107aa6",
+    "academic_class_subject_id": "6e624568-dce6-4a76-bdf6-75bb97d2afe2",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 87,
+    "average_marks": 58,
+    "created_at": "2026-01-20T18:43:08.335003"
+  },
+  {
+    "id": "9d20fed6-4c32-4624-bc19-cce4602a5b41",
+    "academic_class_subject_id": "29876d76-35c6-4c64-8156-dfcd0e837075",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 68,
+    "created_at": "2026-01-20T18:43:08.311401"
+  },
+  {
+    "id": "ba8ef8bc-3bb9-4415-866f-714c56331882",
+    "academic_class_subject_id": "1f870d65-f8ae-4546-826c-b717fd43af51",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 96,
+    "average_marks": 67,
+    "created_at": "2026-01-20T18:43:08.296235"
+  },
+  {
+    "id": "de07495a-61d4-4a78-90d1-70780da32b9f",
+    "academic_class_subject_id": "c54a039c-6645-43cb-8246-eb63ae02d6fa",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 96,
+    "average_marks": 78,
+    "created_at": "2026-01-20T18:43:08.287272"
+  },
+  {
+    "id": "ca29776d-3990-4645-b07a-acd3044807a7",
+    "academic_class_subject_id": "496ee630-db7a-499f-ae1a-67cf426c36ea",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 96,
+    "average_marks": 93,
+    "created_at": "2026-01-20T18:43:08.273371"
+  },
+  {
+    "id": "c0f62cb3-8e07-4916-a6af-872975c67952",
+    "academic_class_subject_id": "5ae7d157-2595-448a-afab-1ea578af4438",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 90,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:08.264039"
+  },
+  {
+    "id": "89213c3b-790d-44b1-b519-6ce9342b8d1d",
+    "academic_class_subject_id": "33294ee2-eddf-4f33-b6c8-f4ed3b6c7897",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 86,
+    "average_marks": 68,
+    "created_at": "2026-01-20T18:43:08.261845"
+  },
+  {
+    "id": "022b31f3-d880-4090-8ba3-3df99fa608e1",
+    "academic_class_subject_id": "a5ad5dd3-e289-46a6-b9cc-0ba0918f8cb2",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 85,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:08.255833"
+  },
+  {
+    "id": "1f137b20-f969-450d-a03a-e5b090321e17",
+    "academic_class_subject_id": "c73d9f3d-d86e-4a50-ab37-7a8fde836856",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 85,
+    "average_marks": 75,
+    "created_at": "2026-01-20T18:43:08.244960"
+  },
+  {
+    "id": "56b885cd-ca1a-41a8-8a06-e8fec54a6244",
+    "academic_class_subject_id": "d63f87ef-b7b6-44b4-84d8-5768155f0ad4",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 98,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:08.231079"
+  },
+  {
+    "id": "52508068-c59e-43b7-bcc0-5bcae9912ce0",
+    "academic_class_subject_id": "93d69751-c6a4-434b-8f90-bb95445df73b",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 85,
+    "average_marks": 66,
+    "created_at": "2026-01-20T18:43:08.220987"
+  },
+  {
+    "id": "e0722b9e-a4f5-4c21-b17e-77f8d4e95488",
+    "academic_class_subject_id": "5752c5fc-1d70-49e9-8bed-1d54696bbb64",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 80,
+    "average_marks": 66,
+    "created_at": "2026-01-20T18:43:08.198765"
+  },
+  {
+    "id": "6e0c3b0c-8048-4cee-88ab-a0eaafbb649a",
+    "academic_class_subject_id": "34279963-8210-4ba9-8271-be220060e6c2",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 84,
+    "average_marks": 70,
+    "created_at": "2026-01-20T18:43:08.161975"
+  },
+  {
+    "id": "16c76bc7-87f6-432a-9318-22a6fa16bf47",
+    "academic_class_subject_id": "55058f87-1035-42cd-9a6e-6a80a37df2a8",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 96,
+    "average_marks": 90,
+    "created_at": "2026-01-20T18:43:08.147108"
+  },
+  {
+    "id": "df4b1bc9-d185-42b8-9e6d-9c96facfc36a",
+    "academic_class_subject_id": "85367563-6311-4656-ac2f-18dbe18879d6",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 76,
+    "average_marks": 59,
+    "created_at": "2026-01-20T18:43:08.124546"
+  },
+  {
+    "id": "92e6e24b-d2ce-4677-acf4-50d1e15da917",
+    "academic_class_subject_id": "447b5bab-ec8c-4dc7-845b-53564ed2fcdf",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 99,
+    "average_marks": 76,
+    "created_at": "2026-01-20T18:43:08.112785"
+  },
+  {
+    "id": "5d4e35ea-feb3-4213-9bd3-963a8a62efeb",
+    "academic_class_subject_id": "f18af28d-4cd5-4914-a8b3-772ee19ffc9a",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 92,
+    "average_marks": 73,
+    "created_at": "2026-01-20T18:43:08.104802"
+  },
+  {
+    "id": "c97c978b-271f-468b-be85-413c93fd51f3",
+    "academic_class_subject_id": "8d6fc536-da8d-4003-83a1-aaca4533dfe9",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 90,
+    "average_marks": 74,
+    "created_at": "2026-01-20T18:43:08.093832"
+  },
+  {
+    "id": "515840e1-823f-474d-86d5-fc03edeb175f",
+    "academic_class_subject_id": "cd43a269-64f3-4804-912d-85d266bb5917",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 93,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:08.085770"
+  },
+  {
+    "id": "f4577fbb-7b7b-471d-a3ea-d16a6244a5f9",
+    "academic_class_subject_id": "3093a33e-3781-47b2-b0ed-51aa78dcae8d",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 66,
+    "created_at": "2026-01-20T18:43:08.080673"
+  },
+  {
+    "id": "58835e9e-7c86-4832-94a9-551573edb531",
+    "academic_class_subject_id": "da444003-0821-4795-90ba-e59e11325335",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 69,
+    "created_at": "2026-01-20T18:43:08.075646"
+  },
+  {
+    "id": "2402595b-41e3-4437-bb27-7aa0472198ba",
+    "academic_class_subject_id": "ea9af577-8de2-4a26-8e86-f8f7b5a085d6",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 84,
+    "average_marks": 62,
+    "created_at": "2026-01-20T18:43:08.069959"
+  },
+  {
+    "id": "db4396e1-1940-4ce4-a4a9-63b3b36eca6d",
+    "academic_class_subject_id": "865b8fcc-1bf7-4ed5-b2c4-c86fdbe3e9ff",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 90,
+    "average_marks": 69,
+    "created_at": "2026-01-20T18:43:08.064993"
+  },
+  {
+    "id": "1249da68-957b-478c-8b20-8587835af09c",
+    "academic_class_subject_id": "0332979f-0d54-4e33-b9a1-7b14f23c0d52",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 99,
+    "average_marks": 74,
+    "created_at": "2026-01-20T18:43:08.062426"
+  },
+  {
+    "id": "64eb22f0-dd95-4834-9c92-307d003357a0",
+    "academic_class_subject_id": "3ce8d095-ea37-4703-bc8d-d3e499fa7e6f",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 96,
+    "average_marks": 88,
+    "created_at": "2026-01-20T18:43:08.056482"
+  },
+  {
+    "id": "292f98f2-5c07-43aa-b960-adeb3816a13a",
+    "academic_class_subject_id": "516ba7ac-e98b-434f-87c1-7ca6da807a74",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 160,
+    "average_marks": 73,
+    "created_at": "2026-01-20T18:43:08.048249"
+  },
+  {
+    "id": "b2e2bb32-f68d-46b1-a1dd-676dc12da0ca",
+    "academic_class_subject_id": "3d32e10b-57e9-4ac9-bab6-26e8fb1955b1",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 80,
+    "average_marks": 74,
+    "created_at": "2026-01-20T18:43:08.045113"
+  },
+  {
+    "id": "0b639a90-7135-40fe-83ce-4cf8cf16152e",
+    "academic_class_subject_id": "c65cf337-17ea-4c00-a6ee-63a2210384c0",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 94,
+    "average_marks": 73,
+    "created_at": "2026-01-20T18:43:08.039075"
+  },
+  {
+    "id": "36d8616d-59bd-466f-8e90-7aa24e3028ea",
+    "academic_class_subject_id": "acb0c764-5285-4512-9652-69ab344d61c3",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 92,
+    "average_marks": 60,
+    "created_at": "2026-01-20T18:43:08.026677"
+  },
+  {
+    "id": "ffeb284f-e341-4033-8028-0a4276a1453c",
+    "academic_class_subject_id": "9a56bbb8-ffe8-4cc8-aff7-a78014f9164c",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 94,
+    "average_marks": 65,
+    "created_at": "2026-01-20T18:43:08.021958"
+  },
+  {
+    "id": "f5aadc18-47dc-4f87-a53a-9515330807e8",
+    "academic_class_subject_id": "bebe999f-16db-466c-99c9-1b711d16a422",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 101,
+    "average_marks": 65,
+    "created_at": "2026-01-20T18:43:08.016880"
+  },
+  {
+    "id": "a2d45505-e92d-48c3-b157-bcb49a76a7b2",
+    "academic_class_subject_id": "c8e58237-2c02-44ea-92db-86eb672ed62d",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 46,
+    "average_marks": 28,
+    "created_at": "2026-01-20T18:43:08.014607"
+  },
+  {
+    "id": "29eeae8f-107d-442b-ac73-8dae6db68da0",
+    "academic_class_subject_id": "1a7b08a3-4a53-4337-b2b2-a450b59ca6d6",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 77,
+    "created_at": "2026-01-20T18:43:08.012783"
+  },
+  {
+    "id": "fbdb35af-b864-4635-9a0b-305dc8f97eea",
+    "academic_class_subject_id": "61a357a5-ef46-4ea0-bfbe-59a6ca462dcc",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 81,
+    "average_marks": 64,
+    "created_at": "2026-01-20T18:43:08.009958"
+  },
+  {
+    "id": "950dda71-da66-437e-ac94-a951a2135a08",
+    "academic_class_subject_id": "69b84954-f3c6-4697-9952-324ef768a4a0",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 92,
+    "average_marks": 90,
+    "created_at": "2026-01-20T18:43:08.006808"
+  },
+  {
+    "id": "18c4a0f3-0130-46e8-83c4-587ea04363a5",
+    "academic_class_subject_id": "b804b06f-d528-450f-b44f-99e72d7e8e13",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 75,
+    "created_at": "2026-01-20T18:43:07.989222"
+  },
+  {
+    "id": "0e3e9ca5-46fd-48e6-b1d8-638905ad27ff",
+    "academic_class_subject_id": "2231f44e-b0bc-46a7-876b-1cac366ac142",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 77,
+    "created_at": "2026-01-20T18:43:07.983489"
+  },
+  {
+    "id": "69ca9385-5ca5-4dbe-b7b9-310467825350",
+    "academic_class_subject_id": "6af41448-a39c-4290-a527-bdb1c6aa55fe",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:07.975121"
+  },
+  {
+    "id": "f0387e03-e202-4d89-bd22-f811944af3d8",
+    "academic_class_subject_id": "c449d917-dd3c-4d71-8745-f26b417b770d",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 67,
+    "created_at": "2026-01-20T18:43:07.970822"
+  },
+  {
+    "id": "b558dfaf-e065-4a5f-a8e1-e6aeabf6280c",
+    "academic_class_subject_id": "d873555c-c766-46fb-98fd-391a1dc131a7",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 98,
+    "average_marks": 68,
+    "created_at": "2026-01-20T18:43:07.962969"
+  },
+  {
+    "id": "9cdb07c4-34fe-4412-b164-f07be6e4a5af",
+    "academic_class_subject_id": "2034a92d-6708-4a8e-b69c-4ef40f7f2332",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 87,
+    "average_marks": 68,
+    "created_at": "2026-01-20T18:43:07.943729"
+  },
+  {
+    "id": "75c97507-f7c8-4e23-ae01-bd6f339bcfb6",
+    "academic_class_subject_id": "e09bbbd6-b0ff-4ce5-9790-a99caa06c814",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 65,
+    "created_at": "2026-01-20T18:43:07.931857"
+  },
+  {
+    "id": "c82fc0b5-9f5b-431a-8e5f-646e3616cd54",
+    "academic_class_subject_id": "d9572ae2-8b05-4695-a9dc-c32aefb02bfe",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 98,
+    "average_marks": 64,
+    "created_at": "2026-01-20T18:43:07.925605"
+  },
+  {
+    "id": "16641373-dd49-4b5d-bff9-188070272724",
+    "academic_class_subject_id": "b3a15af7-2383-4236-9cff-70387e527ec4",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 71,
+    "created_at": "2026-01-20T18:43:07.907054"
+  },
+  {
+    "id": "946ecdd8-1ca9-41f4-a804-bbc4025e75c3",
+    "academic_class_subject_id": "08f1de5c-5957-40fa-a42b-75518cc9bc5f",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 89,
+    "created_at": "2026-01-20T18:43:07.901265"
+  },
+  {
+    "id": "bdddf7d0-ba6b-4fef-8b98-13f3e60ff16b",
+    "academic_class_subject_id": "e7753004-c3bc-440e-a45e-fc2fd88a8723",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 85,
+    "average_marks": 63,
+    "created_at": "2026-01-20T18:43:07.891565"
+  },
+  {
+    "id": "d479d56f-b9b1-45a6-be59-a9e8bde689e4",
+    "academic_class_subject_id": "a0bda378-a892-46ce-bf1d-392e96aead7f",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 85,
+    "created_at": "2026-01-20T18:43:07.887830"
+  },
+  {
+    "id": "896a979f-debc-4dcf-9d07-a3ffb9ad9dd4",
+    "academic_class_subject_id": "d6b7c1b9-f9fc-4a89-8054-4af18b6cd903",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 81,
+    "created_at": "2026-01-20T18:43:07.870831"
+  },
+  {
+    "id": "80c3ffec-d150-4bb9-8d4a-359025f112fd",
+    "academic_class_subject_id": "2a79625f-2ae0-42bb-a4d0-c8e28969b790",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 85,
+    "average_marks": 75,
+    "created_at": "2026-01-20T18:43:07.858233"
+  },
+  {
+    "id": "56dbb1b6-a50c-4cdc-b488-a1e539c96132",
+    "academic_class_subject_id": "b79648b0-9931-4030-a85f-f03ac6e06be4",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 89,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:07.842692"
+  },
+  {
+    "id": "4e148f76-1e16-4eef-9f7c-c5dce228a98a",
+    "academic_class_subject_id": "1c92e253-6bff-4c52-8e9f-7f4b9d6b03c1",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 99,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:07.824946"
+  },
+  {
+    "id": "9eea72e6-870a-40e1-b609-33f8579c5a52",
+    "academic_class_subject_id": "a142c34d-7a23-4326-9272-1488e542083f",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 94,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:07.810480"
+  },
+  {
+    "id": "37513cc7-1394-4a0a-b156-e232ed22f631",
+    "academic_class_subject_id": "39eb0168-3c1b-47e5-9ff5-1de01b3f7c23",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:07.797010"
+  },
+  {
+    "id": "b7c2efcb-6b2f-47cb-a5eb-346064d9de6f",
+    "academic_class_subject_id": "be479f67-2cbd-44f2-95e3-8aff89c88536",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 91,
+    "average_marks": 72,
+    "created_at": "2026-01-20T18:43:07.782588"
+  },
+  {
+    "id": "e20ecd75-6b61-4651-8236-7969ad5d1fd9",
+    "academic_class_subject_id": "0574e3f6-6413-478c-9071-020431af3e5c",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.764805"
+  },
+  {
+    "id": "fc17a59d-6f3b-4bc0-beed-46938ee195da",
+    "academic_class_subject_id": "6167dfbc-bd9c-4e34-bf8a-6d326ba99a00",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.755863"
+  },
+  {
+    "id": "0c48bd6a-900b-4cff-a6bf-d4afac862096",
+    "academic_class_subject_id": "247c2d8a-3188-4c58-b684-90307c06f035",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.748312"
+  },
+  {
+    "id": "494c1f73-f6ec-42b1-b67b-6cc0b1e7ea1f",
+    "academic_class_subject_id": "e4e65637-5493-4a86-bd4d-ee0eb28bb3d1",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.741075"
+  },
+  {
+    "id": "abf5a5bf-7378-4939-a777-116258c826e9",
+    "academic_class_subject_id": "9174093a-d73a-4aa7-a426-61ea7001c23d",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.733892"
+  },
+  {
+    "id": "412670af-9759-4efc-9782-d0fca5cf2ea8",
+    "academic_class_subject_id": "8f269ac9-4c96-4696-aed1-d3e899b3581c",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.723895"
+  },
+  {
+    "id": "9f546695-205a-4c96-b7bb-cc379cd5c35d",
+    "academic_class_subject_id": "df16d217-b066-4831-8a63-242c73d54881",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.718219"
+  },
+  {
+    "id": "e2b28007-d5d3-40be-bffe-faa83c8d808f",
+    "academic_class_subject_id": "177d9963-235a-4f41-bbb9-4fa48b8ec522",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.710270"
+  },
+  {
+    "id": "a7ec5fe1-2473-443f-a089-0a0de3805573",
+    "academic_class_subject_id": "93f70190-1086-4d7b-802a-42730006186f",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.703337"
+  },
+  {
+    "id": "3903afbe-acbc-4191-a93d-aab8429755b4",
+    "academic_class_subject_id": "8666a7f7-5803-4a21-b796-7bfe6ff1c435",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.697639"
+  },
+  {
+    "id": "e8f49e55-a83b-4fdf-9466-c38841dce52c",
+    "academic_class_subject_id": "fd3a5a6a-39ef-412a-9b33-bb9406e0ea10",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.693821"
+  },
+  {
+    "id": "995eb09f-2463-4db7-a638-68d18faa29df",
+    "academic_class_subject_id": "3151e484-aae4-4bc4-9283-ae6ed6b07c0c",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.687336"
+  },
+  {
+    "id": "f1af54c1-d6f5-4336-8bd9-c58b605f7db0",
+    "academic_class_subject_id": "f505d23c-119e-4e36-b7a6-e11b6c384860",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.682828"
+  },
+  {
+    "id": "e36630cb-971a-4dcb-832b-d3698480ab80",
+    "academic_class_subject_id": "3dc902f6-7110-4b69-9879-1cec2ffb8960",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.670879"
+  },
+  {
+    "id": "3dfbee8a-350b-4da8-b12a-caa3c74bf2b6",
+    "academic_class_subject_id": "f7c57eae-eef4-401a-9b10-d2418877c8e5",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.663993"
+  },
+  {
+    "id": "dbfab531-0ad6-4d4e-9852-d69b0a798f02",
+    "academic_class_subject_id": "ce66d09c-f801-4ff1-b9c4-eac2102c21ce",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.655812"
+  },
+  {
+    "id": "eabfef81-d39f-49f1-a86c-00bff9ec8208",
+    "academic_class_subject_id": "67211725-9ecf-428d-8047-66aa0f8467f6",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.646771"
+  },
+  {
+    "id": "383d135b-108b-456c-898f-155627c2edf5",
+    "academic_class_subject_id": "666ccf04-8c00-4b79-90d7-2fb5bba0c8e9",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.635493"
+  },
+  {
+    "id": "2b1b9f26-1131-41f8-83df-1e705007ce44",
+    "academic_class_subject_id": "aad392c9-5d7e-4a58-9f6a-b2b07f09a7de",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.626996"
+  },
+  {
+    "id": "2bee7fef-9f0e-4311-bf30-fe4131f8b3ba",
+    "academic_class_subject_id": "951f0f83-5fd8-4e11-aab6-45fb561ba076",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.621862"
+  },
+  {
+    "id": "57c3e361-2806-416e-8f18-e901e5f22f24",
+    "academic_class_subject_id": "6f1b9c1e-1da1-4f93-ace9-9c41e44f1997",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.615238"
+  },
+  {
+    "id": "fa45e99d-66e2-4ea4-a504-8a2d21d8dbca",
+    "academic_class_subject_id": "7d76789a-d3ca-47f8-a942-59ef1d700bbd",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.607843"
+  },
+  {
+    "id": "364bdfc1-f6b6-4b7a-9f3f-7251163597b2",
+    "academic_class_subject_id": "f2e8d1dc-3355-41cb-8eff-fe2326bdddcc",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.605156"
+  },
+  {
+    "id": "fecd3252-5753-48ee-a3d6-2c63dcf972a7",
+    "academic_class_subject_id": "e3d34a92-925a-4aed-a09b-6bfdeeed64b4",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.603638"
+  },
+  {
+    "id": "2b27701c-c1df-4f95-8b26-57e19b391e10",
+    "academic_class_subject_id": "51a680d1-0a4d-45f6-b1b0-04b430f38991",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.601704"
+  },
+  {
+    "id": "53e8e6d8-9372-41ae-9781-1c22767f4cf7",
+    "academic_class_subject_id": "28c5f3d0-9e51-4796-90c4-0f42a0364c4c",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.599828"
+  },
+  {
+    "id": "070550f5-dbf8-4844-ac70-8e9074dc3459",
+    "academic_class_subject_id": "0eadbc75-e9f7-45cf-af7f-af046b36d272",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.597467"
+  },
+  {
+    "id": "c77aa26d-6b33-4783-8448-d7a5d81e42c5",
+    "academic_class_subject_id": "843b3d22-e03e-4729-8957-5712bf687f09",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.592520"
+  },
+  {
+    "id": "c62c7406-9b72-4816-96da-ae5042f2e7eb",
+    "academic_class_subject_id": "32bec257-e180-4ce4-849f-791cc5aa17db",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.589585"
+  },
+  {
+    "id": "20c29964-a170-4e7f-8afe-41a2a849bb50",
+    "academic_class_subject_id": "717c9eea-d84b-4bfb-adf4-00ddb247f236",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.584918"
+  },
+  {
+    "id": "11d69bab-f815-44fc-9902-5dcb849c0187",
+    "academic_class_subject_id": "2f29cd73-aede-41f4-9ff5-566463c42553",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.569694"
+  },
+  {
+    "id": "0d5163ef-6687-4781-9394-bbbbefa16934",
+    "academic_class_subject_id": "7b77ce3e-f102-4fe7-aeb6-502dec3f4124",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.562402"
+  },
+  {
+    "id": "c3d38920-b78f-4285-b2b4-b6e71c6055bd",
+    "academic_class_subject_id": "868bc712-b003-4923-a407-bdcd8e0f2a7a",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.548425"
+  },
+  {
+    "id": "12ef85ef-7322-4e45-a201-797317028758",
+    "academic_class_subject_id": "ff108b61-ee63-4745-a51c-4bd244dd43b3",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.540444"
+  },
+  {
+    "id": "b1afe14a-33ab-4e66-a1ff-6c7e195fb16e",
+    "academic_class_subject_id": "d009a29b-f1ee-4c41-ab42-38fb07cbaa50",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.525056"
+  },
+  {
+    "id": "1a06a27b-16c1-4619-862b-1c49b0739c2f",
+    "academic_class_subject_id": "b95cff3b-805f-4ec2-a39a-c76e2c001af6",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.514251"
+  },
+  {
+    "id": "ef622153-ac1f-4990-a3f3-a08bb786143c",
+    "academic_class_subject_id": "f304d80d-99df-44c9-b316-a5ca959ed448",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.500541"
+  },
+  {
+    "id": "e2d3ba14-4de4-44a9-b5ea-24d9dc530860",
+    "academic_class_subject_id": "37c01ee5-d755-43c6-a273-b373778e4c83",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.491505"
+  },
+  {
+    "id": "6f9e0d4d-e367-4fb4-93f5-ba74ec1ad760",
+    "academic_class_subject_id": "5624115e-28b8-41d4-b239-ac85ced1ff8a",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.484135"
+  },
+  {
+    "id": "3bd9b1a0-b69e-45e4-987f-feec949da13d",
+    "academic_class_subject_id": "4e477c21-b17e-42b1-b59f-b67ca46881e3",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.482267"
+  },
+  {
+    "id": "2a0d63b3-08cd-481b-823e-a17fd4d23159",
+    "academic_class_subject_id": "6e624568-dce6-4a76-bdf6-75bb97d2afe2",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.480369"
+  },
+  {
+    "id": "faf50349-9ba5-4bbe-a778-526120d0a974",
+    "academic_class_subject_id": "29876d76-35c6-4c64-8156-dfcd0e837075",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.478828"
+  },
+  {
+    "id": "a44ccffe-21a5-4820-888f-3be0e64cae97",
+    "academic_class_subject_id": "1f870d65-f8ae-4546-826c-b717fd43af51",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.476563"
+  },
+  {
+    "id": "b4afaec8-476a-4560-bd51-d0658c46a3aa",
+    "academic_class_subject_id": "c54a039c-6645-43cb-8246-eb63ae02d6fa",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.471112"
+  },
+  {
+    "id": "27e2c943-1790-4898-91d3-8aef1b1da6e0",
+    "academic_class_subject_id": "496ee630-db7a-499f-ae1a-67cf426c36ea",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.460505"
+  },
+  {
+    "id": "d333f689-772a-479d-924a-3a017de53120",
+    "academic_class_subject_id": "5ae7d157-2595-448a-afab-1ea578af4438",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.455674"
+  },
+  {
+    "id": "7a0a51be-f7e8-4e34-88fc-c8b292aa30ab",
+    "academic_class_subject_id": "33294ee2-eddf-4f33-b6c8-f4ed3b6c7897",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.444997"
+  },
+  {
+    "id": "b6c1a2b5-8b52-44e2-8001-1004c1450791",
+    "academic_class_subject_id": "a5ad5dd3-e289-46a6-b9cc-0ba0918f8cb2",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.439742"
+  },
+  {
+    "id": "c90d9400-6688-4e6a-a9f8-7342e22d2bf2",
+    "academic_class_subject_id": "c73d9f3d-d86e-4a50-ab37-7a8fde836856",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.430111"
+  },
+  {
+    "id": "bb387326-c244-4b8b-aeaa-d96042c7a75c",
+    "academic_class_subject_id": "d63f87ef-b7b6-44b4-84d8-5768155f0ad4",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.422933"
+  },
+  {
+    "id": "3cba1876-68aa-4cf3-b6dc-2b5be4ee484e",
+    "academic_class_subject_id": "93d69751-c6a4-434b-8f90-bb95445df73b",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.414120"
+  },
+  {
+    "id": "0ced018b-3b4b-483a-971f-b50a8df53d99",
+    "academic_class_subject_id": "5752c5fc-1d70-49e9-8bed-1d54696bbb64",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.406637"
+  },
+  {
+    "id": "75346e5c-9cdb-480c-adcd-6da0cad279a5",
+    "academic_class_subject_id": "34279963-8210-4ba9-8271-be220060e6c2",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.400810"
+  },
+  {
+    "id": "724f482a-43fa-4c92-9b32-5087137b6892",
+    "academic_class_subject_id": "55058f87-1035-42cd-9a6e-6a80a37df2a8",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.393075"
+  },
+  {
+    "id": "58872b49-27ce-4d0c-bbd7-7eeb3bd6062e",
+    "academic_class_subject_id": "85367563-6311-4656-ac2f-18dbe18879d6",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.391101"
+  },
+  {
+    "id": "7bec4afa-fe55-486c-83e2-056d0c5b113c",
+    "academic_class_subject_id": "447b5bab-ec8c-4dc7-845b-53564ed2fcdf",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.384677"
+  },
+  {
+    "id": "bba7dc7e-3ecb-4e25-bc20-2a6f2888224d",
+    "academic_class_subject_id": "f18af28d-4cd5-4914-a8b3-772ee19ffc9a",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.378529"
+  },
+  {
+    "id": "6978bfa6-438b-4aa6-a188-79d7ae15f5c7",
+    "academic_class_subject_id": "8d6fc536-da8d-4003-83a1-aaca4533dfe9",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.373274"
+  },
+  {
+    "id": "a5503a68-9e5d-4107-828a-ea6702c05d02",
+    "academic_class_subject_id": "cd43a269-64f3-4804-912d-85d266bb5917",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.367010"
+  },
+  {
+    "id": "0bbe8b0d-49cb-49d3-8b2c-0c2da61e2bf8",
+    "academic_class_subject_id": "3093a33e-3781-47b2-b0ed-51aa78dcae8d",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.364597"
+  },
+  {
+    "id": "75e988b2-046b-44ce-8133-05a8c53a6d47",
+    "academic_class_subject_id": "da444003-0821-4795-90ba-e59e11325335",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.362871"
+  },
+  {
+    "id": "5dec90b6-465e-4628-a26b-6a643921230a",
+    "academic_class_subject_id": "ea9af577-8de2-4a26-8e86-f8f7b5a085d6",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.360850"
+  },
+  {
+    "id": "1a51e353-d78a-4c2e-bfc8-7085c5a09e9b",
+    "academic_class_subject_id": "865b8fcc-1bf7-4ed5-b2c4-c86fdbe3e9ff",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.358805"
+  },
+  {
+    "id": "f4f94847-2378-4e49-bdf8-55621fccfbd3",
+    "academic_class_subject_id": "0332979f-0d54-4e33-b9a1-7b14f23c0d52",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.353984"
+  },
+  {
+    "id": "dad2072f-4dee-4637-80d4-84685f7275c5",
+    "academic_class_subject_id": "3ce8d095-ea37-4703-bc8d-d3e499fa7e6f",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.351653"
+  },
+  {
+    "id": "3cdbf537-2a6e-4677-966e-a289f032c919",
+    "academic_class_subject_id": "516ba7ac-e98b-434f-87c1-7ca6da807a74",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.339790"
+  },
+  {
+    "id": "0198fed8-4bc2-45c2-8ae3-858c1251feae",
+    "academic_class_subject_id": "3d32e10b-57e9-4ac9-bab6-26e8fb1955b1",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.322033"
+  },
+  {
+    "id": "c426b803-fdfa-435c-ac7e-e7bf21b78cde",
+    "academic_class_subject_id": "c65cf337-17ea-4c00-a6ee-63a2210384c0",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.319471"
+  },
+  {
+    "id": "7aee39a3-fabb-4502-81c1-9ab32be88893",
+    "academic_class_subject_id": "acb0c764-5285-4512-9652-69ab344d61c3",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.312480"
+  },
+  {
+    "id": "1df41129-2dfd-42c4-b6e8-5a79d29affda",
+    "academic_class_subject_id": "9a56bbb8-ffe8-4cc8-aff7-a78014f9164c",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.305852"
+  },
+  {
+    "id": "c10d57c3-bcd3-413d-85cb-97097f29a666",
+    "academic_class_subject_id": "bebe999f-16db-466c-99c9-1b711d16a422",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.301108"
+  },
+  {
+    "id": "d30096ac-6622-410d-b0e8-48aba1f3f745",
+    "academic_class_subject_id": "c8e58237-2c02-44ea-92db-86eb672ed62d",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.299060"
+  },
+  {
+    "id": "de38a555-0f5c-4007-a8e0-e6c4d4cd0ced",
+    "academic_class_subject_id": "1a7b08a3-4a53-4337-b2b2-a450b59ca6d6",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.295908"
+  },
+  {
+    "id": "0ebeacc5-d8b7-4e14-8284-6d5137c423a0",
+    "academic_class_subject_id": "61a357a5-ef46-4ea0-bfbe-59a6ca462dcc",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.287144"
+  },
+  {
+    "id": "786f9229-a2bf-4ab6-a98e-30c3f94a16ae",
+    "academic_class_subject_id": "69b84954-f3c6-4697-9952-324ef768a4a0",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.271751"
+  },
+  {
+    "id": "c651b6b7-f4ee-49f6-bf3e-6cd25b142dd5",
+    "academic_class_subject_id": "b804b06f-d528-450f-b44f-99e72d7e8e13",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.254222"
+  },
+  {
+    "id": "6a051ea0-fdc2-4280-933e-dd9c8ac73c2c",
+    "academic_class_subject_id": "2231f44e-b0bc-46a7-876b-1cac366ac142",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.250307"
+  },
+  {
+    "id": "9c5c177c-647b-4614-85a2-cb280a4dbdd2",
+    "academic_class_subject_id": "6af41448-a39c-4290-a527-bdb1c6aa55fe",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.241692"
+  },
+  {
+    "id": "703be46e-87b8-4171-8af3-ee54a871bde1",
+    "academic_class_subject_id": "c449d917-dd3c-4d71-8745-f26b417b770d",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.234800"
+  },
+  {
+    "id": "eb4be2bd-a712-4284-baf7-6ed892f2c7b4",
+    "academic_class_subject_id": "d873555c-c766-46fb-98fd-391a1dc131a7",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.227476"
+  },
+  {
+    "id": "7d563c70-22a6-48ee-8045-8eba06eea50e",
+    "academic_class_subject_id": "2034a92d-6708-4a8e-b69c-4ef40f7f2332",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.220166"
+  },
+  {
+    "id": "e6dca6ce-f078-4941-9a38-6dd9afe93f11",
+    "academic_class_subject_id": "e09bbbd6-b0ff-4ce5-9790-a99caa06c814",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.216055"
+  },
+  {
+    "id": "9de20d09-bb16-472c-b18d-ca312f14ec60",
+    "academic_class_subject_id": "d9572ae2-8b05-4695-a9dc-c32aefb02bfe",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.207272"
+  },
+  {
+    "id": "73162592-234e-4118-b889-c9ebf8df61ac",
+    "academic_class_subject_id": "b3a15af7-2383-4236-9cff-70387e527ec4",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.203387"
+  },
+  {
+    "id": "8af1530a-00fc-46f9-94cf-3152e456eef6",
+    "academic_class_subject_id": "08f1de5c-5957-40fa-a42b-75518cc9bc5f",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.201427"
+  },
+  {
+    "id": "d3cf5689-4eff-4143-b568-f8de19dcbc15",
+    "academic_class_subject_id": "e7753004-c3bc-440e-a45e-fc2fd88a8723",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.198649"
+  },
+  {
+    "id": "85d687c3-66a5-4ac3-9fcb-da1cf5fc604f",
+    "academic_class_subject_id": "a0bda378-a892-46ce-bf1d-392e96aead7f",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.196747"
+  },
+  {
+    "id": "8e02eab8-d4d3-4def-8c5a-b49770b8e308",
+    "academic_class_subject_id": "d6b7c1b9-f9fc-4a89-8054-4af18b6cd903",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.191087"
+  },
+  {
+    "id": "841681da-48c5-40ac-a10a-f1062bb8fbe9",
+    "academic_class_subject_id": "2a79625f-2ae0-42bb-a4d0-c8e28969b790",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.187609"
+  },
+  {
+    "id": "a6a92906-8bfe-42c9-983a-d0a4fa966de0",
+    "academic_class_subject_id": "b79648b0-9931-4030-a85f-f03ac6e06be4",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.178649"
+  },
+  {
+    "id": "9a1dfa5a-3967-4ee4-bdff-6fb7d72397a1",
+    "academic_class_subject_id": "1c92e253-6bff-4c52-8e9f-7f4b9d6b03c1",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.170321"
+  },
+  {
+    "id": "4ec4c5b7-f3ba-4dea-b683-5d68186fab97",
+    "academic_class_subject_id": "a142c34d-7a23-4326-9272-1488e542083f",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.165084"
+  },
+  {
+    "id": "c615db94-de12-4b05-80ed-40343e641737",
+    "academic_class_subject_id": "39eb0168-3c1b-47e5-9ff5-1de01b3f7c23",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.160423"
+  },
+  {
+    "id": "8e302008-6462-42fc-8359-ce6b71829d27",
+    "academic_class_subject_id": "be479f67-2cbd-44f2-95e3-8aff89c88536",
+    "academic_term_id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "highest_marks": null,
+    "average_marks": null,
+    "created_at": "2026-01-20T18:43:07.152366"
+  },
+  {
+    "id": "31ebb59c-f624-45e0-83f9-16a9b33d210a",
+    "academic_class_subject_id": "666ccf04-8c00-4b79-90d7-2fb5bba0c8e9",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 66,
+    "created_at": "2026-01-20T18:36:18.298958"
+  },
+  {
+    "id": "674852d3-f580-4bb5-b1dd-3eca9baa9b86",
+    "academic_class_subject_id": "aad392c9-5d7e-4a58-9f6a-b2b07f09a7de",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 98,
+    "average_marks": 63,
+    "created_at": "2026-01-20T18:36:18.293192"
+  },
+  {
+    "id": "d9335174-c493-4536-a859-d857eada5fc9",
+    "academic_class_subject_id": "951f0f83-5fd8-4e11-aab6-45fb561ba076",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 86,
+    "average_marks": 59,
+    "created_at": "2026-01-20T18:36:18.287931"
+  },
+  {
+    "id": "faaf090f-5072-4c68-b6e5-322c5a58bf89",
+    "academic_class_subject_id": "6f1b9c1e-1da1-4f93-ace9-9c41e44f1997",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 95,
+    "average_marks": 73,
+    "created_at": "2026-01-20T18:36:18.284084"
+  },
+  {
+    "id": "5d96e678-090c-4616-9260-5ab2373104a7",
+    "academic_class_subject_id": "7d76789a-d3ca-47f8-a942-59ef1d700bbd",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 93,
+    "average_marks": 63,
+    "created_at": "2026-01-20T18:36:18.275632"
+  },
+  {
+    "id": "a0104ea3-8827-4004-a6b6-9aa0a40a1169",
+    "academic_class_subject_id": "f2e8d1dc-3355-41cb-8eff-fe2326bdddcc",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 86,
+    "average_marks": 50,
+    "created_at": "2026-01-20T18:36:18.267925"
+  },
+  {
+    "id": "7bbac03f-50eb-487c-9c37-fcf3add11e7a",
+    "academic_class_subject_id": "e3d34a92-925a-4aed-a09b-6bfdeeed64b4",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 100,
+    "average_marks": 73,
+    "created_at": "2026-01-20T18:36:18.263984"
+  },
+  {
+    "id": "297dd762-3800-4348-b295-ed4af8887c4c",
+    "academic_class_subject_id": "51a680d1-0a4d-45f6-b1b0-04b430f38991",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 93,
+    "average_marks": 67,
+    "created_at": "2026-01-20T18:36:18.258774"
+  },
+  {
+    "id": "062de000-6e43-482a-abdb-25c6b004201a",
+    "academic_class_subject_id": "28c5f3d0-9e51-4796-90c4-0f42a0364c4c",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 93,
+    "created_at": "2026-01-20T18:36:18.250035"
+  },
+  {
+    "id": "f6f847c2-32f6-46df-8288-4a47062d014e",
+    "academic_class_subject_id": "843b3d22-e03e-4729-8957-5712bf687f09",
+    "academic_term_id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "highest_marks": 97,
+    "average_marks": 65,
+    "created_at": "2026-01-20T18:27:56.504908"
+  }
+]

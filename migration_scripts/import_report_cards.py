@@ -185,7 +185,6 @@ def build_enrollment_map(
 
 def build_class_subject_map(
     session: Session,
-    academic_term_id: UUID,
 ) -> dict[UUID, dict[str, UUID]]:
     rows = session.exec(
         select(
@@ -194,7 +193,6 @@ def build_class_subject_map(
             Subject.name,
         )
         .join(Subject)
-        .where(AcademicClassSubject.academic_term_id == academic_term_id)
     ).all()
     class_subjects: dict[UUID, dict[str, UUID]] = {}
     for class_subject_id, class_id, subject_name in rows:
@@ -234,7 +232,6 @@ def ensure_seed_subject(
 
 def ensure_seed_class_subject(
     session: Session,
-    academic_term_id: UUID,
     template: dict[str, Any],
     subject_id: UUID,
 ) -> tuple[AcademicClassSubject, bool]:
@@ -245,19 +242,15 @@ def ensure_seed_class_subject(
     statement = select(AcademicClassSubject).where(
         AcademicClassSubject.academic_class_id == class_id,
         AcademicClassSubject.subject_id == subject_id,
-        AcademicClassSubject.academic_term_id == academic_term_id,
     )
     existing = session.exec(statement).first()
     if existing:
         return existing, False
     class_subject = AcademicClassSubject(
         academic_class_id=class_id,
-        academic_term_id=academic_term_id,
         subject_id=subject_id,
         position=int(template.get("position") or 1),
         is_additional=bool(template.get("is_additional")),
-        highest_marks=template.get("highest_marks"),
-        average_marks=template.get("average_marks"),
     )
     session.add(class_subject)
     session.flush()
@@ -449,7 +442,7 @@ def process_term(
         raise ValueError(
             f"Academic term {term_type.value} has no ID."
         )
-    class_subjects = build_class_subject_map(session, academic_term_id)
+    class_subjects = build_class_subject_map(session)
 
     report_cards_by_enrollment: dict[UUID, ReportCard] = {}
     existing_cards = session.exec(
@@ -545,7 +538,6 @@ def process_term(
                     continue
                 class_subject, class_subject_created = ensure_seed_class_subject(
                     session,
-                    academic_term_id=academic_term_id,
                     template=template,
                     subject_id=subject.id,
                 )

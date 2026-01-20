@@ -7,7 +7,10 @@ from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, SQLModel, col, select
 
 from db import get_session
+from models.academic_class import AcademicClass
 from models.academic_class_subject import AcademicClassSubject
+from models.academic_class_subject_term import AcademicClassSubjectTerm
+from models.academic_session import AcademicSession
 from models.academic_term import AcademicTerm, AcademicTermType
 from models.enrollment import Enrollment, EnrollmentReadRaw
 from models.report_card import (ReportCard, ReportCardCreate,
@@ -27,6 +30,16 @@ router = APIRouter(
 
 class ReportCardGenerationResponse(SQLModel):
     total: int
+
+
+class ReportCardSubjectSyncResponse(SQLModel):
+    academic_session_id: UUID
+    classes: int
+    terms: int
+    subjects: int
+    created: int
+    updated: int
+    skipped: int
 
 
 @router.post("", response_model=ReportCardRead)
@@ -359,6 +372,173 @@ def generate_report_cards(
         created += 1
 
     return ReportCardGenerationResponse(total=created)
+
+
+@router.post("/sync-marks", response_model=ReportCardSubjectSyncResponse)
+def sync_class_subject_marks(
+    academic_session_id: UUID = Query(...),
+    session: Session = Depends(get_session),
+):
+    academic_session = session.get(AcademicSession, academic_session_id)
+    if not academic_session:
+        raise HTTPException(
+            status_code=404, detail="Academic session not found"
+        )
+
+    academic_terms = session.exec(
+        select(AcademicTerm).where(
+            AcademicTerm.academic_session_id == academic_session_id
+        )
+    ).all()
+    academic_classes = session.exec(
+        select(AcademicClass).where(
+            AcademicClass.academic_session_id == academic_session_id
+        )
+    ).all()
+
+    class_ids = [
+        academic_class.id
+        for academic_class in academic_classes
+        if academic_class.id
+    ]
+    class_subjects_by_class_id: dict[
+        UUID, list[AcademicClassSubject]
+    ] = {}
+    if class_ids:
+        class_subjects = session.exec(
+            select(AcademicClassSubject).where(
+                col(AcademicClassSubject.academic_class_id).in_(class_ids)
+            )
+        ).all()
+        for class_subject in class_subjects:
+            if class_subject.academic_class_id is None:
+                continue
+            class_subjects_by_class_id.setdefault(
+                class_subject.academic_class_id, []
+            ).append(class_subject)
+
+    created = 0
+    updated = 0
+    skipped = 0
+    subjects = 0
+
+    for academic_term in academic_terms:
+        if not academic_term.id:
+            skipped += 1
+            continue
+        for academic_class in academic_classes:
+            if not academic_class.id:
+                skipped += 1
+                continue
+            class_subjects = class_subjects_by_class_id.get(
+                academic_class.id, []
+            )
+            class_subject_ids = [
+                class_subject.id
+                for class_subject in class_subjects
+                if class_subject.id
+            ]
+            if not class_subject_ids:
+                continue
+            existing_terms = session.exec(
+                select(AcademicClassSubjectTerm).where(
+                    AcademicClassSubjectTerm.academic_term_id
+                    == academic_term.id,
+                    col(
+                        AcademicClassSubjectTerm.academic_class_subject_id
+                    ).in_(class_subject_ids),
+                )
+            ).all()
+            existing_by_subject_id = {
+                term.academic_class_subject_id: term
+                for term in existing_terms
+            }
+
+            for class_subject in class_subjects:
+                if not class_subject.id:
+                    skipped += 1
+                    continue
+                subjects += 1
+                use_final_only = (
+                    academic_term.term_type == AcademicTermType.QUARTERLY
+                    or class_subject.is_additional
+                )
+                if use_final_only:
+                    total_expr = func.coalesce(
+                        ReportCardSubject.final_marks, 0
+                    )
+                else:
+                    total_expr = (
+                        func.coalesce(ReportCardSubject.mid_term, 0)
+                        + func.coalesce(ReportCardSubject.notebook, 0)
+                        + func.coalesce(ReportCardSubject.assignment, 0)
+                        + func.coalesce(ReportCardSubject.class_test, 0)
+                        + func.coalesce(ReportCardSubject.final_term, 0)
+                    )
+
+                max_total, avg_total = session.exec(
+                    select(func.max(total_expr), func.avg(total_expr))
+                    .select_from(ReportCardSubject)
+                    .join(
+                        ReportCard,
+                        col(ReportCard.id)
+                        == col(ReportCardSubject.report_card_id),
+                    )
+                    .join(
+                        Enrollment,
+                        col(Enrollment.id) == col(ReportCard.enrollment_id),
+                    )
+                    .where(
+                        ReportCardSubject.academic_class_subject_id
+                        == class_subject.id,
+                        ReportCard.academic_term_id == academic_term.id,
+                        Enrollment.academic_class_id == academic_class.id,
+                    )
+                ).one()
+
+                highest_marks = (
+                    int(max_total) if max_total is not None else None
+                )
+                average_marks = (
+                    int(round(avg_total)) if avg_total is not None else None
+                )
+
+                class_subject_term = existing_by_subject_id.get(
+                    class_subject.id
+                )
+                if not class_subject_term:
+                    class_subject_term = AcademicClassSubjectTerm(
+                        academic_class_subject_id=class_subject.id,
+                        academic_term_id=academic_term.id,
+                        highest_marks=highest_marks,
+                        average_marks=average_marks,
+                    )
+                    session.add(class_subject_term)
+                    created += 1
+                    continue
+
+                if (
+                    class_subject_term.highest_marks != highest_marks
+                    or class_subject_term.average_marks != average_marks
+                ):
+                    class_subject_term.highest_marks = highest_marks
+                    class_subject_term.average_marks = average_marks
+                    session.add(class_subject_term)
+                    updated += 1
+                else:
+                    skipped += 1
+
+    session.commit()
+
+    return ReportCardSubjectSyncResponse(
+        academic_session_id=academic_session_id,
+        classes=len(academic_classes),
+        terms=len(academic_terms),
+        subjects=subjects,
+        created=created,
+        updated=updated,
+        skipped=skipped,
+    )
 
 
 def populate_rank_and_percentage(

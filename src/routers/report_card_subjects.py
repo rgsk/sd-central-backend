@@ -200,6 +200,8 @@ def partial_update_report_card_subject(
     return db_report_card_subject
 
 
+
+
 @router.delete("/{report_card_subject_id}")
 def delete_report_card_subject(
     report_card_subject_id: UUID,

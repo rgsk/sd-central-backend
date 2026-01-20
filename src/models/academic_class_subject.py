@@ -102,6 +102,7 @@ class AcademicClassSubjectRead(
 
 class AcademicClassSubjectReadWithSubject(AcademicClassSubjectRead):
     subject: Optional["SubjectRead"] = None
+    class_subject_terms: list["AcademicClassSubjectTerm"] = []
 
 
 class AcademicClassSubjectReorderItem(SQLModel):
@@ -116,3 +117,21 @@ class AcademicClassSubjectReorderRequest(SQLModel):
 class AcademicClassSubjectListResponse(SQLModel):
     total: int
     items: list[AcademicClassSubjectReadWithSubject]
+
+
+try:
+    from models.academic_class_subject_term import AcademicClassSubjectTerm
+
+    AcademicClassSubjectReadWithSubject.model_rebuild(
+        _types_namespace={
+            "SubjectRead": SubjectRead,
+            "AcademicClassSubjectTerm": AcademicClassSubjectTerm,
+        }
+    )
+    AcademicClassSubjectListResponse.model_rebuild(
+        _types_namespace={
+            "AcademicClassSubjectReadWithSubject": AcademicClassSubjectReadWithSubject,
+        }
+    )
+except ImportError:
+    pass

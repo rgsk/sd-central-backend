@@ -34,6 +34,8 @@ SESSION_YEAR = "2025-2026"
 
 QUARTERLY_DATA = "data/exam_marks_2025-2026_quarterly.json"
 HALF_YEARLY_DATA = "data/exam_marks_2025-2026_half-yearly.json"
+SUBJECTS_DATA = "seeders/data/old_data/subjects.json"
+CLASS_SUBJECTS_DATA = "seeders/data/old_data/academic_class_subjects.json"
 
 SPECIAL_KEYS = {"ATTENDANCE", "GRADING SCALES", "REPORT DETAILS"}
 
@@ -66,6 +68,21 @@ COMPONENT_MAP = {
 def load_json(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def load_json_list(path: Path) -> list[dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def parse_datetime(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def normalize_key(value: str | None) -> str:
+    return normalize_subject(value)
 
 
 def parse_int(value: Any) -> int | None:
@@ -109,6 +126,18 @@ def candidate_subject_names(normalized: str) -> list[str]:
         candidates.append(trimmed)
         candidates.extend(ALIAS_SUBJECTS.get(trimmed, []))
     return list(dict.fromkeys(candidates))
+
+
+def resolve_seed_subject(
+    raw_subject: str,
+    seed_subjects_by_name: dict[str, dict[str, Any]],
+) -> dict[str, Any] | None:
+    normalized = normalize_subject(raw_subject)
+    for candidate in candidate_subject_names(normalized):
+        seed_subject = seed_subjects_by_name.get(candidate)
+        if seed_subject:
+            return seed_subject
+    return None
 
 
 def get_academic_session(session: Session, year: str) -> AcademicSession:
@@ -172,6 +201,91 @@ def build_class_subject_map(
         normalized = normalize_subject(subject_name)
         class_subjects.setdefault(class_id, {})[normalized] = class_subject_id
     return class_subjects
+
+
+def ensure_seed_subject(
+    session: Session,
+    seed_subject: dict[str, Any],
+) -> tuple[Subject, bool]:
+    subject_id_raw = seed_subject.get("id")
+    subject_name = seed_subject.get("name")
+    if not subject_id_raw or not subject_name:
+        raise ValueError("Seed subject is missing id or name.")
+    subject_id = UUID(subject_id_raw)
+    existing = session.get(Subject, subject_id)
+    if existing:
+        return existing, False
+    statement = select(Subject).where(Subject.name == subject_name)
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+    created_at = parse_datetime(seed_subject.get("created_at"))
+    subject = Subject(
+        id=subject_id,
+        name=subject_name,
+        created_at=created_at or datetime.now(timezone.utc),
+    )
+    session.add(subject)
+    session.flush()
+    return subject, True
+
+
+def ensure_seed_class_subject(
+    session: Session,
+    academic_term_id: UUID,
+    template: dict[str, Any],
+    subject_id: UUID,
+) -> tuple[AcademicClassSubject, bool]:
+    class_id_raw = template.get("academic_class_id")
+    if not class_id_raw:
+        raise ValueError("Seed class subject missing academic_class_id.")
+    class_id = UUID(class_id_raw)
+    statement = select(AcademicClassSubject).where(
+        AcademicClassSubject.academic_class_id == class_id,
+        AcademicClassSubject.subject_id == subject_id,
+        AcademicClassSubject.academic_term_id == academic_term_id,
+    )
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+    class_subject = AcademicClassSubject(
+        academic_class_id=class_id,
+        academic_term_id=academic_term_id,
+        subject_id=subject_id,
+        position=int(template.get("position") or 1),
+        is_additional=bool(template.get("is_additional")),
+        highest_marks=template.get("highest_marks"),
+        average_marks=template.get("average_marks"),
+    )
+    session.add(class_subject)
+    session.flush()
+    return class_subject, True
+
+
+def build_seed_subject_map(
+    seed_subjects: list[dict[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    seed_map: dict[str, dict[str, Any]] = {}
+    for subject in seed_subjects:
+        name = subject.get("name")
+        if not name:
+            continue
+        seed_map[normalize_key(name)] = subject
+    return seed_map
+
+
+def build_seed_class_subject_templates(
+    seed_class_subjects: list[dict[str, Any]],
+) -> dict[tuple[UUID, UUID], dict[str, Any]]:
+    templates: dict[tuple[UUID, UUID], dict[str, Any]] = {}
+    for class_subject in seed_class_subjects:
+        class_id_raw = class_subject.get("academic_class_id")
+        subject_id_raw = class_subject.get("subject_id")
+        if not class_id_raw or not subject_id_raw:
+            continue
+        key = (UUID(class_id_raw), UUID(subject_id_raw))
+        templates[key] = class_subject
+    return templates
 
 
 def get_or_create_report_card(
@@ -319,6 +433,8 @@ def process_term(
     term_type: AcademicTermType,
     data_path: Path,
     enrollment_map: dict[UUID, tuple[UUID, UUID]],
+    seed_subjects_by_name: dict[str, dict[str, Any]],
+    seed_class_subject_templates: dict[tuple[UUID, UUID], dict[str, Any]],
 ) -> dict[str, int]:
     data = load_json(data_path)
     records = data.get("records")
@@ -351,6 +467,8 @@ def process_term(
         "report_card_subjects_skipped": 0,
         "missing_enrollment": 0,
         "missing_subject": 0,
+        "subjects_created": 0,
+        "class_subjects_created": 0,
     }
 
     for student_id_raw, record in records.items():
@@ -402,9 +520,45 @@ def process_term(
                 raw_subject,
             )
             if not class_subject_id:
-                stats["missing_subject"] += 1
-                stats["report_card_subjects_skipped"] += 1
-                continue
+                seed_subject = resolve_seed_subject(
+                    raw_subject, seed_subjects_by_name
+                )
+                if not seed_subject:
+                    stats["missing_subject"] += 1
+                    stats["report_card_subjects_skipped"] += 1
+                    continue
+                subject, subject_created = ensure_seed_subject(
+                    session, seed_subject
+                )
+                if subject.id is None:
+                    stats["missing_subject"] += 1
+                    stats["report_card_subjects_skipped"] += 1
+                    continue
+                template = seed_class_subject_templates.get(
+                    (class_id, subject.id)
+                )
+                if not template:
+                    stats["missing_subject"] += 1
+                    stats["report_card_subjects_skipped"] += 1
+                    continue
+                class_subject, class_subject_created = ensure_seed_class_subject(
+                    session,
+                    academic_term_id=academic_term_id,
+                    template=template,
+                    subject_id=subject.id,
+                )
+                if class_subject.id is None:
+                    stats["missing_subject"] += 1
+                    stats["report_card_subjects_skipped"] += 1
+                    continue
+                class_subject_id = class_subject.id
+                class_subjects.setdefault(class_id, {})[
+                    normalize_subject(subject.name)
+                ] = class_subject_id
+                if subject_created:
+                    stats["subjects_created"] += 1
+                if class_subject_created:
+                    stats["class_subjects_created"] += 1
 
             fields = build_subject_fields(raw_value)
             existing_subject = subject_map.get(class_subject_id)
@@ -440,8 +594,17 @@ def main() -> None:
     base_dir = Path(__file__).resolve().parents[1]
     quarterly_path = base_dir / QUARTERLY_DATA
     half_yearly_path = base_dir / HALF_YEARLY_DATA
+    subjects_path = base_dir / SUBJECTS_DATA
+    class_subjects_path = base_dir / CLASS_SUBJECTS_DATA
 
     with Session(engine) as session:
+        seed_subjects = load_json_list(subjects_path)
+        seed_class_subjects = load_json_list(class_subjects_path)
+        seed_subjects_by_name = build_seed_subject_map(seed_subjects)
+        seed_class_subject_templates = build_seed_class_subject_templates(
+            seed_class_subjects
+        )
+
         academic_session = get_academic_session(session, SESSION_YEAR)
         academic_session_id = academic_session.id
         if academic_session_id is None:
@@ -458,6 +621,8 @@ def main() -> None:
             term_type=AcademicTermType.QUARTERLY,
             data_path=quarterly_path,
             enrollment_map=enrollment_map,
+            seed_subjects_by_name=seed_subjects_by_name,
+            seed_class_subject_templates=seed_class_subject_templates,
         )
         half_yearly_stats = process_term(
             session=session,
@@ -465,6 +630,8 @@ def main() -> None:
             term_type=AcademicTermType.HALF_YEARLY,
             data_path=half_yearly_path,
             enrollment_map=enrollment_map,
+            seed_subjects_by_name=seed_subjects_by_name,
+            seed_class_subject_templates=seed_class_subject_templates,
         )
 
     print("Quarterly stats:", quarterly_stats)

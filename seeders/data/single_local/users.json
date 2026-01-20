@@ -1,0 +1,11 @@
+[
+  {
+    "id": "10cc3b2f-0d6a-451b-a295-d979e145edcc",
+    "email": "rahulguptasde@gmail.com",
+    "role": "admin",
+    "default_academic_session_id": "73638a89-083d-4f5a-b053-d1f05aa68216",
+    "default_academic_term_id": "20938aa4-fa54-48b9-a598-fb67b329d715",
+    "default_academic_class_id": "25fce98a-c978-4efb-84e5-91beeac73db3",
+    "created_at": "2026-01-20T16:19:19"
+  }
+]

@@ -8,6 +8,8 @@ from db import get_session
 from models.academic_class import AcademicClass, AcademicClassReadRaw
 from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectRead)
+from models.academic_class_subject_term import (
+    AcademicClassSubjectTerm, AcademicClassSubjectTermRead)
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermReadRaw
 from models.date_sheet import DateSheet, DateSheetReadRaw
@@ -80,6 +82,11 @@ def list_db_data(session: Session = Depends(get_session)):
         "academic_class_subjects": session.exec(
             select(AcademicClassSubject).order_by(
                 col(AcademicClassSubject.created_at).desc()
+            )
+        ).all(),
+        "academic_class_subject_terms": session.exec(
+            select(AcademicClassSubjectTerm).order_by(
+                col(AcademicClassSubjectTerm.created_at).desc()
             )
         ).all(),
         "report_cards": session.exec(
@@ -160,6 +167,20 @@ def list_raw_academic_class_subjects(
 ):
     statement = select(AcademicClassSubject).order_by(
         col(AcademicClassSubject.created_at).desc()
+    )
+    results = session.exec(statement).all()
+    return results
+
+
+@router.get(
+    "/academic_class_subject_terms",
+    response_model=list[AcademicClassSubjectTermRead],
+)
+def list_raw_academic_class_subject_terms(
+    session: Session = Depends(get_session),
+):
+    statement = select(AcademicClassSubjectTerm).order_by(
+        col(AcademicClassSubjectTerm.created_at).desc()
     )
     results = session.exec(statement).all()
     return results

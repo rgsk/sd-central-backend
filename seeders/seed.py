@@ -17,6 +17,9 @@ BASE_DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 from db import engine  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
 from models.academic_class_subject import AcademicClassSubject  # noqa: E402
+from models.academic_class_subject_term import (  # noqa: E402
+    AcademicClassSubjectTerm,
+)
 from models.academic_session import AcademicSession  # noqa: E402
 from models.academic_term import AcademicTerm, AcademicTermType  # noqa: E402
 from models.date_sheet import DateSheet  # noqa: E402
@@ -281,6 +284,44 @@ def get_or_create_academic_class_subject(
     return class_subject, True
 
 
+def get_or_create_academic_class_subject_term(
+    session: Session,
+    academic_class_subject_term_id: UUID,
+    academic_class_subject_id: UUID,
+    academic_term_id: UUID,
+    highest_marks: int | None,
+    average_marks: int | None,
+    created_at: datetime,
+) -> tuple[AcademicClassSubjectTerm, bool]:
+    existing = session.get(
+        AcademicClassSubjectTerm, academic_class_subject_term_id
+    )
+    if existing:
+        return existing, False
+
+    statement = select(AcademicClassSubjectTerm).where(
+        AcademicClassSubjectTerm.academic_class_subject_id
+        == academic_class_subject_id,
+        AcademicClassSubjectTerm.academic_term_id == academic_term_id,
+    )
+    existing = session.exec(statement).first()
+    if existing:
+        return existing, False
+
+    class_subject_term = AcademicClassSubjectTerm(
+        id=academic_class_subject_term_id,
+        academic_class_subject_id=academic_class_subject_id,
+        academic_term_id=academic_term_id,
+        highest_marks=highest_marks,
+        average_marks=average_marks,
+        created_at=created_at,
+    )
+    session.add(class_subject_term)
+    session.commit()
+    session.refresh(class_subject_term)
+    return class_subject_term, True
+
+
 def get_or_create_report_card(
     session: Session,
     report_card_id: UUID,
@@ -489,6 +530,7 @@ def seed_students(
     tuple[int, int],
     tuple[int, int],
     tuple[int, int],
+    tuple[int, int],
 ]:
     class_inserted = 0
     class_skipped = 0
@@ -504,6 +546,8 @@ def seed_students(
     subject_skipped = 0
     class_subject_inserted = 0
     class_subject_skipped = 0
+    class_subject_term_inserted = 0
+    class_subject_term_skipped = 0
     report_card_inserted = 0
     report_card_skipped = 0
     report_card_subject_inserted = 0
@@ -531,6 +575,9 @@ def seed_students(
     subjects = load_json(os.path.join(data_dir, "subjects.json"))
     academic_class_subjects = load_json(
         os.path.join(data_dir, "academic_class_subjects.json")
+    )
+    academic_class_subject_terms = load_json(
+        os.path.join(data_dir, "academic_class_subject_terms.json")
     )
     report_cards = load_json(os.path.join(data_dir, "report_cards.json"))
     report_card_subjects = load_json(
@@ -622,6 +669,24 @@ def seed_students(
             class_subject_inserted += 1
         else:
             class_subject_skipped += 1
+
+    for raw in academic_class_subject_terms:
+        academic_class_subject_term_id = UUID(raw["id"])
+        _, created = get_or_create_academic_class_subject_term(
+            session=session,
+            academic_class_subject_term_id=academic_class_subject_term_id,
+            academic_class_subject_id=UUID(
+                raw["academic_class_subject_id"]
+            ),
+            academic_term_id=UUID(raw["academic_term_id"]),
+            highest_marks=raw.get("highest_marks"),
+            average_marks=raw.get("average_marks"),
+            created_at=parse_created_at(raw["created_at"]),
+        )
+        if created:
+            class_subject_term_inserted += 1
+        else:
+            class_subject_term_skipped += 1
 
     for raw in students:
         student_id = UUID(raw["id"])
@@ -777,6 +842,7 @@ def seed_students(
         (enrollment_inserted, enrollment_skipped),
         (subject_inserted, subject_skipped),
         (class_subject_inserted, class_subject_skipped),
+        (class_subject_term_inserted, class_subject_term_skipped),
         (report_card_inserted, report_card_skipped),
         (report_card_subject_inserted, report_card_subject_skipped),
         (date_sheet_inserted, date_sheet_skipped),
@@ -807,6 +873,7 @@ if __name__ == "__main__":
             (enrollment_inserted, enrollment_skipped),
             (subject_inserted, subject_skipped),
             (class_subject_inserted, class_subject_skipped),
+            (class_subject_term_inserted, class_subject_term_skipped),
             (report_card_inserted, report_card_skipped),
             (report_card_subject_inserted, report_card_subject_skipped),
             (date_sheet_inserted, date_sheet_skipped),
@@ -848,6 +915,11 @@ if __name__ == "__main__":
         "Seeded academic class subjects.",
         f"Inserted: {class_subject_inserted}.",
         f"Skipped (already existed): {class_subject_skipped}.",
+    )
+    print(
+        "Seeded academic class subject terms.",
+        f"Inserted: {class_subject_term_inserted}.",
+        f"Skipped (already existed): {class_subject_term_skipped}.",
     )
     print(
         "Seeded report cards.",

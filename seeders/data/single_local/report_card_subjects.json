@@ -1,0 +1,110 @@
+[
+  {
+    "id": "9ddbc7d7-ada9-4183-9986-98098db7b8f7",
+    "report_card_id": "c826c201-5391-468c-bea4-da0f34310210",
+    "academic_class_subject_id": "4dc1fdbc-d161-4f69-a850-46f228a224b1",
+    "mid_term": 5,
+    "notebook": 5,
+    "assignment": 5,
+    "class_test": 5,
+    "final_term": 5,
+    "final_marks": null,
+    "created_at": "2026-01-20T17:46:31.196160"
+  },
+  {
+    "id": "6bef2a03-a33f-4604-b6a3-74ddea5152ad",
+    "report_card_id": "98b58fa2-1ed0-4872-9d18-1fe500b690a4",
+    "academic_class_subject_id": "4dc1fdbc-d161-4f69-a850-46f228a224b1",
+    "mid_term": null,
+    "notebook": null,
+    "assignment": null,
+    "class_test": null,
+    "final_term": null,
+    "final_marks": 5,
+    "created_at": "2026-01-20T17:46:31.196076"
+  },
+  {
+    "id": "c48de2f5-877f-44f2-9782-6800ed367f57",
+    "report_card_id": "ca055093-2668-4a9a-bc0f-c9cae1fef36a",
+    "academic_class_subject_id": "4dc1fdbc-d161-4f69-a850-46f228a224b1",
+    "mid_term": null,
+    "notebook": null,
+    "assignment": null,
+    "class_test": null,
+    "final_term": null,
+    "final_marks": null,
+    "created_at": "2026-01-20T17:46:31.195916"
+  },
+  {
+    "id": "bcecc5b5-4246-4547-be44-c25d565cc8ff",
+    "report_card_id": "ca055093-2668-4a9a-bc0f-c9cae1fef36a",
+    "academic_class_subject_id": "a26e5c42-ecfd-406e-b137-d458e002ea3d",
+    "mid_term": 5,
+    "notebook": 5,
+    "assignment": 5,
+    "class_test": 5,
+    "final_term": 8,
+    "final_marks": null,
+    "created_at": "2026-01-20T17:37:48.490228"
+  },
+  {
+    "id": "3750649b-3616-412c-8c67-971fd0c8dc9f",
+    "report_card_id": "ca055093-2668-4a9a-bc0f-c9cae1fef36a",
+    "academic_class_subject_id": "5e779fb1-859c-42fc-866e-b285fa999ead",
+    "mid_term": 5,
+    "notebook": 5,
+    "assignment": 5,
+    "class_test": 5,
+    "final_term": 7,
+    "final_marks": null,
+    "created_at": "2026-01-20T17:37:48.490126"
+  },
+  {
+    "id": "205da58a-bf50-4496-8ec4-ea83793061a1",
+    "report_card_id": "c826c201-5391-468c-bea4-da0f34310210",
+    "academic_class_subject_id": "a26e5c42-ecfd-406e-b137-d458e002ea3d",
+    "mid_term": 5,
+    "notebook": 5,
+    "assignment": 5,
+    "class_test": 5,
+    "final_term": 10,
+    "final_marks": null,
+    "created_at": "2026-01-20T17:08:02.063797"
+  },
+  {
+    "id": "04296d71-50a5-4ff3-97fa-f90ef65b8d98",
+    "report_card_id": "c826c201-5391-468c-bea4-da0f34310210",
+    "academic_class_subject_id": "5e779fb1-859c-42fc-866e-b285fa999ead",
+    "mid_term": 5,
+    "notebook": 5,
+    "assignment": 5,
+    "class_test": 5,
+    "final_term": 5,
+    "final_marks": null,
+    "created_at": "2026-01-20T17:08:02.063358"
+  },
+  {
+    "id": "f26127a9-9db8-4713-9faa-638d926d8ce5",
+    "report_card_id": "98b58fa2-1ed0-4872-9d18-1fe500b690a4",
+    "academic_class_subject_id": "a26e5c42-ecfd-406e-b137-d458e002ea3d",
+    "mid_term": null,
+    "notebook": null,
+    "assignment": null,
+    "class_test": null,
+    "final_term": null,
+    "final_marks": 89,
+    "created_at": "2026-01-20T16:58:49.533937"
+  },
+  {
+    "id": "66953df6-3b56-4265-b114-23b78c79fb3f",
+    "report_card_id": "98b58fa2-1ed0-4872-9d18-1fe500b690a4",
+    "academic_class_subject_id": "5e779fb1-859c-42fc-866e-b285fa999ead",
+    "mid_term": null,
+    "notebook": null,
+    "assignment": null,
+    "class_test": null,
+    "final_term": null,
+    "final_marks": 49,
+    "created_at": "2026-01-20T16:58:49.533625"
+  }
+]

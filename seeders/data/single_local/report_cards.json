@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ca055093-2668-4a9a-bc0f-c9cae1fef36a",
+    "enrollment_id": "40576e17-3ee3-4449-87f2-2fb514d3818d",
+    "academic_term_id": "7ca00366-6ff2-4c50-9508-6497b1953776",
+    "work_education_grade": null,
+    "art_education_grade": null,
+    "physical_education_grade": null,
+    "behaviour_grade": null,
+    "attendance_present": null,
+    "result": null,
+    "created_at": "2026-01-20T17:37:48.486589"
+  },
+  {
+    "id": "c826c201-5391-468c-bea4-da0f34310210",
+    "enrollment_id": "40576e17-3ee3-4449-87f2-2fb514d3818d",
+    "academic_term_id": "5397d956-d0a7-4797-b530-a5336bcb338d",
+    "work_education_grade": null,
+    "art_education_grade": null,
+    "physical_education_grade": null,
+    "behaviour_grade": null,
+    "attendance_present": null,
+    "result": null,
+    "created_at": "2026-01-20T17:08:02.051097"
+  },
+  {
+    "id": "98b58fa2-1ed0-4872-9d18-1fe500b690a4",
+    "enrollment_id": "40576e17-3ee3-4449-87f2-2fb514d3818d",
+    "academic_term_id": "20938aa4-fa54-48b9-a598-fb67b329d715",
+    "work_education_grade": null,
+    "art_education_grade": null,
+    "physical_education_grade": null,
+    "behaviour_grade": null,
+    "attendance_present": null,
+    "result": null,
+    "created_at": "2026-01-20T16:58:49.527887"
+  }
+]

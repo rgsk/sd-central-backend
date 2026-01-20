@@ -30,7 +30,6 @@ def create_academic_class_subject_term(
     try:
         session.commit()
     except IntegrityError as err:
-        print(err)
         session.rollback()
         raise HTTPException(
             status_code=409,

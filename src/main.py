@@ -1,9 +1,9 @@
 from contextlib import asynccontextmanager
 
 from fastapi import APIRouter, Depends, FastAPI, Header, Request
-from sqlmodel import SQLModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
+from sqlmodel import SQLModel
 
 from admin import setup_admin
 from db import engine
@@ -23,28 +23,35 @@ from routers import (aws, date_sheet_subjects, date_sheets, enrollments,
                      subjects, test, users)
 
 
+def create_all_models_without_migrations(allowed: bool):
+    if env.APP_ENV is AppEnv.DEVELOPMENT and \
+            'localhost' in env.DATABASE_URL and allowed:
+        # listing them here is important for create_all to run for all
+        all_models = [
+            academic_class,
+            academic_class_subject,
+            academic_class_subject_term,
+            academic_session,
+            academic_term,
+            app_settings,
+            date_sheet,
+            date_sheet_subject,
+            enrollment,
+            report_card,
+            report_card_subject,
+            student,
+            subject,
+            user,
+        ]
+        # below line creates all the models without running migrations
+        SQLModel.metadata.create_all(engine)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup logic
-    # listing them here is important for create_all to run for all
-    all_models = [
-        academic_class,
-        academic_class_subject,
-        academic_class_subject_term,
-        academic_session,
-        academic_term,
-        app_settings,
-        date_sheet,
-        date_sheet_subject,
-        enrollment,
-        report_card,
-        report_card_subject,
-        student,
-        subject,
-        user,
-    ]
-    # below line creates all the models without running migrations
-    SQLModel.metadata.create_all(engine)
+
+    create_all_models_without_migrations(allowed=True)
 
     yield
     # Shutdown logic (optional)

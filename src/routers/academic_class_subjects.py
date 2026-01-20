@@ -57,8 +57,6 @@ def create_academic_class_subject(
         .where(
             Enrollment.academic_class_id
             == academic_class_subject.academic_class_id,
-            ReportCard.academic_term_id
-            == academic_class_subject.academic_term_id,
         )
     ).all()
     report_card_ids = [
@@ -99,8 +97,6 @@ def create_academic_class_subject(
         select(DateSheet.id).where(
             DateSheet.academic_class_id
             == academic_class_subject.academic_class_id,
-            DateSheet.academic_term_id
-            == academic_class_subject.academic_term_id,
         )
     ).all()
     date_sheet_ids = [
@@ -144,7 +140,6 @@ def create_academic_class_subject(
 def list_academic_class_subjects(
     academic_class_id: UUID | None = Query(default=None),
     subject_id: UUID | None = Query(default=None),
-    academic_term_id: UUID | None = Query(default=None),
     is_additional: bool | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
@@ -158,10 +153,6 @@ def list_academic_class_subjects(
         count_statement = count_statement.where(condition)
     if subject_id:
         condition = AcademicClassSubject.subject_id == subject_id
-        statement = statement.where(condition)
-        count_statement = count_statement.where(condition)
-    if academic_term_id:
-        condition = AcademicClassSubject.academic_term_id == academic_term_id
         statement = statement.where(condition)
         count_statement = count_statement.where(condition)
     if is_additional is not None:
@@ -213,23 +204,17 @@ def reorder_academic_class_subjects(
         )
 
     group_keys = {
-        (
-            item.academic_class_id,
-            item.academic_term_id,
-            item.is_additional,
-        )
-        for item in db_items
+        (item.academic_class_id, item.is_additional) for item in db_items
     }
     if len(group_keys) != 1:
         raise HTTPException(
             status_code=400,
-            detail="Reorder list must belong to the same class, term, and group",
+            detail="Reorder list must belong to the same class and group",
         )
-    academic_class_id, academic_term_id, is_additional = next(iter(group_keys))
+    academic_class_id, is_additional = next(iter(group_keys))
     max_position = session.exec(
         select(func.max(AcademicClassSubject.position)).where(
             AcademicClassSubject.academic_class_id == academic_class_id,
-            AcademicClassSubject.academic_term_id == academic_term_id,
             AcademicClassSubject.is_additional == is_additional,
         )
     ).one()

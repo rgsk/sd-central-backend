@@ -7,6 +7,7 @@ from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
+from models.academic_class_subject_term import AcademicClassSubjectTerm
 from models.academic_term import AcademicTerm, AcademicTermType
 from models.enrollment import Enrollment
 from models.report_card import ReportCard
@@ -166,19 +167,34 @@ def partial_update_report_card_subject(
                     ReportCardSubject.academic_class_subject_id
                     == db_report_card_subject.academic_class_subject_id,
                     ReportCard.academic_term_id
-                    == class_subject.academic_term_id,
+                    == report_card.academic_term_id,
                     Enrollment.academic_class_id
                     == class_subject.academic_class_id,
                 )
             ).one()
 
-            class_subject.highest_marks = (
+            class_subject_term = session.exec(
+                select(AcademicClassSubjectTerm).where(
+                    AcademicClassSubjectTerm.academic_class_subject_id
+                    == db_report_card_subject.academic_class_subject_id,
+                    AcademicClassSubjectTerm.academic_term_id
+                    == report_card.academic_term_id,
+                )
+            ).one_or_none()
+            if not class_subject_term:
+                class_subject_term = AcademicClassSubjectTerm(
+                    academic_class_subject_id=(
+                        db_report_card_subject.academic_class_subject_id
+                    ),
+                    academic_term_id=report_card.academic_term_id,
+                )
+            class_subject_term.highest_marks = (
                 int(max_total) if max_total is not None else None
             )
-            class_subject.average_marks = (
+            class_subject_term.average_marks = (
                 int(round(avg_total)) if avg_total is not None else None
             )
-            session.add(class_subject)
+            session.add(class_subject_term)
             session.commit()
 
     return db_report_card_subject

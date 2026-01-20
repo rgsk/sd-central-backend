@@ -55,8 +55,6 @@ def create_date_sheet(
         select(AcademicClassSubject.id).where(
             AcademicClassSubject.academic_class_id
             == date_sheet.academic_class_id,
-            AcademicClassSubject.academic_term_id
-            == date_sheet.academic_term_id,
         )
     ).all()
     class_subject_ids = [

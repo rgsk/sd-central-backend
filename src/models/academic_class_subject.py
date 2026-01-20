@@ -10,7 +10,6 @@ from models.subject import SubjectRead
 
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
-    from models.academic_term import AcademicTerm
     from models.academic_class_subject_term import AcademicClassSubjectTerm
     from models.date_sheet_subject import DateSheetSubject
     from models.report_card_subject import ReportCardSubject
@@ -38,12 +37,6 @@ class AcademicClassSubjectBase(SQLModel):
         foreign_key="subjects.id",
         sa_type=PG_UUID(as_uuid=True),
     )
-    academic_term_id: UUID = Field(
-        foreign_key="academic_terms.id",
-        sa_type=PG_UUID(as_uuid=True),
-    )
-    highest_marks: Optional[int] = None
-    average_marks: Optional[int] = None
     is_additional: bool = False
     position: int = Field(ge=1)
 
@@ -56,12 +49,10 @@ class AcademicClassSubject(
         UniqueConstraint(
             "academic_class_id",
             "subject_id",
-            "academic_term_id",
-            name="uq_class_subject_term",
+            name="uq_class_subject",
         ),
         UniqueConstraint(
             "academic_class_id",
-            "academic_term_id",
             "is_additional",
             "position",
             name="uq_class_subject_group_position",
@@ -71,9 +62,6 @@ class AcademicClassSubject(
         back_populates="class_subjects"
     )
     subject: Optional["Subject"] = Relationship(
-        back_populates="class_subjects"
-    )
-    academic_term: Optional["AcademicTerm"] = Relationship(
         back_populates="class_subjects"
     )
     report_card_subjects: list["ReportCardSubject"] = Relationship(
@@ -98,9 +86,6 @@ class AcademicClassSubjectCreate(AcademicClassSubjectBase):
 class AcademicClassSubjectUpdate(SQLModel):
     academic_class_id: Optional[UUID] = None
     subject_id: Optional[UUID] = None
-    academic_term_id: Optional[UUID] = None
-    highest_marks: Optional[int] = None
-    average_marks: Optional[int] = None
     is_additional: Optional[bool] = None
     position: Optional[int] = None
 

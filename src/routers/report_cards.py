@@ -57,8 +57,6 @@ def create_report_card(
         select(AcademicClassSubject.id).where(
             AcademicClassSubject.academic_class_id
             == enrollment.academic_class_id,
-            AcademicClassSubject.academic_term_id
-            == report_card.academic_term_id,
         )
     ).all()
     if db_report_card.id is None:

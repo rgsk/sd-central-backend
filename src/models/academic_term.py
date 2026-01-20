@@ -10,7 +10,6 @@ from sqlmodel import Field, Relationship, SQLModel
 from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
-    from models.academic_class_subject import AcademicClassSubject
     from models.academic_class_subject_term import AcademicClassSubjectTerm
     from models.academic_session import AcademicSession
     from models.date_sheet import DateSheet
@@ -56,9 +55,6 @@ class AcademicTerm(AcademicTermBase, AcademicTermDB, table=True):
     )
     academic_session: Optional["AcademicSession"] = Relationship(
         back_populates="academic_terms"
-    )
-    class_subjects: list["AcademicClassSubject"] = Relationship(
-        back_populates="academic_term"
     )
     class_subject_terms: list["AcademicClassSubjectTerm"] = Relationship(
         back_populates="academic_term"

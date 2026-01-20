@@ -25,13 +25,14 @@ from sqlmodel import SQLModel  # noqa: E402
 
 from lib.env import env  # noqa: E402
 from models import (academic_class, academic_class_subject,  # noqa: F401, E402
-                    academic_session, academic_term, app_settings, date_sheet,
+                    academic_class_subject_term, academic_session,
+                    academic_term, app_settings, date_sheet,
                     date_sheet_subject, enrollment, report_card,
                     report_card_subject, student, subject, user)
 
 _ = [academic_class, academic_class_subject,
-     academic_session, academic_term, app_settings, date_sheet,
-     date_sheet_subject, enrollment, report_card,
+     academic_class_subject_term, academic_session, academic_term,
+     app_settings, date_sheet, date_sheet_subject, enrollment, report_card,
      report_card_subject, student, subject, user]
 
 # Use SQLModel metadata for autogenerate support.

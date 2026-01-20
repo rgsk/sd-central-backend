@@ -11,6 +11,7 @@ from models.academic_session import AcademicSessionRead
 
 if TYPE_CHECKING:
     from models.academic_class_subject import AcademicClassSubject
+    from models.academic_class_subject_term import AcademicClassSubjectTerm
     from models.academic_session import AcademicSession
     from models.date_sheet import DateSheet
     from models.report_card import ReportCard
@@ -57,6 +58,9 @@ class AcademicTerm(AcademicTermBase, AcademicTermDB, table=True):
         back_populates="academic_terms"
     )
     class_subjects: list["AcademicClassSubject"] = Relationship(
+        back_populates="academic_term"
+    )
+    class_subject_terms: list["AcademicClassSubjectTerm"] = Relationship(
         back_populates="academic_term"
     )
     date_sheets: list["DateSheet"] = Relationship(

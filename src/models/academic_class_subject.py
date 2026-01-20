@@ -11,6 +11,7 @@ from models.subject import SubjectRead
 if TYPE_CHECKING:
     from models.academic_class import AcademicClass
     from models.academic_term import AcademicTerm
+    from models.academic_class_subject_term import AcademicClassSubjectTerm
     from models.date_sheet_subject import DateSheetSubject
     from models.report_card_subject import ReportCardSubject
     from models.subject import Subject
@@ -80,6 +81,10 @@ class AcademicClassSubject(
         sa_relationship_kwargs={"passive_deletes": True},
     )
     date_sheet_subjects: list["DateSheetSubject"] = Relationship(
+        back_populates="academic_class_subject",
+        sa_relationship_kwargs={"passive_deletes": True},
+    )
+    class_subject_terms: list["AcademicClassSubjectTerm"] = Relationship(
         back_populates="academic_class_subject",
         sa_relationship_kwargs={"passive_deletes": True},
     )

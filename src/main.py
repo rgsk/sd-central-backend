@@ -7,7 +7,8 @@ from fastapi.openapi.utils import get_openapi
 from admin import setup_admin
 from lib.auth import get_bearer_token, get_decoded_token, require_user
 from lib.env import AppEnv, env
-from models import (academic_class, academic_class_subject, academic_session,
+from models import (academic_class, academic_class_subject,
+                    academic_class_subject_term, academic_session,
                     academic_term, app_settings, date_sheet,
                     date_sheet_subject, enrollment, report_card,
                     report_card_subject, student, subject, user)
@@ -27,6 +28,7 @@ async def lifespan(app: FastAPI):
     all_models = [
         academic_class,
         academic_class_subject,
+        academic_class_subject_term,
         academic_session,
         academic_term,
         app_settings,

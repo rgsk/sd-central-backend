@@ -35,6 +35,7 @@ make dev
 alembic
 
 ```
+alembic revision --autogenerate -m "your message"
 alembic upgrade head
 alembic downgrade base
 alembic history

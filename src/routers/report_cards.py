@@ -199,32 +199,16 @@ def list_report_cards(
     ]
     percentages_by_id: dict[UUID, int] = {}
     ranks_by_id: dict[UUID, int] = {}
-    rank_report_card_ids: list[UUID] = []
     if academic_class_id and academic_term_id:
-        rank_report_card_ids_raw = session.exec(
-            select(ReportCard.id)
-            .join(Enrollment)
-            .where(
-                Enrollment.academic_class_id == academic_class_id,
-                ReportCard.academic_term_id == academic_term_id,
-            )
-        ).all()
-        rank_report_card_ids = [
-            report_card_id
-            for report_card_id in rank_report_card_ids_raw
-            if report_card_id is not None
-        ]
-    term_type = None
-    if academic_term_id:
         academic_term = session.get(AcademicTerm, academic_term_id)
         if academic_term:
-            term_type = academic_term.term_type
-    if rank_report_card_ids:
-        percentages_by_id, ranks_by_id = _compute_percentages_and_ranks(
-            session,
-            rank_report_card_ids,
-            term_type,
-        )
+            percentages_by_id, ranks_by_id = (
+                compute_percentages_and_ranks_for_term(
+                    session,
+                    academic_term,
+                    academic_class_id,
+                )
+            )
         for report_card in items:
             if report_card.id in percentages_by_id:
                 report_card.overall_percentage = percentages_by_id[
@@ -377,31 +361,19 @@ def generate_report_cards(
     return ReportCardGenerationResponse(total=created)
 
 
-def populate_rank_and_percentage(report_card: ReportCardReadDetail, session: Session = Depends(get_session)):
+def populate_rank_and_percentage(
+    report_card: ReportCardReadDetail,
+    session: Session = Depends(get_session),
+):
     enrollment = session.get(Enrollment, report_card.enrollment_id)
-    if enrollment:
-        report_card_ids_raw = session.exec(
-            select(ReportCard.id)
-            .join(Enrollment)
-            .where(
-                Enrollment.academic_class_id
-                == enrollment.academic_class_id,
-                ReportCard.academic_term_id == report_card.academic_term_id,
+    academic_term = session.get(AcademicTerm, report_card.academic_term_id)
+    if enrollment and academic_term:
+        percentages_by_id, ranks_by_id = (
+            compute_percentages_and_ranks_for_term(
+                session,
+                academic_term,
+                enrollment.academic_class_id,
             )
-        ).all()
-        report_card_ids = [
-            report_card_id
-            for report_card_id in report_card_ids_raw
-            if report_card_id is not None
-        ]
-        academic_term = session.get(
-            AcademicTerm, report_card.academic_term_id
-        )
-        term_type = academic_term.term_type if academic_term else None
-        percentages_by_id, ranks_by_id = _compute_percentages_and_ranks(
-            session,
-            report_card_ids,
-            term_type,
         )
         if report_card.id in percentages_by_id:
             report_card.overall_percentage = percentages_by_id[
@@ -423,13 +395,13 @@ def get_report_card(
     return read_report_card
 
 
-def _compute_percentages_and_ranks(
+def _compute_totals_by_report_card(
     session: Session,
     report_card_ids: list[UUID],
     term_type: AcademicTermType | None = None,
-) -> tuple[dict[UUID, int], dict[UUID, int]]:
+) -> dict[UUID, tuple[int, int]]:
     if not report_card_ids:
-        return {}, {}
+        return {}
 
     if term_type == AcademicTermType.QUARTERLY:
         subject_total = func.coalesce(ReportCardSubject.final_marks, 0)
@@ -460,8 +432,17 @@ def _compute_percentages_and_ranks(
         .group_by(col(ReportCardSubject.report_card_id))
     ).all()
 
-    percentages_by_id: dict[UUID, int] = {}
+    totals_by_id: dict[UUID, tuple[int, int]] = {}
     for report_card_id, total_marks, subject_count in totals:
+        totals_by_id[report_card_id] = (total_marks, subject_count)
+    return totals_by_id
+
+
+def _compute_percentages_and_ranks_from_totals(
+    totals_by_id: dict[UUID, tuple[int, int]]
+) -> tuple[dict[UUID, int], dict[UUID, int]]:
+    percentages_by_id: dict[UUID, int] = {}
+    for report_card_id, (total_marks, subject_count) in totals_by_id.items():
         if subject_count:
             percentages_by_id[report_card_id] = math.ceil(
                 total_marks / subject_count
@@ -482,6 +463,112 @@ def _compute_percentages_and_ranks(
         ranks_by_id[report_card_id] = current_rank
 
     return percentages_by_id, ranks_by_id
+
+
+def _compute_percentages_and_ranks(
+    session: Session,
+    report_card_ids: list[UUID],
+    term_type: AcademicTermType | None = None,
+) -> tuple[dict[UUID, int], dict[UUID, int]]:
+    totals_by_id = _compute_totals_by_report_card(
+        session,
+        report_card_ids,
+        term_type,
+    )
+    return _compute_percentages_and_ranks_from_totals(totals_by_id)
+
+
+def compute_percentages_and_ranks_for_term(
+    session: Session,
+    academic_term: AcademicTerm,
+    academic_class_id: UUID,
+) -> tuple[dict[UUID, int], dict[UUID, int]]:
+    report_cards_raw = session.exec(
+        select(ReportCard.id, ReportCard.enrollment_id)
+        .join(Enrollment)
+        .where(
+            Enrollment.academic_class_id == academic_class_id,
+            ReportCard.academic_term_id == academic_term.id,
+        )
+    ).all()
+    report_cards = [
+        (report_card_id, enrollment_id)
+        for report_card_id, enrollment_id in report_cards_raw
+        if report_card_id is not None and enrollment_id is not None
+    ]
+    report_card_ids = [
+        report_card_id for report_card_id, _ in report_cards
+    ]
+    if academic_term.term_type != AcademicTermType.ANNUAL:
+        return _compute_percentages_and_ranks(
+            session,
+            report_card_ids,
+            academic_term.term_type,
+        )
+
+    annual_totals_by_id = _compute_totals_by_report_card(
+        session,
+        report_card_ids,
+        academic_term.term_type,
+    )
+    half_yearly_term = session.exec(
+        select(AcademicTerm).where(
+            AcademicTerm.academic_session_id
+            == academic_term.academic_session_id,
+            AcademicTerm.term_type == AcademicTermType.HALF_YEARLY,
+        )
+    ).first()
+    if not half_yearly_term:
+        return _compute_percentages_and_ranks_from_totals(
+            annual_totals_by_id
+        )
+
+    enrollment_ids = [
+        enrollment_id for _, enrollment_id in report_cards
+    ]
+    half_yearly_report_cards_raw = session.exec(
+        select(ReportCard.id, ReportCard.enrollment_id).where(
+            ReportCard.academic_term_id == half_yearly_term.id,
+            col(ReportCard.enrollment_id).in_(enrollment_ids),
+        )
+    ).all()
+    half_yearly_report_card_ids_by_enrollment = {
+        enrollment_id: report_card_id
+        for report_card_id, enrollment_id in half_yearly_report_cards_raw
+        if report_card_id is not None and enrollment_id is not None
+    }
+    half_yearly_totals_by_id = _compute_totals_by_report_card(
+        session,
+        list(half_yearly_report_card_ids_by_enrollment.values()),
+        half_yearly_term.term_type,
+    )
+
+    combined_totals_by_id: dict[UUID, tuple[int, int]] = {}
+    for annual_report_card_id, enrollment_id in report_cards:
+        annual_total, annual_count = annual_totals_by_id.get(
+            annual_report_card_id, (0, 0)
+        )
+        half_yearly_report_card_id = (
+            half_yearly_report_card_ids_by_enrollment.get(enrollment_id)
+        )
+        half_yearly_total, half_yearly_count = (
+            half_yearly_totals_by_id.get(
+                half_yearly_report_card_id, (0, 0)
+            )
+            if half_yearly_report_card_id
+            else (0, 0)
+        )
+        total_marks = annual_total + half_yearly_total
+        subject_count = annual_count + half_yearly_count
+        if subject_count:
+            combined_totals_by_id[annual_report_card_id] = (
+                total_marks,
+                subject_count,
+            )
+
+    return _compute_percentages_and_ranks_from_totals(
+        combined_totals_by_id
+    )
 
 
 @router.patch("/{report_card_id}", response_model=ReportCardRead)

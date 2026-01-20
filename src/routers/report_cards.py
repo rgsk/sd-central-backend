@@ -8,7 +8,7 @@ from sqlmodel import Session, SQLModel, col, select
 
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
-from models.academic_term import AcademicTerm
+from models.academic_term import AcademicTerm, AcademicTermType
 from models.enrollment import Enrollment, EnrollmentReadRaw
 from models.report_card import (ReportCard, ReportCardCreate,
                                 ReportCardListResponse, ReportCardRead,
@@ -214,10 +214,16 @@ def list_report_cards(
             for report_card_id in rank_report_card_ids_raw
             if report_card_id is not None
         ]
+    term_type = None
+    if academic_term_id:
+        academic_term = session.get(AcademicTerm, academic_term_id)
+        if academic_term:
+            term_type = academic_term.term_type
     if rank_report_card_ids:
         percentages_by_id, ranks_by_id = _compute_percentages_and_ranks(
             session,
             rank_report_card_ids,
+            term_type,
         )
         for report_card in items:
             if report_card.id in percentages_by_id:
@@ -388,9 +394,14 @@ def populate_rank_and_percentage(report_card: ReportCardReadDetail, session: Ses
             for report_card_id in report_card_ids_raw
             if report_card_id is not None
         ]
+        academic_term = session.get(
+            AcademicTerm, report_card.academic_term_id
+        )
+        term_type = academic_term.term_type if academic_term else None
         percentages_by_id, ranks_by_id = _compute_percentages_and_ranks(
             session,
             report_card_ids,
+            term_type,
         )
         if report_card.id in percentages_by_id:
             report_card.overall_percentage = percentages_by_id[
@@ -413,18 +424,23 @@ def get_report_card(
 
 
 def _compute_percentages_and_ranks(
-    session: Session, report_card_ids: list[UUID]
+    session: Session,
+    report_card_ids: list[UUID],
+    term_type: AcademicTermType | None = None,
 ) -> tuple[dict[UUID, int], dict[UUID, int]]:
     if not report_card_ids:
         return {}, {}
 
-    subject_total = (
-        func.coalesce(ReportCardSubject.notebook, 0)
-        + func.coalesce(ReportCardSubject.class_test, 0)
-        + func.coalesce(ReportCardSubject.assignment, 0)
-        + func.coalesce(ReportCardSubject.mid_term, 0)
-        + func.coalesce(ReportCardSubject.final_term, 0)
-    )
+    if term_type == AcademicTermType.QUARTERLY:
+        subject_total = func.coalesce(ReportCardSubject.final_marks, 0)
+    else:
+        subject_total = (
+            func.coalesce(ReportCardSubject.notebook, 0)
+            + func.coalesce(ReportCardSubject.class_test, 0)
+            + func.coalesce(ReportCardSubject.assignment, 0)
+            + func.coalesce(ReportCardSubject.mid_term, 0)
+            + func.coalesce(ReportCardSubject.final_term, 0)
+        )
 
     totals = session.exec(
         select(

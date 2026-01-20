@@ -51,7 +51,7 @@ def create_all_models_without_migrations(allowed: bool):
 async def lifespan(app: FastAPI):
     # Startup logic
 
-    create_all_models_without_migrations(allowed=True)
+    create_all_models_without_migrations(allowed=False)
 
     yield
     # Shutdown logic (optional)

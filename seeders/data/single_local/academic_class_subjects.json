@@ -1,0 +1,26 @@
+[
+  {
+    "id": "4dc1fdbc-d161-4f69-a850-46f228a224b1",
+    "academic_class_id": "25fce98a-c978-4efb-84e5-91beeac73db3",
+    "subject_id": "67409117-a1e5-4116-9703-22e1e3918662",
+    "is_additional": false,
+    "position": 3,
+    "created_at": "2026-01-20T17:46:31.177857"
+  },
+  {
+    "id": "a26e5c42-ecfd-406e-b137-d458e002ea3d",
+    "academic_class_id": "25fce98a-c978-4efb-84e5-91beeac73db3",
+    "subject_id": "818e7a94-34d7-4ff6-bb2e-0af3c85cbc4e",
+    "is_additional": false,
+    "position": 2,
+    "created_at": "2026-01-20T16:56:06.380976"
+  },
+  {
+    "id": "5e779fb1-859c-42fc-866e-b285fa999ead",
+    "academic_class_id": "25fce98a-c978-4efb-84e5-91beeac73db3",
+    "subject_id": "0a53347a-dc17-4782-956d-3e9144860e98",
+    "is_additional": false,
+    "position": 1,
+    "created_at": "2026-01-20T16:40:19.901041"
+  }
+]

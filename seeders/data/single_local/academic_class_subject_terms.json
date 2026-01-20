@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "id": "a31f4e45-8ade-4707-bd3a-c4f85252d4e7",
+    "academic_class_subject_id": "4dc1fdbc-d161-4f69-a850-46f228a224b1",
+    "academic_term_id": "5397d956-d0a7-4797-b530-a5336bcb338d",
+    "highest_marks": 25,
+    "average_marks": 25,
+    "created_at": "2026-01-20T17:46:57.887399"
+  },
+  {
+    "id": "4112b708-3b8f-4bb3-a588-8d2cde158b89",
+    "academic_class_subject_id": "4dc1fdbc-d161-4f69-a850-46f228a224b1",
+    "academic_term_id": "20938aa4-fa54-48b9-a598-fb67b329d715",
+    "highest_marks": 5,
+    "average_marks": 5,
+    "created_at": "2026-01-20T17:46:38.655344"
+  },
+  {
+    "id": "f8815943-2805-44b1-b95b-fc3e2f4c92fc",
+    "academic_class_subject_id": "a26e5c42-ecfd-406e-b137-d458e002ea3d",
+    "academic_term_id": "7ca00366-6ff2-4c50-9508-6497b1953776",
+    "highest_marks": 28,
+    "average_marks": 28,
+    "created_at": "2026-01-20T17:38:05.423820"
+  },
+  {
+    "id": "2d93ecec-6c73-4494-b682-b0be7caef7ab",
+    "academic_class_subject_id": "5e779fb1-859c-42fc-866e-b285fa999ead",
+    "academic_term_id": "7ca00366-6ff2-4c50-9508-6497b1953776",
+    "highest_marks": 27,
+    "average_marks": 27,
+    "created_at": "2026-01-20T17:37:59.564055"
+  },
+  {
+    "id": "eec21ccd-f025-45e5-a024-045fe155f2d4",
+    "academic_class_subject_id": "a26e5c42-ecfd-406e-b137-d458e002ea3d",
+    "academic_term_id": "5397d956-d0a7-4797-b530-a5336bcb338d",
+    "highest_marks": 30,
+    "average_marks": 30,
+    "created_at": "2026-01-20T17:08:21.085595"
+  },
+  {
+    "id": "7d232c8b-028f-4a02-a33a-e5c9ae7ae17e",
+    "academic_class_subject_id": "5e779fb1-859c-42fc-866e-b285fa999ead",
+    "academic_term_id": "5397d956-d0a7-4797-b530-a5336bcb338d",
+    "highest_marks": 25,
+    "average_marks": 25,
+    "created_at": "2026-01-20T17:08:11.968635"
+  },
+  {
+    "id": "f9de5a05-997d-48ef-be81-7bd9218fdb61",
+    "academic_class_subject_id": "a26e5c42-ecfd-406e-b137-d458e002ea3d",
+    "academic_term_id": "20938aa4-fa54-48b9-a598-fb67b329d715",
+    "highest_marks": 89,
+    "average_marks": 89,
+    "created_at": "2026-01-20T16:59:18.806332"
+  },
+  {
+    "id": "69af1344-e9c8-4d18-81e1-949a174245b7",
+    "academic_class_subject_id": "5e779fb1-859c-42fc-866e-b285fa999ead",
+    "academic_term_id": "20938aa4-fa54-48b9-a598-fb67b329d715",
+    "highest_marks": 49,
+    "average_marks": 49,
+    "created_at": "2026-01-20T16:44:31.058717"
+  }
+]

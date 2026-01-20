@@ -374,8 +374,8 @@ def generate_report_cards(
     return ReportCardGenerationResponse(total=created)
 
 
-@router.post("/sync-marks", response_model=ReportCardSubjectSyncResponse)
-def sync_class_subject_marks(
+@router.post("/sync-academic-class-subject-term-marks", response_model=ReportCardSubjectSyncResponse)
+def sync_academic_class_subject_term_marks(
     academic_session_id: UUID = Query(...),
     session: Session = Depends(get_session),
 ):

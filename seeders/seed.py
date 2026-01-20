@@ -247,9 +247,6 @@ def get_or_create_academic_class_subject(
     academic_class_subject_id: UUID,
     academic_class_id: UUID,
     subject_id: UUID,
-    academic_term_id: UUID,
-    highest_marks: int | None,
-    average_marks: int | None,
     is_additional: bool,
     position: int,
     created_at: datetime,
@@ -261,7 +258,6 @@ def get_or_create_academic_class_subject(
     statement = select(AcademicClassSubject).where(
         AcademicClassSubject.academic_class_id == academic_class_id,
         AcademicClassSubject.subject_id == subject_id,
-        AcademicClassSubject.academic_term_id == academic_term_id,
     )
     existing = session.exec(statement).first()
     if existing:
@@ -271,9 +267,6 @@ def get_or_create_academic_class_subject(
         id=academic_class_subject_id,
         academic_class_id=academic_class_id,
         subject_id=subject_id,
-        academic_term_id=academic_term_id,
-        highest_marks=highest_marks,
-        average_marks=average_marks,
         is_additional=is_additional,
         position=position,
         created_at=created_at,
@@ -658,9 +651,6 @@ def seed_students(
             academic_class_subject_id=academic_class_subject_id,
             academic_class_id=UUID(raw["academic_class_id"]),
             subject_id=UUID(raw["subject_id"]),
-            academic_term_id=UUID(raw["academic_term_id"]),
-            highest_marks=raw.get("highest_marks"),
-            average_marks=raw.get("average_marks"),
             is_additional=raw.get("is_additional", False),
             position=raw["position"],
             created_at=parse_created_at(raw["created_at"]),

@@ -15,8 +15,8 @@ from models import (academic_class, academic_class_subject,
                     date_sheet_subject, enrollment, report_card,
                     report_card_subject, student, subject, user)
 from models.user import UserRead
-from routers import (academic_class_subjects, academic_classes,
-                     academic_sessions, academic_terms)
+from routers import (academic_class_subject_terms, academic_class_subjects,
+                     academic_classes, academic_sessions, academic_terms)
 from routers import app_settings as settings
 from routers import (aws, date_sheet_subjects, date_sheets, enrollments,
                      public, report_card_subjects, report_cards, students,
@@ -123,6 +123,7 @@ protected_router.include_router(settings.router)
 protected_router.include_router(aws.router)
 protected_router.include_router(subjects.router)
 protected_router.include_router(academic_class_subjects.router)
+protected_router.include_router(academic_class_subject_terms.router)
 protected_router.include_router(report_cards.router)
 protected_router.include_router(report_card_subjects.router)
 protected_router.include_router(users.router)

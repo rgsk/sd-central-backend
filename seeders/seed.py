@@ -22,7 +22,11 @@ from models.academic_term import AcademicTerm, AcademicTermType  # noqa: E402
 from models.date_sheet import DateSheet  # noqa: E402
 from models.date_sheet_subject import DateSheetSubject  # noqa: E402
 from models.enrollment import Enrollment  # noqa: E402
-from models.report_card import ReportCard  # noqa: E402
+from models.report_card import (  # noqa: E402
+    ReportCard,
+    ReportCardGrade,
+    ReportCardResult,
+)
 from models.report_card_subject import ReportCardSubject  # noqa: E402
 from models.student import Student  # noqa: E402
 from models.subject import Subject  # noqa: E402
@@ -282,6 +286,12 @@ def get_or_create_report_card(
     report_card_id: UUID,
     enrollment_id: UUID,
     academic_term_id: UUID,
+    work_education_grade: ReportCardGrade | None,
+    art_education_grade: ReportCardGrade | None,
+    physical_education_grade: ReportCardGrade | None,
+    behaviour_grade: ReportCardGrade | None,
+    attendance_present: int | None,
+    result: ReportCardResult | None,
     created_at: datetime,
 ) -> tuple[ReportCard, bool]:
     existing = session.get(ReportCard, report_card_id)
@@ -300,6 +310,12 @@ def get_or_create_report_card(
         id=report_card_id,
         enrollment_id=enrollment_id,
         academic_term_id=academic_term_id,
+        work_education_grade=work_education_grade,
+        art_education_grade=art_education_grade,
+        physical_education_grade=physical_education_grade,
+        behaviour_grade=behaviour_grade,
+        attendance_present=attendance_present,
+        result=result,
         created_at=created_at,
     )
     session.add(report_card)
@@ -647,6 +663,24 @@ def seed_students(
             report_card_id=report_card_id,
             enrollment_id=UUID(raw["enrollment_id"]),
             academic_term_id=UUID(raw["academic_term_id"]),
+            work_education_grade=ReportCardGrade(raw["work_education_grade"])
+            if raw.get("work_education_grade")
+            else None,
+            art_education_grade=ReportCardGrade(raw["art_education_grade"])
+            if raw.get("art_education_grade")
+            else None,
+            physical_education_grade=ReportCardGrade(
+                raw["physical_education_grade"]
+            )
+            if raw.get("physical_education_grade")
+            else None,
+            behaviour_grade=ReportCardGrade(raw["behaviour_grade"])
+            if raw.get("behaviour_grade")
+            else None,
+            attendance_present=raw.get("attendance_present"),
+            result=ReportCardResult(raw["result"])
+            if raw.get("result")
+            else None,
             created_at=parse_created_at(raw["created_at"]),
         )
         if created:

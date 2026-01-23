@@ -1,4 +1,4 @@
-.PHONY: help dev reset_db seed_db populate_seed verify_seed
+.PHONY: help dev reset_db seed_db populate_seed verify_seed refresh_db_from_staging
 
 DATA_NAME ?=
 SEED_TARGETS := seed_db populate_seed verify_seed
@@ -21,6 +21,10 @@ run: ## Run FastAPI app in production mode
 reset_db: ## Clear and restart Postgres
 	sh ./scripts/clear_postgres.sh
 	sh ./scripts/restart_postgres.sh
+
+refresh_db_from_staging: ## Reset local DB and copy from staging
+	$(MAKE) reset_db
+	sh ./scripts/copy_remote_db_to_local_db.sh
 
 seed_db: ## Seed db with seed json files
 	python seeders/seed.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)

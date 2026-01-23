@@ -38,4 +38,10 @@ print_divider
 echo "copying to development: $DEVELOPMENT_DATABASE_URL"
 print_divider
 
+read -r -p "Do you wanna proceed? [y/N] " CONFIRM
+if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
+  echo "Cancelled."
+  exit 0
+fi
+
 sh scripts/copy_postgres.sh "$STAGING_DATABASE_URL" "$DEVELOPMENT_DATABASE_URL"

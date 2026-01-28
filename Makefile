@@ -1,4 +1,4 @@
-.PHONY: help dev reset_db migrate_db seed_db populate_seed verify_seed refresh_db_from_staging setup_test_db
+.PHONY: help dev reset_db migrate_db seed_db populate_seed verify_seed refresh_db_from_staging
 
 DATA_NAME ?=
 SEED_TARGETS := seed_db populate_seed verify_seed
@@ -37,6 +37,3 @@ populate_seed: ## Populate seed json files with reponse from test routes
 
 verify_seed: ## Verify that seed json files match with reponse from test routes
 	python scripts/verify_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),) $(if $(LOGICAL_COMPARE),--logical-compare,)
-
-setup_test_db: ## Reset DB, migrate, and seed with e2e data
-	$(MAKE) reset_db && sleep 1 && $(MAKE) migrate_db && $(MAKE) seed_db e2e

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "60f0fe06-8840-4e94-9b51-aa9f9f521760",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "efdca09a-7d32-4837-8649-6985e7a9e1f7",
+    "is_additional": true,
+    "position": 3,
+    "created_at": "2026-01-28T14:10:49.427765"
+  },
+  {
+    "id": "ac67254c-9b33-42d1-baad-215a1814546a",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "1343e070-6ff5-422f-8d65-596327735c89",
+    "is_additional": true,
+    "position": 2,
+    "created_at": "2026-01-28T14:10:49.017529"
+  },
+  {
+    "id": "71000b8a-ebea-4ae1-b988-3007d2159a27",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "350af961-fd98-4963-b22d-5418308eb1d1",
+    "is_additional": true,
+    "position": 1,
+    "created_at": "2026-01-28T14:10:48.566640"
+  },
+  {
+    "id": "42e1b750-d9f6-4f47-b792-8272893418b3",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "fe83564e-4269-47ba-9212-93a7b2a5adac",
+    "is_additional": false,
+    "position": 6,
+    "created_at": "2026-01-28T14:10:48.187136"
+  },
+  {
+    "id": "9ac97751-e262-4c81-83a7-708370849455",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "dd5ca382-5816-4950-81f2-4ffd56f1acfc",
+    "is_additional": false,
+    "position": 5,
+    "created_at": "2026-01-28T14:10:47.785464"
+  },
+  {
+    "id": "63fc98b5-0e84-4849-a3ea-ce392ffe2c67",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "019bb1e7-c558-4e5b-9ea2-92e896ef680b",
+    "is_additional": false,
+    "position": 4,
+    "created_at": "2026-01-28T14:10:47.355819"
+  },
+  {
+    "id": "2226d30a-44dd-4ab5-b9a1-78d972b60e30",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "219a2772-8128-46ed-b425-b5b3474b95e0",
+    "is_additional": false,
+    "position": 3,
+    "created_at": "2026-01-28T14:10:46.979210"
+  },
+  {
+    "id": "f6f96cac-3401-4643-8e54-1b16d971507e",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "b57b0fa6-3885-493c-bbbb-6e388d24db29",
+    "is_additional": false,
+    "position": 2,
+    "created_at": "2026-01-28T14:10:46.586211"
+  },
+  {
+    "id": "5c7a7dbe-b827-42dd-842e-a0b1e4f2dd72",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "subject_id": "c884c24c-7d31-4a71-a38e-e172ddc4b67e",
+    "is_additional": false,
+    "position": 1,
+    "created_at": "2026-01-28T14:10:45.886316"
+  }
+]

@@ -280,6 +280,18 @@ def seed_db(folder: str = Query(..., min_length=1)):
     return _run_command(["make", "seed_db", folder])
 
 
+@router.post("/verify_seed")
+def verify_seed(
+    folder: str = Query(..., min_length=1),
+    logical_compare: bool = Query(False),
+):
+    command = ["make", "verify_seed"]
+    if logical_compare:
+        command.append("LOGICAL_COMPARE=1")
+    command.append(folder)
+    return _run_command(command)
+
+
 @router.post("/firebase_custom_token")
 def firebase_custom_token(email: str = Query(..., min_length=1)):
     return _run_command(

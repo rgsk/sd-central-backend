@@ -36,7 +36,7 @@ populate_seed: ## Populate seed json files with reponse from test routes
 	python scripts/populate_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)
 
 verify_seed: ## Verify that seed json files match with reponse from test routes
-	python scripts/verify_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)
+	python scripts/verify_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),) $(if $(LOGICAL_COMPARE),--logical-compare,)
 
 setup_test_db: ## Reset DB, migrate, and seed with e2e data
 	$(MAKE) reset_db && sleep 1 && $(MAKE) migrate_db && $(MAKE) seed_db e2e

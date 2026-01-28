@@ -36,4 +36,4 @@ verify_seed: ## Verify that seed json files match with reponse from test routes
 	python scripts/verify_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)
 
 setup_test_db: ## Reset DB, migrate, and seed with e2e data
-	$(MAKE) reset_db && sleep 1 && alembic upgrade head && sleep 1 && $(MAKE) seed_db e2e
+	$(MAKE) reset_db && sleep 1 && alembic upgrade head && $(MAKE) seed_db e2e

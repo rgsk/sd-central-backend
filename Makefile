@@ -1,4 +1,4 @@
-.PHONY: help dev reset_db seed_db populate_seed verify_seed refresh_db_from_staging setup_test_db
+.PHONY: help dev reset_db migrate_db seed_db populate_seed verify_seed refresh_db_from_staging setup_test_db
 
 DATA_NAME ?=
 SEED_TARGETS := seed_db populate_seed verify_seed
@@ -22,6 +22,9 @@ reset_db: ## Clear and restart Postgres
 	sh ./scripts/clear_postgres.sh
 	sh ./scripts/restart_postgres.sh
 
+migrate_db: ## Run alembic migrations
+	alembic upgrade head
+
 refresh_db_from_staging: ## Reset local DB and copy from staging
 	$(MAKE) reset_db
 	sh ./scripts/copy_remote_db_to_local_db.sh
@@ -36,4 +39,4 @@ verify_seed: ## Verify that seed json files match with reponse from test routes
 	python scripts/verify_test_routes.py $(if $(SEED_NAME),--data-name $(SEED_NAME),)
 
 setup_test_db: ## Reset DB, migrate, and seed with e2e data
-	$(MAKE) reset_db && sleep 1 && alembic upgrade head && $(MAKE) seed_db e2e
+	$(MAKE) reset_db && sleep 1 && $(MAKE) migrate_db && $(MAKE) seed_db e2e

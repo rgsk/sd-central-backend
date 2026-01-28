@@ -1,15 +1,16 @@
 import json
+import subprocess
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel import Session, col, select
 
 from db import get_session
 from models.academic_class import AcademicClass, AcademicClassReadRaw
 from models.academic_class_subject import (AcademicClassSubject,
                                            AcademicClassSubjectRead)
-from models.academic_class_subject_term import (
-    AcademicClassSubjectTerm, AcademicClassSubjectTermRead)
+from models.academic_class_subject_term import (AcademicClassSubjectTerm,
+                                                AcademicClassSubjectTermRead)
 from models.academic_session import AcademicSession, AcademicSessionRead
 from models.academic_term import AcademicTerm, AcademicTermReadRaw
 from models.date_sheet import DateSheet, DateSheetReadRaw
@@ -25,6 +26,8 @@ from models.user import User, UserReadRaw
 router = APIRouter(prefix="/test", tags=["test"])
 
 SEED_DATA_DIR = Path(__file__).resolve().parents[2] / "seeders" / "data"
+REPO_ROOT = Path(__file__).resolve().parents[2]
+COMMAND_ERROR_MESSAGE = "Command failed."
 
 
 def _load_seed_data() -> dict[str, object]:
@@ -233,3 +236,42 @@ def list_raw_users(session: Session = Depends(get_session)):
     statement = select(User).order_by(col(User.created_at).desc())
     results = session.exec(statement).all()
     return results
+
+
+def _run_command(command: list[str]) -> dict[str, str]:
+    result = subprocess.run(
+        command,
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    combined_output = f"{result.stdout}{result.stderr}"
+    if result.returncode != 0:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "message": COMMAND_ERROR_MESSAGE,
+                "command": " ".join(command),
+                "output": combined_output,
+            },
+        )
+    return {
+        "status": "ok",
+        "command": " ".join(command),
+        "output": combined_output,
+    }
+
+
+@router.post("/reset_db")
+def reset_db():
+    return _run_command(["make", "reset_db"])
+
+
+@router.post("/migrate_db")
+def migrate_db():
+    return _run_command(["make", "migrate_db"])
+
+
+@router.post("/seed_db")
+def seed_db(folder: str = Query(..., min_length=1)):
+    return _run_command(["make", "seed_db", folder])

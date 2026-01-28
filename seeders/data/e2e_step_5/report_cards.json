@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ec2591d1-7a3b-486a-97bc-ceed6cad1bc4",
+    "enrollment_id": "81e54fd5-096c-476e-a365-6000bbb7098c",
+    "academic_term_id": "b3e5be40-5395-4c0d-b946-15e3832c000d",
+    "work_education_grade": "A",
+    "art_education_grade": "B",
+    "physical_education_grade": "A",
+    "behaviour_grade": "B",
+    "attendance_present": 120,
+    "result": "promoted",
+    "created_at": "2026-01-28T17:40:23.923232"
+  }
+]

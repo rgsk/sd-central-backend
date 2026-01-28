@@ -1,5 +1,6 @@
 import json
 import subprocess
+import time
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -264,7 +265,9 @@ def _run_command(command: list[str]) -> dict[str, str]:
 
 @router.post("/reset_db")
 def reset_db():
-    return _run_command(["make", "reset_db"])
+    result = _run_command(["make", "reset_db"])
+    time.sleep(1)
+    return result
 
 
 @router.post("/migrate_db")
@@ -275,3 +278,10 @@ def migrate_db():
 @router.post("/seed_db")
 def seed_db(folder: str = Query(..., min_length=1)):
     return _run_command(["make", "seed_db", folder])
+
+
+@router.post("/firebase_custom_token")
+def firebase_custom_token(email: str = Query(..., min_length=1)):
+    return _run_command(
+        ["python", "scripts/create_firebase_custom_token.py", email]
+    )

@@ -45,7 +45,7 @@ FOREIGN_KEY_ROUTES = {
     "user_id": "users",
 }
 
-REMAPPED_IGNORE_FIELDS = {"created_at", "updated_at", "deleted_at"}
+REMAPPED_IGNORE_FIELDS = {"image", "created_at", "updated_at", "deleted_at"}
 
 
 def load_json(path):
@@ -146,7 +146,8 @@ def _remap_expected_items(items, id_maps):
             continue
         updated = dict(item)
         if "id" in updated:
-            updated["id"] = id_maps.get("self", {}).get(updated["id"], updated["id"])
+            updated["id"] = id_maps.get("self", {}).get(
+                updated["id"], updated["id"])
         for key, value in list(updated.items()):
             route = FOREIGN_KEY_ROUTES.get(key)
             if route:

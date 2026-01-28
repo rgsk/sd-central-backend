@@ -45,7 +45,7 @@ FOREIGN_KEY_ROUTES = {
     "user_id": "users",
 }
 
-REMAPPED_IGNORE_FIELDS = {"image", "created_at", "updated_at", "deleted_at"}
+REMAPPED_IGNORE_FIELDS = {"created_at", "updated_at", "deleted_at"}
 
 
 def load_json(path):

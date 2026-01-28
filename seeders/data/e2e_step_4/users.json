@@ -3,9 +3,9 @@
     "id": "d1528c98-c58c-4e35-ad57-6fd668bfd532",
     "email": "rahulguptasde@gmail.com",
     "role": "admin",
-    "default_academic_session_id": null,
+    "default_academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
     "default_academic_term_id": null,
-    "default_academic_class_id": null,
+    "default_academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
     "created_at": "2026-01-28T10:44:25"
   }
 ]

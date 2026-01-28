@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from pydantic import BaseModel
 from sqlmodel import Session, col, select
 
 from db import get_session
@@ -29,6 +30,12 @@ router = APIRouter(prefix="/test", tags=["test"])
 SEED_DATA_DIR = Path(__file__).resolve().parents[2] / "seeders" / "data"
 REPO_ROOT = Path(__file__).resolve().parents[2]
 COMMAND_ERROR_MESSAGE = "Command failed."
+
+
+class CommandResult(BaseModel):
+    status: str
+    command: str
+    output: str
 
 
 def _load_seed_data() -> dict[str, object]:
@@ -239,7 +246,7 @@ def list_raw_users(session: Session = Depends(get_session)):
     return results
 
 
-def _run_command(command: list[str]) -> dict[str, str]:
+def _run_command(command: list[str]) -> CommandResult:
     result = subprocess.run(
         command,
         cwd=REPO_ROOT,
@@ -256,31 +263,31 @@ def _run_command(command: list[str]) -> dict[str, str]:
                 "output": combined_output,
             },
         )
-    return {
-        "status": "ok",
-        "command": " ".join(command),
-        "output": combined_output,
-    }
+    return CommandResult(
+        status="ok",
+        command=" ".join(command),
+        output=combined_output,
+    )
 
 
-@router.post("/reset_db")
+@router.post("/reset_db", response_model=CommandResult)
 def reset_db():
     result = _run_command(["make", "reset_db"])
     time.sleep(1)
     return result
 
 
-@router.post("/migrate_db")
+@router.post("/migrate_db", response_model=CommandResult)
 def migrate_db():
     return _run_command(["make", "migrate_db"])
 
 
-@router.post("/seed_db")
+@router.post("/seed_db", response_model=CommandResult)
 def seed_db(folder: str = Query(..., min_length=1)):
     return _run_command(["make", "seed_db", folder])
 
 
-@router.post("/verify_seed")
+@router.post("/verify_seed", response_model=CommandResult)
 def verify_seed(
     folder: str = Query(..., min_length=1),
     logical_compare: bool = Query(False),
@@ -292,7 +299,7 @@ def verify_seed(
     return _run_command(command)
 
 
-@router.post("/firebase_custom_token")
+@router.post("/firebase_custom_token", response_model=CommandResult)
 def firebase_custom_token(email: str = Query(..., min_length=1)):
     return _run_command(
         ["python", "scripts/create_firebase_custom_token.py", email]

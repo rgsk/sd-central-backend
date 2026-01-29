@@ -1,10 +1,18 @@
 [
   {
-    "id": "f462019b-5e68-4608-ad9a-bd3f361c0a6d",
-    "student_id": "bb7d9e2e-73c7-4a1b-b284-f8b29d396c5d",
+    "id": "e09133fc-04bf-422b-aa95-156b6fcfb7e3",
+    "student_id": "4aed77f1-9bfe-45f7-80f2-36897188e2b5",
+    "academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "image": "https://public-ai-exp.s3.amazonaws.com/2e1f7a9c-4b3d-4c8e-8a12-7f9a5c3d1b6e/ABHINANDAN%20GUPTA.png",
+    "created_at": "2026-01-29T08:14:00.199199"
+  },
+  {
+    "id": "afa8676d-94b1-4df8-abd3-7bfc814a798e",
+    "student_id": "4259711d-c27f-49ba-95d9-1fea0b76f1f9",
     "academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
     "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
     "image": "https://public-ai-exp.s3.amazonaws.com/c1b24a3d-6e55-4b5a-9b9e-2f5c3d7a1e42/ANURADHA%20YADAV.png",
-    "created_at": "2026-01-28T18:47:45.906489"
+    "created_at": "2026-01-29T08:13:58.340233"
   }
 ]

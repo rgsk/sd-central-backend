@@ -299,6 +299,13 @@ def verify_seed(
     return _run_command(command)
 
 
+@router.post("/populate_seed", response_model=CommandResult)
+def populate_seed(
+    folder: str = Query(..., min_length=1),
+):
+    return _run_command(["make", "populate_seed", folder])
+
+
 @router.post("/firebase_custom_token", response_model=CommandResult)
 def firebase_custom_token(email: str = Query(..., min_length=1)):
     return _run_command(

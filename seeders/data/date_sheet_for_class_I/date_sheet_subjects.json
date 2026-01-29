@@ -1,0 +1,92 @@
+[
+  {
+    "id": "028ddede-934c-40cb-ac10-447cf3932a76",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "5c7a7dbe-b827-42dd-842e-a0b1e4f2dd72",
+    "paper_code": "HI01",
+    "exam_date": "2025-11-28",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.190225"
+  },
+  {
+    "id": "1d537d8a-826b-4263-8799-5ca461c0c472",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "f6f96cac-3401-4643-8e54-1b16d971507e",
+    "paper_code": "EN01",
+    "exam_date": "2025-11-29",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.190197"
+  },
+  {
+    "id": "012f6c85-6f71-45d9-8d09-2d231141fc35",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "2226d30a-44dd-4ab5-b9a1-78d972b60e30",
+    "paper_code": "MA01",
+    "exam_date": "2025-12-01",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.190170"
+  },
+  {
+    "id": "f653faf8-ef55-438c-a580-10891569f91b",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "63fc98b5-0e84-4849-a3ea-ce392ffe2c67",
+    "paper_code": "SC01",
+    "exam_date": "2025-12-02",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.190139"
+  },
+  {
+    "id": "2877cb9c-f5c8-4627-b67e-f3a23869b7df",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "9ac97751-e262-4c81-83a7-708370849455",
+    "paper_code": "SO01",
+    "exam_date": "2025-12-03",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.190099"
+  },
+  {
+    "id": "8be30521-8a93-46e4-bd3b-485942a5c7f2",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "42e1b750-d9f6-4f47-b792-8272893418b3",
+    "paper_code": "GK01",
+    "exam_date": "2025-12-05",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.190032"
+  },
+  {
+    "id": "1387cb86-4e6f-41a2-a3e7-8cff53c815a3",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "71000b8a-ebea-4ae1-b988-3007d2159a27",
+    "paper_code": "DR01",
+    "exam_date": "2025-12-06",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.190001"
+  },
+  {
+    "id": "2c21720f-f67f-415a-9fc2-cc4b62797796",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "ac67254c-9b33-42d1-baad-215a1814546a",
+    "paper_code": "OHE0",
+    "exam_date": "2025-12-06",
+    "start_time": "12:30:00",
+    "end_time": "14:00:00",
+    "created_at": "2026-01-29T12:46:28.189967"
+  },
+  {
+    "id": "5416255e-d84e-4c47-aec0-d15a1d529355",
+    "date_sheet_id": "f89b9c41-c369-4e59-8e41-fca4a8bebab8",
+    "academic_class_subject_id": "60f0fe06-8840-4e94-9b51-aa9f9f521760",
+    "paper_code": "SA01",
+    "exam_date": "2025-12-04",
+    "start_time": "09:30:00",
+    "end_time": "12:00:00",
+    "created_at": "2026-01-29T12:46:28.189906"
+  }
+]

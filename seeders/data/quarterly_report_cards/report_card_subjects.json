@@ -1,7 +1,7 @@
 [
   {
-    "id": "3b9dc94c-923b-4bd1-b655-987c9882f731",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "892da696-a29f-42ee-832b-41a9500dfba0",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "5c7a7dbe-b827-42dd-842e-a0b1e4f2dd72",
     "mid_term": null,
     "notebook": null,
@@ -9,11 +9,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 45,
-    "created_at": "2026-01-29T08:49:59.643886"
+    "created_at": "2026-01-29T09:23:25.458820"
   },
   {
-    "id": "272312d1-36f0-45cb-b790-ff0d9152c255",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "0b2399a0-7cf6-4fe1-bae1-7c357d36a7b1",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "f6f96cac-3401-4643-8e54-1b16d971507e",
     "mid_term": null,
     "notebook": null,
@@ -21,11 +21,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 44,
-    "created_at": "2026-01-29T08:49:59.643853"
+    "created_at": "2026-01-29T09:23:25.458785"
   },
   {
-    "id": "9b9d2aa4-e98a-453e-9add-474ea631f49a",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "03be5864-99a3-4066-82b1-a43867e8dbfc",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "2226d30a-44dd-4ab5-b9a1-78d972b60e30",
     "mid_term": null,
     "notebook": null,
@@ -33,11 +33,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 48,
-    "created_at": "2026-01-29T08:49:59.643821"
+    "created_at": "2026-01-29T09:23:25.458749"
   },
   {
-    "id": "d2e13cbf-ee4d-40e4-8ee0-4d1b178a219a",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "58c2fd7d-3299-489b-8f26-3a1952fed167",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "63fc98b5-0e84-4849-a3ea-ce392ffe2c67",
     "mid_term": null,
     "notebook": null,
@@ -45,11 +45,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 42,
-    "created_at": "2026-01-29T08:49:59.643788"
+    "created_at": "2026-01-29T09:23:25.458713"
   },
   {
-    "id": "aae1cc46-533a-4d42-a442-f22830221f79",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "209501f3-727d-4ea3-abeb-43877cce739d",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "9ac97751-e262-4c81-83a7-708370849455",
     "mid_term": null,
     "notebook": null,
@@ -57,11 +57,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 43,
-    "created_at": "2026-01-29T08:49:59.643753"
+    "created_at": "2026-01-29T09:23:25.458676"
   },
   {
-    "id": "4ae64769-1225-4ae8-ae47-89051b3662f5",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "a6d17f54-89fb-4116-be8f-7b6b5ad5edd2",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "42e1b750-d9f6-4f47-b792-8272893418b3",
     "mid_term": null,
     "notebook": null,
@@ -69,11 +69,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 41,
-    "created_at": "2026-01-29T08:49:59.643718"
+    "created_at": "2026-01-29T09:23:25.458638"
   },
   {
-    "id": "92bcfab7-653f-4d64-af78-2ceecd77e1e3",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "226a1e64-0fd0-40d5-a362-8cbf8199c5c5",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "71000b8a-ebea-4ae1-b988-3007d2159a27",
     "mid_term": null,
     "notebook": null,
@@ -81,11 +81,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 88,
-    "created_at": "2026-01-29T08:49:59.643679"
+    "created_at": "2026-01-29T09:23:25.458594"
   },
   {
-    "id": "52fa6eb0-f055-4103-9d21-481c13b5c544",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "5ad60983-2dd4-421c-b94e-a5163e3ca343",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "ac67254c-9b33-42d1-baad-215a1814546a",
     "mid_term": null,
     "notebook": null,
@@ -93,11 +93,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 90,
-    "created_at": "2026-01-29T08:49:59.643636"
+    "created_at": "2026-01-29T09:23:25.458544"
   },
   {
-    "id": "44035e2c-6915-45bb-b354-a39692f5b2ac",
-    "report_card_id": "dc9b5d9c-0223-4261-8cef-543c7592e049",
+    "id": "3ddb797d-f441-41fa-872e-df3e8eb5e696",
+    "report_card_id": "85db889e-fdf1-408b-ad40-b25648c2cf8d",
     "academic_class_subject_id": "60f0fe06-8840-4e94-9b51-aa9f9f521760",
     "mid_term": null,
     "notebook": null,
@@ -105,11 +105,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 86,
-    "created_at": "2026-01-29T08:49:59.643573"
+    "created_at": "2026-01-29T09:23:25.458449"
   },
   {
-    "id": "197244eb-3055-4f87-8bc0-1f8260f8fc1f",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "3b255492-068f-48e7-843e-8c4e96e12fe9",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "5c7a7dbe-b827-42dd-842e-a0b1e4f2dd72",
     "mid_term": null,
     "notebook": null,
@@ -117,11 +117,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 43,
-    "created_at": "2026-01-29T08:49:59.629070"
+    "created_at": "2026-01-29T09:23:25.446351"
   },
   {
-    "id": "b012fa97-11ef-44c8-8bc5-67efe20463cb",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "7da1364f-39af-4706-a1b7-1e1c0f1557c2",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "f6f96cac-3401-4643-8e54-1b16d971507e",
     "mid_term": null,
     "notebook": null,
@@ -129,11 +129,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 40,
-    "created_at": "2026-01-29T08:49:59.629035"
+    "created_at": "2026-01-29T09:23:25.446223"
   },
   {
-    "id": "d165e718-9a30-4a7b-99d7-27ffefbaa8d6",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "07b14a02-8029-460a-b68f-0969da777f14",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "2226d30a-44dd-4ab5-b9a1-78d972b60e30",
     "mid_term": null,
     "notebook": null,
@@ -141,11 +141,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 44,
-    "created_at": "2026-01-29T08:49:59.628998"
+    "created_at": "2026-01-29T09:23:25.446185"
   },
   {
-    "id": "0140f96f-39f0-40f3-95e7-3dd8c686bf2b",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "eb99cdbb-418f-4fd3-8e83-600e733dda77",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "63fc98b5-0e84-4849-a3ea-ce392ffe2c67",
     "mid_term": null,
     "notebook": null,
@@ -153,11 +153,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 44,
-    "created_at": "2026-01-29T08:49:59.628950"
+    "created_at": "2026-01-29T09:23:25.446094"
   },
   {
-    "id": "d412c611-f771-4092-9366-de8f4395281a",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "29bbab8c-efdd-45e7-b8ad-a483b82fb831",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "9ac97751-e262-4c81-83a7-708370849455",
     "mid_term": null,
     "notebook": null,
@@ -165,11 +165,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 43,
-    "created_at": "2026-01-29T08:49:59.628912"
+    "created_at": "2026-01-29T09:23:25.446056"
   },
   {
-    "id": "45d258d9-f1a8-4860-8b77-e4e928545e6f",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "92168a7b-7ae4-4524-8a10-835a7933ebfa",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "42e1b750-d9f6-4f47-b792-8272893418b3",
     "mid_term": null,
     "notebook": null,
@@ -177,11 +177,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 44,
-    "created_at": "2026-01-29T08:49:59.628875"
+    "created_at": "2026-01-29T09:23:25.446013"
   },
   {
-    "id": "876b6c6a-d941-4de6-af7e-1c2615348d30",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "240591d0-9353-46dd-b59b-171da038a894",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "71000b8a-ebea-4ae1-b988-3007d2159a27",
     "mid_term": null,
     "notebook": null,
@@ -189,11 +189,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 84,
-    "created_at": "2026-01-29T08:49:59.628834"
+    "created_at": "2026-01-29T09:23:25.445970"
   },
   {
-    "id": "f507730a-fd59-4bcd-9695-9979e2992266",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "1e61c5ee-a1f6-4ead-acd5-f37e3a7bc302",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "ac67254c-9b33-42d1-baad-215a1814546a",
     "mid_term": null,
     "notebook": null,
@@ -201,11 +201,11 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 88,
-    "created_at": "2026-01-29T08:49:59.628786"
+    "created_at": "2026-01-29T09:23:25.445910"
   },
   {
-    "id": "a7018b14-e55d-4a16-b22f-c3a918097250",
-    "report_card_id": "37862479-09bc-4bb9-9baf-78e7442946db",
+    "id": "799ed860-704e-4617-88ab-68c2b6b44b93",
+    "report_card_id": "88953047-335a-496c-b858-11b414a92ad9",
     "academic_class_subject_id": "60f0fe06-8840-4e94-9b51-aa9f9f521760",
     "mid_term": null,
     "notebook": null,
@@ -213,6 +213,6 @@
     "class_test": null,
     "final_term": null,
     "final_marks": 85,
-    "created_at": "2026-01-29T08:49:59.628691"
+    "created_at": "2026-01-29T09:23:25.445787"
   }
 ]

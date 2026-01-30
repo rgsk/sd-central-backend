@@ -5,7 +5,7 @@
     "role": "admin",
     "default_academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
     "default_academic_term_id": "10ebdaa2-8d20-4960-9f85-4535bdf58703",
-    "default_academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "default_academic_class_id": null,
     "created_at": "2026-01-28T10:44:25"
   }
 ]

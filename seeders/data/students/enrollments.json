@@ -1,34 +1,34 @@
 [
   {
-    "id": "b915957a-c309-40d6-89d6-881c01b91c46",
-    "student_id": "e9ce1b88-91e8-4f32-b7bb-251b9ccf1823",
+    "id": "049d934c-0ee3-4c94-822d-1c11ceee6c50",
+    "student_id": "eb8728ca-e000-4abe-8a01-93ab1f574913",
     "academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
     "academic_class_id": "624a0d11-b31e-4550-aea7-b978f8fd8606",
     "image": "https://public-ai-exp.s3.amazonaws.com/7b6e5d4c-3b2a-1f9e-8d7c-6b5a4c3d2e1f/ANMOL%20GAUTAM.png",
-    "created_at": "2026-01-30T11:25:24.977794"
+    "created_at": "2026-01-30T12:04:18.246975"
   },
   {
-    "id": "728216d3-ce92-4f05-ab1e-141351d13819",
-    "student_id": "00a70ebd-e73c-4da1-aadc-fe92890bb5db",
+    "id": "07e18229-e60d-4c78-863b-92830884a11c",
+    "student_id": "5836e5c4-0b61-460e-acd8-3757f383eb8e",
     "academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
     "academic_class_id": "624a0d11-b31e-4550-aea7-b978f8fd8606",
     "image": "https://public-ai-exp.s3.amazonaws.com/9a5c2b1e-3d7f-4a2b-9c6e-1f2a3b4c5d6e/ANIKET%20CHAUHAN.png",
-    "created_at": "2026-01-30T11:25:22.540017"
+    "created_at": "2026-01-30T12:04:14.745625"
   },
   {
-    "id": "ac5cb527-f44d-45d2-b222-799d75fb3ca4",
-    "student_id": "dee4367b-9658-4af3-b5bd-9b2c819226eb",
+    "id": "29d09c53-9b92-44e7-86b1-0eee93ea31b8",
+    "student_id": "7c948d89-8f0a-437e-9f89-429bf79911d1",
     "academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
     "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
     "image": "https://public-ai-exp.s3.amazonaws.com/2e1f7a9c-4b3d-4c8e-8a12-7f9a5c3d1b6e/ABHINANDAN%20GUPTA.png",
-    "created_at": "2026-01-30T11:25:19.530873"
+    "created_at": "2026-01-30T12:04:02.041539"
   },
   {
-    "id": "a9d0654f-bb97-4005-94bf-39ebc304d2e1",
-    "student_id": "5f6419f6-1cb8-4aff-b758-35b6cfb98513",
+    "id": "79b6f7ee-2cc3-4907-93d6-f19847d1864a",
+    "student_id": "cca65ed7-4e09-4317-aa66-fbfce86aa5e0",
     "academic_session_id": "e76a7b47-9914-43c4-9151-50a3d6927745",
     "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
     "image": "https://public-ai-exp.s3.amazonaws.com/c1b24a3d-6e55-4b5a-9b9e-2f5c3d7a1e42/ANURADHA%20YADAV.png",
-    "created_at": "2026-01-30T11:25:17.657954"
+    "created_at": "2026-01-30T12:04:00.125256"
   }
 ]

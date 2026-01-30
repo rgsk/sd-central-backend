@@ -1,0 +1,38 @@
+[
+  {
+    "id": "e9ce1b88-91e8-4f32-b7bb-251b9ccf1823",
+    "registration_no": "SDCA324",
+    "name": "ANMOL GAUTAM",
+    "dob": "2000-01-01",
+    "father_name": "DINESH GAUTAM",
+    "mother_name": "BANDANA DEVI",
+    "created_at": "2026-01-30T11:25:24.957804"
+  },
+  {
+    "id": "00a70ebd-e73c-4da1-aadc-fe92890bb5db",
+    "registration_no": "SDCA546",
+    "name": "ANIKET CHAUHAN",
+    "dob": "2000-01-01",
+    "father_name": "MUNNA CHAUHAN",
+    "mother_name": "ARCHANA DEVI",
+    "created_at": "2026-01-30T11:25:22.514397"
+  },
+  {
+    "id": "dee4367b-9658-4af3-b5bd-9b2c819226eb",
+    "registration_no": "SDCA428",
+    "name": "ABHINANDAN GUPTA",
+    "dob": "2000-01-01",
+    "father_name": "AJEET KUMAR GUPTA",
+    "mother_name": "PINKEE GUPTA",
+    "created_at": "2026-01-30T11:25:19.511220"
+  },
+  {
+    "id": "5f6419f6-1cb8-4aff-b758-35b6cfb98513",
+    "registration_no": "SDCA356",
+    "name": "ANURADHA YADAV",
+    "dob": "2000-01-01",
+    "father_name": "VEDPRAKASH YADAV",
+    "mother_name": "RAMBHA DEVI",
+    "created_at": "2026-01-30T11:25:17.634185"
+  }
+]

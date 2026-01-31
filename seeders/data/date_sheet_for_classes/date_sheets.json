@@ -1,0 +1,14 @@
+[
+  {
+    "id": "a2835156-a117-4b3b-9a13-7c57bf3fca2f",
+    "academic_class_id": "624a0d11-b31e-4550-aea7-b978f8fd8606",
+    "academic_term_id": "b3e5be40-5395-4c0d-b946-15e3832c000d",
+    "created_at": "2026-01-31T12:47:50.069335"
+  },
+  {
+    "id": "7f48c561-d49e-426f-a8e7-4d99d1681f61",
+    "academic_class_id": "dd10d2ff-4523-46bd-868a-f2424b01158c",
+    "academic_term_id": "b3e5be40-5395-4c0d-b946-15e3832c000d",
+    "created_at": "2026-01-31T12:47:41.326126"
+  }
+]

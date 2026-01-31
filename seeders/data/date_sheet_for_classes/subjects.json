@@ -1,0 +1,47 @@
+[
+  {
+    "id": "babee5b4-a05e-475c-9487-5e35f6b42d9f",
+    "name": "SANSKRIT",
+    "created_at": "2026-01-30T12:03:30.729087"
+  },
+  {
+    "id": "4df46d3a-1619-4616-8270-afc5ebfcf3a8",
+    "name": "PHYSICAL EDUCATION",
+    "created_at": "2026-01-30T12:03:29.436625"
+  },
+  {
+    "id": "10329507-99d3-47bd-a2b0-0bfa5a40e985",
+    "name": "DRAWING",
+    "created_at": "2026-01-30T12:03:28.121892"
+  },
+  {
+    "id": "8ce4cc72-1b1f-4ab7-8dbc-2202f9a3a12f",
+    "name": "GENERAL KNOWLEDGE",
+    "created_at": "2026-01-30T12:03:26.853938"
+  },
+  {
+    "id": "d6020282-f3b6-4d08-b4e0-066bc549a917",
+    "name": "SOCIAL SCIENCE",
+    "created_at": "2026-01-30T12:03:25.581381"
+  },
+  {
+    "id": "5ba591a0-6786-4ec4-ad5c-d172db3c5676",
+    "name": "SCIENCE",
+    "created_at": "2026-01-30T12:03:24.737107"
+  },
+  {
+    "id": "771b7b11-3e8b-4630-988e-9b16c58faadf",
+    "name": "MATHEMATICS",
+    "created_at": "2026-01-30T12:03:23.414247"
+  },
+  {
+    "id": "4a3642b4-dc4f-4fbf-9e06-33ea234debd4",
+    "name": "ENGLISH",
+    "created_at": "2026-01-30T12:03:22.597418"
+  },
+  {
+    "id": "ef9e3d38-4b0f-4da8-a096-42fb3640f3e7",
+    "name": "HINDI",
+    "created_at": "2026-01-30T12:03:21.298961"
+  }
+]

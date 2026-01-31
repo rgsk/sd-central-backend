@@ -31,7 +31,11 @@ ROUTES = {
 
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={"Accept": "application/json"})
+    headers = {"Accept": "application/json"}
+    namespace = os.getenv("DB_NAMESPACE")
+    if namespace:
+        headers["X-Test-Namespace"] = namespace
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=10) as resp:
         body = resp.read()
     return json.loads(body.decode("utf-8"))

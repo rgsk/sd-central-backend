@@ -1,11 +1,17 @@
 import os
+import re
 import subprocess
 from pathlib import Path
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel
 
+from lib.env import env
+
 router = APIRouter(prefix="/test", tags=["test"])
+
+_NAMESPACE_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+_BLOCKED_NAMESPACES = {"public", "pg_catalog", "information_schema"}
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 COMMAND_ERROR_MESSAGE = "Command failed."
@@ -21,8 +27,23 @@ def _run_command(
     command: list[str], namespace: str | None = None
 ) -> CommandResult:
     command_env = os.environ.copy()
+    if "localhost" not in env.DATABASE_URL and not namespace:
+        raise HTTPException(
+            status_code=400,
+            detail="DB namespace required for non-local database.",
+        )
     if namespace:
-        command_env["DB_NAMESPACE"] = namespace
+        normalized = namespace.strip()
+        if (
+            not normalized
+            or not _NAMESPACE_RE.fullmatch(normalized)
+            or normalized in _BLOCKED_NAMESPACES
+        ):
+            raise HTTPException(
+                status_code=400,
+                detail="Invalid DB namespace.",
+            )
+        command_env["DB_NAMESPACE"] = normalized
     result = subprocess.run(
         command,
         cwd=REPO_ROOT,

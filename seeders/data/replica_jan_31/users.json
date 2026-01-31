@@ -1,0 +1,20 @@
+[
+  {
+    "id": "3119da5b-9e93-4368-a94a-1e87af511d7c",
+    "email": "prinashagupta@gmail.com",
+    "role": "admin",
+    "default_academic_session_id": null,
+    "default_academic_term_id": null,
+    "default_academic_class_id": null,
+    "created_at": "2026-01-20T19:53:41.561839"
+  },
+  {
+    "id": "9fe859c6-ab6f-46f0-b501-00bb3ae918ef",
+    "email": "rahulguptasde@gmail.com",
+    "role": "admin",
+    "default_academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "default_academic_term_id": null,
+    "default_academic_class_id": null,
+    "created_at": "2026-01-15T12:32:00"
+  }
+]

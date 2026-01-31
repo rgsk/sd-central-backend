@@ -1,7 +1,6 @@
 import json
 import os
 import subprocess
-import time
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
@@ -281,7 +280,6 @@ def _run_command(
 def reset_db(request: Request):
     namespace = getattr(request.state, "db_namespace", None)
     result = _run_command(["make", "reset_db"], namespace)
-    time.sleep(1)
     return result
 
 

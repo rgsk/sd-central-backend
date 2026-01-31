@@ -22,6 +22,8 @@ reset_db: ## Clear and restart Postgres
 ifeq ($(DB_NAMESPACE),)
 	sh ./scripts/clear_postgres.sh
 	sh ./scripts/restart_postgres.sh
+	# Docker restart needs a moment before DB is ready.
+	sleep 1
 else
 	python scripts/reset_schema.py
 endif

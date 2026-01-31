@@ -5,6 +5,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import BaseModel
+from sqlalchemy import text
 from sqlmodel import Session, col, select
 
 from db import get_session
@@ -38,6 +39,10 @@ class CommandResult(BaseModel):
     output: str
 
 
+class NamespaceList(BaseModel):
+    namespaces: list[str]
+
+
 def _load_seed_data() -> dict[str, object]:
     if not SEED_DATA_DIR.exists():
         raise HTTPException(
@@ -61,6 +66,19 @@ def _load_seed_data() -> dict[str, object]:
 @router.get("/seed_data")
 def list_seed_data():
     return _load_seed_data()
+
+
+@router.get("/namespaces", response_model=NamespaceList)
+def list_namespaces(session: Session = Depends(get_session)):
+    rows = session.connection().execute(
+        text(
+            "SELECT schema_name FROM information_schema.schemata "
+            "WHERE schema_name NOT IN ('information_schema') "
+            "AND schema_name NOT LIKE 'pg_%' "
+            "ORDER BY schema_name"
+        )
+    )
+    return NamespaceList(namespaces=[row[0] for row in rows])
 
 
 @router.get("/db_data")

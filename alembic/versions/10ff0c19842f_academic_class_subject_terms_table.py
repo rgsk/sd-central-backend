@@ -19,6 +19,10 @@ branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 _SCHEMA = os.getenv("DB_NAMESPACE") or None
+def _fk_target(target: str) -> str:
+    if not _SCHEMA:
+        return target
+    return f"{_SCHEMA}.{target}"
 
 
 def upgrade() -> None:
@@ -36,9 +40,9 @@ def upgrade() -> None:
                     sa.Column('highest_marks', sa.Integer(), nullable=True),
                     sa.Column('average_marks', sa.Integer(), nullable=True),
                     sa.ForeignKeyConstraint(['academic_class_subject_id'], [
-                        'academic_class_subjects.id'], ),
+                        _fk_target('academic_class_subjects.id')], ),
                     sa.ForeignKeyConstraint(['academic_term_id'], [
-                                            'academic_terms.id'], ),
+                                            _fk_target('academic_terms.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('academic_class_subject_id',
                                         'academic_term_id', name='uq_class_subject_term')
@@ -78,7 +82,8 @@ def downgrade() -> None:
         schema=_SCHEMA)
     op.create_foreign_key(op.f('academic_class_subjects_academic_term_id_fkey'),
                           'academic_class_subjects', 'academic_terms',
-                          ['academic_term_id'], ['id'], schema=_SCHEMA)
+                          ['academic_term_id'], ['id'], schema=_SCHEMA,
+                          referent_schema=_SCHEMA)
     op.drop_constraint('uq_class_subject',
                        'academic_class_subjects', type_='unique',
                        schema=_SCHEMA)

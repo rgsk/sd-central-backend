@@ -19,6 +19,13 @@ branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 _SCHEMA = os.getenv("DB_NAMESPACE") or None
+print('_SCHEMA', _SCHEMA)
+
+
+def _fk_target(target: str) -> str:
+    if not _SCHEMA:
+        return target
+    return f"{_SCHEMA}.{target}"
 
 
 def upgrade() -> None:
@@ -68,7 +75,7 @@ def upgrade() -> None:
                     sa.Column('grade', sa.String(), nullable=False),
                     sa.Column('section', sa.String(), nullable=False),
                     sa.ForeignKeyConstraint(['academic_session_id'], [
-                        'academic_sessions.id'], ),
+                        _fk_target('academic_sessions.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('academic_session_id', 'grade', 'section',
                                         name='uq_academic_classes_session_grade_section'),
@@ -84,7 +91,7 @@ def upgrade() -> None:
                     sa.Column('working_days', sa.Integer(), nullable=True),
                     sa.Column('exam_result_date', sa.Date(), nullable=True),
                     sa.ForeignKeyConstraint(['academic_session_id'], [
-                        'academic_sessions.id'], ),
+                        _fk_target('academic_sessions.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('academic_session_id', 'term_type',
                                         name='uq_academic_term_session_term_type'),
@@ -100,10 +107,11 @@ def upgrade() -> None:
                     sa.Column('is_additional', sa.Boolean(), nullable=False),
                     sa.Column('position', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['academic_class_id'], [
-                        'academic_classes.id'], ),
+                        _fk_target('academic_classes.id')], ),
                     sa.ForeignKeyConstraint(['academic_term_id'], [
-                                            'academic_terms.id'], ),
-                    sa.ForeignKeyConstraint(['subject_id'], ['subjects.id'], ),
+                                            _fk_target('academic_terms.id')], ),
+                    sa.ForeignKeyConstraint(['subject_id'], [
+                        _fk_target('subjects.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('academic_class_id', 'academic_term_id',
                                         'is_additional', 'position', name='uq_class_subject_group_position'),
@@ -116,9 +124,9 @@ def upgrade() -> None:
                     sa.Column('academic_class_id', sa.UUID(), nullable=False),
                     sa.Column('academic_term_id', sa.UUID(), nullable=False),
                     sa.ForeignKeyConstraint(['academic_class_id'], [
-                        'academic_classes.id'], ),
+                        _fk_target('academic_classes.id')], ),
                     sa.ForeignKeyConstraint(['academic_term_id'], [
-                                            'academic_terms.id'], ),
+                                            _fk_target('academic_terms.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint(
                         'academic_class_id', 'academic_term_id', name='uq_date_sheets_class_term'),
@@ -132,10 +140,11 @@ def upgrade() -> None:
                     sa.Column('academic_class_id', sa.UUID(), nullable=False),
                     sa.Column('image', sa.String(), nullable=True),
                     sa.ForeignKeyConstraint(['academic_class_id'], [
-                        'academic_classes.id'], ),
+                        _fk_target('academic_classes.id')], ),
                     sa.ForeignKeyConstraint(['academic_session_id'], [
-                        'academic_sessions.id'], ),
-                    sa.ForeignKeyConstraint(['student_id'], ['students.id'], ),
+                        _fk_target('academic_sessions.id')], ),
+                    sa.ForeignKeyConstraint(['student_id'], [
+                        _fk_target('students.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('student_id', 'academic_session_id',
                                         name='uq_enrollment_session'),
@@ -154,11 +163,11 @@ def upgrade() -> None:
                     sa.Column('default_academic_class_id',
                               sa.UUID(), nullable=True),
                     sa.ForeignKeyConstraint(['default_academic_class_id'], [
-                        'academic_classes.id'], ),
+                        _fk_target('academic_classes.id')], ),
                     sa.ForeignKeyConstraint(['default_academic_session_id'], [
-                        'academic_sessions.id'], ),
+                        _fk_target('academic_sessions.id')], ),
                     sa.ForeignKeyConstraint(['default_academic_term_id'], [
-                        'academic_terms.id'], ),
+                        _fk_target('academic_terms.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     schema=_SCHEMA)
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True,
@@ -174,9 +183,11 @@ def upgrade() -> None:
                     sa.Column('start_time', sa.Time(), nullable=True),
                     sa.Column('end_time', sa.Time(), nullable=True),
                     sa.ForeignKeyConstraint(['academic_class_subject_id'], [
-                        'academic_class_subjects.id'], ondelete='CASCADE'),
+                        _fk_target('academic_class_subjects.id')],
+                        ondelete='CASCADE'),
                     sa.ForeignKeyConstraint(
-                        ['date_sheet_id'], ['date_sheets.id'], ondelete='CASCADE'),
+                        ['date_sheet_id'], [_fk_target('date_sheets.id')],
+                        ondelete='CASCADE'),
                     sa.PrimaryKeyConstraint('id'),
                     schema=_SCHEMA)
     op.create_table('report_cards',
@@ -202,9 +213,9 @@ def upgrade() -> None:
                                                 'RESULT_WITHHELD', name='reportcardresult',
                                                 schema=_SCHEMA), nullable=True),
                     sa.ForeignKeyConstraint(['academic_term_id'], [
-                                            'academic_terms.id'], ),
+                                            _fk_target('academic_terms.id')], ),
                     sa.ForeignKeyConstraint(
-                        ['enrollment_id'], ['enrollments.id'], ),
+                        ['enrollment_id'], [_fk_target('enrollments.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('enrollment_id', 'academic_term_id',
                                         name='uq_report_card_enrollment_term'),
@@ -222,9 +233,10 @@ def upgrade() -> None:
                     sa.Column('final_term', sa.Integer(), nullable=True),
                     sa.Column('final_marks', sa.Integer(), nullable=True),
                     sa.ForeignKeyConstraint(['academic_class_subject_id'], [
-                        'academic_class_subjects.id'], ondelete='CASCADE'),
+                        _fk_target('academic_class_subjects.id')],
+                        ondelete='CASCADE'),
                     sa.ForeignKeyConstraint(['report_card_id'], [
-                                            'report_cards.id'], ),
+                                            _fk_target('report_cards.id')], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint(
                         'report_card_id', 'academic_class_subject_id', name='uq_report_card_subject'),

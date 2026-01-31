@@ -50,7 +50,7 @@ def write_json(path, data):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Populate JSON seed data from /test routes."
+        description="Populate JSON seed data from /dev routes."
     )
     parser.add_argument(
         "--base-url",
@@ -81,7 +81,7 @@ def main():
 
     failures = 0
     for route, filename in routes.items():
-        url = f"{base_url}/test/{route}"
+        url = f"{base_url}/dev/{route}"
         file_path = os.path.join(data_dir, filename)
         print(f"Fetching {url} -> {file_path}...")
         try:

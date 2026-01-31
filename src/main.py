@@ -19,7 +19,7 @@ from models.user import UserRead
 from routers import (academic_class_subject_terms, academic_class_subjects,
                      academic_classes, academic_sessions, academic_terms)
 from routers import app_settings as settings
-from routers import (aws, date_sheet_subjects, date_sheets, enrollments,
+from routers import (aws, date_sheet_subjects, date_sheets, dev, enrollments,
                      public, report_card_subjects, report_cards, students,
                      subjects, test, users)
 
@@ -148,8 +148,9 @@ def get_current_user(
 
 
 if env.APP_ENV is AppEnv.DEVELOPMENT:
-    app.include_router(test.router)
+    app.include_router(dev.router)
 
+app.include_router(test.router)
 app.include_router(public.router)
 
 protected_router.include_router(students.router)

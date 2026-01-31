@@ -217,7 +217,7 @@ def compare_lists(expected, actual, allow_id_remap=False, id_maps=None):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Verify /test routes match JSON seed data."
+        description="Verify /dev routes match JSON seed data."
     )
     parser.add_argument(
         "--base-url",
@@ -254,7 +254,7 @@ def main():
     failures = 0
     route_data = {}
     for route, filename in routes.items():
-        url = f"{base_url}/test/{route}"
+        url = f"{base_url}/dev/{route}"
         file_path = os.path.join(data_dir, filename)
         print(f"Checking {url} against {file_path}...")
         try:

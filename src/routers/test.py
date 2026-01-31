@@ -137,7 +137,9 @@ def populate_seed(
 
 
 @router.post("/firebase_custom_token", response_model=CommandResult)
-def firebase_custom_token(email: str = Query(..., min_length=1)):
+def firebase_custom_token(request: Request, email: str = Query(..., min_length=1)):
+    namespace = getattr(request.state, "db_namespace", None)
     return _run_command(
-        ["python", "scripts/create_firebase_custom_token.py", email]
+        ["python", "scripts/create_firebase_custom_token.py", email],
+        namespace
     )

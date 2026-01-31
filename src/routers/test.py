@@ -3,9 +3,12 @@ import re
 import subprocess
 from pathlib import Path
 
-from fastapi import APIRouter, HTTPException, Query, Request
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import BaseModel
+from sqlalchemy import text
+from sqlmodel import Session
 
+from db import get_session
 from lib.env import env
 
 router = APIRouter(prefix="/test", tags=["test"])
@@ -21,6 +24,10 @@ class CommandResult(BaseModel):
     status: str
     command: str
     output: str
+
+
+class NamespaceList(BaseModel):
+    namespaces: list[str]
 
 
 def _run_command(
@@ -66,6 +73,19 @@ def _run_command(
         command=" ".join(command),
         output=combined_output,
     )
+
+
+@router.get("/namespaces", response_model=NamespaceList)
+def list_namespaces(session: Session = Depends(get_session)):
+    rows = session.connection().execute(
+        text(
+            "SELECT schema_name FROM information_schema.schemata "
+            "WHERE schema_name NOT IN ('information_schema') "
+            "AND schema_name NOT LIKE 'pg_%' "
+            "ORDER BY schema_name"
+        )
+    )
+    return NamespaceList(namespaces=[row[0] for row in rows])
 
 
 @router.post("/reset_db", response_model=CommandResult)

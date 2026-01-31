@@ -3,10 +3,11 @@ from contextlib import asynccontextmanager
 from fastapi import APIRouter, Depends, FastAPI, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
+from fastapi.responses import JSONResponse
 from sqlmodel import SQLModel
 
 from admin import setup_admin
-from db import engine
+from db import DB_NAMESPACE_HEADER, engine, normalize_db_namespace
 from lib.auth import get_bearer_token, get_decoded_token, require_user
 from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject,
@@ -61,6 +62,22 @@ app = FastAPI(lifespan=lifespan)
 protected_router = APIRouter(dependencies=[Depends(require_user)])
 
 
+@app.middleware("http")
+async def set_db_namespace(request: Request, call_next):
+    namespace_header = request.headers.get(DB_NAMESPACE_HEADER)
+    if namespace_header:
+        try:
+            request.state.db_namespace = normalize_db_namespace(
+                namespace_header
+            )
+        except ValueError:
+            return JSONResponse(
+                status_code=400,
+                content={"detail": "Invalid test namespace."},
+            )
+    return await call_next(request)
+
+
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
@@ -69,6 +86,22 @@ def custom_openapi():
         version=app.version,
         routes=app.routes,
     )
+    namespace_header = {
+        "name": "X-Test-Namespace",
+        "in": "header",
+        "required": False,
+        "schema": {"type": "string"},
+        "description": "Optional test schema namespace for DB routing.",
+    }
+    for path_item in openapi_schema.get("paths", {}).values():
+        for operation in path_item.values():
+            parameters = operation.get("parameters", [])
+            if not any(
+                p.get("in") == "header"
+                and p.get("name") == namespace_header["name"]
+                for p in parameters
+            ):
+                operation["parameters"] = parameters + [namespace_header]
     openapi_schema.setdefault("components", {}).setdefault(
         "securitySchemes", {}
     )["BearerAuth"] = {

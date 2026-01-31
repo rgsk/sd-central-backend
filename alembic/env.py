@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 from logging.config import fileConfig
 
@@ -39,6 +40,19 @@ _ = [academic_class, academic_class_subject,
 target_metadata = SQLModel.metadata
 
 config.set_main_option("sqlalchemy.url", env.DATABASE_URL)
+
+_NAMESPACE_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def _normalize_db_namespace(value: str | None) -> str | None:
+    if not value:
+        return None
+    value = value.strip()
+    if not value:
+        return None
+    if not _NAMESPACE_RE.fullmatch(value):
+        raise RuntimeError("Invalid DB_NAMESPACE")
+    return value
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -83,10 +97,17 @@ def run_migrations_online() -> None:
         poolclass=pool.NullPool,
     )
 
+    namespace = _normalize_db_namespace(os.getenv("DB_NAMESPACE"))
+
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        configure_kwargs = {
+            "connection": connection,
+            "target_metadata": target_metadata,
+        }
+        if namespace:
+            configure_kwargs["version_table_schema"] = namespace
+
+        context.configure(**configure_kwargs)
 
         with context.begin_transaction():
             context.run_migrations()

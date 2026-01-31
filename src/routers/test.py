@@ -1,9 +1,10 @@
 import json
+import os
 import subprocess
 import time
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import BaseModel
 from sqlmodel import Session, col, select
 
@@ -246,12 +247,18 @@ def list_raw_users(session: Session = Depends(get_session)):
     return results
 
 
-def _run_command(command: list[str]) -> CommandResult:
+def _run_command(
+    command: list[str], namespace: str | None = None
+) -> CommandResult:
+    command_env = os.environ.copy()
+    if namespace:
+        command_env["DB_NAMESPACE"] = namespace
     result = subprocess.run(
         command,
         cwd=REPO_ROOT,
         capture_output=True,
         text=True,
+        env=command_env,
     )
     combined_output = f"{result.stdout}{result.stderr}"
     if result.returncode != 0:
@@ -271,24 +278,34 @@ def _run_command(command: list[str]) -> CommandResult:
 
 
 @router.post("/reset_db", response_model=CommandResult)
-def reset_db():
-    result = _run_command(["make", "reset_db"])
+def reset_db(request: Request):
+    namespace = getattr(request.state, "db_namespace", None)
+    result = _run_command(["make", "reset_db"], namespace)
     time.sleep(1)
     return result
 
 
 @router.post("/migrate_db", response_model=CommandResult)
-def migrate_db():
-    return _run_command(["make", "migrate_db"])
+def migrate_db(request: Request):
+    namespace = getattr(request.state, "db_namespace", None)
+    return _run_command(["make", "migrate_db"], namespace)
 
 
 @router.post("/seed_db", response_model=CommandResult)
-def seed_db(folder: str = Query(..., min_length=1)):
-    return _run_command(["make", "seed_db", folder])
+def seed_db(request: Request, folder: str = Query(..., min_length=1)):
+    namespace = getattr(request.state, "db_namespace", None)
+    return _run_command(["make", "seed_db", folder], namespace)
+
+
+@router.post("/refresh_db", response_model=CommandResult)
+def refresh_db(request: Request, folder: str = Query(..., min_length=1)):
+    namespace = getattr(request.state, "db_namespace", None)
+    return _run_command(["make", "refresh_db", folder], namespace)
 
 
 @router.post("/verify_seed", response_model=CommandResult)
 def verify_seed(
+    request: Request,
     folder: str = Query(..., min_length=1),
     logical_compare: bool = Query(False),
 ):
@@ -296,14 +313,17 @@ def verify_seed(
     if logical_compare:
         command.append("LOGICAL_COMPARE=1")
     command.append(folder)
-    return _run_command(command)
+    namespace = getattr(request.state, "db_namespace", None)
+    return _run_command(command, namespace)
 
 
 @router.post("/populate_seed", response_model=CommandResult)
 def populate_seed(
+    request: Request,
     folder: str = Query(..., min_length=1),
 ):
-    return _run_command(["make", "populate_seed", folder])
+    namespace = getattr(request.state, "db_namespace", None)
+    return _run_command(["make", "populate_seed", folder], namespace)
 
 
 @router.post("/firebase_custom_token", response_model=CommandResult)

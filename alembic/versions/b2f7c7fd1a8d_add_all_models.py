@@ -5,6 +5,7 @@ Revises:
 Create Date: 2026-01-15 19:55:35.215789
 
 """
+import os
 from typing import Sequence, Union
 
 import sqlalchemy as sa
@@ -17,6 +18,9 @@ down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
+_SCHEMA = os.getenv("DB_NAMESPACE") or None
+print('_SCHEMA', _SCHEMA)
+
 
 def upgrade() -> None:
     """Upgrade schema."""
@@ -27,15 +31,15 @@ def upgrade() -> None:
                     sa.Column('year', sa.String(), nullable=False),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint(
-                        'year', name='uq_academic_session_year')
-                    )
+                        'year', name='uq_academic_session_year'),
+                    schema=_SCHEMA)
     op.create_table('app_settings',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
                     sa.Column('updated_at', sa.DateTime(), nullable=False),
                     sa.Column('test_field', sa.String(), nullable=False),
-                    sa.PrimaryKeyConstraint('id')
-                    )
+                    sa.PrimaryKeyConstraint('id'),
+                    schema=_SCHEMA)
     op.create_table('students',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
@@ -44,18 +48,19 @@ def upgrade() -> None:
                     sa.Column('dob', sa.Date(), nullable=False),
                     sa.Column('father_name', sa.String(), nullable=False),
                     sa.Column('mother_name', sa.String(), nullable=False),
-                    sa.PrimaryKeyConstraint('id')
-                    )
+                    sa.PrimaryKeyConstraint('id'),
+                    schema=_SCHEMA)
     op.create_index(op.f('ix_students_registration_no'),
-                    'students', ['registration_no'], unique=True)
+                    'students', ['registration_no'], unique=True,
+                    schema=_SCHEMA)
     op.create_table('subjects',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
                     sa.Column('name', sa.String(), nullable=False),
-                    sa.PrimaryKeyConstraint('id')
-                    )
+                    sa.PrimaryKeyConstraint('id'),
+                    schema=_SCHEMA)
     op.create_index(op.f('ix_subjects_name'),
-                    'subjects', ['name'], unique=True)
+                    'subjects', ['name'], unique=True, schema=_SCHEMA)
     op.create_table('academic_classes',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
@@ -67,23 +72,24 @@ def upgrade() -> None:
                         'academic_sessions.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('academic_session_id', 'grade', 'section',
-                                        name='uq_academic_classes_session_grade_section')
-                    )
+                                        name='uq_academic_classes_session_grade_section'),
+                    schema=_SCHEMA)
     op.create_table('academic_terms',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
                     sa.Column('academic_session_id',
                               sa.UUID(), nullable=False),
                     sa.Column('term_type', sa.Enum('ANNUAL', 'HALF_YEARLY',
-                                                   'QUARTERLY', name='academictermtype'), nullable=False),
+                                                   'QUARTERLY', name='academictermtype',
+                                                   schema=_SCHEMA), nullable=False),
                     sa.Column('working_days', sa.Integer(), nullable=True),
                     sa.Column('exam_result_date', sa.Date(), nullable=True),
                     sa.ForeignKeyConstraint(['academic_session_id'], [
                         'academic_sessions.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('academic_session_id', 'term_type',
-                                        name='uq_academic_term_session_term_type')
-                    )
+                                        name='uq_academic_term_session_term_type'),
+                    schema=_SCHEMA)
     op.create_table('academic_class_subjects',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
@@ -103,8 +109,8 @@ def upgrade() -> None:
                     sa.UniqueConstraint('academic_class_id', 'academic_term_id',
                                         'is_additional', 'position', name='uq_class_subject_group_position'),
                     sa.UniqueConstraint('academic_class_id', 'subject_id',
-                                        'academic_term_id', name='uq_class_subject_term')
-                    )
+                                        'academic_term_id', name='uq_class_subject_term'),
+                    schema=_SCHEMA)
     op.create_table('date_sheets',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
@@ -116,8 +122,8 @@ def upgrade() -> None:
                                             'academic_terms.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint(
-                        'academic_class_id', 'academic_term_id', name='uq_date_sheets_class_term')
-                    )
+                        'academic_class_id', 'academic_term_id', name='uq_date_sheets_class_term'),
+                    schema=_SCHEMA)
     op.create_table('enrollments',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
@@ -133,14 +139,15 @@ def upgrade() -> None:
                     sa.ForeignKeyConstraint(['student_id'], ['students.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('student_id', 'academic_session_id',
-                                        name='uq_enrollment_session')
-                    )
+                                        name='uq_enrollment_session'),
+                    schema=_SCHEMA)
     op.create_table('users',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
                     sa.Column('email', sa.String(), nullable=False),
                     sa.Column('role', sa.Enum('ADMIN', 'TEACHER',
-                                              name='userrole'), nullable=False),
+                                              name='userrole',
+                                              schema=_SCHEMA), nullable=False),
                     sa.Column('default_academic_session_id',
                               sa.UUID(), nullable=True),
                     sa.Column('default_academic_term_id',
@@ -153,9 +160,10 @@ def upgrade() -> None:
                         'academic_sessions.id'], ),
                     sa.ForeignKeyConstraint(['default_academic_term_id'], [
                         'academic_terms.id'], ),
-                    sa.PrimaryKeyConstraint('id')
-                    )
-    op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
+                    sa.PrimaryKeyConstraint('id'),
+                    schema=_SCHEMA)
+    op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True,
+                    schema=_SCHEMA)
     op.create_table('date_sheet_subjects',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
@@ -170,33 +178,38 @@ def upgrade() -> None:
                         'academic_class_subjects.id'], ondelete='CASCADE'),
                     sa.ForeignKeyConstraint(
                         ['date_sheet_id'], ['date_sheets.id'], ondelete='CASCADE'),
-                    sa.PrimaryKeyConstraint('id')
-                    )
+                    sa.PrimaryKeyConstraint('id'),
+                    schema=_SCHEMA)
     op.create_table('report_cards',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
                     sa.Column('enrollment_id', sa.UUID(), nullable=False),
                     sa.Column('academic_term_id', sa.UUID(), nullable=False),
                     sa.Column('work_education_grade', sa.Enum('A', 'B', 'C',
-                                                              'D', 'E', name='reportcardgrade'), nullable=True),
+                                                              'D', 'E', name='reportcardgrade',
+                                                              schema=_SCHEMA), nullable=True),
                     sa.Column('art_education_grade', sa.Enum('A', 'B', 'C',
-                                                             'D', 'E', name='reportcardgrade'), nullable=True),
+                                                             'D', 'E', name='reportcardgrade',
+                                                             schema=_SCHEMA), nullable=True),
                     sa.Column('physical_education_grade', sa.Enum('A', 'B', 'C',
-                                                                  'D', 'E', name='reportcardgrade'), nullable=True),
+                                                                  'D', 'E', name='reportcardgrade',
+                                                                  schema=_SCHEMA), nullable=True),
                     sa.Column('behaviour_grade', sa.Enum('A', 'B', 'C', 'D',
-                                                         'E', name='reportcardgrade'), nullable=True),
+                                                         'E', name='reportcardgrade',
+                                                         schema=_SCHEMA), nullable=True),
                     sa.Column('attendance_present',
                               sa.Integer(), nullable=True),
                     sa.Column('result', sa.Enum('PROMOTED', 'PASSED', 'NEED_IMPROVEMENT',
-                                                'RESULT_WITHHELD', name='reportcardresult'), nullable=True),
+                                                'RESULT_WITHHELD', name='reportcardresult',
+                                                schema=_SCHEMA), nullable=True),
                     sa.ForeignKeyConstraint(['academic_term_id'], [
                                             'academic_terms.id'], ),
                     sa.ForeignKeyConstraint(
                         ['enrollment_id'], ['enrollments.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('enrollment_id', 'academic_term_id',
-                                        name='uq_report_card_enrollment_term')
-                    )
+                                        name='uq_report_card_enrollment_term'),
+                    schema=_SCHEMA)
     op.create_table('report_card_subjects',
                     sa.Column('id', sa.UUID(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
@@ -215,28 +228,31 @@ def upgrade() -> None:
                                             'report_cards.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint(
-                        'report_card_id', 'academic_class_subject_id', name='uq_report_card_subject')
-                    )
+                        'report_card_id', 'academic_class_subject_id', name='uq_report_card_subject'),
+                    schema=_SCHEMA)
     # ### end Alembic commands ###
 
 
 def downgrade() -> None:
     """Downgrade schema."""
     # ### commands auto generated by Alembic - please adjust! ###
-    op.drop_table('report_card_subjects')
-    op.drop_table('report_cards')
-    op.drop_table('date_sheet_subjects')
-    op.drop_index(op.f('ix_users_email'), table_name='users')
-    op.drop_table('users')
-    op.drop_table('enrollments')
-    op.drop_table('date_sheets')
-    op.drop_table('academic_class_subjects')
-    op.drop_table('academic_terms')
-    op.drop_table('academic_classes')
-    op.drop_index(op.f('ix_subjects_name'), table_name='subjects')
-    op.drop_table('subjects')
-    op.drop_index(op.f('ix_students_registration_no'), table_name='students')
-    op.drop_table('students')
-    op.drop_table('app_settings')
-    op.drop_table('academic_sessions')
+    op.drop_table('report_card_subjects', schema=_SCHEMA)
+    op.drop_table('report_cards', schema=_SCHEMA)
+    op.drop_table('date_sheet_subjects', schema=_SCHEMA)
+    op.drop_index(op.f('ix_users_email'), table_name='users',
+                  schema=_SCHEMA)
+    op.drop_table('users', schema=_SCHEMA)
+    op.drop_table('enrollments', schema=_SCHEMA)
+    op.drop_table('date_sheets', schema=_SCHEMA)
+    op.drop_table('academic_class_subjects', schema=_SCHEMA)
+    op.drop_table('academic_terms', schema=_SCHEMA)
+    op.drop_table('academic_classes', schema=_SCHEMA)
+    op.drop_index(op.f('ix_subjects_name'), table_name='subjects',
+                  schema=_SCHEMA)
+    op.drop_table('subjects', schema=_SCHEMA)
+    op.drop_index(op.f('ix_students_registration_no'),
+                  table_name='students', schema=_SCHEMA)
+    op.drop_table('students', schema=_SCHEMA)
+    op.drop_table('app_settings', schema=_SCHEMA)
+    op.drop_table('academic_sessions', schema=_SCHEMA)
     # ### end Alembic commands ###

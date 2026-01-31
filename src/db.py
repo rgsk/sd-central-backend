@@ -4,7 +4,7 @@ import logging
 import os
 import re
 
-from fastapi import Request
+from fastapi import HTTPException, Request
 from sqlalchemy import text
 from sqlmodel import Session, create_engine
 
@@ -51,6 +51,18 @@ def apply_db_namespace(session: Session, namespace: str | None) -> None:
     if not namespace:
         return
     connection = session.connection()
+    exists = connection.execute(
+        text(
+            "SELECT 1 FROM information_schema.schemata "
+            "WHERE schema_name = :schema_name"
+        ),
+        {"schema_name": namespace},
+    ).first()
+    if not exists:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unknown DB namespace: {namespace}",
+        )
     connection.execute(text(f'SET search_path TO "{namespace}", public'))
 
 

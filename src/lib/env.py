@@ -15,6 +15,7 @@ class _Env:
     def __init__(self):
         self.APP_ENV = self._get_app_env()
         self.DATABASE_URL = self._get_var("DATABASE_URL")
+        self.PORT = self._get_var("PORT")
         self.AWS_ACCESS_KEY = self._get_var('AWS_ACCESS_KEY')
         self.AWS_SECRET_ACCESS_KEY = self._get_var('AWS_SECRET_ACCESS_KEY')
         self.AWS_REGION = self._get_var('AWS_REGION', "us-east-1")

@@ -130,7 +130,10 @@ if env.APP_ENV is AppEnv.DEVELOPMENT:
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    port = env.PORT
+    return {
+        "message": f"Server is running on http://localhost:{port}"
+    }
 
 
 @app.get("/decode-token")

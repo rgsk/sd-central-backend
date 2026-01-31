@@ -1,0 +1,86 @@
+[
+  {
+    "id": "7fb962d1-2e4c-49ee-a1f2-1353f7ddfa9a",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "VIII",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402670"
+  },
+  {
+    "id": "dd26a73e-a6e7-49df-bdd3-38d524de0b3e",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "VII",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402647"
+  },
+  {
+    "id": "f5fb99fc-4819-4bac-ae28-fd39ccabba79",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "VI",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402624"
+  },
+  {
+    "id": "b7a8e37f-af51-4978-8e10-9eaf4a4ceb94",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "V",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402598"
+  },
+  {
+    "id": "b86f6294-2167-4dde-932d-db63afbc7c7f",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "IV",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402575"
+  },
+  {
+    "id": "193ee8d3-d74b-481a-beeb-a2a792587a36",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "III",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402548"
+  },
+  {
+    "id": "dba7ae26-bbad-41c4-93cc-62ec4b5a8e53",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "II",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402524"
+  },
+  {
+    "id": "fd483e15-5fc7-4ebc-8579-ae41b848d579",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "I",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402501"
+  },
+  {
+    "id": "4c7e3828-a87c-4782-8589-db1b6b365cc1",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "UKG",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402476"
+  },
+  {
+    "id": "c34c8229-44d5-4ce6-8556-116eb7fbdae8",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "LKG",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402449"
+  },
+  {
+    "id": "74099af3-14af-48de-8f09-25ec17152f63",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "NURSERY",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402417"
+  },
+  {
+    "id": "fca94c78-05fa-4f63-a414-2f6e892a7087",
+    "academic_session_id": "4b51d964-7024-4a16-ad65-f407bc956563",
+    "grade": "PRE-NURSERY",
+    "section": "A",
+    "created_at": "2026-01-31T12:56:26.402343"
+  }
+]

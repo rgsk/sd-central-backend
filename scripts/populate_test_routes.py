@@ -30,6 +30,11 @@ ROUTES = {
 }
 
 
+def default_base_url():
+    port = os.getenv("PORT", "8000")
+    return f"http://localhost:{port}"
+
+
 def fetch_json(url):
     headers = {"Accept": "application/json"}
     namespace = os.getenv("DB_NAMESPACE")
@@ -54,8 +59,8 @@ def main():
     )
     parser.add_argument(
         "--base-url",
-        default="http://localhost:8000",
-        help="API base URL (default: http://localhost:8000)",
+        default=default_base_url(),
+        help="API base URL (default: http://localhost:$PORT)",
     )
     parser.add_argument(
         "--only",

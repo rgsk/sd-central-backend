@@ -48,6 +48,11 @@ FOREIGN_KEY_ROUTES = {
 REMAPPED_IGNORE_FIELDS = {"created_at", "updated_at", "deleted_at"}
 
 
+def default_base_url():
+    port = os.getenv("PORT", "8000")
+    return f"http://localhost:{port}"
+
+
 def load_json(path):
     with open(path, "r", encoding="utf-8") as handle:
         return json.load(handle)
@@ -221,8 +226,8 @@ def main():
     )
     parser.add_argument(
         "--base-url",
-        default="http://localhost:8000",
-        help="API base URL (default: http://localhost:8000)",
+        default=default_base_url(),
+        help="API base URL (default: http://localhost:$PORT)",
     )
     parser.add_argument(
         "--only",

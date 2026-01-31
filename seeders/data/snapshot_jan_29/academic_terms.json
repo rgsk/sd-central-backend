@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bf2c578d-6d2a-48f8-b9a8-3c5abb541051",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "term_type": "annual",
+    "working_days": 84,
+    "exam_result_date": "2026-03-31",
+    "created_at": "2026-01-15T12:58:55.391676"
+  },
+  {
+    "id": "d018e605-f599-4e2d-b08a-2eab8f29b4f3",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "term_type": "half-yearly",
+    "working_days": 149,
+    "exam_result_date": "2025-12-26",
+    "created_at": "2026-01-15T12:58:55.391575"
+  },
+  {
+    "id": "2e8c6a65-e228-4260-a5a8-f145685393fe",
+    "academic_session_id": "c4f38cf8-ec44-4941-8029-86460f3e2b73",
+    "term_type": "quarterly",
+    "working_days": null,
+    "exam_result_date": null,
+    "created_at": "2026-01-15T12:58:55.391315"
+  }
+]

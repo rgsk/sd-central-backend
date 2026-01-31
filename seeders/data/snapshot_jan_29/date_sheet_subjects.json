@@ -1,0 +1,52 @@
+[
+  {
+    "id": "6dc2e9ac-2e6b-4c03-bba5-d5648e5642c5",
+    "date_sheet_id": "fe5f3037-42bb-4fe5-852a-d8fa0e017c5b",
+    "academic_class_subject_id": "0574e3f6-6413-478c-9071-020431af3e5c",
+    "paper_code": null,
+    "exam_date": null,
+    "start_time": null,
+    "end_time": null,
+    "created_at": "2026-01-21T22:57:42.052625"
+  },
+  {
+    "id": "6208ec63-5500-44ba-b7f9-f3193d36b9a2",
+    "date_sheet_id": "fe5f3037-42bb-4fe5-852a-d8fa0e017c5b",
+    "academic_class_subject_id": "6167dfbc-bd9c-4e34-bf8a-6d326ba99a00",
+    "paper_code": null,
+    "exam_date": null,
+    "start_time": null,
+    "end_time": null,
+    "created_at": "2026-01-21T22:57:42.052528"
+  },
+  {
+    "id": "278b091a-1734-49ce-b0cb-61f0de71e1e6",
+    "date_sheet_id": "fe5f3037-42bb-4fe5-852a-d8fa0e017c5b",
+    "academic_class_subject_id": "247c2d8a-3188-4c58-b684-90307c06f035",
+    "paper_code": null,
+    "exam_date": null,
+    "start_time": null,
+    "end_time": null,
+    "created_at": "2026-01-21T22:57:42.052428"
+  },
+  {
+    "id": "c2cf0ac4-ea73-4346-b23c-05d1fa174ad8",
+    "date_sheet_id": "fe5f3037-42bb-4fe5-852a-d8fa0e017c5b",
+    "academic_class_subject_id": "e4e65637-5493-4a86-bd4d-ee0eb28bb3d1",
+    "paper_code": null,
+    "exam_date": null,
+    "start_time": null,
+    "end_time": null,
+    "created_at": "2026-01-21T22:57:42.052319"
+  },
+  {
+    "id": "6c1ae7a4-7dc9-446f-97d4-b3ebba9526e9",
+    "date_sheet_id": "fe5f3037-42bb-4fe5-852a-d8fa0e017c5b",
+    "academic_class_subject_id": "9174093a-d73a-4aa7-a426-61ea7001c23d",
+    "paper_code": null,
+    "exam_date": null,
+    "start_time": null,
+    "end_time": null,
+    "created_at": "2026-01-21T22:57:42.052101"
+  }
+]

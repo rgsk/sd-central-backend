@@ -15,7 +15,7 @@ SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "src"))
 sys.path.append(SRC_DIR)
 BASE_DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 
-from db import apply_db_namespace, engine, normalize_db_namespace  # noqa: E402
+from db import engine, normalize_db_namespace  # noqa: E402
 from models.academic_class import AcademicClass  # noqa: E402
 from models.academic_class_subject import AcademicClassSubject  # noqa: E402
 from models.academic_class_subject_term import \
@@ -908,8 +908,8 @@ if __name__ == "__main__":
     data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
 
     with Session(engine) as session:
-        apply_db_namespace(
-            session, normalize_db_namespace(os.getenv("DB_NAMESPACE"))
+        session.info["db_namespace"] = normalize_db_namespace(
+            os.getenv("DB_NAMESPACE")
         )
         (
             (session_inserted, session_skipped),

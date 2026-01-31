@@ -5,7 +5,8 @@ import os
 import re
 
 from fastapi import HTTPException, Request
-from sqlalchemy import text
+from sqlalchemy import event, text
+from sqlalchemy.orm import Session as SASession
 from sqlmodel import Session, create_engine
 
 from lib.env import env
@@ -47,10 +48,11 @@ def normalize_db_namespace(value: str | None) -> str | None:
     return value
 
 
-def apply_db_namespace(session: Session, namespace: str | None) -> None:
+def apply_db_namespace_to_connection(
+    connection, namespace: str | None
+) -> None:
     if not namespace:
         return
-    connection = session.connection()
     exists = connection.execute(
         text(
             "SELECT 1 FROM information_schema.schemata "
@@ -71,5 +73,17 @@ def get_session(request: Request):
         namespace = getattr(request.state, "db_namespace", None)
         if not namespace:
             namespace = os.getenv("DB_NAMESPACE")
-        apply_db_namespace(session, normalize_db_namespace(namespace))
+        session.info["db_namespace"] = normalize_db_namespace(namespace)
         yield session
+
+
+@event.listens_for(SASession, "after_begin")
+def _apply_namespace_after_begin(
+    session: SASession,
+    transaction,
+    connection,
+) -> None:
+    namespace = session.info.get("db_namespace")
+    if not namespace:
+        return
+    apply_db_namespace_to_connection(connection, namespace)

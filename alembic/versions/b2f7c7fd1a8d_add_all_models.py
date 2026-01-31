@@ -19,7 +19,6 @@ branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 _SCHEMA = os.getenv("DB_NAMESPACE") or None
-print('_SCHEMA', _SCHEMA)
 
 
 def upgrade() -> None:

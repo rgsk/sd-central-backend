@@ -3,8 +3,16 @@ import argparse
 import json
 import os
 import sys
-import urllib.error
-import urllib.request
+
+SCRIPT_DIR = os.path.dirname(__file__)
+SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "src"))
+if SRC_DIR not in sys.path:
+    sys.path.append(SRC_DIR)
+
+from sqlmodel import Session  # noqa: E402
+
+from db import engine, normalize_db_namespace  # noqa: E402
+from routers import dev as dev_routes  # noqa: E402
 
 BASE_DATA_DIR = os.path.join(
     os.path.dirname(os.path.dirname(__file__)),
@@ -30,20 +38,13 @@ ROUTES = {
 }
 
 
-def default_base_url():
-    port = os.getenv("PORT", "8000")
-    return f"http://localhost:{port}"
-
-
-def fetch_json(url):
-    headers = {"Accept": "application/json"}
-    namespace = os.getenv("DB_NAMESPACE")
-    if namespace:
-        headers["X-Test-Namespace"] = namespace
-    req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req, timeout=10) as resp:
-        body = resp.read()
-    return json.loads(body.decode("utf-8"))
+def fetch_route_data(route: str, session: Session):
+    items = dev_routes.fetch_route_data(route, session)
+    response_model = dev_routes.ROUTE_RESPONSE_MODELS[route]
+    return [
+        response_model.model_validate(item).model_dump(mode="json")
+        for item in items
+    ]
 
 
 def write_json(path, data):
@@ -55,12 +56,7 @@ def write_json(path, data):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Populate JSON seed data from /dev routes."
-    )
-    parser.add_argument(
-        "--base-url",
-        default=default_base_url(),
-        help="API base URL (default: http://localhost:$PORT)",
+        description="Populate JSON seed data from DB data."
     )
     parser.add_argument(
         "--only",
@@ -74,7 +70,6 @@ def main():
     )
     args = parser.parse_args()
 
-    base_url = args.base_url.rstrip("/")
     data_dir = os.path.join(BASE_DATA_DIR, args.data_name)
     routes = ROUTES
     if args.only:
@@ -84,30 +79,37 @@ def main():
             print(f"Unknown routes: {missing}")
             return 2
 
+    try:
+        namespace = normalize_db_namespace(os.getenv("DB_NAMESPACE"))
+    except ValueError as exc:
+        print(f"  ERROR: {exc}")
+        return 2
+
     failures = 0
-    for route, filename in routes.items():
-        url = f"{base_url}/dev/{route}"
-        file_path = os.path.join(data_dir, filename)
-        print(f"Fetching {url} -> {file_path}...")
-        try:
-            data = fetch_json(url)
-        except urllib.error.HTTPError as exc:
-            print(f"  ERROR: HTTP {exc.code} {exc.reason}")
-            failures += 1
-            continue
-        except urllib.error.URLError as exc:
-            print(f"  ERROR: {exc.reason}")
-            failures += 1
-            continue
+    with Session(engine) as session:
+        session.info["db_namespace"] = namespace
+        for route, filename in routes.items():
+            file_path = os.path.join(data_dir, filename)
+            print(f"Fetching {route} -> {file_path}...")
+            try:
+                data = fetch_route_data(route, session)
+            except KeyError as exc:
+                print(f"  ERROR: {exc}")
+                failures += 1
+                continue
+            except Exception as exc:
+                print(f"  ERROR: {exc}")
+                failures += 1
+                continue
 
-        try:
-            write_json(file_path, data)
-        except OSError as exc:
-            print(f"  ERROR: {exc}")
-            failures += 1
-            continue
+            try:
+                write_json(file_path, data)
+            except OSError as exc:
+                print(f"  ERROR: {exc}")
+                failures += 1
+                continue
 
-        print("  OK")
+            print("  OK")
 
     if failures:
         print(f"\nFAILED: {failures} route(s) not written.")

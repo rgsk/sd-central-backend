@@ -233,3 +233,44 @@ def list_raw_users(session: Session = Depends(get_session)):
     statement = select(User).order_by(col(User.created_at).desc())
     results = session.exec(statement).all()
     return results
+
+
+ROUTE_HANDLERS = {
+    "students": list_raw_students,
+    "enrollments": list_raw_enrollments,
+    "academic_sessions": list_raw_academic_sessions,
+    "academic_classes": list_raw_academic_classes,
+    "academic_terms": list_raw_academic_terms,
+    "subjects": list_raw_subjects,
+    "academic_class_subjects": list_raw_academic_class_subjects,
+    "academic_class_subject_terms": list_raw_academic_class_subject_terms,
+    "report_cards": list_raw_report_cards,
+    "report_card_subjects": list_raw_report_card_subjects,
+    "date_sheets": list_raw_date_sheets,
+    "date_sheet_subjects": list_raw_date_sheet_subjects,
+    "users": list_raw_users,
+}
+
+
+ROUTE_RESPONSE_MODELS = {
+    "students": StudentReadRaw,
+    "enrollments": EnrollmentReadRaw,
+    "academic_sessions": AcademicSessionRead,
+    "academic_classes": AcademicClassReadRaw,
+    "academic_terms": AcademicTermReadRaw,
+    "subjects": SubjectRead,
+    "academic_class_subjects": AcademicClassSubjectRead,
+    "academic_class_subject_terms": AcademicClassSubjectTermRead,
+    "report_cards": ReportCardRead,
+    "report_card_subjects": ReportCardSubjectReadRaw,
+    "date_sheets": DateSheetReadRaw,
+    "date_sheet_subjects": DateSheetSubjectReadRaw,
+    "users": UserReadRaw,
+}
+
+
+def fetch_route_data(route: str, session: Session):
+    handler = ROUTE_HANDLERS.get(route)
+    if handler is None:
+        raise KeyError(f"Unknown route: {route}")
+    return handler(session=session)

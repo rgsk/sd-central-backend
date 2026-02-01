@@ -77,7 +77,7 @@ def get_session(request: Request):
     with Session(engine) as session:
         namespace = getattr(request.state, "db_namespace", None)
         if not namespace:
-            namespace = os.getenv("DB_NAMESPACE")
+            namespace = os.getenv("DB_NAMESPACE", 'public')
         session.info["db_namespace"] = normalize_db_namespace(namespace)
         yield session
 

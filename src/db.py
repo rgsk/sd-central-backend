@@ -9,22 +9,27 @@ from sqlalchemy import event, text
 from sqlalchemy.orm import Session as SASession
 from sqlmodel import Session, create_engine
 
-from lib.env import env
+from lib.env import AppEnv, env
 
 # 1. Configure logging to file
 sql_logger = logging.getLogger("sqlalchemy.engine")
 sql_logger.setLevel(logging.INFO)  # log SQL statements
 
-file_handler = logging.FileHandler("sql.log")
-file_handler.setLevel(logging.INFO)
+if env.APP_ENV == AppEnv.DEVELOPMENT:
+    if os.path.exists("sql.log"):
+        os.remove("sql.log")
+    open("sql.log", "w").close()
 
-# Optional: cleaner formatting
-formatter = logging.Formatter(
-    "%(asctime)s - %(levelname)s - %(message)s"
-)
-file_handler.setFormatter(formatter)
+    file_handler = logging.FileHandler("sql.log")
+    file_handler.setLevel(logging.INFO)
 
-sql_logger.addHandler(file_handler)
+    # Optional: cleaner formatting
+    formatter = logging.Formatter(
+        "%(asctime)s - %(levelname)s - %(message)s"
+    )
+    file_handler.setFormatter(formatter)
+
+    sql_logger.addHandler(file_handler)
 
 # 2. SQLModel engine
 # echo=False to avoid console spam

@@ -2,8 +2,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEVELOPMENT_ENV_FILE="$SCRIPT_DIR/../envs/development.env"
-STAGING_ENV_FILE="$SCRIPT_DIR/../envs/staging.env"
+DEVELOPMENT_ENV_FILE="$SCRIPT_DIR/../../sd-central-configs/backend/envs/development.env"
+STAGING_ENV_FILE="$SCRIPT_DIR/../../sd-central-configs/backend/envs/staging.env"
 
 read_database_url() {
   local env_file="$1"

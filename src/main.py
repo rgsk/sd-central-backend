@@ -59,7 +59,6 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
-protected_router = APIRouter(dependencies=[Depends(require_user)])
 
 
 @app.middleware("http")
@@ -76,6 +75,8 @@ async def set_db_namespace(request: Request, call_next):
                 content={"detail": "Invalid test namespace."},
             )
     return await call_next(request)
+
+protected_router = APIRouter(dependencies=[Depends(require_user)])
 
 
 def custom_openapi():

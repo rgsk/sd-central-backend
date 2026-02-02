@@ -8,6 +8,7 @@ from datetime import date, datetime, time
 from time import perf_counter
 from uuid import UUID
 
+from sqlalchemy import insert
 from sqlmodel import Session, select
 
 SCRIPT_DIR = os.path.dirname(__file__)
@@ -556,21 +557,48 @@ def seed_students(
     )
     users = load_json(os.path.join(data_dir, "users.json"))
 
+    def assert_db_is_empty() -> None:
+        tables = [
+            AcademicSession,
+            AcademicTerm,
+            AcademicClass,
+            Subject,
+            AcademicClassSubject,
+            AcademicClassSubjectTerm,
+            Student,
+            Enrollment,
+            ReportCard,
+            ReportCardSubject,
+            DateSheet,
+            DateSheetSubject,
+            User,
+        ]
+        for model in tables:
+            exists = session.exec(select(model).limit(1)).first()
+            if exists:
+                raise RuntimeError(
+                    "Seed expects an empty database. "
+                    f"Found existing rows in {model.__name__}."
+                )
+
+    def insert_rows(model: type, rows: list[dict]) -> int:
+        if not rows:
+            return 0
+        session.execute(insert(model), rows)
+        return len(rows)
+
+    assert_db_is_empty()
+
     section_start = perf_counter()
-    session_map: dict[UUID, AcademicSession] = {}
-    for raw in academic_sessions:
-        academic_session_id = UUID(raw["id"])
-        academic_session, created = get_or_create_academic_session(
-            session=session,
-            year=raw["year"],
-            academic_session_id=academic_session_id,
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            session_inserted += 1
-        else:
-            session_skipped += 1
-        session_map[academic_session_id] = academic_session
+    session_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "year": raw["year"],
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in academic_sessions
+    ]
+    session_inserted = insert_rows(AcademicSession, session_rows)
     session.flush()
     print(
         f"Academic sessions: {session_inserted} inserted, {session_skipped} skipped "
@@ -578,23 +606,20 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in academic_terms:
-        academic_term_id = UUID(raw["id"])
-        academic_term, created = get_or_create_academic_term(
-            session=session,
-            academic_term_id=academic_term_id,
-            academic_session_id=UUID(raw["academic_session_id"]),
-            term_type=AcademicTermType(raw["term_type"]),
-            working_days=raw.get("working_days"),
-            exam_result_date=parse_optional_date(
+    term_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "academic_session_id": UUID(raw["academic_session_id"]),
+            "term_type": AcademicTermType(raw["term_type"]),
+            "working_days": raw.get("working_days"),
+            "exam_result_date": parse_optional_date(
                 raw.get("exam_result_date")
             ),
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            term_inserted += 1
-        else:
-            term_skipped += 1
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in academic_terms
+    ]
+    term_inserted = insert_rows(AcademicTerm, term_rows)
     session.flush()
     print(
         f"Academic terms: {term_inserted} inserted, {term_skipped} skipped "
@@ -602,21 +627,17 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in academic_classes:
-        academic_session_id = UUID(raw["academic_session_id"])
-        academic_class_id = UUID(raw["id"])
-        academic_class, created = get_or_create_academic_class(
-            session=session,
-            academic_session_id=academic_session_id,
-            academic_class_id=academic_class_id,
-            grade=raw["grade"],
-            section=raw["section"],
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            class_inserted += 1
-        else:
-            class_skipped += 1
+    class_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "academic_session_id": UUID(raw["academic_session_id"]),
+            "grade": raw["grade"],
+            "section": raw["section"],
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in academic_classes
+    ]
+    class_inserted = insert_rows(AcademicClass, class_rows)
     session.flush()
     print(
         f"Academic classes: {class_inserted} inserted, {class_skipped} skipped "
@@ -624,18 +645,15 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in subjects:
-        subject_id = UUID(raw["id"])
-        _, created = get_or_create_subject(
-            session=session,
-            subject_id=subject_id,
-            name=raw["name"],
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            subject_inserted += 1
-        else:
-            subject_skipped += 1
+    subject_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "name": raw["name"],
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in subjects
+    ]
+    subject_inserted = insert_rows(Subject, subject_rows)
     session.flush()
     print(
         f"Subjects: {subject_inserted} inserted, {subject_skipped} skipped "
@@ -643,21 +661,20 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in academic_class_subjects:
-        academic_class_subject_id = UUID(raw["id"])
-        _, created = get_or_create_academic_class_subject(
-            session=session,
-            academic_class_subject_id=academic_class_subject_id,
-            academic_class_id=UUID(raw["academic_class_id"]),
-            subject_id=UUID(raw["subject_id"]),
-            is_additional=raw.get("is_additional", False),
-            position=raw["position"],
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            class_subject_inserted += 1
-        else:
-            class_subject_skipped += 1
+    class_subject_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "academic_class_id": UUID(raw["academic_class_id"]),
+            "subject_id": UUID(raw["subject_id"]),
+            "is_additional": raw.get("is_additional", False),
+            "position": raw["position"],
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in academic_class_subjects
+    ]
+    class_subject_inserted = insert_rows(
+        AcademicClassSubject, class_subject_rows
+    )
     session.flush()
     print(
         f"Academic class subjects: {class_subject_inserted} inserted, "
@@ -665,23 +682,22 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in academic_class_subject_terms:
-        academic_class_subject_term_id = UUID(raw["id"])
-        _, created = get_or_create_academic_class_subject_term(
-            session=session,
-            academic_class_subject_term_id=academic_class_subject_term_id,
-            academic_class_subject_id=UUID(
+    class_subject_term_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "academic_class_subject_id": UUID(
                 raw["academic_class_subject_id"]
             ),
-            academic_term_id=UUID(raw["academic_term_id"]),
-            highest_marks=raw.get("highest_marks"),
-            average_marks=raw.get("average_marks"),
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            class_subject_term_inserted += 1
-        else:
-            class_subject_term_skipped += 1
+            "academic_term_id": UUID(raw["academic_term_id"]),
+            "highest_marks": raw.get("highest_marks"),
+            "average_marks": raw.get("average_marks"),
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in academic_class_subject_terms
+    ]
+    class_subject_term_inserted = insert_rows(
+        AcademicClassSubjectTerm, class_subject_term_rows
+    )
     session.flush()
     print(
         f"Academic class subject terms: {class_subject_term_inserted} inserted, "
@@ -689,22 +705,19 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in students:
-        student_id = UUID(raw["id"])
-        student, created = get_or_create_student(
-            session=session,
-            student_id=student_id,
-            registration_no=raw["registration_no"],
-            name=raw["name"],
-            dob=date.fromisoformat(raw["dob"]),
-            father_name=raw["father_name"],
-            mother_name=raw["mother_name"],
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            student_inserted += 1
-        else:
-            student_skipped += 1
+    student_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "registration_no": raw["registration_no"],
+            "name": raw["name"],
+            "dob": date.fromisoformat(raw["dob"]),
+            "father_name": raw["father_name"],
+            "mother_name": raw["mother_name"],
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in students
+    ]
+    student_inserted = insert_rows(Student, student_rows)
     session.flush()
     print(
         f"Students: {student_inserted} inserted, {student_skipped} skipped "
@@ -712,21 +725,18 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in enrollments:
-        enrollment_id = UUID(raw["id"])
-        enrollment, created = get_or_create_enrollment(
-            session=session,
-            enrollment_id=enrollment_id,
-            student_id=UUID(raw["student_id"]),
-            academic_session_id=UUID(raw["academic_session_id"]),
-            academic_class_id=UUID(raw["academic_class_id"]),
-            image=raw.get("image"),
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            enrollment_inserted += 1
-        else:
-            enrollment_skipped += 1
+    enrollment_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "student_id": UUID(raw["student_id"]),
+            "academic_session_id": UUID(raw["academic_session_id"]),
+            "academic_class_id": UUID(raw["academic_class_id"]),
+            "image": raw.get("image"),
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in enrollments
+    ]
+    enrollment_inserted = insert_rows(Enrollment, enrollment_rows)
     session.flush()
     print(
         f"Enrollments: {enrollment_inserted} inserted, {enrollment_skipped} skipped "
@@ -734,37 +744,38 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in report_cards:
-        report_card_id = UUID(raw["id"])
-        _, created = get_or_create_report_card(
-            session=session,
-            report_card_id=report_card_id,
-            enrollment_id=UUID(raw["enrollment_id"]),
-            academic_term_id=UUID(raw["academic_term_id"]),
-            work_education_grade=ReportCardGrade(raw["work_education_grade"])
+    report_card_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "enrollment_id": UUID(raw["enrollment_id"]),
+            "academic_term_id": UUID(raw["academic_term_id"]),
+            "work_education_grade": ReportCardGrade(
+                raw["work_education_grade"]
+            )
             if raw.get("work_education_grade")
             else None,
-            art_education_grade=ReportCardGrade(raw["art_education_grade"])
+            "art_education_grade": ReportCardGrade(
+                raw["art_education_grade"]
+            )
             if raw.get("art_education_grade")
             else None,
-            physical_education_grade=ReportCardGrade(
+            "physical_education_grade": ReportCardGrade(
                 raw["physical_education_grade"]
             )
             if raw.get("physical_education_grade")
             else None,
-            behaviour_grade=ReportCardGrade(raw["behaviour_grade"])
+            "behaviour_grade": ReportCardGrade(raw["behaviour_grade"])
             if raw.get("behaviour_grade")
             else None,
-            attendance_present=raw.get("attendance_present"),
-            result=ReportCardResult(raw["result"])
+            "attendance_present": raw.get("attendance_present"),
+            "result": ReportCardResult(raw["result"])
             if raw.get("result")
             else None,
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            report_card_inserted += 1
-        else:
-            report_card_skipped += 1
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in report_cards
+    ]
+    report_card_inserted = insert_rows(ReportCard, report_card_rows)
     session.flush()
     print(
         f"Report cards: {report_card_inserted} inserted, {report_card_skipped} skipped "
@@ -772,27 +783,26 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in report_card_subjects:
-        report_card_subject_id = UUID(raw["id"])
-        _, created = get_or_create_report_card_subject(
-            session=session,
-            report_card_subject_id=report_card_subject_id,
-            report_card_id=UUID(raw["report_card_id"]),
-            academic_class_subject_id=UUID(
+    report_card_subject_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "report_card_id": UUID(raw["report_card_id"]),
+            "academic_class_subject_id": UUID(
                 raw["academic_class_subject_id"]
             ),
-            mid_term=raw.get("mid_term"),
-            notebook=raw.get("notebook"),
-            assignment=raw.get("assignment"),
-            class_test=raw.get("class_test"),
-            final_term=raw.get("final_term"),
-            final_marks=raw.get("final_marks"),
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            report_card_subject_inserted += 1
-        else:
-            report_card_subject_skipped += 1
+            "mid_term": raw.get("mid_term"),
+            "notebook": raw.get("notebook"),
+            "assignment": raw.get("assignment"),
+            "class_test": raw.get("class_test"),
+            "final_term": raw.get("final_term"),
+            "final_marks": raw.get("final_marks"),
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in report_card_subjects
+    ]
+    report_card_subject_inserted = insert_rows(
+        ReportCardSubject, report_card_subject_rows
+    )
     session.flush()
     print(
         f"Report card subjects: {report_card_subject_inserted} inserted, "
@@ -800,19 +810,16 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in date_sheets:
-        date_sheet_id = UUID(raw["id"])
-        _, created = get_or_create_date_sheet(
-            session=session,
-            date_sheet_id=date_sheet_id,
-            academic_class_id=UUID(raw["academic_class_id"]),
-            academic_term_id=UUID(raw["academic_term_id"]),
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            date_sheet_inserted += 1
-        else:
-            date_sheet_skipped += 1
+    date_sheet_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "academic_class_id": UUID(raw["academic_class_id"]),
+            "academic_term_id": UUID(raw["academic_term_id"]),
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in date_sheets
+    ]
+    date_sheet_inserted = insert_rows(DateSheet, date_sheet_rows)
     session.flush()
     print(
         f"Date sheets: {date_sheet_inserted} inserted, {date_sheet_skipped} skipped "
@@ -820,25 +827,24 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in date_sheet_subjects:
-        date_sheet_subject_id = UUID(raw["id"])
-        _, created = get_or_create_date_sheet_subject(
-            session=session,
-            date_sheet_subject_id=date_sheet_subject_id,
-            date_sheet_id=UUID(raw["date_sheet_id"]),
-            academic_class_subject_id=UUID(
+    date_sheet_subject_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "date_sheet_id": UUID(raw["date_sheet_id"]),
+            "academic_class_subject_id": UUID(
                 raw["academic_class_subject_id"]
             ),
-            paper_code=raw.get("paper_code"),
-            exam_date=parse_optional_date(raw.get("exam_date")),
-            start_time=parse_optional_time(raw.get("start_time")),
-            end_time=parse_optional_time(raw.get("end_time")),
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            date_sheet_subject_inserted += 1
-        else:
-            date_sheet_subject_skipped += 1
+            "paper_code": raw.get("paper_code"),
+            "exam_date": parse_optional_date(raw.get("exam_date")),
+            "start_time": parse_optional_time(raw.get("start_time")),
+            "end_time": parse_optional_time(raw.get("end_time")),
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in date_sheet_subjects
+    ]
+    date_sheet_subject_inserted = insert_rows(
+        DateSheetSubject, date_sheet_subject_rows
+    )
     session.flush()
     print(
         f"Date sheet subjects: {date_sheet_subject_inserted} inserted, "
@@ -846,29 +852,29 @@ def seed_students(
     )
 
     section_start = perf_counter()
-    for raw in users:
-        user_id = UUID(raw["id"])
-        _, created = get_or_create_user(
-            session=session,
-            user_id=user_id,
-            email=raw["email"],
-            role=UserRole(raw["role"]),
-            default_academic_session_id=UUID(
-                raw["default_academic_session_id"])
+    user_rows = [
+        {
+            "id": UUID(raw["id"]),
+            "email": raw["email"],
+            "role": UserRole(raw["role"]),
+            "default_academic_session_id": UUID(
+                raw["default_academic_session_id"]
+            )
             if raw.get("default_academic_session_id")
             else None,
-            default_academic_term_id=UUID(raw["default_academic_term_id"])
+            "default_academic_term_id": UUID(raw["default_academic_term_id"])
             if raw.get("default_academic_term_id")
             else None,
-            default_academic_class_id=UUID(raw["default_academic_class_id"])
+            "default_academic_class_id": UUID(
+                raw["default_academic_class_id"]
+            )
             if raw.get("default_academic_class_id")
             else None,
-            created_at=parse_created_at(raw["created_at"]),
-        )
-        if created:
-            user_inserted += 1
-        else:
-            user_skipped += 1
+            "created_at": parse_created_at(raw["created_at"]),
+        }
+        for raw in users
+    ]
+    user_inserted = insert_rows(User, user_rows)
     session.flush()
     print(
         f"Users: {user_inserted} inserted, {user_skipped} skipped "

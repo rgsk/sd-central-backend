@@ -171,7 +171,7 @@ def seed_students(
         for raw in academic_sessions
     ]
     session_inserted = insert_rows(AcademicSession, session_rows)
-    session.flush()
+
     print(
         f"Academic sessions: {session_inserted} inserted, {session_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -192,7 +192,7 @@ def seed_students(
         for raw in academic_terms
     ]
     term_inserted = insert_rows(AcademicTerm, term_rows)
-    session.flush()
+
     print(
         f"Academic terms: {term_inserted} inserted, {term_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -210,7 +210,7 @@ def seed_students(
         for raw in academic_classes
     ]
     class_inserted = insert_rows(AcademicClass, class_rows)
-    session.flush()
+
     print(
         f"Academic classes: {class_inserted} inserted, {class_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -226,7 +226,7 @@ def seed_students(
         for raw in subjects
     ]
     subject_inserted = insert_rows(Subject, subject_rows)
-    session.flush()
+
     print(
         f"Subjects: {subject_inserted} inserted, {subject_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -247,7 +247,7 @@ def seed_students(
     class_subject_inserted = insert_rows(
         AcademicClassSubject, class_subject_rows
     )
-    session.flush()
+
     print(
         f"Academic class subjects: {class_subject_inserted} inserted, "
         f"{class_subject_skipped} skipped in {perf_counter() - section_start:.2f}s."
@@ -270,7 +270,7 @@ def seed_students(
     class_subject_term_inserted = insert_rows(
         AcademicClassSubjectTerm, class_subject_term_rows
     )
-    session.flush()
+
     print(
         f"Academic class subject terms: {class_subject_term_inserted} inserted, "
         f"{class_subject_term_skipped} skipped in {perf_counter() - section_start:.2f}s."
@@ -290,7 +290,7 @@ def seed_students(
         for raw in students
     ]
     student_inserted = insert_rows(Student, student_rows)
-    session.flush()
+
     print(
         f"Students: {student_inserted} inserted, {student_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -309,7 +309,7 @@ def seed_students(
         for raw in enrollments
     ]
     enrollment_inserted = insert_rows(Enrollment, enrollment_rows)
-    session.flush()
+
     print(
         f"Enrollments: {enrollment_inserted} inserted, {enrollment_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -348,7 +348,7 @@ def seed_students(
         for raw in report_cards
     ]
     report_card_inserted = insert_rows(ReportCard, report_card_rows)
-    session.flush()
+
     print(
         f"Report cards: {report_card_inserted} inserted, {report_card_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -375,7 +375,7 @@ def seed_students(
     report_card_subject_inserted = insert_rows(
         ReportCardSubject, report_card_subject_rows
     )
-    session.flush()
+
     print(
         f"Report card subjects: {report_card_subject_inserted} inserted, "
         f"{report_card_subject_skipped} skipped in {perf_counter() - section_start:.2f}s."
@@ -392,7 +392,7 @@ def seed_students(
         for raw in date_sheets
     ]
     date_sheet_inserted = insert_rows(DateSheet, date_sheet_rows)
-    session.flush()
+
     print(
         f"Date sheets: {date_sheet_inserted} inserted, {date_sheet_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."
@@ -417,7 +417,7 @@ def seed_students(
     date_sheet_subject_inserted = insert_rows(
         DateSheetSubject, date_sheet_subject_rows
     )
-    session.flush()
+
     print(
         f"Date sheet subjects: {date_sheet_subject_inserted} inserted, "
         f"{date_sheet_subject_skipped} skipped in {perf_counter() - section_start:.2f}s."
@@ -447,7 +447,7 @@ def seed_students(
         for raw in users
     ]
     user_inserted = insert_rows(User, user_rows)
-    session.flush()
+
     print(
         f"Users: {user_inserted} inserted, {user_skipped} skipped "
         f"in {perf_counter() - section_start:.2f}s."

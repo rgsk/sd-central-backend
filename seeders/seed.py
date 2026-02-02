@@ -8,7 +8,7 @@ from datetime import date, datetime, time
 from time import perf_counter
 from uuid import UUID
 
-from sqlalchemy import insert
+from sqlalchemy import exists, insert, or_
 from sqlmodel import Session, select
 
 SCRIPT_DIR = os.path.dirname(__file__)
@@ -147,13 +147,11 @@ def seed_students(
             DateSheetSubject,
             User,
         ]
-        for model in tables:
-            exists = session.exec(select(model).limit(1)).first()
-            if exists:
-                raise RuntimeError(
-                    "Seed expects an empty database. "
-                    f"Found existing rows in {model.__name__}."
-                )
+        any_rows = session.exec(
+            select(or_(*[exists().select_from(model) for model in tables]))
+        ).one()
+        if any_rows:
+            raise RuntimeError("Seed expects an empty database.")
 
     def insert_rows(model: type, rows: list[dict]) -> int:
         if not rows:

@@ -116,7 +116,7 @@ def seed_students(
     def insert_rows(model: type, rows: list[dict]) -> int:
         if not rows:
             return 0
-        session.execute(insert(model), rows)
+        session.connection().execute(insert(model), rows)
         return len(rows)
 
     assert_db_is_empty()

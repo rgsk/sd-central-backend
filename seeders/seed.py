@@ -58,48 +58,8 @@ def parse_optional_time(value: str | None) -> time | None:
 def seed_students(
     session: Session,
     data_dir: str,
-) -> tuple[
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-    tuple[int, int],
-]:
+) -> None:
     start_time = perf_counter()
-    class_inserted = 0
-    class_skipped = 0
-    session_inserted = 0
-    session_skipped = 0
-    term_inserted = 0
-    term_skipped = 0
-    student_inserted = 0
-    student_skipped = 0
-    enrollment_inserted = 0
-    enrollment_skipped = 0
-    subject_inserted = 0
-    subject_skipped = 0
-    class_subject_inserted = 0
-    class_subject_skipped = 0
-    class_subject_term_inserted = 0
-    class_subject_term_skipped = 0
-    report_card_inserted = 0
-    report_card_skipped = 0
-    report_card_subject_inserted = 0
-    report_card_subject_skipped = 0
-    date_sheet_inserted = 0
-    date_sheet_skipped = 0
-    date_sheet_subject_inserted = 0
-    date_sheet_subject_skipped = 0
-    user_inserted = 0
-    user_skipped = 0
 
     academic_sessions = load_json(
         os.path.join(data_dir, "academic_sessions.json")
@@ -173,7 +133,7 @@ def seed_students(
     session_inserted = insert_rows(AcademicSession, session_rows)
 
     print(
-        f"Academic sessions: {session_inserted} inserted, {session_skipped} skipped "
+        f"Academic sessions: {session_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -194,7 +154,7 @@ def seed_students(
     term_inserted = insert_rows(AcademicTerm, term_rows)
 
     print(
-        f"Academic terms: {term_inserted} inserted, {term_skipped} skipped "
+        f"Academic terms: {term_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -212,7 +172,7 @@ def seed_students(
     class_inserted = insert_rows(AcademicClass, class_rows)
 
     print(
-        f"Academic classes: {class_inserted} inserted, {class_skipped} skipped "
+        f"Academic classes: {class_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -228,7 +188,7 @@ def seed_students(
     subject_inserted = insert_rows(Subject, subject_rows)
 
     print(
-        f"Subjects: {subject_inserted} inserted, {subject_skipped} skipped "
+        f"Subjects: {subject_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -249,8 +209,8 @@ def seed_students(
     )
 
     print(
-        f"Academic class subjects: {class_subject_inserted} inserted, "
-        f"{class_subject_skipped} skipped in {perf_counter() - section_start:.2f}s."
+        f"Academic class subjects: {class_subject_inserted} inserted "
+        f"in {perf_counter() - section_start:.2f}s."
     )
 
     section_start = perf_counter()
@@ -272,8 +232,8 @@ def seed_students(
     )
 
     print(
-        f"Academic class subject terms: {class_subject_term_inserted} inserted, "
-        f"{class_subject_term_skipped} skipped in {perf_counter() - section_start:.2f}s."
+        f"Academic class subject terms: {class_subject_term_inserted} inserted "
+        f"in {perf_counter() - section_start:.2f}s."
     )
 
     section_start = perf_counter()
@@ -292,7 +252,7 @@ def seed_students(
     student_inserted = insert_rows(Student, student_rows)
 
     print(
-        f"Students: {student_inserted} inserted, {student_skipped} skipped "
+        f"Students: {student_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -311,7 +271,7 @@ def seed_students(
     enrollment_inserted = insert_rows(Enrollment, enrollment_rows)
 
     print(
-        f"Enrollments: {enrollment_inserted} inserted, {enrollment_skipped} skipped "
+        f"Enrollments: {enrollment_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -350,7 +310,7 @@ def seed_students(
     report_card_inserted = insert_rows(ReportCard, report_card_rows)
 
     print(
-        f"Report cards: {report_card_inserted} inserted, {report_card_skipped} skipped "
+        f"Report cards: {report_card_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -377,8 +337,8 @@ def seed_students(
     )
 
     print(
-        f"Report card subjects: {report_card_subject_inserted} inserted, "
-        f"{report_card_subject_skipped} skipped in {perf_counter() - section_start:.2f}s."
+        f"Report card subjects: {report_card_subject_inserted} inserted "
+        f"in {perf_counter() - section_start:.2f}s."
     )
 
     section_start = perf_counter()
@@ -394,7 +354,7 @@ def seed_students(
     date_sheet_inserted = insert_rows(DateSheet, date_sheet_rows)
 
     print(
-        f"Date sheets: {date_sheet_inserted} inserted, {date_sheet_skipped} skipped "
+        f"Date sheets: {date_sheet_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
@@ -419,8 +379,8 @@ def seed_students(
     )
 
     print(
-        f"Date sheet subjects: {date_sheet_subject_inserted} inserted, "
-        f"{date_sheet_subject_skipped} skipped in {perf_counter() - section_start:.2f}s."
+        f"Date sheet subjects: {date_sheet_subject_inserted} inserted "
+        f"in {perf_counter() - section_start:.2f}s."
     )
 
     section_start = perf_counter()
@@ -449,27 +409,12 @@ def seed_students(
     user_inserted = insert_rows(User, user_rows)
 
     print(
-        f"Users: {user_inserted} inserted, {user_skipped} skipped "
+        f"Users: {user_inserted} inserted "
         f"in {perf_counter() - section_start:.2f}s."
     )
 
     session.commit()
     print(f"Total seeding time: {perf_counter() - start_time:.2f}s.")
-    return (
-        (session_inserted, session_skipped),
-        (term_inserted, term_skipped),
-        (class_inserted, class_skipped),
-        (student_inserted, student_skipped),
-        (enrollment_inserted, enrollment_skipped),
-        (subject_inserted, subject_skipped),
-        (class_subject_inserted, class_subject_skipped),
-        (class_subject_term_inserted, class_subject_term_skipped),
-        (report_card_inserted, report_card_skipped),
-        (report_card_subject_inserted, report_card_subject_skipped),
-        (date_sheet_inserted, date_sheet_skipped),
-        (date_sheet_subject_inserted, date_sheet_subject_skipped),
-        (user_inserted, user_skipped),
-    )
 
 
 if __name__ == "__main__":
@@ -489,84 +434,4 @@ if __name__ == "__main__":
         session.info["db_namespace"] = normalize_db_namespace(
             os.getenv("DB_NAMESPACE")
         )
-        (
-            (session_inserted, session_skipped),
-            (term_inserted, term_skipped),
-            (class_inserted, class_skipped),
-            (student_inserted, student_skipped),
-            (enrollment_inserted, enrollment_skipped),
-            (subject_inserted, subject_skipped),
-            (class_subject_inserted, class_subject_skipped),
-            (class_subject_term_inserted, class_subject_term_skipped),
-            (report_card_inserted, report_card_skipped),
-            (report_card_subject_inserted, report_card_subject_skipped),
-            (date_sheet_inserted, date_sheet_skipped),
-            (date_sheet_subject_inserted, date_sheet_subject_skipped),
-            (user_inserted, user_skipped),
-        ) = seed_students(session, data_dir)
-
-    print(
-        "Seeded academic sessions.",
-        f"Inserted: {session_inserted}.",
-        f"Skipped (already existed): {session_skipped}.",
-    )
-    print(
-        "Seeded academic terms.",
-        f"Inserted: {term_inserted}.",
-        f"Skipped (already existed): {term_skipped}.",
-    )
-    print(
-        "Seeded academic classes.",
-        f"Inserted: {class_inserted}.",
-        f"Skipped (already existed): {class_skipped}.",
-    )
-    print(
-        "Seeded students.",
-        f"Inserted: {student_inserted}.",
-        f"Skipped (already existed): {student_skipped}.",
-    )
-    print(
-        "Seeded enrollments.",
-        f"Inserted: {enrollment_inserted}.",
-        f"Skipped (already existed): {enrollment_skipped}.",
-    )
-    print(
-        "Seeded subjects.",
-        f"Inserted: {subject_inserted}.",
-        f"Skipped (already existed): {subject_skipped}.",
-    )
-    print(
-        "Seeded academic class subjects.",
-        f"Inserted: {class_subject_inserted}.",
-        f"Skipped (already existed): {class_subject_skipped}.",
-    )
-    print(
-        "Seeded academic class subject terms.",
-        f"Inserted: {class_subject_term_inserted}.",
-        f"Skipped (already existed): {class_subject_term_skipped}.",
-    )
-    print(
-        "Seeded report cards.",
-        f"Inserted: {report_card_inserted}.",
-        f"Skipped (already existed): {report_card_skipped}.",
-    )
-    print(
-        "Seeded report card subjects.",
-        f"Inserted: {report_card_subject_inserted}.",
-        f"Skipped (already existed): {report_card_subject_skipped}.",
-    )
-    print(
-        "Seeded date sheets.",
-        f"Inserted: {date_sheet_inserted}.",
-        f"Skipped (already existed): {date_sheet_skipped}.",
-    )
-    print(
-        "Seeded date sheet subjects.",
-        f"Inserted: {date_sheet_subject_inserted}.",
-        f"Skipped (already existed): {date_sheet_subject_skipped}.",
-    )
-    print(
-        "Seeded users.",
-        f"Inserted: {user_inserted}.",
-        f"Skipped (already existed): {user_skipped}.",
-    )
+        seed_students(session, data_dir)

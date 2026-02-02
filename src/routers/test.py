@@ -30,6 +30,10 @@ class NamespaceList(BaseModel):
     namespaces: list[str]
 
 
+class NamespaceDeleteResult(BaseModel):
+    deleted: list[str]
+
+
 def _run_command(
     command: list[str], namespace: str | None = None
 ) -> CommandResult:
@@ -86,6 +90,29 @@ def list_namespaces(session: Session = Depends(get_session)):
         )
     )
     return NamespaceList(namespaces=[row[0] for row in rows])
+
+
+@router.post("/namespaces/purge", response_model=NamespaceDeleteResult)
+def purge_namespaces(session: Session = Depends(get_session)):
+    rows = session.connection().execute(
+        text(
+            "SELECT schema_name FROM information_schema.schemata "
+            "WHERE schema_name NOT IN ('information_schema', 'public') "
+            "AND schema_name NOT LIKE 'pg_%' "
+            "ORDER BY schema_name"
+        )
+    )
+    namespaces = [row[0] for row in rows]
+    deleted: list[str] = []
+    for namespace in namespaces:
+        if not _NAMESPACE_RE.fullmatch(namespace):
+            continue
+        session.connection().execute(
+            text(f'DROP SCHEMA "{namespace}" CASCADE')
+        )
+        deleted.append(namespace)
+    session.commit()
+    return NamespaceDeleteResult(deleted=deleted)
 
 
 @router.post("/reset_db", response_model=CommandResult)

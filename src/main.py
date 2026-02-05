@@ -13,9 +13,8 @@ from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject,
                     academic_class_subject_term, academic_session,
                     academic_term, app_settings, date_sheet,
-                    date_sheet_subject, enrollment,
-                    gk_competition_student, report_card,
-                    report_card_subject, student, subject, user)
+                    date_sheet_subject, enrollment, gk_competition_student,
+                    report_card, report_card_subject, student, subject, user)
 from models.user import UserRead
 from routers import (academic_class_subject_terms, academic_class_subjects,
                      academic_classes, academic_sessions, academic_terms)
@@ -54,7 +53,7 @@ def create_all_models_without_migrations(allowed: bool):
 async def lifespan(app: FastAPI):
     # Startup logic
 
-    create_all_models_without_migrations(allowed=True)
+    create_all_models_without_migrations(allowed=False)
 
     yield
     # Shutdown logic (optional)

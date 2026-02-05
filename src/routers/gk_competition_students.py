@@ -7,13 +7,11 @@ from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, select
 
 from db import get_session
-from models.gk_competition_student import (
-    GKCompetitionStudent,
-    GKCompetitionStudentCreate,
-    GKCompetitionStudentListResponse,
-    GKCompetitionStudentRead,
-    GKCompetitionStudentUpdate,
-)
+from models.gk_competition_student import (GKCompetitionStudent,
+                                           GKCompetitionStudentCreate,
+                                           GKCompetitionStudentListResponse,
+                                           GKCompetitionStudentRead,
+                                           GKCompetitionStudentUpdate)
 
 router = APIRouter(
     prefix="/gk-competition-students",
@@ -85,38 +83,6 @@ def list_gk_competition_students(
         session.exec(statement).all(),
     )
     return GKCompetitionStudentListResponse(total=total, items=items)
-
-
-@router.get("/find", response_model=GKCompetitionStudentRead)
-def find_gk_competition_student(
-    session: Session = Depends(get_session),
-    aadhaar_no: str | None = Query(default=None),
-    roll_no: str | None = Query(default=None),
-):
-    aadhaar_value = aadhaar_no.strip() if aadhaar_no else ""
-    roll_value = roll_no.strip() if roll_no else ""
-    if not aadhaar_value and not roll_value:
-        raise HTTPException(
-            status_code=400,
-            detail="aadhaarNo or rollNo is required",
-        )
-    conditions = []
-    if aadhaar_value:
-        conditions.append(
-            col(GKCompetitionStudent.aadhaar_no) == aadhaar_value
-        )
-    if roll_value:
-        conditions.append(
-            col(GKCompetitionStudent.roll_no) == roll_value
-        )
-    student = session.exec(
-        select(GKCompetitionStudent).where(or_(*conditions))
-    ).first()
-    if not student:
-        raise HTTPException(
-            status_code=404, detail="Student not found"
-        )
-    return student
 
 
 @router.get("/{gk_competition_student_id}",

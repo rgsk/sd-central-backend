@@ -13,15 +13,16 @@ from lib.env import AppEnv, env
 from models import (academic_class, academic_class_subject,
                     academic_class_subject_term, academic_session,
                     academic_term, app_settings, date_sheet,
-                    date_sheet_subject, enrollment, report_card,
+                    date_sheet_subject, enrollment,
+                    gk_competition_student, report_card,
                     report_card_subject, student, subject, user)
 from models.user import UserRead
 from routers import (academic_class_subject_terms, academic_class_subjects,
                      academic_classes, academic_sessions, academic_terms)
 from routers import app_settings as settings
 from routers import (aws, date_sheet_subjects, date_sheets, dev, enrollments,
-                     public, report_card_subjects, report_cards, students,
-                     subjects, test, users)
+                     gk_competition_students, public, report_card_subjects,
+                     report_cards, students, subjects, test, users)
 
 
 def create_all_models_without_migrations(allowed: bool):
@@ -38,6 +39,7 @@ def create_all_models_without_migrations(allowed: bool):
             date_sheet,
             date_sheet_subject,
             enrollment,
+            gk_competition_student,
             report_card,
             report_card_subject,
             student,
@@ -52,7 +54,7 @@ def create_all_models_without_migrations(allowed: bool):
 async def lifespan(app: FastAPI):
     # Startup logic
 
-    create_all_models_without_migrations(allowed=False)
+    create_all_models_without_migrations(allowed=True)
 
     yield
     # Shutdown logic (optional)
@@ -172,5 +174,6 @@ protected_router.include_router(academic_class_subject_terms.router)
 protected_router.include_router(report_cards.router)
 protected_router.include_router(report_card_subjects.router)
 protected_router.include_router(users.router)
+protected_router.include_router(gk_competition_students.router)
 
 app.include_router(protected_router)

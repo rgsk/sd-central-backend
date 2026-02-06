@@ -26,7 +26,7 @@ class AppSettingsDB(SQLModel):
 
 
 class AppSettingsBase(SQLModel):
-    test_field: str = ""
+    gk_competition_result_active: bool = False
 
 
 class AppSettings(AppSettingsBase, AppSettingsDB, table=True):
@@ -35,7 +35,7 @@ class AppSettings(AppSettingsBase, AppSettingsDB, table=True):
 
 
 class AppSettingsUpdate(SQLModel):
-    test_field: Optional[str] = None
+    gk_competition_result_active: Optional[bool] = None
 
 
 class AppSettingsId(SQLModel):

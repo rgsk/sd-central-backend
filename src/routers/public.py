@@ -1,7 +1,6 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import or_
 from sqlmodel import Session, SQLModel, col, select
 
 from db import get_session
@@ -13,10 +12,8 @@ from models.academic_term import (AcademicTerm, AcademicTermRead,
 from models.date_sheet import DateSheet, DateSheetRead, DateSheetReadDetail
 from models.date_sheet_subject import DateSheetSubjectRead
 from models.enrollment import Enrollment, EnrollmentRead
-from models.gk_competition_student import (
-    GKCompetitionStudent,
-    GKCompetitionStudentRead,
-)
+from models.gk_competition_student import (GKCompetitionStudent,
+                                           GKCompetitionStudentRead)
 from models.report_card import (ReportCard, ReportCardReadDetail,
                                 ReportCardReadDetailWithSubjects)
 from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
@@ -284,28 +281,16 @@ class GKCompetitionStudentDataResponse(SQLModel):
     response_model=GKCompetitionStudentDataResponse,
 )
 def get_gk_competition_student_data(
-    aadhaar_no: str | None = Query(default=None),
-    roll_no: str | None = Query(default=None),
+    aadhaar_no: str = Query(...),
+    roll_no: str = Query(...),
     session: Session = Depends(get_session),
 ):
-    aadhaar_value = aadhaar_no.strip() if aadhaar_no else ""
-    roll_value = roll_no.strip() if roll_no else ""
-    if not aadhaar_value and not roll_value:
-        raise HTTPException(
-            status_code=400,
-            detail="aadhaarNo or rollNo is required",
-        )
-    conditions = []
-    if aadhaar_value:
-        conditions.append(
-            col(GKCompetitionStudent.aadhaar_no) == aadhaar_value
-        )
-    if roll_value:
-        conditions.append(
-            col(GKCompetitionStudent.roll_no) == roll_value
-        )
+
     student = session.exec(
-        select(GKCompetitionStudent).where(or_(*conditions))
+        select(GKCompetitionStudent).where(
+            col(GKCompetitionStudent.aadhaar_no) == aadhaar_no,
+            col(GKCompetitionStudent.roll_no) == roll_no,
+        )
     ).first()
     if not student:
         raise HTTPException(

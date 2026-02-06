@@ -20,6 +20,7 @@ from models.report_card_subject import ReportCardSubject, ReportCardSubjectRead
 from models.student import Student
 from routers.academic_classes import grade_rank
 from routers.academic_terms import term_rank
+from routers.app_settings import _get_or_create_settings
 from routers.date_sheets import query_date_sheet_subjects
 from routers.report_card_subjects import REPORT_CARD_SUBJECT_ORDER_BY
 from routers.report_cards import (compute_percentages_and_ranks_for_term,
@@ -276,6 +277,10 @@ class GKCompetitionStudentDataResponse(SQLModel):
     gk_competition_student: GKCompetitionStudentRead
 
 
+class SettingsDataResponse(SQLModel):
+    gk_competition_result_active: bool
+
+
 @router.get(
     "/gk-competition-student-data",
     response_model=GKCompetitionStudentDataResponse,
@@ -333,6 +338,16 @@ def get_date_sheet_data(
         date_sheet_subjects=date_sheet_subjects,
     )
     return DateSheetDataResponse(date_sheet=date_sheet_read)
+
+
+@router.get("/settings-data", response_model=SettingsDataResponse)
+def get_settings_data(
+    session: Session = Depends(get_session),
+):
+    settings = _get_or_create_settings(session)
+    return SettingsDataResponse(
+        gk_competition_result_active=settings.gk_competition_result_active
+    )
 
 
 @router.get("/academic-sessions", response_model=list[AcademicSessionRead])

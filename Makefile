@@ -13,6 +13,7 @@ help: ## Show available commands
 	@awk -F':.*## ' '/^[a-zA-Z0-9_%-]+:.*## /{printf "%-20s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 dev: ## Run FastAPI app in development mode
+	sh ./scripts/restart_postgres.sh
 	set -a; [ -f .env ] && . ./.env; set +a; fastapi dev src/main.py --port $${PORT:-8000}
 
 run: ## Run FastAPI app in production mode

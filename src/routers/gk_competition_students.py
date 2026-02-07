@@ -44,6 +44,7 @@ def list_gk_competition_students(
     search: str | None = Query(default=None),
     school_name: str | None = Query(default=None),
     class_name: str | None = Query(default=None),
+    selected_ids: list[UUID] | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
@@ -71,6 +72,8 @@ def list_gk_competition_students(
         filters.append(
             col(GKCompetitionStudent.class_name) == class_name_value
         )
+    if selected_ids:
+        filters.append(col(GKCompetitionStudent.id).in_(selected_ids))
     if filters:
         statement = statement.where(*filters)
         count_statement = count_statement.where(*filters)
@@ -89,6 +92,22 @@ def list_gk_competition_students(
         session.exec(statement).all(),
     )
     return GKCompetitionStudentListResponse(total=total, items=items)
+
+
+@router.get("/school-options", response_model=list[str])
+def list_gk_competition_school_options(
+    session: Session = Depends(get_session),
+):
+    statement = (
+        select(col(GKCompetitionStudent.school_name))
+        .distinct()
+        .where(
+            col(GKCompetitionStudent.school_name).isnot(None),
+            col(GKCompetitionStudent.school_name) != "",
+        )
+        .order_by(col(GKCompetitionStudent.school_name))
+    )
+    return session.exec(statement).all()
 
 
 @router.get("/{gk_competition_student_id}",

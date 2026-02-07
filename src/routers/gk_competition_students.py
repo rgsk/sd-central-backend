@@ -56,24 +56,27 @@ def list_gk_competition_students(
         GKCompetitionStudent
     )
     filters = []
-    if search_value:
-        pattern = f"%{search_value}%"
-        condition = or_(
-            col(GKCompetitionStudent.name).ilike(pattern),
-            col(GKCompetitionStudent.roll_no).ilike(pattern),
-            col(GKCompetitionStudent.aadhaar_no).ilike(pattern),
-        )
-        filters.append(condition)
-    if school_name_value:
-        filters.append(
-            col(GKCompetitionStudent.school_name) == school_name_value
-        )
-    if class_name_value:
-        filters.append(
-            col(GKCompetitionStudent.class_name) == class_name_value
-        )
     if selected_ids:
         filters.append(col(GKCompetitionStudent.id).in_(selected_ids))
+    else:
+        if search_value:
+            pattern = f"%{search_value}%"
+            condition = or_(
+                col(GKCompetitionStudent.name).ilike(pattern),
+                col(GKCompetitionStudent.roll_no).ilike(pattern),
+                col(GKCompetitionStudent.aadhaar_no).ilike(pattern),
+            )
+            filters.append(condition)
+        if school_name_value:
+            filters.append(
+                col(GKCompetitionStudent.school_name)
+                == school_name_value
+            )
+        if class_name_value:
+            filters.append(
+                col(GKCompetitionStudent.class_name)
+                == class_name_value
+            )
     if filters:
         statement = statement.where(*filters)
         count_statement = count_statement.where(*filters)

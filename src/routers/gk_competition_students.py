@@ -42,32 +42,38 @@ def create_gk_competition_student(
 def list_gk_competition_students(
     session: Session = Depends(get_session),
     search: str | None = Query(default=None),
+    school_name: str | None = Query(default=None),
+    class_name: str | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
 ):
     search_value = search.strip() if search else ""
+    school_name_value = school_name.strip() if school_name else ""
+    class_name_value = class_name.strip() if class_name else ""
     statement = select(GKCompetitionStudent)
     count_statement = select(func.count()).select_from(
         GKCompetitionStudent
     )
+    filters = []
     if search_value:
         pattern = f"%{search_value}%"
         condition = or_(
             col(GKCompetitionStudent.name).ilike(pattern),
             col(GKCompetitionStudent.roll_no).ilike(pattern),
-            col(GKCompetitionStudent.father_name).ilike(pattern),
-            col(GKCompetitionStudent.mother_name).ilike(pattern),
-            col(GKCompetitionStudent.class_name).ilike(pattern),
-            col(GKCompetitionStudent.school_name).ilike(pattern),
-            col(GKCompetitionStudent.school_address).ilike(pattern),
             col(GKCompetitionStudent.aadhaar_no).ilike(pattern),
-            col(GKCompetitionStudent.group).ilike(pattern),
-            col(GKCompetitionStudent.paper_medium).ilike(pattern),
-            col(GKCompetitionStudent.exam_center).ilike(pattern),
-            col(GKCompetitionStudent.contact_no).ilike(pattern),
         )
-        statement = statement.where(condition)
-        count_statement = count_statement.where(condition)
+        filters.append(condition)
+    if school_name_value:
+        filters.append(
+            col(GKCompetitionStudent.school_name) == school_name_value
+        )
+    if class_name_value:
+        filters.append(
+            col(GKCompetitionStudent.class_name) == class_name_value
+        )
+    if filters:
+        statement = statement.where(*filters)
+        count_statement = count_statement.where(*filters)
     total = session.exec(count_statement).one()
     statement = (
         statement

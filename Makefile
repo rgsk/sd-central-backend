@@ -14,10 +14,10 @@ help: ## Show available commands
 
 dev: ## Run FastAPI app in development mode
 	sh ./scripts/restart_postgres.sh
-	set -a; [ -f .env ] && . ./.env; set +a; fastapi dev src/main.py --port $${PORT:-8000}
+	fastapi dev src/main.py --port $${PORT:-8000}
 
 run: ## Run FastAPI app in production mode
-	set -a; [ -f .env ] && . ./.env; set +a; fastapi run src/main.py --port $${PORT:-8000}
+	fastapi run src/main.py --port $${PORT:-8000}
 
 reset_db: ## Clear and restart Postgres
 ifeq ($(DB_NAMESPACE),)

@@ -59,7 +59,14 @@ async def lifespan(app: FastAPI):
     # Shutdown logic (optional)
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    lifespan=lifespan,
+    swagger_ui_parameters={
+        # ensures that token once set, it's stored in local storage of /docs page
+        # so token is persistent across page reloads and server restarts
+        "persistAuthorization": True
+    },
+)
 
 
 @app.middleware("http")

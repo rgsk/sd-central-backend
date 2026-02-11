@@ -298,8 +298,9 @@ def get_gk_competition_student_data(
         )
     ).first()
     if not student:
+        err_message = "Roll Number or Aadhaar Number does not match our records. Please check and try again."
         raise HTTPException(
-            status_code=404, detail="Student not found"
+            status_code=404, detail=err_message
         )
     return GKCompetitionStudentDataResponse(
         gk_competition_student=GKCompetitionStudentRead.model_validate(

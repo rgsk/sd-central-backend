@@ -111,7 +111,7 @@ def purge_namespaces(session: Session = Depends(get_session)):
             text(f'DROP SCHEMA "{namespace}" CASCADE')
         )
         deleted.append(namespace)
-    session.commit()
+        session.commit()
     return NamespaceDeleteResult(deleted=deleted)
 
 

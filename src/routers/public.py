@@ -279,6 +279,7 @@ class GKCompetitionStudentDataResponse(SQLModel):
 
 class SettingsDataResponse(SQLModel):
     gk_competition_result_active: bool
+    gk_competition_admit_card_active: bool
 
 
 @router.get(
@@ -347,7 +348,8 @@ def get_settings_data(
 ):
     settings = _get_or_create_settings(session)
     return SettingsDataResponse(
-        gk_competition_result_active=settings.gk_competition_result_active
+        gk_competition_result_active=settings.gk_competition_result_active,
+        gk_competition_admit_card_active=settings.gk_competition_admit_card_active
     )
 
 

@@ -27,6 +27,7 @@ class AppSettingsDB(SQLModel):
 
 class AppSettingsBase(SQLModel):
     gk_competition_result_active: bool = False
+    gk_competition_admit_card_active: bool = False
 
 
 class AppSettings(AppSettingsBase, AppSettingsDB, table=True):
@@ -36,6 +37,7 @@ class AppSettings(AppSettingsBase, AppSettingsDB, table=True):
 
 class AppSettingsUpdate(SQLModel):
     gk_competition_result_active: Optional[bool] = None
+    gk_competition_admit_card_active: Optional[bool] = None
 
 
 class AppSettingsId(SQLModel):

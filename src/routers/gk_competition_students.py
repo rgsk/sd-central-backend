@@ -71,7 +71,7 @@ def list_gk_competition_students(
             filters.append(condition)
         if school_name_value:
             filters.append(
-                col(GKCompetitionStudent.school_name)
+                func.trim(col(GKCompetitionStudent.school_name))
                 == school_name_value
             )
         if class_name_value:

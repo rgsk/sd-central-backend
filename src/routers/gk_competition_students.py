@@ -44,6 +44,7 @@ def list_gk_competition_students(
     search: str | None = Query(default=None),
     school_name: str | None = Query(default=None),
     class_name: str | None = Query(default=None),
+    group: str | None = Query(default=None),
     selected_ids: list[UUID] | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
@@ -51,6 +52,7 @@ def list_gk_competition_students(
     search_value = search.strip() if search else ""
     school_name_value = school_name.strip() if school_name else ""
     class_name_value = class_name.strip() if class_name else ""
+    group_value = group.strip() if group else ""
     statement = select(GKCompetitionStudent)
     count_statement = select(func.count()).select_from(
         GKCompetitionStudent
@@ -76,6 +78,10 @@ def list_gk_competition_students(
             filters.append(
                 col(GKCompetitionStudent.class_name)
                 == class_name_value
+            )
+        if group_value:
+            filters.append(
+                col(GKCompetitionStudent.group) == group_value
             )
     if filters:
         statement = statement.where(*filters)

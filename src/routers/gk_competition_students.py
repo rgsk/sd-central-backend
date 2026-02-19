@@ -101,14 +101,15 @@ def list_gk_competition_students(
 def list_gk_competition_school_options(
     session: Session = Depends(get_session),
 ):
+    trimmed_school_name = func.trim(col(GKCompetitionStudent.school_name))
     statement = (
-        select(col(GKCompetitionStudent.school_name))
+        select(trimmed_school_name)
         .distinct()
         .where(
             col(GKCompetitionStudent.school_name).isnot(None),
-            col(GKCompetitionStudent.school_name) != "",
+            trimmed_school_name != "",
         )
-        .order_by(col(GKCompetitionStudent.school_name))
+        .order_by(trimmed_school_name)
     )
     return session.exec(statement).all()
 

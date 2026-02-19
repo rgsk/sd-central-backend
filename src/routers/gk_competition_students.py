@@ -47,7 +47,7 @@ def list_gk_competition_students(
     group: str | None = Query(default=None),
     selected_ids: list[UUID] | None = Query(default=None),
     offset: int = Query(0, ge=0),
-    limit: int = Query(50, ge=1, le=200),
+    limit: int = Query(50, ge=1, le=1000),
 ):
     search_value = search.strip() if search else ""
     school_name_value = school_name.strip() if school_name else ""

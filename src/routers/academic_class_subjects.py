@@ -143,7 +143,7 @@ def list_academic_class_subjects(
     is_additional: bool | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
-    limit: int = Query(50, ge=1, le=200),
+    limit: int = Query(500, ge=1, le=2000),
 ):
     statement = select(AcademicClassSubject)
     count_statement = select(func.count()).select_from(AcademicClassSubject)

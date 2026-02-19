@@ -50,7 +50,7 @@ def list_report_card_subjects(
     academic_class_subject_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
-    limit: int = Query(50, ge=1, le=200),
+    limit: int = Query(500, ge=1, le=2000),
 ):
     statement = select(ReportCardSubject)
     count_statement = select(func.count()).select_from(ReportCardSubject)
@@ -198,8 +198,6 @@ def partial_update_report_card_subject(
             session.commit()
 
     return db_report_card_subject
-
-
 
 
 @router.delete("/{report_card_subject_id}")

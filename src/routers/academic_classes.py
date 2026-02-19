@@ -9,8 +9,7 @@ from sqlmodel import Session, col, select
 from db import get_session
 from models.academic_class import (AcademicClass, AcademicClassCreate,
                                    AcademicClassListResponse,
-                                   AcademicClassRead,
-                                   AcademicClassUpdate)
+                                   AcademicClassRead, AcademicClassUpdate)
 from models.academic_session import AcademicSession
 
 router = APIRouter(
@@ -68,7 +67,7 @@ def list_academic_classes(
     academic_session_id: UUID | None = Query(default=None),
     session: Session = Depends(get_session),
     offset: int = Query(0, ge=0),
-    limit: int = Query(50, ge=1, le=200),
+    limit: int = Query(500, ge=1, le=2000),
 ):
     statement = select(AcademicClass).join(
         AcademicSession,

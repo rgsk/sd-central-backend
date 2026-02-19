@@ -103,7 +103,7 @@ def list_users(
     session: Session = Depends(get_session),
     search: str | None = Query(default=None),
     offset: int = Query(0, ge=0),
-    limit: int = Query(50, ge=1, le=200),
+    limit: int = Query(500, ge=1, le=2000),
 ):
     conditions = []
     if search and search.strip():

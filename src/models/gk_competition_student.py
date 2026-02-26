@@ -33,6 +33,8 @@ class GKCompetitionStudentBase(SQLModel):
     exam_center: str
     contact_no: str
     marks: Optional[int] = None
+    class_verification_status: Optional[str] = None
+    remark: Optional[str] = None
 
 
 class GKCompetitionStudent(
@@ -70,6 +72,8 @@ class GKCompetitionStudentUpdate(SQLModel):
     exam_center: Optional[str] = None
     contact_no: Optional[str] = None
     marks: Optional[int] = None
+    class_verification_status: Optional[str] = None
+    remark: Optional[str] = None
 
 
 class GKCompetitionStudentId(SQLModel):

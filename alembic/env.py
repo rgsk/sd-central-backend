@@ -28,13 +28,13 @@ from lib.env import env  # noqa: E402
 from models import (academic_class, academic_class_subject,  # noqa: F401, E402
                     academic_class_subject_term, academic_session,
                     academic_term, app_settings, date_sheet,
-                    date_sheet_subject, enrollment, report_card,
-                    report_card_subject, student, subject, user)
+                    date_sheet_subject, enrollment, gk_competition_student,
+                    report_card, report_card_subject, student, subject, user)
 
 _ = [academic_class, academic_class_subject,
      academic_class_subject_term, academic_session, academic_term,
      app_settings, date_sheet, date_sheet_subject, enrollment, report_card,
-     report_card_subject, student, subject, user]
+     report_card_subject, student, subject, user, gk_competition_student]
 
 # Use SQLModel metadata for autogenerate support.
 target_metadata = SQLModel.metadata

@@ -48,6 +48,8 @@ def list_gk_competition_students(
     selected_ids: list[UUID] | None = Query(default=None),
     offset: int = Query(0, ge=0),
     limit: int = Query(500, ge=1, le=2000),
+    sort_by: str | None = Query(default=None),
+    sort_dir: str | None = Query(default="desc"),
 ):
     search_value = search.strip() if search else ""
     school_name_value = school_name.strip() if school_name else ""
@@ -87,12 +89,25 @@ def list_gk_competition_students(
         statement = statement.where(*filters)
         count_statement = count_statement.where(*filters)
     total = session.exec(count_statement).one()
-    statement = (
-        statement
-        .order_by(
+    order_by_clauses = [
+        col(GKCompetitionStudent.name),
+        col(GKCompetitionStudent.created_at).desc(),
+    ]
+    normalized_sort_by = sort_by.lower() if sort_by else None
+    normalized_sort_dir = (sort_dir or "desc").lower()
+    sort_desc = normalized_sort_dir != "asc"
+    if normalized_sort_by == "marks":
+        marks_col = col(GKCompetitionStudent.marks)
+        marks_order = (
+            marks_col.desc() if sort_desc else marks_col.asc()
+        ).nulls_last()
+        order_by_clauses = [
+            marks_order,
             col(GKCompetitionStudent.name),
             col(GKCompetitionStudent.created_at).desc(),
-        )
+        ]
+    statement = (
+        statement.order_by(*order_by_clauses)
         .offset(offset)
         .limit(limit)
     )

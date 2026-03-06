@@ -170,3 +170,11 @@ def firebase_custom_token(request: Request, email: str = Query(..., min_length=1
         ["python", "scripts/create_firebase_custom_token.py", email],
         namespace
     )
+
+
+@router.get("/database_url_type")
+def get_database_url_type():
+    if env.DATABASE_URL == 'postgresql://postgres:postgres@localhost:5498/postgres':
+        return 'LOCALHOST'
+    else:
+        return 'STAGING'

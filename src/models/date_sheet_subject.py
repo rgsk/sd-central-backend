@@ -1,4 +1,5 @@
 from datetime import date, datetime, time, timezone
+from enum import Enum
 from typing import TYPE_CHECKING, Optional
 from uuid import UUID, uuid4
 
@@ -11,6 +12,11 @@ from models.academic_class_subject import AcademicClassSubjectReadWithSubject
 if TYPE_CHECKING:
     from models.academic_class_subject import AcademicClassSubject
     from models.date_sheet import DateSheet
+
+
+class DateSheetSubjectExamType(str, Enum):
+    WRITTEN = "written"
+    ORAL = "oral"
 
 
 class DateSheetSubjectDB(SQLModel):
@@ -47,6 +53,9 @@ class DateSheetSubjectBase(SQLModel):
         )
     )
     paper_code: Optional[str] = None
+    exam_type: DateSheetSubjectExamType = (
+        DateSheetSubjectExamType.WRITTEN
+    )
     exam_date: Optional[date] = None
     start_time: Optional[time] = None
     end_time: Optional[time] = None
@@ -73,6 +82,7 @@ class DateSheetSubjectUpdate(SQLModel):
     date_sheet_id: Optional[UUID] = None
     academic_class_subject_id: Optional[UUID] = None
     paper_code: Optional[str] = None
+    exam_type: Optional[DateSheetSubjectExamType] = None
     exam_date: Optional[date] = None
     start_time: Optional[time] = None
     end_time: Optional[time] = None

@@ -8,6 +8,8 @@ from sqlmodel import Session, col, select
 from db import get_session
 from models.academic_class_subject import AcademicClassSubject
 from models.date_sheet_subject import (DateSheetSubject,
+                                       DateSheetSubjectBulkUpdate,
+                                       DateSheetSubjectBulkUpdateResponse,
                                        DateSheetSubjectCreate,
                                        DateSheetSubjectListResponse,
                                        DateSheetSubjectRead,
@@ -74,6 +76,55 @@ def list_date_sheet_subjects(
     ).all()
     items = cast(list[DateSheetSubjectRead], results)
     return DateSheetSubjectListResponse(total=total, items=items)
+
+
+@router.patch("/bulk", response_model=DateSheetSubjectBulkUpdateResponse)
+def bulk_update_date_sheet_subjects(
+    payload: DateSheetSubjectBulkUpdate,
+    session: Session = Depends(get_session),
+):
+    if not payload.items:
+        return DateSheetSubjectBulkUpdateResponse(items=[])
+
+    ids = [item.id for item in payload.items]
+    results = session.exec(
+        select(DateSheetSubject).where(
+            col(DateSheetSubject.id).in_(ids)
+        )
+    ).all()
+    if len(results) != len(ids):
+        found_ids = {subject.id for subject in results}
+        missing_ids = [
+            str(subject_id)
+            for subject_id in ids
+            if subject_id not in found_ids
+        ]
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                "Date sheet subjects not found: "
+                + ", ".join(missing_ids)
+            ),
+        )
+
+    subject_map = {subject.id: subject for subject in results}
+    for item in payload.items:
+        db_date_sheet_subject = subject_map[item.id]
+        update_data = item.model_dump(exclude={"id"}, exclude_unset=True)
+        for key, value in update_data.items():
+            setattr(db_date_sheet_subject, key, value)
+        session.add(db_date_sheet_subject)
+
+    session.commit()
+    for subject in subject_map.values():
+        session.refresh(subject)
+
+    updated_subjects = [
+        subject_map[item.id] for item in payload.items
+    ]
+    return DateSheetSubjectBulkUpdateResponse(
+        items=cast(list[DateSheetSubjectRead], updated_subjects)
+    )
 
 
 @router.get("/{date_sheet_subject_id}", response_model=DateSheetSubjectRead)

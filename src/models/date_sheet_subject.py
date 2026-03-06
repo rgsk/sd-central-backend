@@ -88,6 +88,18 @@ class DateSheetSubjectUpdate(SQLModel):
     end_time: Optional[time] = None
 
 
+class DateSheetSubjectBulkUpdateItem(SQLModel):
+    id: UUID
+    paper_code: Optional[str] = None
+    exam_date: Optional[date] = None
+    start_time: Optional[time] = None
+    end_time: Optional[time] = None
+
+
+class DateSheetSubjectBulkUpdate(SQLModel):
+    items: list[DateSheetSubjectBulkUpdateItem]
+
+
 class DateSheetSubjectId(SQLModel):
     id: UUID
 
@@ -109,4 +121,8 @@ class DateSheetSubjectReadRaw(
 
 class DateSheetSubjectListResponse(SQLModel):
     total: int
+    items: list[DateSheetSubjectRead]
+
+
+class DateSheetSubjectBulkUpdateResponse(SQLModel):
     items: list[DateSheetSubjectRead]

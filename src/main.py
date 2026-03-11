@@ -20,8 +20,9 @@ from routers import (academic_class_subject_terms, academic_class_subjects,
                      academic_classes, academic_sessions, academic_terms)
 from routers import app_settings as settings
 from routers import (aws, date_sheet_subjects, date_sheets, dev, enrollments,
-                     gk_competition_students, public, report_card_subjects,
-                     report_cards, students, subjects, test, users)
+                     experiments, gk_competition_students, public,
+                     report_card_subjects, report_cards, students, subjects,
+                     test, users)
 
 
 def create_all_models_without_migrations(allowed: bool):
@@ -164,6 +165,7 @@ if env.APP_ENV is AppEnv.DEVELOPMENT:
 
 app.include_router(test.router)
 app.include_router(public.router)
+app.include_router(experiments.router)
 
 protected_router.include_router(students.router)
 protected_router.include_router(enrollments.router)

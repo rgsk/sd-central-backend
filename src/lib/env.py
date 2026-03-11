@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class AppEnv(str, Enum):
     DEVELOPMENT = "development"
     STAGING = "staging"
@@ -18,6 +19,7 @@ class _Env:
         self.PORT = self._get_var("PORT")
         self.AWS_ACCESS_KEY = self._get_var('AWS_ACCESS_KEY')
         self.AWS_SECRET_ACCESS_KEY = self._get_var('AWS_SECRET_ACCESS_KEY')
+        self.OPENAI_API_KEY = self._get_var('OPENAI_API_KEY')
         self.AWS_REGION = self._get_var('AWS_REGION', "us-east-1")
         self.AWS_PUBLIC_BUCKET = self._get_var(
             'AWS_PUBLIC_BUCKET', "public-ai-exp"
